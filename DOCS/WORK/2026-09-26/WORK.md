@@ -84,15 +84,27 @@ Full rationale in `CONTEXT/DECISIONS.md`.
 - Updated `DOCS/STATUS.md` from "no code exists yet" to the true state (MVP built and
   verified, with current match rates and pending items).
 
+### Phase 1 & 2 UI Redesign — Execution
+
+- **Phase 1 Task 1.1:** Created `normalization/effort.mjs` and `normalization/test/effort.test.mjs`.
+  Implemented `EFFORT_LEVELS` and `parseEffort(name)` honoring the honesty constraint: only explicit forms count; bare `-max` returns `null` (not stated). All 26 tests pass. Committed (`3dba4d6`).
+- **Phase 1 Task 1.2:** Exported `stripEffort(name)` from `effort.mjs` with tests (27/27 pass).
+  Updated `normalization/build-data.mjs` to emit `effort`, `thinking`, `family_id`, and `display_vendor` on LiveBench rows, and `vendor_display` at root. Updated `LivebenchModel` and `ScoresData` types in `lib/data.ts`. Tested with `build:data`, `npx tsc --noEmit`, and `next build` static export. Committed (`2d57dd3`).
+- **Phase 2 Task 2.1 (Component Source Retrieval via design-source):**
+  - Queried shadcn registry for `command` (on `cmdk`) and `drawer` (on `vaul`).
+  - Packages installed: `cmdk@1.1.1` and `vaul@1.1.2`, verified with React 19 compatibility (`npm ls cmdk vaul` clean).
+  - Source adaptation: registry Tailwind utilities (`bg-popover`, `border-border`, etc.) adapted to plain CSS using `:root` design tokens (`--bg-canvas`, `--bg-card`, `--bg-hover`, `--border`, `--primary`, `--text-main`, `--text-muted`, `--motion-duration`). Dialog layout for desktop (≥640px) and Vaul bottom-sheet drawer for mobile (<640px) with `prefers-reduced-motion` fallbacks.
+
 ## Artifacts
 
 - `DOCS/README.md` — work-log index
 - `DOCS/STATUS.md` — current state, pending, next steps
 - `DOCS/CONTEXT/DECISIONS.md` — all decisions incl. Jev verdict
-- `ingestion/` adapters + fixtures + sources; `normalization/` registry + build;
+- `ingestion/` adapters + fixtures + sources; `normalization/` registry + build + effort;
   `app/` + `components/` playground; `design-tokens.json`; `.github/workflows/ingest.yml`
 
 ## Next
 
-1. First git commit + push to a GitHub remote; confirm the first scheduled cron run is green.
-2. Manual alias table for SWE-bench systems to lift the 51/180 match rate.
+1. Complete Phase 2 Task 2.2 (`components/ModelPicker.tsx`, `components/model-picker.css`, pure `groupModels` helper in `lib/picker.mjs` with unit tests).
+2. Wire picker into `components/HeadToHead.tsx` with query param state (`?a=...&b=...`).
+

@@ -137,9 +137,9 @@ A new session may start here.
 **Why:** Owner rule: never design UI from memory when a registry exists.
 **Where:** run `/design-source`; output notes in `DOCS/WORK/<today>/WORK.md`
 **Do:**
-- [ ] Run `/design-source` for: "command palette dialog (shadcn Command on cmdk) + mobile bottom-sheet (shadcn Drawer on vaul), plain CSS, dark zinc-emerald tokens".
-- [ ] Install `cmdk` and `vaul` (versions from Facts; re-check with `npm view`).
-- [ ] Record which registry files were retrieved and what was adapted (Tailwind classes → CSS classes using `:root` tokens).
+- [x] Run `/design-source` for: "command palette dialog (shadcn Command on cmdk) + mobile bottom-sheet (shadcn Drawer on vaul), plain CSS, dark zinc-emerald tokens".
+- [x] Install `cmdk` and `vaul` (versions from Facts; re-check with `npm view`).
+- [x] Record which registry files were retrieved and what was adapted (Tailwind classes → CSS classes using `:root` tokens).
 **Test first:** n/a — source retrieval, no behaviour yet.
 **Verify:** `npm ls cmdk vaul` → both listed, no `UNMET PEER`.
 **Don't touch:** existing components.
@@ -356,3 +356,4 @@ the last entry and knows exactly where to start.)*
 
 - 26/09/2026 — Phase 1 Task 1.1 complete: `normalization/effort.mjs` and `normalization/test/effort.test.mjs` created. 26/26 tests pass (13 existing + 13 new). Exported `EFFORT_LEVELS` and `parseEffort` following explicit forms constraint (bare `-max` stays `null` / not stated). Commit: `feat(normalization): parse reasoning-effort level from LiveBench names`.
 - 26/09/2026 — Phase 1 Task 1.2 complete: exported `stripEffort` with unit tests (27/27 pass); added `effort`, `thinking`, `family_id`, `display_vendor` to LiveBench rows in `scores.json` and `lib/data.ts`; added `vendor_display` at root; `build:data`, `tsc --noEmit`, and `next build` static export pass cleanly. Phase 1 Checkpoint complete. Commit: `feat(data): add effort, family and display vendor to LiveBench rows`.
+- 26/09/2026 — Phase 2 Task 2.1 complete: retrieved command palette (cmdk) and drawer (vaul) sources via `design-source`; installed `cmdk@1.1.1` and `vaul@1.1.2` (`npm ls` clean, React 19 compatible); documented token adaptation and source notes in `DOCS/WORK/2026-09-26/WORK.md`. Commit: `chore(ui): add cmdk and vaul for model picker`.
