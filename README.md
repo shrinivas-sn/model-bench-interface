@@ -45,7 +45,8 @@ npm run ingest            # live ingest all 4 sources -> store/*.jsonl
 npm run build:data        # store/*.jsonl -> data/scores.json + data quality report
 npm test                  # alias matcher unit tests (node --test)
 npm run dev               # playground at localhost:3000
-npm run build             # build:data + next build (all routes static)
+npm run build             # build:data + next build (static export -> out/)
+npm run deploy            # build + deploy to Cloudflare Workers Static Assets
 ```
 
 A daily GitHub Actions workflow (`.github/workflows/ingest.yml`) re-ingests at 02:30 UTC,

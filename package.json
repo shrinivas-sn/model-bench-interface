@@ -10,7 +10,8 @@
     "ingest": "node ingestion/run-all.mjs",
     "verify:fixtures": "node ingestion/verify-fixtures.mjs",
     "build:data": "node normalization/build-data.mjs",
-    "test": "node --test ingestion/test/*.test.mjs normalization/test/*.test.mjs"
+    "test": "node --test ingestion/test/*.test.mjs normalization/test/*.test.mjs",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@shrinivas-sn/adapter-ingestion": "^0.2.0",
@@ -25,6 +26,7 @@
     "@types/react": "^19.1.0",
     "@types/react-dom": "^19.1.0",
     "puppeteer-core": "^25.12.0",
-    "typescript": "^5.8.0"
+    "typescript": "^5.8.0",
+    "wrangler": "^4.141.0"
   }
 }
