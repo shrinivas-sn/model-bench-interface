@@ -33,7 +33,10 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Next up (start here)
 
-1. Add a manual alias table for SWE-bench systems (org/team display names) to lift the
+1. Execute `PLAN.md` (written 26/09/2026): effort-level parsing → command-palette picker
+   (company groups, effort chips, mobile sheet) → page refresh + `/mobile-check` →
+   static export + Cloudflare Workers deploy. Awaiting owner go-ahead.
+2. Then: add a manual alias table for SWE-bench systems (org/team display names) to lift the
    51/180 match rate — matches must report method `manual` on `/quality`; remember the
    adapter-ingestion gotcha: editing an adapter `map` re-appends the whole source as
    `changed`.
