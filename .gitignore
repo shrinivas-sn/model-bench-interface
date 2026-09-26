@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+runs/
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+probe/

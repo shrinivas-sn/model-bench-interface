@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "host": "openrouter.ai",
+  "access": {
+    "tier": 0,
+    "kind": "json-api",
+    "url": "https://openrouter.ai/api/v1/models"
+  },
+  "fetch": {
+    "method": "GET",
+    "timeout_ms": 30000,
+    "max_records": 2000,
+    "max_response_bytes": 20971520
+  },
+  "records_path": "$",
+  "map": {
+    "source_id": { "path": "id" },
+    "url": { "path": "page_url" },
+    "title": { "path": "name", "normalize": "text" },
+    "context_length": { "path": "context_length", "normalize": "number" },
+    "prompt_price": { "path": "pricing.prompt", "normalize": "number" },
+    "completion_price": { "path": "pricing.completion", "normalize": "number" }
+  },
+  "required": ["title"],
+  "canary": {
+    "min_records": 50,
+    "median_window": 5,
+    "count_drop_ratio": 0.4,
+    "required_field_ratio": 0.9
+  }
+}

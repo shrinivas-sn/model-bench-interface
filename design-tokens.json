@@ -1,0 +1,31 @@
+{
+  "resolved_by": "Jev ui-design-chain-gate (live, E:/OSC/api-projects/pipeline/design)",
+  "context": {
+    "name": "Model Bench",
+    "slug": "model-bench",
+    "domain": "ai-benchmark-analytics",
+    "targetAudience": "developers"
+  },
+  "route": "ask-user",
+  "confidences": { "archetype": 0.98, "palette": 0.99, "typography": 0.52, "motion": 0.24 },
+  "note": "archetype+palette auto-passed; typography in ask zone and motion below ask gate — both fell back to archetype_defaults for terminal-dev, which match the model's leaning. Resolved 26/09/2026.",
+  "archetype": "terminal-dev",
+  "palette": { "id": "zinc-emerald" },
+  "typography": { "id": "inter-jetbrains" },
+  "motion": { "curve": { "id": "snappy-utilitarian" } },
+  "css_variables": {
+    "--bg-canvas": "#09090b",
+    "--bg-card": "#18181b",
+    "--primary": "#10b981",
+    "--text-main": "#fafafa",
+    "--text-muted": "#a1a1aa",
+    "--border": "#27272a",
+    "--font-heading": "Inter, sans-serif",
+    "--font-body": "Inter, sans-serif",
+    "--font-mono": "'JetBrains Mono', monospace",
+    "--motion-duration": "120ms",
+    "--spring-stiffness": "400",
+    "--spring-damping": "30",
+    "--spring-mass": "0.7"
+  }
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "source_id": "grok-build-0.1",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "grok-build-0.1",
+    "input_price_per_million": 1,
+    "output_price_per_million": 2,
+    "cost_per_question": 0.0163,
+    "avg_input_tokens": 58770,
+    "avg_output_tokens": 980,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "deepseek-v4-flash",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "deepseek-v4-flash",
+    "input_price_per_million": 0.14,
+    "output_price_per_million": 0.28,
+    "cost_per_question": 0.0105,
+    "avg_input_tokens": 148772,
+    "avg_output_tokens": 34434,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "deepseek-v4-pro",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "deepseek-v4-pro",
+    "input_price_per_million": 0.435,
+    "output_price_per_million": 0.87,
+    "cost_per_question": 0.0357,
+    "avg_input_tokens": 96617,
+    "avg_output_tokens": 35014,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "grok-4.3",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "grok-4.3",
+    "input_price_per_million": 1.25,
+    "output_price_per_million": 2.5,
+    "cost_per_question": 0.0382,
+    "avg_input_tokens": 28676,
+    "avg_output_tokens": 11184,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "minimax-m3",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "minimax-m3",
+    "input_price_per_million": 0.3,
+    "output_price_per_million": 1.2,
+    "cost_per_question": 0.0401,
+    "avg_input_tokens": 331869,
+    "avg_output_tokens": 15530,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "gpt-5.4-nano-xhigh",
+    "record_url": "https://livebench.ai/#cost-2026-06-25",
+    "model": "gpt-5.4-nano-xhigh",
+    "input_price_per_million": 0.2,
+    "output_price_per_million": 1.25,
+    "cost_per_question": 0.0634,
+    "avg_input_tokens": 180305,
+    "avg_output_tokens": 46179,
+    "release": "2026-06-25"
+  }
+]

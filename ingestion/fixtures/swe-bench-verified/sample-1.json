@@ -1,0 +1,134 @@
+[
+  {
+    "agent": "Sonar Foundation Agent",
+    "agent_org": "Sonar",
+    "checked": false,
+    "cost": null,
+    "date": "2025-12-05",
+    "folder": "20251205_sonar-foundation-agent_claude-opus-4-5",
+    "instance_calls": null,
+    "instance_cost": null,
+    "logo": [
+      "img/logos/20251205_sonar-foundation-agent_claude-opus-4-5.png"
+    ],
+    "logs": "s3://swe-bench-submissions/verified/20251205_sonar-foundation-agent_claude-opus-4-5/logs",
+    "model_display": "Claude 4.5 Opus",
+    "model_org": "Anthropic",
+    "model_release_date": null,
+    "name": "Sonar Foundation Agent + Claude 4.5 Opus",
+    "os_model": false,
+    "os_system": false,
+    "reasoning_effort": null,
+    "resolved": 79.2,
+    "site": "https://www.sonarsource.com",
+    "tags": [
+      "Model: claude-opus-4-5",
+      "Org: Sonar",
+      "System: Attempts - 1"
+    ],
+    "trajs": "s3://swe-bench-submissions/verified/20251205_sonar-foundation-agent_claude-opus-4-5/trajs",
+    "trajs_docent": false,
+    "warning": null,
+    "record_url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251205_sonar-foundation-agent_claude-opus-4-5"
+  },
+  {
+    "agent": "live-SWE-agent",
+    "agent_org": "UIUC",
+    "checked": false,
+    "cost": null,
+    "date": "2025-12-15",
+    "folder": "20251215_livesweagent_claude-opus-4-5",
+    "instance_calls": null,
+    "instance_cost": null,
+    "logo": [
+      "img/logos/20251215_livesweagent_claude-opus-4-5.png"
+    ],
+    "logs": "s3://swe-bench-submissions/verified/20251215_livesweagent_claude-opus-4-5/logs",
+    "model_display": "Claude 4.5 Opus",
+    "model_org": "Anthropic",
+    "model_release_date": null,
+    "name": "live-SWE-agent + Claude 4.5 Opus medium (20251101)",
+    "os_model": false,
+    "os_system": true,
+    "reasoning_effort": "medium",
+    "resolved": 79.2,
+    "site": "https://github.com/OpenAutoCoder/live-swe-agent",
+    "tags": [
+      "Model: claude-opus-4-5-20251101",
+      "Org: UIUC",
+      "System: Attempts - 1"
+    ],
+    "trajs": "s3://swe-bench-submissions/verified/20251215_livesweagent_claude-opus-4-5/trajs",
+    "trajs_docent": false,
+    "warning": null,
+    "record_url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251215_livesweagent_claude-opus-4-5"
+  },
+  {
+    "agent": "TRAE",
+    "agent_org": "ByteDance",
+    "checked": false,
+    "cost": null,
+    "date": "2025-09-28",
+    "folder": "20250928_trae_doubao_seed_code",
+    "instance_calls": null,
+    "instance_cost": null,
+    "logo": [
+      "img/logos/20250928_trae_doubao_seed_code.jpg"
+    ],
+    "logs": "s3://swe-bench-submissions/verified/20250928_trae_doubao_seed_code/logs",
+    "model_display": "Doubao-Seed-Code",
+    "model_org": "ByteDance",
+    "model_release_date": null,
+    "name": "TRAE + Doubao-Seed-Code",
+    "os_model": false,
+    "os_system": true,
+    "reasoning_effort": null,
+    "resolved": 78.8,
+    "site": [
+      "https://github.com/bytedance/trae-agent",
+      "https://seed.bytedance.com/"
+    ],
+    "tags": [
+      "Model: Doubao-Seed-Code",
+      "Model: Doubao-Seed-1.6",
+      "Org: ByteDance",
+      "System: Attempts - 2+"
+    ],
+    "trajs": "s3://swe-bench-submissions/verified/20250928_trae_doubao_seed_code/trajs",
+    "trajs_docent": false,
+    "warning": null,
+    "record_url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250928_trae_doubao_seed_code"
+  },
+  {
+    "agent": "live-SWE-agent",
+    "agent_org": "UIUC",
+    "checked": "false (See README.md for info on how to get your results verified)",
+    "cost": null,
+    "date": "2025-11-20",
+    "folder": "20251120_livesweagent_gemini-3-pro-preview",
+    "instance_calls": null,
+    "instance_cost": null,
+    "logo": [
+      "img/logos/20251120_livesweagent_gemini-3-pro-preview.png"
+    ],
+    "logs": "s3://swe-bench-submissions/verified/20251120_livesweagent_gemini-3-pro-preview/logs",
+    "model_display": "Gemini 3 Pro Preview",
+    "model_org": "Google DeepMind",
+    "model_release_date": null,
+    "name": "live-SWE-agent + Gemini 3 Pro Preview (2025-11-18)",
+    "os_model": false,
+    "os_system": true,
+    "reasoning_effort": null,
+    "resolved": 77.4,
+    "site": "https://github.com/OpenAutoCoder/live-swe-agent",
+    "tags": [
+      "Model: gemini-3-pro-preview",
+      "Org: UIUC",
+      "System: Attempts - 1"
+    ],
+    "trajs": "s3://swe-bench-submissions/verified/20251120_livesweagent_gemini-3-pro-preview/trajs",
+    "trajs_docent": false,
+    "warning": null,
+    "record_url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251120_livesweagent_gemini-3-pro-preview"
+  }
+]

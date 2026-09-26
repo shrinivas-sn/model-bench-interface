@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "host": "livebench.ai",
+  "access": {
+    "tier": 0,
+    "kind": "json-api",
+    "url": "https://livebench.ai/table_2026_06_25.csv"
+  },
+  "fetch": {
+    "method": "GET",
+    "timeout_ms": 30000,
+    "max_records": 5000,
+    "max_response_bytes": 20971520
+  },
+  "records_path": "$",
+  "map": {
+    "source_id": { "path": "source_id" },
+    "url": { "path": "record_url" },
+    "model": { "path": "model", "normalize": "text" },
+    "task": { "path": "task", "normalize": "text" },
+    "score": { "path": "score", "normalize": "number" },
+    "release": { "path": "release", "normalize": "text" }
+  },
+  "required": ["model", "task", "score", "release"],
+  "canary": {
+    "min_records": 200,
+    "median_window": 5,
+    "count_drop_ratio": 0.4,
+    "required_field_ratio": 0.9
+  }
+}

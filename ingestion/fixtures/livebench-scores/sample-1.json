@@ -1,0 +1,482 @@
+[
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::AMPS_Hard",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "AMPS_Hard",
+    "score": 99,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::code_completion",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "code_completion",
+    "score": 80.435,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::code_generation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "code_generation",
+    "score": 78.873,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::connections",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "connections",
+    "score": 99.333,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::consecutive_events",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "consecutive_events",
+    "score": 79.363,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::integrals_with_game",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "integrals_with_game",
+    "score": 78,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::javascript",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "javascript",
+    "score": 59.091,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::logic_with_navigation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "logic_with_navigation",
+    "score": 68,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::math_comp",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "math_comp",
+    "score": 95.098,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::olympiad",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "olympiad",
+    "score": 89.458,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::paraphrase",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "paraphrase",
+    "score": 65.667,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::plot_unscrambling",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "plot_unscrambling",
+    "score": 66.45,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::python",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "python",
+    "score": 40,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::simplify",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "simplify",
+    "score": 54.95,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::spatial",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "spatial",
+    "score": 96,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::story_generation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "story_generation",
+    "score": 65.85,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::summarize",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "summarize",
+    "score": 63.717,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::tablejoin",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "tablejoin",
+    "score": 45.923,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::tablereformat",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "tablereformat",
+    "score": 98.039,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::theory_of_mind",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "theory_of_mind",
+    "score": 78.846,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::typescript",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "typescript",
+    "score": 20,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::typos",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "typos",
+    "score": 78,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-5-20251101-thinking-64k-high-effort::zebra_puzzle",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-5-20251101-thinking-64k-high-effort",
+    "task": "zebra_puzzle",
+    "score": 77.5,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::AMPS_Hard",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "AMPS_Hard",
+    "score": 97,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::code_completion",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "code_completion",
+    "score": 76.087,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::code_generation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "code_generation",
+    "score": 80.282,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::connections",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "connections",
+    "score": 99.333,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::consecutive_events",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "consecutive_events",
+    "score": 63.467,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::integrals_with_game",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "integrals_with_game",
+    "score": 73,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::javascript",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "javascript",
+    "score": 63.636,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::logic_with_navigation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "logic_with_navigation",
+    "score": 80,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::math_comp",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "math_comp",
+    "score": 95.098,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::olympiad",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "olympiad",
+    "score": 92.17,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::paraphrase",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "paraphrase",
+    "score": 62.817,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::plot_unscrambling",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "plot_unscrambling",
+    "score": 66.476,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::python",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "python",
+    "score": 50,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::simplify",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "simplify",
+    "score": 59.15,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::spatial",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "spatial",
+    "score": 98,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::story_generation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "story_generation",
+    "score": 66.133,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::summarize",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "summarize",
+    "score": 65.15,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::tablejoin",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "tablejoin",
+    "score": 48.173,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::tablereformat",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "tablereformat",
+    "score": 98.039,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::theory_of_mind",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "theory_of_mind",
+    "score": 82.692,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::typescript",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "typescript",
+    "score": 33.333,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::typos",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "typos",
+    "score": 84,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-6-thinking-auto-high-effort::zebra_puzzle",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-6-thinking-auto-high-effort",
+    "task": "zebra_puzzle",
+    "score": 94,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::AMPS_Hard",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "AMPS_Hard",
+    "score": 98,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::code_completion",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "code_completion",
+    "score": 78.261,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::code_generation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "code_generation",
+    "score": 85.915,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::connections",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "connections",
+    "score": 92.333,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::consecutive_events",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "consecutive_events",
+    "score": 89.521,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::integrals_with_game",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "integrals_with_game",
+    "score": 84,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::javascript",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "javascript",
+    "score": 63.636,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::logic_with_navigation",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "logic_with_navigation",
+    "score": 70,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::math_comp",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "math_comp",
+    "score": 98.039,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::olympiad",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "olympiad",
+    "score": 91.376,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::paraphrase",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "paraphrase",
+    "score": 65.767,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::plot_unscrambling",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "plot_unscrambling",
+    "score": 61.409,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::python",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "python",
+    "score": 45,
+    "release": "2026-06-25"
+  },
+  {
+    "source_id": "claude-opus-4-7-xhigh-effort::simplify",
+    "record_url": "https://livebench.ai/#2026-06-25",
+    "model": "claude-opus-4-7-xhigh-effort",
+    "task": "simplify",
+    "score": 65.5,
+    "release": "2026-06-25"
+  }
+]

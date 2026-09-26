@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "host": "livebench.ai",
+  "access": {
+    "tier": 0,
+    "kind": "json-api",
+    "url": "https://livebench.ai/cost_2026_06_25.csv"
+  },
+  "fetch": {
+    "method": "GET",
+    "timeout_ms": 30000,
+    "max_records": 1000,
+    "max_response_bytes": 20971520
+  },
+  "records_path": "$",
+  "map": {
+    "source_id": { "path": "source_id" },
+    "url": { "path": "record_url" },
+    "model": { "path": "model", "normalize": "text" },
+    "input_price_per_million": { "path": "input_price_per_million", "normalize": "number" },
+    "output_price_per_million": { "path": "output_price_per_million", "normalize": "number" },
+    "cost_per_question": { "path": "cost_per_question", "normalize": "number" },
+    "release": { "path": "release", "normalize": "text" }
+  },
+  "required": ["model", "release"],
+  "canary": {
+    "min_records": 10,
+    "median_window": 5,
+    "count_drop_ratio": 0.4,
+    "required_field_ratio": 0.9
+  }
+}
