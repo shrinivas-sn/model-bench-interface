@@ -25,16 +25,11 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Pending
 
-- Push to a GitHub remote so the daily
-  cron (`.github/workflows/ingest.yml`, 02:30 UTC) can run and stores accumulate history.
+- Phase 4: Static export and Cloudflare Workers deploy (needs owner inputs O1, O2).
+- Push to GitHub remote so the daily cron (.github/workflows/ingest.yml) can run.
 - Manual alias table for SWE-bench systems (org/team display names) to lift 51/180.
-- Investigate the 8 unmatched LiveBench names (list in `DOCS/WORK/archive.md`).
-- Optional: price-performance scatter; labelled percentile composite view.
 
 ## Next up (start here)
 
-1. Palette picker live locally (dialog desktop / sheet mobile, effort chips, recents, URL state). Next: Phase 3 page refresh + mobile-check.
-2. Then: add a manual alias table for SWE-bench systems (org/team display names) to lift the
-   51/180 match rate — matches must report method `manual` on `/quality`; remember the
-   adapter-ingestion gotcha: editing an adapter `map` re-appends the whole source as
-   `changed`.
+1. UI redesign done, mobile-check clean (0 failures across all viewports). Next: Phase 4 Cloudflare deploy (Task 4.1 static export, Task 4.2 needs owner inputs O1, O2).
+2. Then: manual alias table for SWE-bench systems on /quality.

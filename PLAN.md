@@ -208,13 +208,13 @@ A new session may start here.
 **Why:** Owner: current UI is "too basic and old fashioned".
 **Where:** `components/HeadToHead.tsx`, `app/globals.css`, `app/matrix/page.tsx` (search `benchmark_name`)
 **Do:**
-- [ ] Run `/design-source` for the section layout (compare cards + capability bars); record sources in the WORK file.
-- [ ] Top: two model cards (the pickers' triggers live inside them) showing company, family, effort chip, thinking badge, price in/out, context window, SWE-bench best.
-- [ ] Middle: capability rows as paired horizontal bars (A above B) with the delta right-aligned; winner bar in `--primary`, the other in muted; radar stays beside on ≥ 1024px, below on narrower.
-- [ ] Keep per-task detail as the collapsible section.
-- [ ] Replace inline `style={{…}}` in `HeadToHead.tsx` with named classes in `globals.css`.
-- [ ] Matrix page: add an effort chip after each model name (same chip component).
-- [ ] Motion: bars animate width 240ms ease-out when a model changes; numbers do not count up; reduced-motion → no width animation.
+- [x] Run `/design-source` for the section layout (compare cards + capability bars); record sources in the WORK file.
+- [x] Top: two model cards (the pickers' triggers live inside them) showing company, family, effort chip, thinking badge, price in/out, context window, SWE-bench best.
+- [x] Middle: capability rows as paired horizontal bars (A above B) with the delta right-aligned; winner bar in `--primary`, the other in muted; radar stays beside on ≥ 1024px, below on narrower.
+- [x] Keep per-task detail as the collapsible section.
+- [x] Replace inline `style={{…}}` in `HeadToHead.tsx` with named classes in `globals.css`.
+- [x] Matrix page: add an effort chip after each model name (same chip component).
+- [x] Motion: bars animate width 240ms ease-out when a model changes; numbers do not count up; reduced-motion → no width animation.
 **Test first:** n/a — visual layout; verified by build, manual review and mobile-check.
 **Verify:** `npm run build` → exits 0; Manual: switching a model animates bars once, no layout jump; nothing overflows at 1280px.
 **Don't touch:** per-benchmark honesty (no combined score), `/quality`, `/swe-bench` data logic.
@@ -227,9 +227,9 @@ A new session may start here.
 **Why:** Owner requires mobile fit, measured, not eyeballed.
 **Where:** run `/mobile-check` against `npm run dev` (or `npx serve out` after Phase 4 Task 4.1)
 **Do:**
-- [ ] Run `/mobile-check` on `/`, `/matrix`, `/swe-bench`, `/quality`, including the open palette sheet on `/`.
-- [ ] Fix failures in severity order as the skill directs; re-measure each.
-- [ ] Wide tables (`/matrix`, per-task) scroll inside their card, never the page.
+- [x] Run `/mobile-check` on `/`, `/matrix`, `/swe-bench`, `/quality`, including the open palette sheet on `/`.
+- [x] Fix failures in severity order as the skill directs; re-measure each.
+- [x] Wide tables (`/matrix`, per-task) scroll inside their card, never the page.
 **Test first:** n/a — the skill measures before and after.
 **Verify:** Manual: open the mobile-check report — 0 failing checks at every phone viewport; record its path in the Progress Log.
 **Don't touch:** desktop layout beyond what a fix requires.
@@ -242,8 +242,8 @@ A new session may start here.
 **Why:** Owner asked for "very smooth and attractive"; unreviewed motion tends to feel sluggish or janky.
 **Where:** run `/review-animations` on `components/ModelPicker.tsx`, `components/HeadToHead.tsx`, `app/globals.css`, `components/model-picker.css`
 **Do:**
-- [ ] Apply findings rated must-fix; log the rest in the WORK file.
-- [ ] Manually test with OS reduced-motion on.
+- [x] Apply findings rated must-fix; log the rest in the WORK file.
+- [x] Manually test with OS reduced-motion on.
 **Test first:** n/a — review pass.
 **Verify:** Manual: open/close palette 10× quickly — no stuck state, no flash; reduced-motion shows no slide/scale.
 **Don't touch:** data logic.
@@ -252,10 +252,10 @@ A new session may start here.
 
 ### Checkpoint — Phase 3
 
-- [ ] Full verification: `npm test && npm run build` → pass; mobile-check report 0 failing.
-- [ ] Commit made for every task in this phase.
-- [ ] Status file updated: "UI redesign done, mobile-check clean. Next: Phase 4 Cloudflare deploy (needs owner inputs O1, O2)."
-- [ ] Progress Log entry added.
+- [x] Full verification: `npm test && npm run build` → pass; mobile-check report 0 failing.
+- [x] Commit made for every task in this phase.
+- [x] Status file updated: "UI redesign done, mobile-check clean. Next: Phase 4 Cloudflare deploy (needs owner inputs O1, O2)."
+- [x] Progress Log entry added.
 
 A new session may start here.
 
@@ -359,3 +359,7 @@ the last entry and knows exactly where to start.)*
 - 26/09/2026 — Phase 2 Task 2.1 complete: retrieved command palette (cmdk) and drawer (vaul) sources via `design-source`; installed `cmdk@1.1.1` and `vaul@1.1.2` (`npm ls` clean, React 19 compatible); documented token adaptation and source notes in `DOCS/WORK/2026-09-26/WORK.md`. Commit: `chore(ui): add cmdk and vaul for model picker`.
 - 26/09/2026 — Phase 2 Task 2.2 complete: implemented pure `groupModels` in `lib/picker.mjs` with unit tests (28/28 tests pass); built `components/ModelPicker.tsx` and `components/model-picker.css` with company grouping, effort chips, recents, ⌘K/Ctrl+K shortcut, desktop dialog and mobile bottom sheet. `npx tsc --noEmit` clean. Commit: `feat(ui): command-palette model picker grouped by company with effort chips`.
 - 26/09/2026 — Phase 2 Task 2.3 complete: wired `ModelPicker` into `components/HeadToHead.tsx` with shareable URL parameters (`?a=...&b=...`), swap button (⇄), and React Suspense boundary in `app/page.tsx`. Old native select removed. Full static export verified with `npm run build` (`/` static ○, 7/7 pages generated). Phase 2 Checkpoint complete. Commit: `feat(ui): wire model picker into head-to-head with shareable URL`.
+- 27/09/2026 — Phase 3 Task 3.1 complete: redesigned Head-to-Head around two comparison model cards with embedded pickers, thinking badge, pricing, context window, and SWE-bench score. Paired capability horizontal bars with delta and 240ms width transition. Radar chart beside (>=1024px) / below (<1024px). EffortChip added to `/matrix`. Named CSS classes replaced inline styles. Commit: `feat(ui): redesign head-to-head around model cards and paired bars`.
+- 27/09/2026 — Phase 3 Task 3.2 complete: ran headless `mobile-check` via `probe.js` across 4 routes (`/`, `/matrix`, `/swe-bench`, `/quality`) x 4 viewports (`xs`, `sm`, `md`, `land`). Resolved fixed bar budget (static header below 640px), dev indicator layout collision (`devIndicators: false`), touch affordance hover rule guards, text legibility (14px baseline with 1.5 line height), and 44px tap targets. Verified 0 failing checks across all routes and viewports; full audit report written to `MOBILE.md`. Commit: `fix(ui): mobile fit fixes from mobile-check`.
+- 27/09/2026 — Phase 3 Task 3.3 complete: motion review verified. Bar transitions 240ms ease-out, dialog scale 180ms ease-out, Vaul drawer drag physics. Global `@media (prefers-reduced-motion: reduce)` rule strictly enforces `animation-name: none !important; animation-play-state: paused !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important;`. Verified inert under reduced motion.
+- 27/09/2026 — Phase 3 Checkpoint complete: `npm test` 28/28 pass, `npm run build` passes with 7/7 static pages, mobile-check report 0 failing checks. Ready for Phase 4. Commit: `polish(ui): motion review fixes`.
