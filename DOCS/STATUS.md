@@ -5,7 +5,7 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Current state
 
-- **MVP built and verified (26/09/2026); zero commits yet — initial commit is next.**
+- **MVP built and verified (26/09/2026); initial commit made on `main` — no remote yet.**
 - Product: "Model Bench" — Next.js app ingesting LLM benchmark data via
   `@shrinivas-sn/adapter-ingestion`; normalized canonical store; playground for choosing
   the best model per work type.
@@ -25,7 +25,7 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Pending
 
-- Initial git commit (owner asked to confirm); then push to a GitHub remote so the daily
+- Push to a GitHub remote so the daily
   cron (`.github/workflows/ingest.yml`, 02:30 UTC) can run and stores accumulate history.
 - Manual alias table for SWE-bench systems (org/team display names) to lift 51/180.
 - Investigate the 8 unmatched LiveBench names (list in `DOCS/WORK/archive.md`).
@@ -33,5 +33,7 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Next up (start here)
 
-1. Initial commit of the Model Bench MVP (`git add` the project's own files, commit,
-   verify with `git show --stat HEAD`).
+1. Add a manual alias table for SWE-bench systems (org/team display names) to lift the
+   51/180 match rate — matches must report method `manual` on `/quality`; remember the
+   adapter-ingestion gotcha: editing an adapter `map` re-appends the whole source as
+   `changed`.
