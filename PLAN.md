@@ -86,10 +86,10 @@
 **Why:** Effort is currently thrown away by alias matching; the owner wants to see it. Wrong guesses would mislabel scores, so only explicit forms count.
 **Where:** new `normalization/effort.mjs`; new `normalization/test/effort.test.mjs`
 **Do:**
-- [ ] Export `EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low"]` (display order, strongest first).
-- [ ] Export `parseEffort(name: string) → { effort: "max"|"xhigh"|"high"|"medium"|"low"|null, thinking: boolean }`, operating on `normKey(name)` from `registry.mjs`.
-- [ ] Rules, in order: (1) `-(max|xhigh|high|medium|low)-effort$` → that level; (2) trailing `-xhigh` → `xhigh`; (3) trailing `-high` → `high`; (4) trailing `-medium` / `-low` → that level; (5) anything else, **including bare trailing `-max`** → `null` (bare `-max` is also a product tier, e.g. `qwen3.8-max`, so it is ambiguous — never guessed).
-- [ ] `thinking` is `true` when the token `thinking` appears anywhere in the dash-split name.
+- [x] Export `EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low"]` (display order, strongest first).
+- [x] Export `parseEffort(name: string) → { effort: "max"|"xhigh"|"high"|"medium"|"low"|null, thinking: boolean }`, operating on `normKey(name)` from `registry.mjs`.
+- [x] Rules, in order: (1) `-(max|xhigh|high|medium|low)-effort$` → that level; (2) trailing `-xhigh` → `xhigh`; (3) trailing `-high` → `high`; (4) trailing `-medium` / `-low` → that level; (5) anything else, **including bare trailing `-max`** → `null` (bare `-max` is also a product tier, e.g. `qwen3.8-max`, so it is ambiguous — never guessed).
+- [x] `thinking` is `true` when the token `thinking` appears anywhere in the dash-split name.
 **Test first:** `effort.test.mjs` cases — `claude-opus-5-5-max-effort`→max; `claude-opus-5-5-xhigh-effort`→xhigh; `claude-opus-4-5-20251101-thinking-64k-high-effort`→high, thinking true; `claude-sonnet-4-6-thinking-auto-medium-effort`→medium, thinking true; `gpt-5.4-xhigh`→xhigh; `gemini-3.5-flash-high`→high; `qwen3.8-max`→null; `gpt-6-sol-max`→null; `glm-5.3`→null, thinking false; `kimi-k2.6-thinking`→null, thinking true.
 **Verify:** `npm test` → all pass, count = 13 + new cases.
 **Don't touch:** `registry.mjs` matching logic and `registry.test.mjs` (may-change list: none).
@@ -353,3 +353,5 @@ status file and in the session's final message.)*
 *(Append only. Newest at the bottom. Never rewrite an entry — if it turned out wrong,
 add a new one saying so. This log is what makes resuming cheap: a cold session reads
 the last entry and knows exactly where to start.)*
+
+- 26/09/2026 — Phase 1 Task 1.1 complete: `normalization/effort.mjs` and `normalization/test/effort.test.mjs` created. 26/26 tests pass (13 existing + 13 new). Exported `EFFORT_LEVELS` and `parseEffort` following explicit forms constraint (bare `-max` stays `null` / not stated). Commit: `feat(normalization): parse reasoning-effort level from LiveBench names`.
