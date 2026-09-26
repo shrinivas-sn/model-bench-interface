@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { getScores } from "@/lib/data";
 import { HeadToHead } from "@/components/HeadToHead";
 
@@ -12,7 +13,14 @@ export default function Page() {
           averages), SWE-bench Verified best runs, and OpenRouter pricing.
         </p>
       </header>
-      <HeadToHead livebench={data.livebench} swe={data.swe_bench} capabilities={data.capabilities} />
+      <Suspense fallback={<div className="card dim">Loading comparison...</div>}>
+        <HeadToHead
+          livebench={data.livebench}
+          swe={data.swe_bench}
+          capabilities={data.capabilities}
+          vendorDisplay={data.vendor_display}
+        />
+      </Suspense>
     </>
   );
 }

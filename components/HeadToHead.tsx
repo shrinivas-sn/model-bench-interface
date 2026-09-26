@@ -1,20 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
+import { ModelPicker } from "@/components/ModelPicker";
 import type { LivebenchModel, SweRow } from "@/lib/data";
 
 type Props = {
   livebench: LivebenchModel[];
   swe: SweRow[];
   capabilities: string[];
-};
-
-type PickerModel = {
-  label: string;
-  vendor: string;
-  matched: boolean;
-  model: LivebenchModel | null;
+  vendorDisplay?: Record<string, string>;
 };
 
 function fmtPrice(p: number | null | undefined) {
@@ -33,31 +29,63 @@ function Delta({ a, b }: { a: number; b: number }) {
   );
 }
 
-export function HeadToHead({ livebench, swe, capabilities }: Props) {
-  const pickers = useMemo<PickerModel[]>(
-    () =>
-      livebench
-        .map((m) => ({
-          label: m.canonical_id ?? `${m.benchmark_name} (unmatched)`,
-          vendor: m.vendor,
-          matched: m.canonical_id != null,
-          model: m,
-        }))
-        .sort(
-          (x, y) => Number(y.matched) - Number(x.matched) || x.label.localeCompare(y.label)
-        ),
-    [livebench]
-  );
+export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }: Props) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  const defaultIdx = (needle: string) => {
-    const i = pickers.findIndex((p) => p.label.includes(needle));
-    return i >= 0 ? i : 0;
+  const defaultA = useMemo(() => {
+    return (
+      livebench.find((m) => m.benchmark_name === "claude-opus-5-5-max-effort")?.benchmark_name ||
+      livebench.find((m) => m.benchmark_name.includes("opus-5"))?.benchmark_name ||
+      livebench[0]?.benchmark_name ||
+      ""
+    );
+  }, [livebench]);
+
+  const defaultB = useMemo(() => {
+    return (
+      livebench.find((m) => m.benchmark_name === "gpt-5.5-xhigh")?.benchmark_name ||
+      livebench.find((m) => m.benchmark_name.includes("gpt-5"))?.benchmark_name ||
+      (livebench[1] || livebench[0])?.benchmark_name ||
+      ""
+    );
+  }, [livebench]);
+
+  const paramA = searchParams.get("a");
+  const paramB = searchParams.get("b");
+
+  const validA = paramA && livebench.some((m) => m.benchmark_name === paramA) ? paramA : defaultA;
+  const validB = paramB && livebench.some((m) => m.benchmark_name === paramB) ? paramB : defaultB;
+
+  const [slots, setSlots] = useState<string[]>([validA, validB]);
+
+  useEffect(() => {
+    const curA = paramA && livebench.some((m) => m.benchmark_name === paramA) ? paramA : defaultA;
+    const curB = paramB && livebench.some((m) => m.benchmark_name === paramB) ? paramB : defaultB;
+    setSlots([curA, curB]);
+  }, [paramA, paramB, defaultA, defaultB, livebench]);
+
+  const updateSlots = (nextSlots: string[]) => {
+    setSlots(nextSlots);
+    const params = new URLSearchParams(searchParams.toString());
+    params.set("a", nextSlots[0]);
+    params.set("b", nextSlots[1]);
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
-  const [aIdx, setAIdx] = useState(() => defaultIdx("opus-5.5"));
-  const [bIdx, setBIdx] = useState(() => defaultIdx("gpt-5.5") || Math.min(1, pickers.length - 1));
 
-  const a = pickers[aIdx]?.model ?? null;
-  const b = pickers[bIdx]?.model ?? null;
+  const handleSlotChange = (index: number, name: string) => {
+    const next = [...slots];
+    next[index] = name;
+    updateSlots(next);
+  };
+
+  const handleSwap = () => {
+    updateSlots([slots[1], slots[0]]);
+  };
+
+  const a = useMemo(() => livebench.find((m) => m.benchmark_name === slots[0]) || null, [livebench, slots]);
+  const b = useMemo(() => livebench.find((m) => m.benchmark_name === slots[1]) || null, [livebench, slots]);
 
   const taskKeys = useMemo(() => {
     const keys = new Set<string>();
@@ -88,32 +116,36 @@ export function HeadToHead({ livebench, swe, capabilities }: Props) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
       {/* pickers */}
-      <div className="card card-quiet" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
-        {[
-          { label: "Model A", idx: aIdx, set: setAIdx, m: a },
-          { label: "Model B", idx: bIdx, set: setBIdx, m: b },
-        ].map((side) => (
-          <div key={side.label} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-            <label className="dim" style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: "0.05em" }}>
-              {side.label}
-            </label>
-            <select value={side.idx} onChange={(e) => side.set(Number(e.target.value))}>
-              {pickers.map((p, i) => (
-                <option key={p.label} value={i}>
-                  {p.label}
-                </option>
-              ))}
-            </select>
-            <span className="dim" style={{ fontSize: 12 }}>
-              {side.m.vendor} ·{" "}
-              {side.m.alias_method ? (
-                <span className={`match-${side.m.alias_method}`}>{side.m.alias_method}</span>
-              ) : (
-                <span className="badge badge-stale">unmatched</span>
-              )}
-            </span>
-          </div>
-        ))}
+      <div className="h2h-pickers-bar">
+        <div className="h2h-picker-slot">
+          <ModelPicker
+            models={livebench}
+            value={slots[0]}
+            onChange={(name) => handleSlotChange(0, name)}
+            slotLabel="A"
+            vendorDisplay={vendorDisplay}
+          />
+        </div>
+
+        <button
+          type="button"
+          className="picker-swap-btn"
+          onClick={handleSwap}
+          title="Swap Model A and Model B"
+          aria-label="Swap Model A and Model B"
+        >
+          ⇄
+        </button>
+
+        <div className="h2h-picker-slot">
+          <ModelPicker
+            models={livebench}
+            value={slots[1]}
+            onChange={(name) => handleSlotChange(1, name)}
+            slotLabel="B"
+            vendorDisplay={vendorDisplay}
+          />
+        </div>
       </div>
 
       {/* capability table + radar */}

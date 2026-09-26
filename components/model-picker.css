@@ -389,6 +389,58 @@
   text-align: right;
 }
 
+/* Picker Bar & Swap Button */
+.h2h-pickers-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.h2h-picker-slot {
+  flex: 1;
+  min-width: 0;
+}
+
+.picker-swap-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  font-size: 1.25rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all var(--motion-duration) ease;
+}
+
+.picker-swap-btn:hover {
+  background: var(--bg-hover);
+  color: var(--primary);
+  border-color: var(--border-hover);
+}
+
+.picker-swap-btn:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (max-width: 639px) {
+  .h2h-pickers-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+  .picker-swap-btn {
+    align-self: center;
+    transform: rotate(90deg);
+  }
+}
+
 /* Animations */
 @keyframes picker-fade-in {
   from {

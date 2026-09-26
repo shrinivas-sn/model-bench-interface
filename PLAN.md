@@ -174,11 +174,11 @@ A new session may start here.
 **Why:** Removes the `native select`; `?a=…&b=…` makes a comparison shareable and survives reload on a static site.
 **Where:** `components/HeadToHead.tsx` (search `{/* pickers */}`); `app/page.tsx`
 **Do:**
-- [ ] State is `slots: string[]` (benchmark_name, length 2) so up to 4 is a later UI change only.
-- [ ] Read/write `a` and `b` query params with `useSearchParams` + `router.replace` (no scroll); unknown values fall back to defaults (Opus 5.5 strongest effort vs GPT-5.5 strongest effort, as today).
-- [ ] Wrap `HeadToHead` in a React Suspense boundary in `app/page.tsx`.
-- [ ] Add a swap button (⇄) between the two triggers.
-- [ ] Remove the old `native select` block entirely.
+- [x] State is `slots: string[]` (benchmark_name, length 2) so up to 4 is a later UI change only.
+- [x] Read/write `a` and `b` query params with `useSearchParams` + `router.replace` (no scroll); unknown values fall back to defaults (Opus 5.5 strongest effort vs GPT-5.5 strongest effort, as today).
+- [x] Wrap `HeadToHead` in a React Suspense boundary in `app/page.tsx`.
+- [x] Add a swap button (⇄) between the two triggers.
+- [x] Remove the old `native select` block entirely.
 **Test first:** n/a — wiring; covered by Task 2.2 helper test and manual check.
 **Verify:** `npm run build` → exits 0, `/` still listed as static (○); Manual: pick two models → URL updates; reload → same models; swap → A/B exchange.
 **Don't touch:** capability table maths, `Delta` logic.
@@ -187,10 +187,10 @@ A new session may start here.
 
 ### Checkpoint — Phase 2
 
-- [ ] Full verification: `npm test && npm run build` → pass, exits 0.
-- [ ] Commit made for every task in this phase.
-- [ ] Status file updated: "Palette picker live locally (dialog desktop / sheet mobile, effort chips, recents, URL state). Next: Phase 3 page refresh + mobile-check."
-- [ ] Progress Log entry added.
+- [x] Full verification: `npm test && npm run build` → pass, exits 0.
+- [x] Commit made for every task in this phase.
+- [x] Status file updated: "Palette picker live locally (dialog desktop / sheet mobile, effort chips, recents, URL state). Next: Phase 3 page refresh + mobile-check."
+- [x] Progress Log entry added.
 
 A new session may start here.
 
@@ -358,3 +358,4 @@ the last entry and knows exactly where to start.)*
 - 26/09/2026 — Phase 1 Task 1.2 complete: exported `stripEffort` with unit tests (27/27 pass); added `effort`, `thinking`, `family_id`, `display_vendor` to LiveBench rows in `scores.json` and `lib/data.ts`; added `vendor_display` at root; `build:data`, `tsc --noEmit`, and `next build` static export pass cleanly. Phase 1 Checkpoint complete. Commit: `feat(data): add effort, family and display vendor to LiveBench rows`.
 - 26/09/2026 — Phase 2 Task 2.1 complete: retrieved command palette (cmdk) and drawer (vaul) sources via `design-source`; installed `cmdk@1.1.1` and `vaul@1.1.2` (`npm ls` clean, React 19 compatible); documented token adaptation and source notes in `DOCS/WORK/2026-09-26/WORK.md`. Commit: `chore(ui): add cmdk and vaul for model picker`.
 - 26/09/2026 — Phase 2 Task 2.2 complete: implemented pure `groupModels` in `lib/picker.mjs` with unit tests (28/28 tests pass); built `components/ModelPicker.tsx` and `components/model-picker.css` with company grouping, effort chips, recents, ⌘K/Ctrl+K shortcut, desktop dialog and mobile bottom sheet. `npx tsc --noEmit` clean. Commit: `feat(ui): command-palette model picker grouped by company with effort chips`.
+- 26/09/2026 — Phase 2 Task 2.3 complete: wired `ModelPicker` into `components/HeadToHead.tsx` with shareable URL parameters (`?a=...&b=...`), swap button (⇄), and React Suspense boundary in `app/page.tsx`. Old native select removed. Full static export verified with `npm run build` (`/` static ○, 7/7 pages generated). Phase 2 Checkpoint complete. Commit: `feat(ui): wire model picker into head-to-head with shareable URL`.

@@ -33,7 +33,7 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Next up (start here)
 
-1. Effort levels parsed (explicit forms only; bare -max = not stated). Next: Phase 2 picker (`PLAN.md` Task 2.1 cmdk/vaul source retrieval → Task 2.2 ModelPicker → Task 2.3 HeadToHead integration).
+1. Palette picker live locally (dialog desktop / sheet mobile, effort chips, recents, URL state). Next: Phase 3 page refresh + mobile-check.
 2. Then: add a manual alias table for SWE-bench systems (org/team display names) to lift the
    51/180 match rate — matches must report method `manual` on `/quality`; remember the
    adapter-ingestion gotcha: editing an adapter `map` re-appends the whole source as
