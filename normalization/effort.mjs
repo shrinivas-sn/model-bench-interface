@@ -41,3 +41,29 @@ export function parseEffort(name) {
 
   return { effort, thinking };
 }
+
+/**
+ * Strip explicit reasoning effort suffixes from a model name according to rules 1-4.
+ * Bare trailing `-max` is preserved (not an effort suffix).
+ *
+ * @param {string} name
+ * @returns {string}
+ */
+export function stripEffort(name) {
+  const key = normKey(name);
+  if (!key) return "";
+  if (EFFORT_SUFFIX_RE.test(key)) {
+    return key.replace(EFFORT_SUFFIX_RE, "");
+  }
+  if (XHIGH_RE.test(key)) {
+    return key.replace(XHIGH_RE, "");
+  }
+  if (HIGH_RE.test(key)) {
+    return key.replace(HIGH_RE, "");
+  }
+  if (MEDIUM_LOW_RE.test(key)) {
+    return key.replace(MEDIUM_LOW_RE, "");
+  }
+  return key;
+}
+

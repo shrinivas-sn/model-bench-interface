@@ -12,6 +12,10 @@ export type LivebenchModel = {
   canonical_id: string | null;
   alias_method: string | null;
   vendor: string;
+  display_vendor: string;
+  family_id: string;
+  effort: "max" | "xhigh" | "high" | "medium" | "low" | null;
+  thinking: boolean;
   tasks: Record<string, number>;
   categories: Record<string, number>;
   cost: {
@@ -41,6 +45,7 @@ export type SweRow = {
 export type ScoresData = {
   generated_at: string;
   release: string;
+  vendor_display: Record<string, string>;
   capabilities: string[];
   catalog: CatalogModel[];
   livebench: LivebenchModel[];

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { EFFORT_LEVELS, parseEffort } from "../effort.mjs";
+import { EFFORT_LEVELS, parseEffort, stripEffort } from "../effort.mjs";
 
 test("EFFORT_LEVELS exports levels in display order (strongest first)", () => {
   assert.deepEqual(EFFORT_LEVELS, ["max", "xhigh", "high", "medium", "low"]);
@@ -98,3 +98,14 @@ test("empty or non-string input returns null effort and false thinking without c
   assert.deepEqual(parseEffort(null), { effort: null, thinking: false });
   assert.deepEqual(parseEffort(undefined), { effort: null, thinking: false });
 });
+
+test("stripEffort removes explicit effort suffixes", () => {
+  assert.equal(stripEffort("claude-opus-5-5-xhigh-effort"), "claude-opus-5-5");
+  assert.equal(stripEffort("qwen3.8-max"), "qwen3-8-max");
+  assert.equal(stripEffort("gpt-5.4-xhigh"), "gpt-5-4");
+  assert.equal(stripEffort("gemini-3.5-flash-high"), "gemini-3-5-flash");
+  assert.equal(stripEffort("model-medium"), "model");
+  assert.equal(stripEffort("model-low"), "model");
+  assert.equal(stripEffort(""), "");
+});
+

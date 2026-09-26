@@ -102,12 +102,12 @@
 **Why:** The picker groups by company → model family → effort chips; unmatched rows still need a company group.
 **Where:** `normalization/build-data.mjs` (search `benchmark_name: benchModel,`); `lib/data.ts` (search `export type LivebenchModel`)
 **Do:**
-- [ ] Import `parseEffort` and add `effort`, `thinking` from `parseEffort(benchModel)`.
-- [ ] `family_id`: `canonical_id` when matched, else `normKey(benchModel)` with the effort suffix removed (rules 1–4 of Task 1.1) — export a helper `stripEffort(name)` from `effort.mjs` for this, with its own test cases added to `effort.test.mjs`.
-- [ ] `display_vendor`: `vendorFor(canonical_id ?? benchModel)` — so unmatched rows land under their real company or `other`. Keep existing `vendor` field unchanged.
-- [ ] Add the four fields to `LivebenchModel` in `lib/data.ts`: `effort: "max"|"xhigh"|"high"|"medium"|"low"|null; thinking: boolean; family_id: string; display_vendor: string;`.
-- [ ] Export `VENDORS` display names to the app: add `vendor_display: Record<string,string>` at the top level of scores.json built from `VENDORS` in `registry.mjs` plus `other: "Other"`; add it to `ScoresData`.
-- [ ] Run `npm run build:data`; commit the regenerated `data/scores.json`.
+- [x] Import `parseEffort` and add `effort`, `thinking` from `parseEffort(benchModel)`.
+- [x] `family_id`: `canonical_id` when matched, else `normKey(benchModel)` with the effort suffix removed (rules 1–4 of Task 1.1) — export a helper `stripEffort(name)` from `effort.mjs` for this, with its own test cases added to `effort.test.mjs`.
+- [x] `display_vendor`: `vendorFor(canonical_id ?? benchModel)` — so unmatched rows land under their real company or `other`. Keep existing `vendor` field unchanged.
+- [x] Add the four fields to `LivebenchModel` in `lib/data.ts`: `effort: "max"|"xhigh"|"high"|"medium"|"low"|null; thinking: boolean; family_id: string; display_vendor: string;`.
+- [x] Export `VENDORS` display names to the app: add `vendor_display: Record<string,string>` at the top level of scores.json built from `VENDORS` in `registry.mjs` plus `other: "Other"`; add it to `ScoresData`.
+- [x] Run `npm run build:data`; commit the regenerated `data/scores.json`.
 **Test first:** In `effort.test.mjs`: `stripEffort("claude-opus-5-5-xhigh-effort")` → `"claude-opus-5-5"`; `stripEffort("qwen3.8-max")` → `"qwen3-8-max"`.
 **Verify:** `node -e "const d=require('./data/scores.json');const o=d.livebench.find(m=>m.benchmark_name.includes('opus-5-5-xhigh'));console.log(o.effort,o.family_id,o.display_vendor)"` → `xhigh anthropic/claude-opus-5.5 anthropic`; `npx tsc --noEmit` → no errors.
 **Don't touch:** `alias_method`, `canonical_id`, `vendor` values; `/quality` page.
@@ -116,10 +116,10 @@
 
 ### Checkpoint — Phase 1
 
-- [ ] Full verification: `npm test && npm run build:data && npx tsc --noEmit` → all pass, no errors.
-- [ ] Commit made for every task in this phase.
-- [ ] Status file updated: "Effort levels parsed (explicit forms only; bare -max = not stated). Next: Phase 2 picker."
-- [ ] Progress Log entry added.
+- [x] Full verification: `npm test && npm run build:data && npx tsc --noEmit` → all pass, no errors.
+- [x] Commit made for every task in this phase.
+- [x] Status file updated: "Effort levels parsed (explicit forms only; bare -max = not stated). Next: Phase 2 picker."
+- [x] Progress Log entry added.
 
 A new session may start here.
 
@@ -355,3 +355,4 @@ add a new one saying so. This log is what makes resuming cheap: a cold session r
 the last entry and knows exactly where to start.)*
 
 - 26/09/2026 — Phase 1 Task 1.1 complete: `normalization/effort.mjs` and `normalization/test/effort.test.mjs` created. 26/26 tests pass (13 existing + 13 new). Exported `EFFORT_LEVELS` and `parseEffort` following explicit forms constraint (bare `-max` stays `null` / not stated). Commit: `feat(normalization): parse reasoning-effort level from LiveBench names`.
+- 26/09/2026 — Phase 1 Task 1.2 complete: exported `stripEffort` with unit tests (27/27 pass); added `effort`, `thinking`, `family_id`, `display_vendor` to LiveBench rows in `scores.json` and `lib/data.ts`; added `vendor_display` at root; `build:data`, `tsc --noEmit`, and `next build` static export pass cleanly. Phase 1 Checkpoint complete. Commit: `feat(data): add effort, family and display vendor to LiveBench rows`.

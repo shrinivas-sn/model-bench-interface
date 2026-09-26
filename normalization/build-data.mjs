@@ -12,8 +12,9 @@ import { writeFileSync, mkdirSync, existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
-import { buildAliasIndex, resolveAlias, vendorFor } from "./registry.mjs";
+import { buildAliasIndex, resolveAlias, vendorFor, VENDORS } from "./registry.mjs";
 import { LIVEBENCH_CATEGORIES, capabilityForLivebenchCategory } from "./categories.mjs";
+import { parseEffort, stripEffort } from "./effort.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -102,11 +103,19 @@ async function livebenchModels(aliasIndex) {
       categories[capabilityForLivebenchCategory(cat) || cat] = Number((agg.sum / agg.count).toFixed(2));
     }
 
+    const { effort, thinking } = parseEffort(benchModel);
+    const family_id = hit?.canonical ?? stripEffort(benchModel);
+    const display_vendor = vendorFor(hit?.canonical ?? benchModel);
+
     models.push({
       benchmark_name: benchModel,
       canonical_id: hit?.canonical ?? null,
       alias_method: hit?.method ?? null,
       vendor: hit?.canonical ? vendorFor(hit.canonical) : "unmatched",
+      display_vendor,
+      family_id,
+      effort,
+      thinking,
       tasks: taskObj,
       categories,
       cost: costByModel.get(benchModel) || null,
@@ -179,9 +188,13 @@ async function main() {
   const matchedSwe = swe.rows.filter((r) => r.canonical_id).length;
   const matchedLb = lb.models.filter((m) => m.canonical_id).length;
 
+  const vendor_display = Object.fromEntries(VENDORS.map((v) => [v.id, v.display]));
+  vendor_display.other = "Other";
+
   const data = {
     generated_at: new Date().toISOString(),
     release: "livebench-2026-06-25 + swe-bench-verified + openrouter",
+    vendor_display,
     capabilities: [...new Set(Object.keys(LIVEBENCH_CATEGORIES).map(capabilityForLivebenchCategory))],
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
