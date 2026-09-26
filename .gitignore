@@ -7,3 +7,4 @@ runs/
 *.tsbuildinfo
 next-env.d.ts
 probe/
+.mobile-check/

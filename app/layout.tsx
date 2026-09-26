@@ -29,11 +29,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </header>
           <main className="site-main">{children}</main>
           <footer className="site-footer">
-            <span>
+            <small>
               Data: OpenRouter catalog · LiveBench 2026-06-25 · SWE-bench Verified — ingested
               with <code>@shrinivas-sn/adapter-ingestion</code>
-            </span>
-            <span className="mono dim">terminal-dev · zinc-emerald · Jev tokens</span>
+            </small>
+            <small className="mono dim">terminal-dev · zinc-emerald · Jev tokens</small>
           </footer>
         </div>
       </body>

@@ -102,13 +102,14 @@ body {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  font-size: 12px;
+  font-size: 14px;
+  line-height: 1.5;
   color: var(--text-muted);
 }
 
 .site-footer code {
   font-family: var(--font-mono), monospace;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--primary);
 }
 
@@ -117,19 +118,33 @@ body {
 .nav-tabs {
   display: flex;
   gap: 6px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  max-width: 100%;
+}
+
+.nav-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-tab {
-  padding: 6px 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 14px;
   border-radius: var(--radius-sm);
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
   transition: color var(--motion-duration) ease, border-color var(--motion-duration) ease,
     background var(--motion-duration) ease;
 }
@@ -223,7 +238,8 @@ select:focus {
 table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.5;
 }
 
 th,
@@ -257,7 +273,8 @@ tbody tr:hover td {
 
 .page-sub {
   color: var(--text-muted);
-  font-size: 13px;
+  font-size: 14px;
+  line-height: 1.5;
   margin-top: 4px;
 }
 
@@ -323,6 +340,16 @@ tbody tr:hover td {
   }
   .site-main {
     padding: 16px 12px 32px;
+  }
+}
+
+@media (max-width: 639px) {
+  .site-header {
+    position: static;
+  }
+  .header-inner {
+    padding: 10px 14px;
+    gap: 10px;
   }
 }
 
@@ -397,7 +424,8 @@ tbody tr:hover td {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
   color: var(--text-muted);
   padding-top: 6px;
 }
@@ -559,9 +587,12 @@ tbody tr:hover td {
   *,
   *::before,
   *::after {
+    animation-name: none !important;
+    animation-play-state: paused !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
 

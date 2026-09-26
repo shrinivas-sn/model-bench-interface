@@ -15,6 +15,8 @@
   text-align: left;
   transition: border-color var(--motion-duration) ease, background var(--motion-duration) ease;
   font-family: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
 }
 
 .picker-trigger-btn:hover {
@@ -345,8 +347,10 @@
   transition: transform 80ms ease, opacity 80ms ease;
 }
 
-.picker-chip-clickable:hover {
-  opacity: 0.85;
+@media (hover: hover) and (pointer: fine) {
+  .picker-chip-clickable:hover {
+    opacity: 0.85;
+  }
 }
 
 .picker-chip-active {

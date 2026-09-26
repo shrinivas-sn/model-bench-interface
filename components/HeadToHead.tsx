@@ -155,9 +155,9 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                 <span className="badge badge-stale">unmatched</span>
               )}
             </span>
-            <span className="mono dim" style={{ fontSize: "0.6875rem" }}>
+            <small className="mono dim">
               {a.benchmark_name}
-            </span>
+            </small>
           </div>
         </div>
 
@@ -212,9 +212,9 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                 <span className="badge badge-stale">unmatched</span>
               )}
             </span>
-            <span className="mono dim" style={{ fontSize: "0.6875rem" }}>
+            <small className="mono dim">
               {b.benchmark_name}
-            </span>
+            </small>
           </div>
         </div>
       </div>
@@ -308,7 +308,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                 const vb = b.tasks[t];
                 return (
                   <tr key={t}>
-                    <td className="mono" style={{ fontSize: 12 }}>{t}</td>
+                    <td className="mono">{t}</td>
                     <td className="mono" style={{ textAlign: "right" }}>{va?.toFixed(1) ?? "—"}</td>
                     <td className="mono" style={{ textAlign: "right" }}>{vb?.toFixed(1) ?? "—"}</td>
                     <td style={{ textAlign: "right" }}>

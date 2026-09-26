@@ -43,41 +43,8 @@ function recordRecent(name: string) {
   }
 }
 
-export function EffortChip({
-  effort,
-  onClick,
-  active,
-}: {
-  effort: string | null;
-  onClick?: (e: React.MouseEvent) => void;
-  active?: boolean;
-}) {
-  const chipClass = effort
-    ? `effort-chip effort-chip-${effort}`
-    : "effort-chip effort-chip-null";
-  const label = effort || "not stated";
-
-  if (onClick) {
-    return (
-      <span
-        role="button"
-        tabIndex={0}
-        onClick={onClick}
-        onKeyDown={(e) => {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            onClick(e as unknown as React.MouseEvent);
-          }
-        }}
-        className={`${chipClass} picker-chip-clickable ${active ? "picker-chip-active" : ""}`}
-      >
-        {label}
-      </span>
-    );
-  }
-
-  return <span className={chipClass}>{label}</span>;
-}
+import { EffortChip } from "./EffortChip";
+export { EffortChip };
 
 export function ModelPicker({
   models = [],
@@ -114,6 +81,37 @@ export function ModelPicker({
     checkMobile();
     window.addEventListener("resize", checkMobile);
     return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Guard vaul-injected hover rules for touch devices (compliance with mobile-check Family 10)
+  useEffect(() => {
+    try {
+      for (const sheet of Array.from(document.styleSheets)) {
+        try {
+          const rules = sheet.cssRules;
+          if (!rules) continue;
+          for (let i = rules.length - 1; i >= 0; i--) {
+            const r = rules[i] as CSSStyleRule;
+            if (
+              r.selectorText &&
+              r.selectorText.includes("[data-vaul-handle]") &&
+              r.selectorText.includes(":hover")
+            ) {
+              sheet.deleteRule(i);
+              sheet.insertRule("[data-vaul-handle]:active { opacity: 1; }", i);
+              sheet.insertRule(
+                "@media (hover: hover) and (pointer: fine) { [data-vaul-handle]:hover { opacity: 1; } }",
+                i + 1
+              );
+            }
+          }
+        } catch {
+          // Skip cross-origin or restricted stylesheets
+        }
+      }
+    } catch {
+      // Ignore
+    }
   }, []);
 
   // Load recents on mount and when palette opens

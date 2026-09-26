@@ -33,10 +33,10 @@ export default function SweBenchPage() {
                 <td style={{ maxWidth: 320 }}>{r.system}</td>
                 <td>
                   {r.canonical_id ? (
-                    <span className="mono" style={{ fontSize: 12 }}>{r.canonical_id}</span>
+                    <span className="mono">{r.canonical_id}</span>
                   ) : r.model_alias ? (
                     <>
-                      <span className="mono dim" style={{ fontSize: 12 }}>{r.model_alias}</span>{" "}
+                      <span className="mono dim">{r.model_alias}</span>{" "}
                       <span className="badge badge-stale">unmatched</span>
                     </>
                   ) : (
@@ -44,8 +44,8 @@ export default function SweBenchPage() {
                   )}
                 </td>
                 <td className="mono" style={{ textAlign: "right", fontWeight: 600 }}>{r.resolved_pct?.toFixed(1)}</td>
-                <td className="mono dim" style={{ fontSize: 12 }}>{r.run_date ?? "—"}</td>
-                <td className="dim" style={{ fontSize: 12 }}>{r.agent ?? "—"}</td>
+                <td className="mono dim">{r.run_date ?? "—"}</td>
+                <td className="dim">{r.agent ?? "—"}</td>
               </tr>
             ))}
           </tbody>

@@ -43,13 +43,13 @@ export default function QualityPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {fresh
               ? Object.entries(fresh.sources).map(([name, s]) => (
-                  <div key={name} style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 13 }}>
+                  <div key={name} style={{ display: "flex", justifyContent: "space-between", gap: 8, fontSize: 14 }}>
                     <span>{SOURCE_LABELS[name] ?? name}</span>
                     <span style={{ textAlign: "right" }}>
                       <span className={`badge badge-${s.outcome === "ok" ? "ok" : s.outcome === "stale" ? "stale" : "err"}`}>
                         {s.outcome}
                       </span>
-                      <div className="dim mono" style={{ fontSize: 11 }}>{fmtWhen(s.fetched_at)}</div>
+                      <div className="dim mono" style={{ fontSize: 12 }}>{fmtWhen(s.fetched_at)}</div>
                     </span>
                   </div>
                 ))
@@ -61,7 +61,7 @@ export default function QualityPage() {
           <h3 style={{ fontSize: 12, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12 }}>
             Alias match methods
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 13 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14 }}>
             {[...methodCounts.entries()]
               .sort((a, b) => b[1] - a[1])
               .map(([method, n]) => (
@@ -73,17 +73,17 @@ export default function QualityPage() {
                 </div>
               ))}
           </div>
-          <p className="dim" style={{ fontSize: 11, marginTop: 10 }}>
+          <small className="dim" style={{ display: "block", marginTop: 10, lineHeight: 1.5 }}>
             exact = full-name match · suffix/date-stripped = matched after removing reasoning-effort
             tags or run dates · unmatched = never guessed.
-          </p>
+          </small>
         </div>
 
         <div className="card">
           <h3 style={{ fontSize: 12, color: "var(--text-muted)", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 12 }}>
             Counts
           </h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 13 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14 }}>
             <div style={{ display: "flex", justifyContent: "space-between" }}><span>Catalog models</span><span className="mono">{q.counts.catalog_models}</span></div>
             <div style={{ display: "flex", justifyContent: "space-between" }}><span>LiveBench models (matched)</span><span className="mono">{q.counts.livebench_models} ({q.counts.livebench_matched})</span></div>
             <div style={{ display: "flex", justifyContent: "space-between" }}><span>SWE-bench systems (matched)</span><span className="mono">{q.counts.swe_bench_systems} ({q.counts.swe_bench_matched})</span></div>

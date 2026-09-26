@@ -1,5 +1,5 @@
 import { getScores } from "@/lib/data";
-import { EffortChip } from "@/components/ModelPicker";
+import { EffortChip } from "@/components/EffortChip";
 
 export default function MatrixPage() {
   const data = getScores();
@@ -37,7 +37,7 @@ export default function MatrixPage() {
           <tbody>
             {rows.map((m) => (
               <tr key={m.benchmark_name}>
-                <td className="mono" style={{ fontSize: 12, whiteSpace: "nowrap" }}>
+                <td className="mono" style={{ whiteSpace: "nowrap" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 6 }}>
                     <span>{m.benchmark_name}</span>
                     <EffortChip effort={m.effort} />
@@ -46,7 +46,7 @@ export default function MatrixPage() {
                 </td>
                 <td>
                   {m.canonical_id ? (
-                    <span className="mono" style={{ fontSize: 12 }}>{m.canonical_id}</span>
+                    <span className="mono">{m.canonical_id}</span>
                   ) : (
                     <span className="badge badge-stale">unmatched</span>
                   )}
