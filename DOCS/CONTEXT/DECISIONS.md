@@ -47,3 +47,9 @@ Append durable decisions; do not rewrite history.
   the daily cron — so the initial `.gitignore` excluding `store/`/`data/` was a bug (it would have
   broken the workflow's `git add store/ data/` on CI). Transient per-run logs under `runs/` stay
   untracked.
+- **27/09/2026 — Hosting: Static export for Cloudflare Workers Static Assets.**
+  Added `output: "export"` and `trailingSlash: false` to `next.config.mjs`.
+  The 26/09 note "API routes can run ingestion on demand" is superseded: ingestion runs exclusively
+  in GitHub Actions daily cron (or local script), writing to `data/scores.json` and `data/freshness.json`.
+  The frontend is completely static, with zero server runtime or database, achieving fastest load
+  times and zero-cost hosting on Cloudflare Workers Static Assets.
