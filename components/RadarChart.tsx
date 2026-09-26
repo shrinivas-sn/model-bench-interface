@@ -59,7 +59,7 @@ export function RadarChart({
         const c = SERIES[si % SERIES.length];
         const pts = axes
           .map((axis, i) => {
-            const [x, y] = pointFor(i, n, s.values[axis] ?? 0);
+            const [x, y] = pointFor(i, n, s.values?.[axis] ?? 0);
             return `${x.toFixed(1)},${y.toFixed(1)}`;
           })
           .join(" ");
@@ -67,7 +67,7 @@ export function RadarChart({
       })}
       {series.map((s, si) =>
         axes.map((axis, i) => {
-          const [x, y] = pointFor(i, n, s.values[axis] ?? 0);
+          const [x, y] = pointFor(i, n, s.values?.[axis] ?? 0);
           const c = SERIES[si % SERIES.length];
           return <circle key={`${si}-${axis}`} cx={x} cy={y} r={2.5} fill={c.color} />;
         })

@@ -93,7 +93,9 @@ Full rationale in `CONTEXT/DECISIONS.md`.
 - **Phase 2 Task 2.1 (Component Source Retrieval via design-source):**
   - Queried shadcn registry for `command` (on `cmdk`) and `drawer` (on `vaul`).
   - Packages installed: `cmdk@1.1.1` and `vaul@1.1.2`, verified with React 19 compatibility (`npm ls cmdk vaul` clean).
-  - Source adaptation: registry Tailwind utilities (`bg-popover`, `border-border`, etc.) adapted to plain CSS using `:root` design tokens (`--bg-canvas`, `--bg-card`, `--bg-hover`, `--border`, `--primary`, `--text-main`, `--text-muted`, `--motion-duration`). Dialog layout for desktop (≥640px) and Vaul bottom-sheet drawer for mobile (<640px) with `prefers-reduced-motion` fallbacks.
+- **Phase 2 Task 2.2:** Implemented pure helper `groupModels` in `lib/picker.mjs` with unit tests in `normalization/test/picker-groups.test.mjs` (28/28 pass). Created `components/ModelPicker.tsx` and `components/model-picker.css` with cmdk command palette (desktop dialog) + vaul bottom sheet drawer (mobile), keyboard navigation, search, effort chips, and localStorage recents. Committed (`4b0d1f9`).
+- **Phase 2 Task 2.3:** Wired `ModelPicker` into `components/HeadToHead.tsx` with shareable URL state (`?a=...&b=...`), swap button (⇄), and wrapped in `<Suspense>` in `app/page.tsx`. Clean static export verified. Committed (`cde00f8`).
+- **Phase 3 Task 3.1:** Redesigned Head-to-Head around two comparison model cards with embedded pickers, thinking badge, input/output pricing, context window, and SWE-bench score. Capability rows redesigned as paired horizontal bars (winner in `--primary`, other in muted) with right-aligned delta and 240ms width transition. Radar chart positioned beside on ≥1024px and below on smaller screens. Added `EffortChip` to `/matrix`. Converted inline styles to classes in `app/globals.css`. Hardened components against missing SSR/prefetch props.
 
 ## Artifacts
 
@@ -105,6 +107,7 @@ Full rationale in `CONTEXT/DECISIONS.md`.
 
 ## Next
 
-1. Complete Phase 2 Task 2.2 (`components/ModelPicker.tsx`, `components/model-picker.css`, pure `groupModels` helper in `lib/picker.mjs` with unit tests).
-2. Wire picker into `components/HeadToHead.tsx` with query param state (`?a=...&b=...`).
+1. Task 3.2: Mobile check and fixes across all routes at phone viewports.
+2. Task 3.3: Motion review and reduced-motion verification.
+3. Phase 4: Static export configuration (`output: "export"`) and Cloudflare Workers deployment.
 

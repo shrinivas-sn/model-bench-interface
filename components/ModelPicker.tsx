@@ -80,11 +80,11 @@ export function EffortChip({
 }
 
 export function ModelPicker({
-  models,
+  models = [],
   value,
   onChange,
   slotLabel,
-  vendorDisplay,
+  vendorDisplay = {},
   open: controlledOpen,
   onOpenChange: controlledOnOpenChange,
 }: ModelPickerProps) {
@@ -172,7 +172,7 @@ export function ModelPicker({
   };
 
   const currentVendorName = currentModel
-    ? vendorDisplay[currentModel.display_vendor] || currentModel.display_vendor
+    ? (vendorDisplay && vendorDisplay[currentModel.display_vendor]) || currentModel.display_vendor
     : "Select Model";
   const currentFamilyLabel = currentModel
     ? formatFamilyLabel(currentModel.family_id || currentModel.benchmark_name)

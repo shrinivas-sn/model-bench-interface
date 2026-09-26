@@ -326,6 +326,233 @@ tbody tr:hover td {
   }
 }
 
+/* ---------- Head-to-head refresh layout ---------- */
+
+.h2h-root {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.h2h-cards-container {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  width: 100%;
+}
+
+.h2h-model-card {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  transition: border-color var(--motion-duration) ease;
+}
+
+.h2h-model-card:hover {
+  border-color: var(--border-hover);
+}
+
+.h2h-card-swap-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.h2h-card-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.h2h-card-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.h2h-stat-label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.h2h-stat-value {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.h2h-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-top: 6px;
+}
+
+.h2h-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .h2h-compare-grid {
+    grid-template-columns: 1.4fr 1fr;
+    align-items: start;
+  }
+}
+
+.h2h-capabilities-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.cap-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.cap-name {
+  color: var(--text-main);
+}
+
+.cap-delta {
+  font-size: 0.8125rem;
+}
+
+.cap-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.cap-bar-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cap-bar-label {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  width: 14px;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+.cap-bar-track {
+  flex: 1;
+  height: 8px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.cap-bar-fill {
+  height: 100%;
+  border-radius: 9999px;
+  transition: width 240ms ease-out;
+}
+
+.cap-winner {
+  background: var(--primary);
+}
+
+.cap-loser {
+  background: var(--border-hover);
+}
+
+.cap-bar-val {
+  font-size: 0.75rem;
+  width: 32px;
+  text-align: right;
+  color: var(--text-muted);
+}
+
+.cap-bar-val.cap-winner-text {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.h2h-radar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 18px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.h2h-radar-legend {
+  display: flex;
+  gap: 16px;
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.h2h-tasks-details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+.h2h-tasks-summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.h2h-tasks-table-wrap {
+  overflow-x: auto;
+  margin-top: 14px;
+}
+
+@media (max-width: 768px) {
+  .h2h-cards-container {
+    flex-direction: column;
+  }
+  .h2h-card-swap-wrap {
+    margin: -6px 0;
+  }
+  .h2h-card-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
 /* Motion checklist (Jev catalog): micro-interactions <= 250ms and specific
    properties only are enforced by construction; this guard completes the set. */
 @media (prefers-reduced-motion: reduce) {
@@ -337,3 +564,4 @@ tbody tr:hover td {
     transition-duration: 0.01ms !important;
   }
 }
+
