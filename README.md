@@ -49,6 +49,8 @@ npm run build             # build:data + next build (static export -> out/)
 npm run deploy            # build + deploy to Cloudflare Workers Static Assets
 ```
 
+**Live Deployment:** [https://model-bench.shrinusn2001.workers.dev](https://model-bench.shrinusn2001.workers.dev)
+
 A daily GitHub Actions workflow (`.github/workflows/ingest.yml`) re-ingests at 02:30 UTC,
 rebuilds `data/`, and commits — history accumulates in the JSONL stores for free.
 

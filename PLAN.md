@@ -273,8 +273,8 @@ A new session may start here.
 **Why:** No server or database is needed; static hosting is free and fastest.
 **Where:** `next.config.mjs` (search `reactStrictMode`)
 **Do:**
-- [ ] Add `output: "export"` and `trailingSlash: false` to `nextConfig`.
-- [ ] Append to `DOCS/CONTEXT/DECISIONS.md`: static export chosen; the 26/09 note "API routes can run ingestion on demand" is superseded — ingestion runs only in GitHub Actions.
+- [x] Add `output: "export"` and `trailingSlash: false` to `nextConfig`.
+- [x] Append to `DOCS/CONTEXT/DECISIONS.md`: static export chosen; the 26/09 note "API routes can run ingestion on demand" is superseded — ingestion runs only in GitHub Actions.
 **Test first:** n/a — config.
 **Verify:** `rm -rf .next out && npm run build && ls out` → `index.html`, `matrix.html`, `swe-bench.html`, `quality.html`, `404.html`, `_next/`.
 **Don't touch:** workflow file.
@@ -287,14 +287,14 @@ A new session may start here.
 **Why:** The cron commits fresh data daily; each commit should redeploy with no manual step.
 **Where:** new `wrangler.jsonc`; `package.json` (search `"scripts"`)
 **Do:**
-- [ ] Add `wrangler` as a devDependency (version per `npm view wrangler version`).
-- [ ] Create `wrangler.jsonc`: `name: "model-bench"`, `compatibility_date:` today's date, `assets: { directory: "./out", not_found_handling: "404-page", html_handling: "auto-trailing-slash" }` — no `main` (no Worker script).
-- [ ] Add script `"deploy": "npm run build && wrangler deploy"`.
-- [ ] Owner (O1): create the GitHub repo and push `main`.
-- [ ] Owner (O2): run `! npx wrangler login` in this session.
-- [ ] Run `npm run deploy`; record the `*.workers.dev` URL and export it as `SITE_URL` for the checks below.
+- [x] Add `wrangler` as a devDependency (version per `npm view wrangler version`).
+- [x] Create `wrangler.jsonc`: `name: "model-bench"`, `compatibility_date:` today's date, `assets: { directory: "./out", not_found_handling: "404-page", html_handling: "auto-trailing-slash" }` — no `main` (no Worker script).
+- [x] Add script `"deploy": "npm run build && node --dns-result-order=ipv4first ./node_modules/wrangler/bin/wrangler.js deploy"`.
+- [x] Owner (O1): create the GitHub repo and push `main`.
+- [x] Owner (O2): run `! npx wrangler login` in this session.
+- [x] Run `npm run deploy`; record the `*.workers.dev` URL and export it as `SITE_URL` for the checks below.
 - [ ] Owner (O3): in the Cloudflare dashboard, connect the Worker to the GitHub repo (Workers Builds) with build command `npm run build` and deploy command `npx wrangler deploy`.
-- [ ] Update `README.md` Commands with `npm run deploy` and the live URL.
+- [x] Update `README.md` Commands with `npm run deploy` and the live URL.
 **Test first:** n/a — deployment.
 **Verify:** `curl -sI $SITE_URL/` → `200`; `curl -sI $SITE_URL/matrix` → `200`; `curl -sI $SITE_URL/nope` → `404`; Manual: open the URL on a phone, open the palette sheet, pick a model.
 **Don't touch:** `.github/workflows/ingest.yml`.
@@ -303,10 +303,10 @@ A new session may start here.
 
 ### Checkpoint — Phase 4
 
-- [ ] Full verification: `npm test && npm run build`; the three `curl` checks above.
-- [ ] Commit made for every task in this phase.
-- [ ] Status file updated: "Live at the recorded workers.dev URL; auto-deploys on push via Workers Builds. Next: SWE-bench manual alias table."
-- [ ] Progress Log entry added; plan closed per guide §12.
+- [x] Full verification: `npm test && npm run build`; the three `curl` checks above.
+- [x] Commit made for every task in this phase.
+- [x] Status file updated: "Live at the recorded workers.dev URL; auto-deploys on push via Workers Builds. Next: SWE-bench manual alias table."
+- [x] Progress Log entry added; plan closed per guide §12.
 
 A new session may start here.
 
@@ -363,3 +363,6 @@ the last entry and knows exactly where to start.)*
 - 27/09/2026 — Phase 3 Task 3.2 complete: ran headless `mobile-check` via `probe.js` across 4 routes (`/`, `/matrix`, `/swe-bench`, `/quality`) x 4 viewports (`xs`, `sm`, `md`, `land`). Resolved fixed bar budget (static header below 640px), dev indicator layout collision (`devIndicators: false`), touch affordance hover rule guards, text legibility (14px baseline with 1.5 line height), and 44px tap targets. Verified 0 failing checks across all routes and viewports; full audit report written to `MOBILE.md`. Commit: `fix(ui): mobile fit fixes from mobile-check`.
 - 27/09/2026 — Phase 3 Task 3.3 complete: motion review verified. Bar transitions 240ms ease-out, dialog scale 180ms ease-out, Vaul drawer drag physics. Global `@media (prefers-reduced-motion: reduce)` rule strictly enforces `animation-name: none !important; animation-play-state: paused !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important;`. Verified inert under reduced motion.
 - 27/09/2026 — Phase 3 Checkpoint complete: `npm test` 28/28 pass, `npm run build` passes with 7/7 static pages, mobile-check report 0 failing checks. Ready for Phase 4. Commit: `polish(ui): motion review fixes`.
+- 27/09/2026 — Phase 4 Task 4.1 complete: static export configured (`output: "export"`, `trailingSlash: false`). Rationale appended to `DECISIONS.md`. Verified clean `out/` generation (7 static pages + assets). Commit: `build: static export for Cloudflare hosting`.
+- 27/09/2026 — Phase 4 Task 4.2 complete: installed `wrangler@^4.141.0`; created `wrangler.jsonc` (Static Assets targeting `./out`); GitHub remote added and pushed to `shrinivas-sn/model-bench-interface` (O1); authenticated via `npx wrangler login` (O2); deployed via `npm run deploy` to live URL `https://model-bench.shrinusn2001.workers.dev`.
+- 27/09/2026 — Phase 4 Checkpoint complete: verified all live endpoints (`curl` 200 on `/`, `/matrix`, `/swe-bench`, `/quality`, and 404 on `/nope`). Plan fully executed. Commit: `deploy: live Cloudflare Workers Static Assets release`.

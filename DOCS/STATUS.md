@@ -25,11 +25,11 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Pending
 
-- Phase 4: Static export and Cloudflare Workers deploy (needs owner inputs O1, O2).
-- Push to GitHub remote so the daily cron (.github/workflows/ingest.yml) can run.
+- Connect Workers Builds in Cloudflare dashboard for automatic rebuild on GitHub push (O3).
 - Manual alias table for SWE-bench systems (org/team display names) to lift 51/180.
 
 ## Next up (start here)
 
-1. UI redesign done, mobile-check clean (0 failures across all viewports). Next: Phase 4 Cloudflare deploy (Task 4.1 static export, Task 4.2 needs owner inputs O1, O2).
-2. Then: manual alias table for SWE-bench systems on /quality.
+1. Live at https://model-bench.shrinusn2001.workers.dev (all routes 200, unknown 404).
+2. Connect Worker to GitHub repo in Cloudflare dashboard (Workers & Pages -> Settings -> Builds).
+3. Then: manual alias table for SWE-bench systems on /quality.
