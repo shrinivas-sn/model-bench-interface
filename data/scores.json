@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-26T19:04:04.834Z",
+  "generated_at": "2026-09-27T08:27:40.940Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -69,8 +69,8 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.4948e-7,
-      "completion_price": 7.4844e-7
+      "prompt_price": 2.442e-7,
+      "completion_price": 7.326e-7
     },
     {
       "id": "~deepseek/deepseek-v4-flash-latest",
@@ -101,8 +101,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "prompt_price": 0.0000010301,
-      "completion_price": 0.000009043
+      "prompt_price": 5e-7,
+      "completion_price": 0.0000028
     },
     {
       "id": "~openai/gpt-astra-latest",
@@ -157,16 +157,16 @@
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 4e-8,
-      "completion_price": 5e-7
+      "prompt_price": 4.5e-8,
+      "completion_price": 1.4e-7
     },
     {
       "id": "~z-ai/glm-latest",
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 3.794e-7,
-      "completion_price": 0.0000011924
+      "prompt_price": 2.737e-7,
+      "completion_price": 8.602e-7
     },
     {
       "id": "aion-labs/aion-2.0",
@@ -685,8 +685,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 4.704e-8,
-      "completion_price": 9.408e-8
+      "prompt_price": 4.69e-8,
+      "completion_price": 9.38e-8
     },
     {
       "id": "deepseek/deepseek-v4-flash-0731",
@@ -701,8 +701,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Vision Exp",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.2e-7,
-      "completion_price": 6.6e-7
+      "prompt_price": 2.156e-7,
+      "completion_price": 6.468e-7
     },
     {
       "id": "deepseek/deepseek-v4-pro",
@@ -717,16 +717,16 @@
       "title": "DeepSeek: DeepSeek V4 Pro 0813",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.64e-7,
-      "completion_price": 7.92e-7
+      "prompt_price": 2.4502e-7,
+      "completion_price": 0.0000035
     },
     {
       "id": "deepseek/deepseek-v4.1-flash",
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "prompt_price": 3.5e-8,
+      "completion_price": 2.9e-7
     },
     {
       "id": "deepseek/deepseek-v4.1-flash:batch",
@@ -1357,8 +1357,8 @@
       "title": "MiniMax: MiniMax M2",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "prompt_price": 2.55e-7,
+      "completion_price": 0.00000102
     },
     {
       "id": "minimax/minimax-m2-her",
@@ -1389,8 +1389,8 @@
       "title": "MiniMax: MiniMax M2.7",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "prompt_price": 2.1e-7,
+      "completion_price": 8.4e-7
     },
     {
       "id": "minimax/minimax-m3",
@@ -3309,8 +3309,8 @@
       "title": "Tencent: Hy3",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 8.25e-8,
-      "completion_price": 3.3e-7
+      "prompt_price": 1.32e-7,
+      "completion_price": 5.28e-7
     },
     {
       "id": "tencent/hy3-preview",
@@ -3637,16 +3637,16 @@
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 3.794e-7,
-      "completion_price": 0.0000011924
+      "prompt_price": 2.737e-7,
+      "completion_price": 8.602e-7
     },
     {
       "id": "z-ai/glm-5.3-flash",
       "title": "Z.ai: GLM 5.3 Flash",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 4e-8,
-      "completion_price": 5e-7
+      "prompt_price": 4.5e-8,
+      "completion_price": 1.4e-7
     },
     {
       "id": "z-ai/glm-5.3-flash:batch",
@@ -4344,8 +4344,8 @@
         "cost_per_question": 0.0105
       },
       "pricing": {
-        "prompt": 4.704e-8,
-        "completion": 9.408e-8,
+        "prompt": 4.69e-8,
+        "completion": 9.38e-8,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4454,8 +4454,8 @@
         "cost_per_question": 0.0388
       },
       "pricing": {
-        "prompt": 2.2e-7,
-        "completion": 6.6e-7,
+        "prompt": 2.156e-7,
+        "completion": 6.468e-7,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4564,8 +4564,8 @@
         "cost_per_question": 0.0342
       },
       "pricing": {
-        "prompt": 2.64e-7,
-        "completion": 7.92e-7,
+        "prompt": 2.4502e-7,
+        "completion": 0.0000035,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4619,8 +4619,8 @@
         "cost_per_question": 0.0237
       },
       "pricing": {
-        "prompt": 3e-7,
-        "completion": 0.0000012,
+        "prompt": 3.5e-8,
+        "completion": 2.9e-7,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -5059,8 +5059,8 @@
         "cost_per_question": 0.3429
       },
       "pricing": {
-        "prompt": 3.794e-7,
-        "completion": 0.0000011924,
+        "prompt": 2.737e-7,
+        "completion": 8.602e-7,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -5114,8 +5114,8 @@
         "cost_per_question": 0.0218
       },
       "pricing": {
-        "prompt": 4e-8,
-        "completion": 5e-7,
+        "prompt": 4.5e-8,
+        "completion": 1.4e-7,
         "source": "openrouter"
       },
       "context_length": 1310720
