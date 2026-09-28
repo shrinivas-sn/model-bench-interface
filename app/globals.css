@@ -1,51 +1,62 @@
 /* =========================================================================
    Design tokens — Model Bench
-   Five colours, deliberately:
-     1. graphite — the neutral scale (surfaces, lines, text). Not pure black.
-     2. amber    — primary accent / Model A series
-     3. blue     — Model B series
-     4. green    — healthy state (fresh data, wins on an axis)
-     5. red      — error state (failed source, regressions)
-   Every surface is layered by lightness rather than by outline alone, and the
-   page background is a neutral-to-neutral tonal wash, not a colour gradient.
+
+   One rule decides every colour on this page: hue is data or state, never
+   chrome. A benchmark tool is an instrument — the numbers should be the only
+   thing on screen carrying colour.
+
+     1. graphite — structure. Surfaces, lines, text. Cool neutral, flat.
+     2. gold     — the Model A series. Data only, never a status.
+     3. blue     — the Model B series. Data only, never a status.
+     4. green    — measured and healthy: a fresh source, the leader on a row.
+     5. orange   — approximate: stale ingest, a suffix-stripped name match, a
+                   scaled cost rather than a benchmarked run. Kept clear of
+                   gold on purpose, so a stale badge can never read as A.
+     6. red      — failure: a dead source, an unmatched row.
+
+   Interactive chrome is achromatic. Links, focus rings and the active nav item
+   all use --focus, the same near-white as body text — an amber focus ring next
+   to an amber Model A bar is two meanings in one colour, which is how the
+   previous palette ended up with an accent doing six jobs.
    ========================================================================= */
 
 :root {
   /* --- surfaces (graphite) --- */
-  --bg-canvas: #0f1216;
-  --bg-canvas-soft: #151b23;
-  --bg-card: #171d25;
-  --bg-inset: #11161c;
-  --bg-hover: #1d242e;
-  --bg-raised: #222b36;
+  --bg-canvas: #0e1116;
+  --bg-canvas-soft: #131720;
+  --bg-card: #161b22;
+  --bg-inset: #10141a;
+  --bg-hover: #1b222b;
+  --bg-raised: #232b35;
 
   /* --- lines --- */
-  --border: #232b35;
-  --border-hover: #2f3946;
-  --border-strong: #3d4956;
+  --border: #232a33;
+  --border-hover: #303a45;
+  --border-strong: #3d4753;
 
   /* --- text --- */
-  --text-main: #e7ecf2;
-  --text-muted: #97a2b0;
+  --text-main: #e6ebf1;
+  --text-muted: #98a3b1;
   /* Faint is the lowest tier that still clears WCAG AA (4.5:1) on every
-     surface it is used on — measured 5.4:1 on --bg-inset, 5.5:1 on canvas.
+     surface it is used on — measured 5.74:1 on --bg-inset, 5.87:1 on canvas.
      It carries table headers, stat labels and hint lines, none of which are
      decorative enough to excuse failing contrast. */
-  --text-faint: #828d9c;
+  --text-faint: #8391a0;
 
-  /* --- accent / model A --- */
-  --accent: #e2a13f;
-  --accent-hover: #f0b757;
-  --accent-ink: #1c1408;
+  /* --- interactive (achromatic, by rule) --- */
+  --focus: var(--text-main);
+  --accent: var(--focus);
+  --accent-hover: #ffffff;
+  --accent-ink: #0e1116;
 
-  /* --- model B --- */
+  /* --- model A / model B --- */
+  --series-a: #e0a445;
   --series-b: #6ea8fe;
-  --series-b-soft: #a9c9ff;
 
   /* --- semantic --- */
   --ok: #4fb286;
+  --warn: #d9822b;
   --danger: #e2685f;
-  --warn: #d9a441;
 
   /* --- type --- */
   --font-heading: var(--font-body), sans-serif;
@@ -57,9 +68,6 @@
   --radius: 10px;
   --radius-sm: 6px;
   --radius-lg: 14px;
-
-  /* Series colours exposed as names the compare UI can reference. */
-  --series-a: var(--accent);
 }
 
 * {
@@ -74,11 +82,10 @@ html {
 }
 
 body {
+  /* Flat, deliberately. The previous palette painted a 480px tonal wash down
+     the page; it encoded nothing, and every card already carries its own
+     elevation. Surfaces are layered by lightness, not by a gradient. */
   background-color: var(--bg-canvas);
-  /* Neutral tonal wash: two graphite tones, no hue shift. Gives the page a
-     top-lit surface instead of the flat near-black that reads as a default. */
-  background-image: linear-gradient(180deg, var(--bg-canvas-soft) 0, var(--bg-canvas) 480px);
-  background-repeat: no-repeat;
   color: var(--text-main);
   font-family: var(--font-body), sans-serif;
   line-height: 1.5;
@@ -128,12 +135,6 @@ body {
   gap: 20px;
 }
 
-.header-top {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
 .brand {
   font-weight: 700;
   font-size: 15px;
@@ -142,13 +143,15 @@ body {
   color: var(--text-main);
 }
 
+/* The one place gold is allowed outside a chart: this app's identity is the
+   same gold it uses for Model A. */
 .brand-mark {
   display: inline-block;
   width: 8px;
   height: 8px;
   margin-left: 6px;
   border-radius: 2px;
-  background: var(--accent);
+  background: var(--series-a);
   vertical-align: middle;
 }
 
@@ -197,12 +200,13 @@ body {
 }
 
 .data-strip a {
-  color: var(--accent);
-  text-decoration: none;
+  color: var(--focus);
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .data-strip a:hover {
-  text-decoration: underline;
+  color: var(--accent-hover);
 }
 
 .site-footer {
@@ -220,7 +224,7 @@ body {
 .site-footer code {
   font-family: var(--font-mono), monospace;
   font-size: 12px;
-  color: var(--accent);
+  color: var(--text-muted);
 }
 
 /* ---------- nav ---------- */
@@ -276,27 +280,24 @@ body {
   background: var(--bg-hover);
 }
 
+/* Current location is carried by weight and a top rule, not by turning the tab
+   the same colour as a data series. */
 .nav-tab[data-active="true"] {
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  color: var(--text-main);
+  font-weight: 600;
+  box-shadow: inset 0 2px 0 0 var(--text-main);
 }
 
 .nav-tab[data-active="true"] .nav-tab-hint {
-  color: color-mix(in srgb, var(--accent) 70%, var(--text-faint));
+  color: var(--text-muted);
 }
 
 .nav-tab:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: -2px;
 }
 
 /* ---------- layout helpers ---------- */
-
-.stack {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
 
 .stack-tight {
   display: flex;
@@ -320,20 +321,13 @@ body {
 
 /* ---------- cards ---------- */
 
+/* A card is not interactive, so it has no hover state — the old border shift
+   promised a click that does not exist. */
 .card {
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
   padding: 20px;
-  transition: border-color var(--motion-duration) var(--motion-ease);
-}
-
-.card:hover {
-  border-color: var(--border-hover);
-}
-
-.card-quiet:hover {
-  border-color: var(--border);
 }
 
 .card-flush {
@@ -343,53 +337,6 @@ body {
 
 .table-scroll {
   overflow-x: auto;
-}
-
-/* ---------- buttons ---------- */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 9px 14px;
-  border-radius: var(--radius-sm);
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  border: 1px solid var(--border);
-  background: var(--bg-card);
-  color: var(--text-main);
-  font-family: inherit;
-  transition: transform var(--motion-duration) var(--motion-ease),
-    background var(--motion-duration) var(--motion-ease),
-    border-color var(--motion-duration) var(--motion-ease);
-}
-
-.btn:hover {
-  border-color: var(--border-strong);
-  background: var(--bg-hover);
-}
-
-.btn:active {
-  transform: scale(0.985);
-}
-
-.btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.btn-primary {
-  background: var(--accent);
-  color: var(--accent-ink);
-  border-color: var(--accent);
-  font-weight: 600;
-}
-
-.btn-primary:hover {
-  background: var(--accent-hover);
-  border-color: var(--accent-hover);
 }
 
 /* ---------- form controls ---------- */
@@ -410,7 +357,9 @@ select {
 
 input:focus,
 select:focus {
-  border-color: var(--accent);
+  border-color: var(--border-strong);
+  outline: 2px solid var(--focus);
+  outline-offset: 1px;
 }
 
 /* ---------- tables ---------- */
@@ -505,14 +454,6 @@ tbody tr:hover td {
   background: color-mix(in srgb, var(--danger) 10%, transparent);
 }
 
-.stat-num {
-  font-family: var(--font-mono), monospace;
-  font-size: 18px;
-  font-weight: 700;
-  color: var(--text-main);
-  font-variant-numeric: tabular-nums;
-}
-
 .delta-up {
   color: var(--ok);
   font-weight: 600;
@@ -529,6 +470,8 @@ tbody tr:hover td {
 
 .match-suffix-stripped,
 .match-date-stripped {
+  /* orange, not the old amber — amber sat close enough to the gold series that
+     "we matched this loosely" and "this is Model A" read as the same signal. */
   color: var(--warn);
 }
 
@@ -673,11 +616,9 @@ tbody tr:hover td {
 }
 
 .h2h-card-heading {
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
+  color: var(--text-main);
 }
 
 .h2h-legend {
@@ -881,10 +822,8 @@ tbody tr:hover td {
 }
 
 .cost-volume-label {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--text-faint);
+  font-size: 12.5px;
+  color: var(--text-muted);
   font-weight: 600;
 }
 
@@ -917,13 +856,13 @@ tbody tr:hover td {
 }
 
 .cost-volume-btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
 .cost-volume-btn[data-selected="true"] {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 15%, var(--bg-inset));
+  border-color: var(--text-main);
+  background: color-mix(in srgb, var(--text-main) 15%, var(--bg-inset));
   color: var(--text-main);
   font-weight: 700;
 }
@@ -966,7 +905,9 @@ tbody tr:hover td {
   padding: 2px 6px;
   border-radius: 4px;
   background: var(--bg-raised);
-  color: var(--text-faint);
+  /* --text-faint on --bg-raised is the one pair that misses AA (4.44:1), so
+     this tag takes the muted tier instead. */
+  color: var(--text-muted);
   letter-spacing: 0.04em;
   font-weight: 600;
 }
@@ -1088,18 +1029,9 @@ tbody tr:hover td {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 11.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
-.cost-formula-dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--accent);
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-main);
 }
 
 .cost-formula-rule {
@@ -1251,11 +1183,12 @@ tbody tr:hover td {
   gap: 16px;
 }
 
+/* Sentence case, not an uppercase micro-label — one of these per card was
+   reading as template chrome rather than a section name. */
 .card-title {
-  font-size: 11px;
-  color: var(--text-faint);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-main);
   margin-bottom: 12px;
 }
 
@@ -1298,7 +1231,7 @@ tbody tr:hover td {
 .matrix-toggle input {
   width: 16px;
   height: 16px;
-  accent-color: var(--accent);
+  accent-color: var(--text-main);
 }
 
 .matrix-count {
@@ -1331,13 +1264,14 @@ tbody tr:hover td {
   align-items: center;
   min-height: 44px;
   padding: 0 4px;
-  color: var(--accent);
-  text-decoration: none;
+  color: var(--text-main);
+  text-decoration: underline;
+  text-underline-offset: 2px;
   font-size: 12.5px;
 }
 
 .swe-link:hover {
-  text-decoration: underline;
+  color: var(--accent-hover);
 }
 
 /* ---------- motion ---------- */

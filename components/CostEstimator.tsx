@@ -170,9 +170,7 @@ export function CostEstimator({ modelA, modelB }: Props) {
       {(breakdownA.hasPricing || breakdownB.hasPricing) && (
         <div className="cost-formula-explainer">
           <div className="cost-formula-explainer-head">
-            <span className="cost-formula-title">
-              <span className="cost-formula-dot" /> Cost Formula & Token Multipliers
-            </span>
+            <span className="cost-formula-title">Cost formula & token multipliers</span>
             <span className="cost-formula-rule mono">
               Cost = (T<sub>in</sub> · P<sub>in</sub> + T<sub>out</sub> · P<sub>out</sub>) / 1,000,000
             </span>
