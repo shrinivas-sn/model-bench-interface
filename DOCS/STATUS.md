@@ -7,35 +7,40 @@ Single running log — update in place each session. Overflow moved verbatim to
 
 ## Current state
 
-- **Live at https://model-bench.shrinusn2001.workers.dev and synced with GitHub `origin/main`.**
-- Product: "Model Bench" — Next.js static edge app comparing frontier LLMs (Claude, GPT, Gemini, etc.)
-  across LiveBench, SWE-bench Verified, and OpenRouter pricing/context.
-- Ingestion: GitHub Actions daily cron (.github/workflows/ingest.yml) refreshes at 02:30 UTC.
-  4 declarative adapters; verified parse ratio 1.00; stores accumulate history in git.
-- Normalization: pure effort parser (explicit forms only, bare -max null); alias matcher;
-  scores.json emitted at build time. All prices normalised to USD **per million tokens** —
-  OpenRouter reports per token and LiveBench per million, and mixing the two was the bug that
-  made every price read `$0.00/M`.
-- UI: three-stage picker (company → model → reasoning effort, effort buttons driven by that
-  model's real variants), recent picks leading by default, app-owned AND-token search, A/B
-  identity carried by colour and named legend, and a data-status strip showing last ingest,
-  source health and counts on every route.
-- Palette: five colours — graphite, amber, blue, green, red. The generated zinc-emerald /
-  terminal-dev tokens were overridden by the owner. See `design-tokens.json`.
-- Quality Gates: `npm test` **65/65** pass; `npm run verify:ui` **116/116** browser checks
-  (layout, AA contrast, 44px tap targets, full picker journey, mobile sheet); `npx tsc --noEmit`
-  clean; `npm run build` static export clean (7/7 pages generated).
+- **Live at https://model-bench.shrinu.workers.dev** — the `shrinusn2001` host recorded on
+  27/09 no longer resolves; `shrinu` is the account's actual workers.dev subdomain.
+  Released 28/09 with the redesign; `/` and `/matrix` return 200, unknown paths 404.
+- Project: `E:\model-bench` — Next.js 15 static export (`output: "export"`), no server, no DB.
+- Ingestion: GitHub Actions cron at 02:30 UTC → 4 declarative adapters → `store/*.jsonl` →
+  `data/scores.json`. 458 catalog models, 63 LiveBench rows, 180 SWE-bench systems.
+- UI: three-stage picker (company → model → reasoning effort), recent picks leading the default
+  A/B pair, app-owned AND-token search, A/B identity by colour plus a named legend, and a
+  data-status strip with last-ingest recency on every route.
+- Palette: five colours — graphite (surfaces/text), amber (accent + Model A), blue (Model B),
+  green (healthy), red (error). Every price is USD per million tokens.
+- Gates: `npm test` 65/65 · `npx tsc --noEmit` clean · `npm run build` 7/7 static pages ·
+  `npm run verify:ui` 116/116 browser checks.
 
 ## Pending
 
-- Manual alias table for SWE-bench systems (org/team display names) to lift 51/180 match rate.
-- Investigate 8 unmatched LiveBench names — now listed on `/quality` with the exact fix steps.
-- Deploy this UI pass; the live URL still serves the previous design.
+- Workers Builds is still not connected in the Cloudflare dashboard, so the daily cron commit
+  may not redeploy on its own — the 28/09 release was a manual `npm run deploy`.
+- Manual alias table for SWE-bench systems: 51/180 matched.
+- 8 unmatched LiveBench names (`inkling-xhigh`, `qwen3.8-max`, `smaug-agentic`, `smaug-mini`,
+  `ox-alpha-max`, `qwen3.8-flash-next`, `smaug-flash`, `union-alpha`) — listed on `/quality`
+  with the fix steps.
 
 ## Next up (start here)
 
-1. Run `npm run deploy` to publish the redesign to the live URL.
-2. Connect Workers Builds in the Cloudflare dashboard (Settings → Builds → Connect to Git) if
-   not already active, so the daily cron commit redeploys automatically.
-3. Build the manual alias table for SWE-bench systems on `/quality` to improve the 51/180
-   match rate.
+1. Confirm the live URL behaves on a phone: three-stage picker, effort buttons for a
+   multi-variant model, prices in `$/Mtok` (not `$0.00`), and the data-status strip.
+2. Connect Workers Builds (Cloudflare → the Worker → Settings → Builds → Connect to Git; build
+   `npm run build`, deploy `npx wrangler deploy`) so the cron redeploys by itself.
+3. Build the manual alias table for SWE-bench systems in `normalization/registry.mjs` to lift
+   the 51/180 match rate, then re-run `npm run build:data`.
+
+## Verification limits
+
+- `npm run verify:ui` measures Chrome only, at 320-1280px. Safari and Firefox were not run.
+- Contrast and tap-target figures are browser-measured against `out/`; the live host was
+  confirmed by markup and CSS-token check only, not re-measured.
