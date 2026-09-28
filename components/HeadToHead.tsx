@@ -8,7 +8,12 @@ import { CostEstimator } from "@/components/CostEstimator";
 import { SwapIcon } from "@/components/icons";
 import type { LivebenchModel, SweRow } from "@/lib/data";
 import { defaultPair, formatFamilyLabel, formatPerMillion, readRecents } from "@/lib/picker.mjs";
-import { formatCostPerQuestion, formatTokenCount, effortVarianceInsight } from "@/lib/cost.mjs";
+import {
+  formatCostPerQuestion,
+  formatTokenCount,
+  resolveModelForEffort,
+  effortVarianceInsight,
+} from "@/lib/cost.mjs";
 
 type Props = {
   livebench: LivebenchModel[];
@@ -90,10 +95,16 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const [overrideEffort, setOverrideEffort] = useState<Record<string, string>>({});
-
   const paramA = searchParams.get("a");
   const paramB = searchParams.get("b");
+  const effortParamA = searchParams.get("effort_a");
+  const effortParamB = searchParams.get("effort_b");
+
+  const [overrideEffort, setOverrideEffort] = useState<Record<string, string>>(() => ({
+    A: effortParamA || "",
+    B: effortParamB || "",
+  }));
+
   const isKnown = (name: string | null) =>
     Boolean(name) && livebench.some((m) => m.benchmark_name === name);
 
@@ -112,8 +123,14 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
       isKnown(paramA) ? (paramA as string) : defaultA,
       isKnown(paramB) ? (paramB as string) : defaultB,
     ]);
+    if (effortParamA || effortParamB) {
+      setOverrideEffort({
+        A: effortParamA || "",
+        B: effortParamB || "",
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paramA, paramB, defaultA, defaultB, livebench]);
+  }, [paramA, paramB, effortParamA, effortParamB, defaultA, defaultB, livebench]);
 
   // With no link to follow, lead with what this visitor picked last time —
   // the whole point of recents is not having to search again.
@@ -129,43 +146,77 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const updateSlots = (nextSlots: string[]) => {
-    setSlots(nextSlots);
+  const updateUrl = (nextSlots: string[], nextEfforts: Record<string, string>) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("a", nextSlots[0]);
     params.set("b", nextSlots[1]);
+    if (nextEfforts.A) params.set("effort_a", nextEfforts.A);
+    else params.delete("effort_a");
+    if (nextEfforts.B) params.set("effort_b", nextEfforts.B);
+    else params.delete("effort_b");
     router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const handleSlotChange = (index: number, name: string) => {
     const next = [...slots];
     next[index] = name;
-    // Clear any temporary effort override on slot change
     const slotKey = index === 0 ? "A" : "B";
-    setOverrideEffort((prev) => {
-      const copy = { ...prev };
-      delete copy[slotKey];
-      return copy;
-    });
-    updateSlots(next);
+    const nextEfforts = { ...overrideEffort };
+    delete nextEfforts[slotKey];
+    setOverrideEffort(nextEfforts);
+    setSlots(next);
+    updateUrl(next, nextEfforts);
   };
 
   const handleSwap = () => {
-    setOverrideEffort((prev) => ({
-      A: prev.B || "",
-      B: prev.A || "",
-    }));
-    updateSlots([slots[1], slots[0]]);
+    const nextEfforts = {
+      A: overrideEffort.B || "",
+      B: overrideEffort.A || "",
+    };
+    setOverrideEffort(nextEfforts);
+    const nextSlots = [slots[1], slots[0]];
+    setSlots(nextSlots);
+    updateUrl(nextSlots, nextEfforts);
   };
 
-  const a = useMemo(
+  const handleEffortSelect = (slot: "A" | "B", index: number, opt: (ReturnType<typeof getEffortListForModel>)[0], baseM: LivebenchModel) => {
+    if (opt.variant) {
+      const nextSlots = [...slots];
+      nextSlots[index] = opt.variant.benchmark_name;
+      const nextEfforts = { ...overrideEffort, [slot]: opt.id };
+      setOverrideEffort(nextEfforts);
+      setSlots(nextSlots);
+      updateUrl(nextSlots, nextEfforts);
+    } else {
+      const nextEfforts = { ...overrideEffort, [slot]: opt.id };
+      setOverrideEffort(nextEfforts);
+      updateUrl(slots, nextEfforts);
+    }
+  };
+
+  const rawA = useMemo(
     () => livebench.find((m) => m.benchmark_name === slots[0]) ?? null,
     [livebench, slots]
   );
-  const b = useMemo(
+  const rawB = useMemo(
     () => livebench.find((m) => m.benchmark_name === slots[1]) ?? null,
     [livebench, slots]
   );
+
+  const effA = overrideEffort.A || rawA?.effort?.toLowerCase() || "standard";
+  const effB = overrideEffort.B || rawB?.effort?.toLowerCase() || "standard";
+
+  const resolvedA = useMemo(
+    () => (rawA ? resolveModelForEffort(rawA, effA, livebench) : null),
+    [rawA, effA, livebench]
+  );
+  const resolvedB = useMemo(
+    () => (rawB ? resolveModelForEffort(rawB, effB, livebench) : null),
+    [rawB, effB, livebench]
+  );
+
+  const a = resolvedA;
+  const b = resolvedB;
 
   const taskKeys = useMemo(() => {
     const keys = new Set<string>();
@@ -181,7 +232,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     return { n: rows.length, best: Math.max(...rows.map((r) => r.resolved_pct as number)) };
   };
 
-  if (!a || !b) {
+  if (!a || !b || !rawA || !rawB) {
     return (
       <div className="card">
         <p className="dim">
@@ -193,26 +244,18 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
 
   const labelOf = (m: LivebenchModel) => formatFamilyLabel(m.family_id || m.benchmark_name);
 
-  const modelCard = (m: LivebenchModel, slot: "A" | "B", index: number) => {
-    const sweRow = sweFor(m);
-    const effortOptionsList = getEffortListForModel(m, livebench);
-    const currentActiveEffort = overrideEffort[slot] || m.effort?.toLowerCase() || "standard";
+  const modelCard = (
+    resolvedM: NonNullable<typeof a>,
+    rawM: LivebenchModel,
+    slot: "A" | "B",
+    index: number
+  ) => {
+    const sweRow = sweFor(rawM);
+    const effortOptionsList = getEffortListForModel(rawM, livebench);
+    const currentActiveEffort = overrideEffort[slot] || resolvedM.activeEffort || rawM.effort?.toLowerCase() || "standard";
     const activeOpt = effortOptionsList.find((opt) => opt.id === currentActiveEffort) || effortOptionsList[0];
-    const isLivebenchEvaluated = activeOpt?.hasBenchmark;
-    const effortInsight = effortVarianceInsight(m, livebench);
-
-    const handleEffortSelect = (opt: (typeof effortOptionsList)[0]) => {
-      if (opt.variant) {
-        setOverrideEffort((prev) => {
-          const copy = { ...prev };
-          delete copy[slot];
-          return copy;
-        });
-        handleSlotChange(index, opt.variant.benchmark_name);
-      } else {
-        setOverrideEffort((prev) => ({ ...prev, [slot]: opt.id }));
-      }
-    };
+    const isLivebenchEvaluated = resolvedM.isEvaluated;
+    const effortInsight = effortVarianceInsight(resolvedM, livebench);
 
     return (
       <div className="h2h-model-card" data-slot={slot}>
@@ -224,7 +267,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           vendorDisplay={vendorDisplay}
         />
 
-        <div className="h2h-effort-selector-panel" role="group" aria-label={`Reasoning effort for ${labelOf(m)}`}>
+        <div className="h2h-effort-selector-panel" role="group" aria-label={`Reasoning effort for ${labelOf(resolvedM)}`}>
           <div className="h2h-effort-header">
             <span className="h2h-effort-title">Reasoning Effort</span>
             <span className="h2h-effort-status-badge" data-benchmarked={isLivebenchEvaluated}>
@@ -233,7 +276,9 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                   <span className="h2h-effort-status-dot" /> LiveBench evaluated
                 </>
               ) : (
-                <>Configured tier (API supported)</>
+                <>
+                  <span className="h2h-effort-status-dot" style={{ background: "var(--accent)" }} /> ⚡ Dynamic ({resolvedM.activeEffort.toUpperCase()} model)
+                </>
               )}
             </span>
           </div>
@@ -241,6 +286,10 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           <div className="h2h-effort-button-group">
             {effortOptionsList.map((opt) => {
               const isSelected = opt.id === currentActiveEffort;
+              const preview = resolveModelForEffort(rawM, opt.id, livebench);
+              const previewCost = preview?.cost?.cost_per_question;
+              const previewTok = preview?.cost?.avg_output_tokens;
+
               return (
                 <button
                   key={opt.id}
@@ -249,7 +298,8 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                   data-slot={slot}
                   data-selected={isSelected}
                   data-benchmarked={opt.hasBenchmark}
-                  onClick={() => handleEffortSelect(opt)}
+                  onClick={() => handleEffortSelect(slot, index, opt, rawM)}
+                  title={`${opt.label}: ~${formatTokenCount(previewTok)} tokens (${formatCostPerQuestion(previewCost)}/q)`}
                   aria-label={`Select ${opt.label} reasoning effort`}
                 >
                   <span className="h2h-effort-btn-text">{opt.label}</span>
@@ -257,24 +307,17 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                     <span className="h2h-effort-btn-dot" title="LiveBench evaluation data available" />
                   )}
                   {opt.thinking && <span className="h2h-effort-btn-tag">think</span>}
+                  {previewCost != null && (
+                    <span className="h2h-effort-btn-cost mono">{formatCostPerQuestion(previewCost)}</span>
+                  )}
                 </button>
               );
             })}
           </div>
 
-          {!isLivebenchEvaluated && (
-            <div className="h2h-effort-footer-note">
-              Configured to <b>{activeOpt?.label}</b> effort. LiveBench evaluated this model at{" "}
-              <b>{(m.effort || "High").toUpperCase()}</b>.
-            </div>
-          )}
-
           {effortInsight && (
             <div className="h2h-effort-variance-insight">
-              ⚡ <b>{effortInsight.currentEffort}</b> uses{" "}
-              <b>{effortInsight.tokenRatio ? `${effortInsight.tokenRatio}× reasoning tokens` : "more tokens"}</b> and costs{" "}
-              <b>{effortInsight.costRatio}×</b> ({formatCostPerQuestion(effortInsight.currentCost)} vs{" "}
-              {formatCostPerQuestion(effortInsight.otherCost)}) compared to {effortInsight.otherEffort}.
+              {effortInsight.message}
             </div>
           )}
         </div>
@@ -282,20 +325,20 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         <div className="h2h-card-stats">
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">$/Mtok in / out</span>
-            <span className="h2h-stat-value mono">{priceSummary(m)}</span>
+            <span className="h2h-stat-value mono">{priceSummary(resolvedM)}</span>
           </div>
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">$/Question</span>
-            <span className="h2h-stat-value mono">{formatCostPerQuestion(m.cost?.cost_per_question)}</span>
+            <span className="h2h-stat-value mono">{formatCostPerQuestion(resolvedM.cost?.cost_per_question)}</span>
           </div>
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">Reasoning Tok</span>
-            <span className="h2h-stat-value mono">{formatTokenCount(m.cost?.avg_output_tokens)}</span>
+            <span className="h2h-stat-value mono">{formatTokenCount(resolvedM.cost?.avg_output_tokens)}</span>
           </div>
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">Context</span>
             <span className="h2h-stat-value mono">
-              {m.context_length ? `${(m.context_length / 1000).toFixed(0)}k` : "—"}
+              {resolvedM.context_length ? `${(resolvedM.context_length / 1000).toFixed(0)}k` : "—"}
             </span>
           </div>
           <div className="h2h-card-stat">
@@ -307,13 +350,13 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         </div>
         <div className="h2h-card-meta">
           <span>
-            {m.alias_method ? (
-              <span className={`match-${m.alias_method}`}>{m.alias_method} match</span>
+            {resolvedM.alias_method ? (
+              <span className={`match-${resolvedM.alias_method}`}>{resolvedM.alias_method} match</span>
             ) : (
               <span className="badge badge-stale">unmatched</span>
             )}
           </span>
-          <small className="mono dim">{m.benchmark_name}</small>
+          <small className="mono dim">{resolvedM.benchmark_name}</small>
         </div>
       </div>
     );
@@ -322,7 +365,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
   return (
     <div className="h2h-root">
       <div className="h2h-cards-container">
-        {modelCard(a, "A", 0)}
+        {modelCard(a, rawA, "A", 0)}
 
         <div className="h2h-card-swap-wrap">
           <button
@@ -336,7 +379,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           </button>
         </div>
 
-        {modelCard(b, "B", 1)}
+        {modelCard(b, rawB, "B", 1)}
       </div>
 
       <div className="h2h-compare-grid">

@@ -750,6 +750,22 @@
   text-transform: uppercase;
 }
 
+.h2h-effort-btn-cost {
+  font-size: 10px;
+  font-weight: 500;
+  opacity: 0.85;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--bg-inset);
+  color: var(--text-muted);
+}
+
+.h2h-effort-btn[data-selected="true"] .h2h-effort-btn-cost {
+  background: color-mix(in srgb, currentColor 20%, transparent);
+  color: inherit;
+  font-weight: 600;
+}
+
 .h2h-effort-footer-note {
   font-size: 11px;
   color: var(--text-faint);

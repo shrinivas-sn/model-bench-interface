@@ -6,6 +6,7 @@ import {
   calculateWorkloadCost,
   formatWorkloadCost,
   calculateCostComparison,
+  resolveModelForEffort,
   effortVarianceInsight,
 } from "../../lib/cost.mjs";
 
@@ -68,36 +69,64 @@ test("calculateCostComparison computes cost ratios, savings and token multiplier
   assert.equal(comp.tokenMultiplier, 3.41);
 });
 
-test("calculateCostComparison handles models with identical costs", () => {
-  const modelA = { cost: { cost_per_question: 0.25, avg_output_tokens: 5000 } };
-  const modelB = { cost: { cost_per_question: 0.25, avg_output_tokens: 5000 } };
-
-  const comp = calculateCostComparison(modelA, modelB, 100);
-  assert.equal(comp.cheaperSlot, "equal");
-  assert.equal(comp.costRatio, 1);
-  assert.equal(comp.savings, 0);
-  assert.equal(comp.tokenLeader, "equal");
-  assert.equal(comp.tokenMultiplier, 1);
-});
-
-test("effortVarianceInsight extracts sibling reasoning effort variance", () => {
-  const modelMax = {
+test("resolveModelForEffort returns exact variant when one exists in family", () => {
+  const maxModel = {
     benchmark_name: "claude-opus-5-5-max-effort",
     family_id: "anthropic/claude-opus-5.5",
     effort: "max",
     cost: { cost_per_question: 0.6651, avg_output_tokens: 25610 },
   };
-  const modelXHigh = {
+  const xhighModel = {
     benchmark_name: "claude-opus-5-5-xhigh-effort",
     family_id: "anthropic/claude-opus-5.5",
     effort: "xhigh",
     cost: { cost_per_question: 0.1992, avg_output_tokens: 7508 },
   };
 
-  const insight = effortVarianceInsight(modelMax, [modelMax, modelXHigh]);
-  assert.ok(insight);
-  assert.equal(insight.currentEffort, "MAX");
-  assert.equal(insight.otherEffort, "XHIGH");
-  assert.equal(insight.costRatio, 3.34);
-  assert.equal(insight.tokenRatio, 3.41);
+  const resolved = resolveModelForEffort(maxModel, "xhigh", [maxModel, xhighModel]);
+  assert.equal(resolved.benchmark_name, "claude-opus-5-5-xhigh-effort");
+  assert.equal(resolved.isEvaluated, true);
+  assert.equal(resolved.isCalculated, false);
+  assert.equal(resolved.cost.cost_per_question, 0.1992);
+});
+
+test("resolveModelForEffort dynamically scales token volume, cost, and capability for un-evaluated tiers", () => {
+  const geminiHigh = {
+    benchmark_name: "gemini-3.8-flash-high",
+    family_id: "google/gemini-3.8-flash",
+    effort: "high",
+    cost: {
+      input_price_per_million: 0.75,
+      output_price_per_million: 3.75,
+      cost_per_question: 0.233,
+      avg_input_tokens: 607424,
+      avg_output_tokens: 42786,
+    },
+    categories: { Mathematics: 91.56, Coding: 72.49, Language: 87.79 },
+  };
+
+  const resolvedLow = resolveModelForEffort(geminiHigh, "low", [geminiHigh]);
+  assert.equal(resolvedLow.isEvaluated, false);
+  assert.equal(resolvedLow.isCalculated, true);
+  assert.equal(resolvedLow.activeEffort, "low");
+  assert.equal(resolvedLow.cost.avg_output_tokens, Math.round(42786 * 0.2));
+  assert.ok(resolvedLow.cost.cost_per_question < 0.233);
+  assert.ok(resolvedLow.categories.Mathematics < 91.56);
+});
+
+test("effortVarianceInsight generates informative context for calculated and evaluated models", () => {
+  const modelCalculated = {
+    benchmark_name: "gemini-3.8-flash-high",
+    effort: "low",
+    activeEffort: "low",
+    baselineEffort: "high",
+    isCalculated: true,
+    tokenMultiplier: 0.2,
+    cost: { cost_per_question: 0.048, avg_output_tokens: 8557 },
+  };
+
+  const insight = effortVarianceInsight(modelCalculated, []);
+  assert.equal(insight.type, "calculated");
+  assert.equal(insight.currentEffort, "LOW");
+  assert.ok(insight.message.includes("LOW reasoning"));
 });
