@@ -40,10 +40,55 @@ function priceSummary(m: LivebenchModel) {
   )}`;
 }
 
+const EFFORT_ORDER = ["low", "medium", "high", "xhigh", "max", "standard", "none"];
+
+function getEffortListForModel(m: LivebenchModel, livebench: LivebenchModel[]) {
+  const familyVariants = livebench.filter(
+    (v) =>
+      (m.family_id && v.family_id === m.family_id) ||
+      (m.canonical_id && v.canonical_id === m.canonical_id)
+  );
+
+  const effortsSet = new Set<string>();
+  for (const v of familyVariants) {
+    if (v.effort) effortsSet.add(v.effort.toLowerCase());
+  }
+  if (Array.isArray(m.supported_efforts)) {
+    for (const e of m.supported_efforts) {
+      if (e && e !== "none") effortsSet.add(e.toLowerCase());
+    }
+  }
+
+  if (effortsSet.size === 0) {
+    effortsSet.add(m.effort ? m.effort.toLowerCase() : "standard");
+  }
+
+  const sortedEfforts = Array.from(effortsSet).sort((a, b) => {
+    const ia = EFFORT_ORDER.indexOf(a);
+    const ib = EFFORT_ORDER.indexOf(b);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib);
+  });
+
+  return sortedEfforts.map((eff) => {
+    const matchingVariant = familyVariants.find(
+      (v) => (v.effort && v.effort.toLowerCase() === eff) || (!v.effort && eff === "standard")
+    );
+    return {
+      id: eff,
+      label: eff.toUpperCase(),
+      hasBenchmark: Boolean(matchingVariant),
+      variant: matchingVariant || null,
+      thinking: Boolean(matchingVariant?.thinking || m.thinking),
+    };
+  });
+}
+
 export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
+  const [overrideEffort, setOverrideEffort] = useState<Record<string, string>>({});
 
   const paramA = searchParams.get("a");
   const paramB = searchParams.get("b");
@@ -93,10 +138,23 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
   const handleSlotChange = (index: number, name: string) => {
     const next = [...slots];
     next[index] = name;
+    // Clear any temporary effort override on slot change
+    const slotKey = index === 0 ? "A" : "B";
+    setOverrideEffort((prev) => {
+      const copy = { ...prev };
+      delete copy[slotKey];
+      return copy;
+    });
     updateSlots(next);
   };
 
-  const handleSwap = () => updateSlots([slots[1], slots[0]]);
+  const handleSwap = () => {
+    setOverrideEffort((prev) => ({
+      A: prev.B || "",
+      B: prev.A || "",
+    }));
+    updateSlots([slots[1], slots[0]]);
+  };
 
   const a = useMemo(
     () => livebench.find((m) => m.benchmark_name === slots[0]) ?? null,
@@ -135,12 +193,23 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
 
   const modelCard = (m: LivebenchModel, slot: "A" | "B", index: number) => {
     const sweRow = sweFor(m);
-    const familyVariants = livebench.filter(
-      (v) =>
-        (m.family_id && v.family_id === m.family_id) ||
-        (m.canonical_id && v.canonical_id === m.canonical_id)
-    );
-    const hasMultipleVariants = familyVariants.length > 1;
+    const effortOptionsList = getEffortListForModel(m, livebench);
+    const currentActiveEffort = overrideEffort[slot] || m.effort?.toLowerCase() || "standard";
+    const activeOpt = effortOptionsList.find((opt) => opt.id === currentActiveEffort) || effortOptionsList[0];
+    const isLivebenchEvaluated = activeOpt?.hasBenchmark;
+
+    const handleEffortSelect = (opt: (typeof effortOptionsList)[0]) => {
+      if (opt.variant) {
+        setOverrideEffort((prev) => {
+          const copy = { ...prev };
+          delete copy[slot];
+          return copy;
+        });
+        handleSlotChange(index, opt.variant.benchmark_name);
+      } else {
+        setOverrideEffort((prev) => ({ ...prev, [slot]: opt.id }));
+      }
+    };
 
     return (
       <div className="h2h-model-card" data-slot={slot}>
@@ -152,48 +221,50 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           vendorDisplay={vendorDisplay}
         />
 
-        <div className="h2h-effort-strip" role="group" aria-label={`Reasoning effort for ${labelOf(m)}`}>
-          <span className="h2h-effort-strip-title">Reasoning effort</span>
-          <div className="h2h-effort-pills">
-            {hasMultipleVariants ? (
-              familyVariants.map((v) => {
-                const isSelected = v.benchmark_name === m.benchmark_name;
-                const effortLabel = (v.effort ?? "standard").toUpperCase();
-                return (
-                  <button
-                    key={v.benchmark_name}
-                    type="button"
-                    className="h2h-effort-pill"
-                    data-slot={slot}
-                    data-selected={isSelected}
-                    onClick={() => handleSlotChange(index, v.benchmark_name)}
-                    aria-label={`Select ${effortLabel} effort evaluation`}
-                  >
-                    <span>{effortLabel}</span>
-                    {v.thinking && <span className="h2h-effort-pill-tag">think</span>}
-                  </button>
-                );
-              })
-            ) : m.effort ? (
-              <div className="h2h-effort-pill-single-wrap">
-                <span className="h2h-effort-pill-single" data-slot={slot}>
-                  {m.effort.toUpperCase()}
-                </span>
-                <span className="h2h-effort-note">LiveBench evaluation</span>
-              </div>
-            ) : (
-              <span className="h2h-effort-pill-single dim">Standard (non-reasoning)</span>
-            )}
-
-            {m.supported_efforts && m.supported_efforts.length > familyVariants.length && (
-              <span
-                className="h2h-effort-supported-badge"
-                title={`Provider supports: ${m.supported_efforts.join(", ")}`}
-              >
-                {m.supported_efforts.length} API tiers
-              </span>
-            )}
+        <div className="h2h-effort-selector-panel" role="group" aria-label={`Reasoning effort for ${labelOf(m)}`}>
+          <div className="h2h-effort-header">
+            <span className="h2h-effort-title">Reasoning Effort</span>
+            <span className="h2h-effort-status-badge" data-benchmarked={isLivebenchEvaluated}>
+              {isLivebenchEvaluated ? (
+                <>
+                  <span className="h2h-effort-status-dot" /> LiveBench evaluated
+                </>
+              ) : (
+                <>Configured tier (API supported)</>
+              )}
+            </span>
           </div>
+
+          <div className="h2h-effort-button-group">
+            {effortOptionsList.map((opt) => {
+              const isSelected = opt.id === currentActiveEffort;
+              return (
+                <button
+                  key={opt.id}
+                  type="button"
+                  className="h2h-effort-btn"
+                  data-slot={slot}
+                  data-selected={isSelected}
+                  data-benchmarked={opt.hasBenchmark}
+                  onClick={() => handleEffortSelect(opt)}
+                  aria-label={`Select ${opt.label} reasoning effort`}
+                >
+                  <span className="h2h-effort-btn-text">{opt.label}</span>
+                  {opt.hasBenchmark && (
+                    <span className="h2h-effort-btn-dot" title="LiveBench evaluation data available" />
+                  )}
+                  {opt.thinking && <span className="h2h-effort-btn-tag">think</span>}
+                </button>
+              );
+            })}
+          </div>
+
+          {!isLivebenchEvaluated && (
+            <div className="h2h-effort-footer-note">
+              Configured to <b>{activeOpt?.label}</b> effort. LiveBench evaluated this model at{" "}
+              <b>{(m.effort || "High").toUpperCase()}</b>.
+            </div>
+          )}
         </div>
 
         <div className="h2h-card-stats">
