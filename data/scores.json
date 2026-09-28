@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T13:57:56.154Z",
+  "generated_at": "2026-09-28T14:52:10.961Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -29519,13 +29519,241 @@
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20231010_rag_gpt35"
     }
   ],
+  "terminal_bench": [
+    {
+      "model_display": "GPT-5.5",
+      "canonical_id": "openai/gpt-5.5",
+      "resolved_pct": 82,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GPT-5.3 Codex",
+      "canonical_id": "openai/gpt-5.3-codex",
+      "resolved_pct": 77.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GPT-5.4",
+      "canonical_id": "openai/gpt-5.4",
+      "resolved_pct": 75.1,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Qwen3.7 Plus",
+      "canonical_id": "qwen/qwen3.7-plus",
+      "resolved_pct": 70.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Qwen3.7 Max",
+      "canonical_id": "qwen/qwen3.7-max",
+      "resolved_pct": 69.7,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Claude Opus 4.7 (Adaptive)",
+      "canonical_id": "anthropic/claude-opus-4.7",
+      "resolved_pct": 69.4,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "DeepSeek V4 Pro 0813",
+      "canonical_id": "deepseek/deepseek-v4-pro-0813",
+      "resolved_pct": 67.9,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Kimi K2.6",
+      "canonical_id": "moonshotai/kimi-k2.6",
+      "resolved_pct": 66.7,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Claude Opus 4.6",
+      "canonical_id": "anthropic/claude-opus-4.6",
+      "resolved_pct": 65.4,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GLM-5.1",
+      "canonical_id": "z-ai/glm-5.1",
+      "resolved_pct": 63.5,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "DeepSeek V4 Pro (High)",
+      "canonical_id": "deepseek/deepseek-v4-pro",
+      "resolved_pct": 63.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Qwen3.6 Plus",
+      "canonical_id": "qwen/qwen3.6-plus",
+      "resolved_pct": 61.6,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GPT-5.4 mini",
+      "canonical_id": "openai/gpt-5.4-mini",
+      "resolved_pct": 60,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Qwen3.6-27B",
+      "canonical_id": "qwen/qwen3.6-27b",
+      "resolved_pct": 59.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Claude Opus 4.5",
+      "canonical_id": "anthropic/claude-opus-4.5",
+      "resolved_pct": 59.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Claude Sonnet 4.6",
+      "canonical_id": "anthropic/claude-sonnet-4.6",
+      "resolved_pct": 59.1,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Muse Spark",
+      "canonical_id": "meta/muse-spark-1.1",
+      "resolved_pct": 59,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "MiniMax M2.7",
+      "canonical_id": "minimax/minimax-m2.7",
+      "resolved_pct": 57,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "DeepSeek V4 Flash 0731",
+      "canonical_id": "deepseek/deepseek-v4-flash-0731",
+      "resolved_pct": 56.9,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "DeepSeek V4 Flash (High)",
+      "canonical_id": "deepseek/deepseek-v4-flash",
+      "resolved_pct": 56.6,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GLM-5",
+      "canonical_id": "z-ai/glm-5",
+      "resolved_pct": 56.2,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Kimi K2.5",
+      "canonical_id": "moonshotai/kimi-k2.5",
+      "resolved_pct": 50.8,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "Claude Sonnet 4.5",
+      "canonical_id": "anthropic/claude-sonnet-4.5",
+      "resolved_pct": 50,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GPT-5.4 nano",
+      "canonical_id": "openai/gpt-5.4-nano",
+      "resolved_pct": 46.3,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    },
+    {
+      "model_display": "GLM-4.7",
+      "canonical_id": "z-ai/glm-4.7",
+      "resolved_pct": 41,
+      "benchmark": "Terminal-Bench 2.0",
+      "version": "2.0",
+      "captured_at": "2026-09-27",
+      "url": "https://benchlm.ai/benchmarks/terminal-bench-2"
+    }
+  ],
   "data_quality": {
     "counts": {
       "catalog_models": 458,
       "livebench_models": 63,
       "livebench_matched": 55,
       "swe_bench_systems": 180,
-      "swe_bench_matched": 72
+      "swe_bench_matched": 72,
+      "terminal_bench_rows": 25
     },
     "unmatched": {
       "livebench": [

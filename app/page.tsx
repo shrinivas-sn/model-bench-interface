@@ -22,6 +22,7 @@ export default function Page() {
           livebench={data.livebench}
           swe={data.swe_bench}
           capabilities={data.capabilities}
+          terminalBench={data.terminal_bench ?? []}
           vendorDisplay={data.vendor_display}
         />
       </Suspense>

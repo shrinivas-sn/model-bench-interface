@@ -751,6 +751,23 @@ tbody tr:hover td {
   font-weight: 600;
 }
 
+/* Terminal-Bench 2.0 rides inside the Capability axes card as one more axis row,
+   separated from the LiveBench axes because it is a different benchmark family. */
+.h2h-terminal-row {
+  margin-top: 4px;
+  padding-top: 14px;
+  border-top: 1px dashed var(--border);
+}
+
+.h2h-terminal-row .cap-name small {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.h2h-terminal-row .cap-bar-val {
+  width: 46px;
+}
+
 .h2h-radar-card {
   display: flex;
   flex-direction: column;

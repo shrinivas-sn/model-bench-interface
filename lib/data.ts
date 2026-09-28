@@ -56,6 +56,16 @@ export type SweRow = {
   url: string | null;
 };
 
+export type TerminalBenchRow = {
+  model_display: string | null;
+  canonical_id: string;
+  resolved_pct: number;
+  benchmark: string;
+  version: string;
+  captured_at: string | null;
+  url: string | null;
+};
+
 export type ScoresData = {
   generated_at: string;
   release: string;
@@ -64,6 +74,7 @@ export type ScoresData = {
   catalog: CatalogModel[];
   livebench: LivebenchModel[];
   swe_bench: SweRow[];
+  terminal_bench?: TerminalBenchRow[];
   data_quality: {
     counts: {
       catalog_models: number;

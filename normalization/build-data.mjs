@@ -172,6 +172,34 @@ async function sweBenchRows(aliasIndex) {
   return { rows, missingModelDisplay };
 }
 
+// ---------- Terminal-Bench 2.0 ----------
+// The official tbench.ai leaderboard has no public JSON endpoint, so the snapshot
+// lives in store/terminal-bench-2.jsonl (captured 2026-09-27 from BenchLM's
+// aggregation of provider self-reports). Rows carry a pre-resolved canonical_id
+// from the same alias discipline as the other sources.
+async function terminalBenchRows() {
+  const recs = existsSync(storePath("terminal-bench-2"))
+    ? await readLatestRecords(storePath("terminal-bench-2"))
+    : [];
+  const rows = [];
+  for (const rec of recs) {
+    const rawRows = rec.raw?.rows ?? rec.fields?.rows ?? [];
+    for (const r of rawRows) {
+      if (!r.canonical_id || r.resolved_pct == null) continue;
+      rows.push({
+        model_display: r.model || null,
+        canonical_id: r.canonical_id,
+        resolved_pct: Number(r.resolved_pct),
+        benchmark: rec.fields?.benchmark || "Terminal-Bench 2.0",
+        version: rec.fields?.version || "2.0",
+        captured_at: rec.fields?.captured_at || null,
+        url: rec.fields?.records_url || rec.source_url || null,
+      });
+    }
+  }
+  return { rows };
+}
+
 // ---------- Assemble ----------
 async function main() {
   const catalog = await buildCatalog();
@@ -181,6 +209,7 @@ async function main() {
 
   const lb = await livebenchModels(aliasIndex);
   const swe = await sweBenchRows(aliasIndex);
+  const terminalBench = await terminalBenchRows();
 
   // Join price from OpenRouter into matched models (single price source);
   // fallback to LiveBench's own cost CSV for unmatched models.
@@ -230,13 +259,15 @@ async function main() {
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
     swe_bench: swe.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
+    terminal_bench: terminalBench.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
     data_quality: {
       counts: {
         catalog_models: catalog.size,
-        livebench_models: lb.models.length,
-        livebench_matched: matchedLb,
-        swe_bench_systems: swe.rows.length,
-        swe_bench_matched: matchedSwe,
+      livebench_models: lb.models.length,
+      livebench_matched: matchedLb,
+      swe_bench_systems: swe.rows.length,
+      swe_bench_matched: matchedSwe,
+      terminal_bench_rows: terminalBench.rows.length,
       },
       unmatched: {
         livebench: lb.unmatched,
