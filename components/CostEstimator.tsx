@@ -166,6 +166,62 @@ export function CostEstimator({ modelA, modelB }: Props) {
         </div>
       )}
 
+      {/* Cost Formula Breakdown (Tin·Pin + Tout·Pout) */}
+      {(breakdownA.hasPricing || breakdownB.hasPricing) && (
+        <div className="cost-formula-explainer">
+          <div className="cost-formula-explainer-head">
+            <span className="cost-formula-title">
+              <span className="cost-formula-dot" /> Cost Formula & Token Multipliers
+            </span>
+            <span className="cost-formula-rule mono">
+              Cost = (T<sub>in</sub> · P<sub>in</sub> + T<sub>out</sub> · P<sub>out</sub>) / 1,000,000
+            </span>
+          </div>
+          <div className="cost-formula-slots-grid">
+            <div className="cost-formula-slot-box" data-slot="A">
+              <div className="cost-formula-slot-header">
+                <span className="picker-slot-badge" data-slot="A">A</span>
+                <span className="cost-formula-model-title mono">{labelA}</span>
+                <span className="cost-effort-tag">{effortA}</span>
+              </div>
+              <div className="cost-formula-math-line mono">
+                <span className="cost-math-part">
+                  <span className="cost-math-sub">In:</span> {formatTokenCount(breakdownA.inputTokens)} tok × {formatPerMillion(breakdownA.inputPrice)}/M (${breakdownA.inputCost.toFixed(4)})
+                </span>
+                <span className="cost-math-plus">+</span>
+                <span className="cost-math-part">
+                  <span className="cost-math-sub">Out:</span> {formatTokenCount(breakdownA.outputTokens)} tok × {formatPerMillion(breakdownA.outputPrice)}/M (${breakdownA.outputCost.toFixed(4)})
+                </span>
+                <span className="cost-math-eq">=</span>
+                <span className="cost-math-total">{formatCostPerQuestion(breakdownA.totalCost)} /q</span>
+              </div>
+            </div>
+
+            <div className="cost-formula-slot-box" data-slot="B">
+              <div className="cost-formula-slot-header">
+                <span className="picker-slot-badge" data-slot="B">B</span>
+                <span className="cost-formula-model-title mono">{labelB}</span>
+                <span className="cost-effort-tag">{effortB}</span>
+              </div>
+              <div className="cost-formula-math-line mono">
+                <span className="cost-math-part">
+                  <span className="cost-math-sub">In:</span> {formatTokenCount(breakdownB.inputTokens)} tok × {formatPerMillion(breakdownB.inputPrice)}/M (${breakdownB.inputCost.toFixed(4)})
+                </span>
+                <span className="cost-math-plus">+</span>
+                <span className="cost-math-part">
+                  <span className="cost-math-sub">Out:</span> {formatTokenCount(breakdownB.outputTokens)} tok × {formatPerMillion(breakdownB.outputPrice)}/M (${breakdownB.outputCost.toFixed(4)})
+                </span>
+                <span className="cost-math-eq">=</span>
+                <span className="cost-math-total">{formatCostPerQuestion(breakdownB.totalCost)} /q</span>
+              </div>
+            </div>
+          </div>
+          <p className="cost-formula-explainer-desc">
+            Reasoning effort scales output token volume (<b>T<sub>out</sub></b>) at the provider's output token rate (<b>P<sub>out</sub></b>), while prompt input tokens (<b>T<sub>in</sub></b>) remain fixed.
+          </p>
+        </div>
+      )}
+
       {/* Detailed metrics table */}
       <div className="cost-table-wrap">
         <table className="cost-table">

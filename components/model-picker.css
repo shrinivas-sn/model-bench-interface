@@ -630,278 +630,114 @@
   color: var(--text-muted);
 }
 
-/* ---------- h2h effort selector panel ---------- */
+/* ---------- one-liner reasoning effort dropdown row ---------- */
 
-.h2h-effort-selector-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--bg-inset);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  margin-top: 10px;
-}
-
-.h2h-effort-header {
+.h2h-effort-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 8px;
+  gap: 10px;
+  padding: 6px 12px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  min-height: 44px;
 }
 
-.h2h-effort-title {
-  font-size: 11px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: var(--text-faint);
-}
-
-.h2h-effort-status-badge {
+.h2h-effort-label {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 500;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 600;
   color: var(--text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  user-select: none;
 }
 
-.h2h-effort-status-badge[data-benchmarked="true"] {
-  color: var(--series-healthy);
-  font-weight: 600;
+.h2h-effort-label-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--text-faint);
 }
 
 .h2h-effort-status-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.h2h-effort-status-dot.evaluated {
   background: var(--series-healthy);
 }
 
-.h2h-effort-button-group {
+.h2h-effort-status-dot.dynamic {
+  background: var(--accent);
+}
+
+.h2h-effort-select-wrap {
+  position: relative;
   display: flex;
-  align-items: stretch;
-  gap: 6px;
-  flex-wrap: wrap;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  max-width: 100%;
 }
 
-.h2h-effort-btn {
-  display: inline-flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 3px;
-  min-height: 46px;
-  min-width: 44px;
-  padding: 6px 10px;
-  border-radius: var(--radius-sm);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  cursor: pointer;
-  border: 1px solid var(--border);
+.h2h-effort-select {
+  width: 100%;
+  min-height: 36px;
+  padding: 4px 28px 4px 8px;
   background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   color: var(--text-main);
-  transition: all var(--motion-duration) var(--motion-ease);
-  text-align: left;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: border-color var(--motion-duration) var(--motion-ease),
+    background var(--motion-duration) var(--motion-ease);
 }
 
-.h2h-effort-btn:hover {
+.h2h-effort-select:hover {
   border-color: var(--border-strong);
   background: var(--bg-hover);
-  transform: translateY(-1px);
 }
 
-.h2h-effort-btn:focus-visible {
+.h2h-effort-select:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
 }
 
-.h2h-effort-btn[data-selected="true"][data-slot="A"] {
-  border-color: var(--series-a);
-  background: var(--series-a);
-  color: var(--accent-ink);
-  font-weight: 700;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--series-a) 35%, transparent);
+.h2h-effort-row[data-slot="A"] .h2h-effort-select:focus-visible {
+  outline-color: var(--series-a);
 }
 
-.h2h-effort-btn[data-selected="true"][data-slot="B"] {
-  border-color: var(--series-b);
-  background: var(--series-b);
-  color: #0b1626;
-  font-weight: 700;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--series-b) 35%, transparent);
+.h2h-effort-row[data-slot="B"] .h2h-effort-select:focus-visible {
+  outline-color: var(--series-b);
 }
 
-.h2h-effort-btn-top {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-}
-
-.h2h-effort-btn-text {
-  font-size: 11.5px;
-  font-weight: 700;
-}
-
-.h2h-effort-btn-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: var(--series-healthy);
-}
-
-.h2h-effort-btn[data-selected="true"] .h2h-effort-btn-dot {
-  background: currentColor;
-}
-
-.h2h-effort-btn-tag {
-  font-size: 9px;
-  padding: 1px 4px;
-  border-radius: 3px;
-  background: color-mix(in srgb, currentColor 18%, transparent);
-  text-transform: uppercase;
-}
-
-.h2h-effort-btn-bottom {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 10px;
-}
-
-.h2h-effort-btn-rate {
-  opacity: 0.85;
-  color: var(--text-muted);
-}
-
-.h2h-effort-btn[data-selected="true"] .h2h-effort-btn-rate {
-  color: currentColor;
-  opacity: 0.95;
-}
-
-.h2h-effort-btn-cost {
-  padding: 1px 4px;
-  border-radius: 3px;
-  background: var(--bg-inset);
-  color: var(--text-muted);
-  font-weight: 500;
-}
-
-.h2h-effort-btn[data-selected="true"] .h2h-effort-btn-cost {
-  background: color-mix(in srgb, currentColor 20%, transparent);
-  color: inherit;
-  font-weight: 600;
-}
-
-/* ---------- highlighted cost formula card ---------- */
-
-.h2h-cost-formula-card {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  padding: 10px 12px;
-  background: var(--bg-inset);
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--series-a);
-  border-radius: var(--radius-sm);
-  margin-top: 10px;
-}
-
-.h2h-cost-formula-card[data-slot="B"] {
-  border-left-color: var(--series-b);
-}
-
-.h2h-formula-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-.h2h-formula-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 5px;
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted);
-}
-
-.h2h-formula-badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-}
-
-.h2h-formula-total {
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.h2h-formula-math {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-  padding: 8px 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  font-size: 11.5px;
-}
-
-.h2h-math-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  flex-wrap: wrap;
-}
-
-.h2h-math-tag {
-  font-size: 9.5px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 1px 4px;
-  border-radius: 3px;
-  background: var(--bg-raised);
-  color: var(--text-muted);
-}
-
-.h2h-math-calc {
-  color: var(--text-muted);
-}
-
-.h2h-math-val {
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.h2h-math-plus {
+.h2h-effort-select-caret {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
   color: var(--text-faint);
-  font-weight: 700;
-  font-size: 13px;
-}
-
-.h2h-formula-note {
-  font-size: 11px;
-  color: var(--text-muted);
-  line-height: 1.45;
-  margin: 0;
-}
-
-.h2h-formula-note code {
-  font-size: 10.5px;
-  color: var(--accent);
-}
-
-.h2h-formula-note b {
-  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ---------- swap button ---------- */

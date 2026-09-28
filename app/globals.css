@@ -1064,15 +1064,118 @@ tbody tr:hover td {
   font-size: 13px;
 }
 
-.h2h-effort-variance-insight {
+/* ---------- cost formula explainer inside workload estimator ---------- */
+
+.cost-formula-explainer {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 14px 16px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+}
+
+.cost-formula-explainer-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cost-formula-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+}
+
+.cost-formula-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.cost-formula-rule {
+  font-size: 11.5px;
+  color: var(--text-faint);
+}
+
+.cost-formula-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.cost-formula-slot-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-top: 2px solid var(--series-a);
+  border-radius: var(--radius-sm);
+}
+
+.cost-formula-slot-box[data-slot="B"] {
+  border-top-color: var(--series-b);
+}
+
+.cost-formula-slot-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cost-formula-model-title {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.cost-formula-math-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-size: 11.5px;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+.cost-math-sub {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.cost-math-plus,
+.cost-math-eq {
+  font-weight: 700;
+  color: var(--text-faint);
+}
+
+.cost-math-total {
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.cost-formula-explainer-desc {
   font-size: 11.5px;
   color: var(--text-muted);
   line-height: 1.45;
-  padding-top: 6px;
-  border-top: 1px dashed var(--border);
+  margin: 0;
 }
 
-.h2h-effort-variance-insight b {
+.cost-formula-explainer-desc b {
   color: var(--text-main);
 }
 
@@ -1121,11 +1224,13 @@ tbody tr:hover td {
   .cap-bar-track {
     height: 6px;
   }
-  .cost-estimator-grid {
+  .cost-estimator-grid,
+  .cost-formula-slots-grid {
     grid-template-columns: 1fr;
     gap: 10px;
   }
-  .cost-model-box {
+  .cost-model-box,
+  .cost-formula-slot-box {
     padding: 12px;
     gap: 8px;
   }

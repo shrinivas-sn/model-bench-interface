@@ -5,15 +5,14 @@ import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
 import { ModelPicker } from "@/components/ModelPicker";
 import { CostEstimator } from "@/components/CostEstimator";
-import { SwapIcon } from "@/components/icons";
+import { EffortChip } from "@/components/EffortChip";
+import { ChevronDownIcon, SwapIcon } from "@/components/icons";
 import type { LivebenchModel, SweRow } from "@/lib/data";
 import { defaultPair, formatFamilyLabel, formatPerMillion, readRecents } from "@/lib/picker.mjs";
 import {
   formatCostPerQuestion,
   formatTokenCount,
   resolveModelForEffort,
-  effortVarianceInsight,
-  calculateQuestionCostBreakdown,
 } from "@/lib/cost.mjs";
 
 type Props = {
@@ -254,10 +253,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     const sweRow = sweFor(rawM);
     const effortOptionsList = getEffortListForModel(rawM, livebench);
     const currentActiveEffort = overrideEffort[slot] || resolvedM.activeEffort || rawM.effort?.toLowerCase() || "standard";
-    const activeOpt = effortOptionsList.find((opt) => opt.id === currentActiveEffort) || effortOptionsList[0];
     const isLivebenchEvaluated = resolvedM.isEvaluated;
-    const costBreakdown = calculateQuestionCostBreakdown(resolvedM);
-    const effortInsight = effortVarianceInsight(resolvedM, livebench);
 
     return (
       <div className="h2h-model-card" data-slot={slot}>
@@ -269,67 +265,49 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           vendorDisplay={vendorDisplay}
         />
 
-        <div className="h2h-effort-selector-panel" role="group" aria-label={`Reasoning effort for ${labelOf(resolvedM)}`}>
-          <div className="h2h-effort-header">
-            <span className="h2h-effort-title">Reasoning Effort</span>
-            <span className="h2h-effort-status-badge" data-benchmarked={isLivebenchEvaluated}>
-              {isLivebenchEvaluated ? (
-                <>
-                  <span className="h2h-effort-status-dot" /> LiveBench evaluated
-                </>
-              ) : (
-                <>
-                  <span className="h2h-effort-status-dot" style={{ background: "var(--accent)" }} /> ⚡ Dynamic ({resolvedM.activeEffort.toUpperCase()} model)
-                </>
-              )}
+        {/* Clean one-liner reasoning effort dropdown */}
+        <div className="h2h-effort-row" data-slot={slot}>
+          <label htmlFor={`effort-select-${slot}`} className="h2h-effort-label">
+            <span className="h2h-effort-label-title">Effort:</span>
+            <EffortChip effort={resolvedM.activeEffort} />
+            <span
+              className={`h2h-effort-status-dot ${isLivebenchEvaluated ? "evaluated" : "dynamic"}`}
+              title={isLivebenchEvaluated ? "LiveBench evaluated benchmark data" : "Dynamically scaled reasoning model"}
+            />
+          </label>
+          <div className="h2h-effort-select-wrap">
+            <select
+              id={`effort-select-${slot}`}
+              className="h2h-effort-select"
+              data-slot={slot}
+              value={currentActiveEffort}
+              onChange={(e) => {
+                const targetId = e.target.value;
+                const opt = effortOptionsList.find((o) => o.id === targetId);
+                if (opt) handleEffortSelect(slot, index, opt, rawM);
+              }}
+              aria-label={`Select reasoning effort for ${labelOf(resolvedM)}`}
+            >
+              {effortOptionsList.map((opt) => {
+                const preview = resolveModelForEffort(rawM, opt.id, livebench);
+                const previewCost = preview?.cost?.cost_per_question;
+                const previewTok = preview?.cost?.avg_output_tokens;
+                const inP = preview?.pricing?.input_per_million ?? preview?.cost?.input_price_per_million ?? 0;
+                const outP = preview?.pricing?.output_per_million ?? preview?.cost?.output_price_per_million ?? 0;
+                const rateStr = inP > 0 || outP > 0 ? `${formatPerMillion(inP)}/${formatPerMillion(outP)}/M` : "";
+                const tag = opt.hasBenchmark ? "evaluated" : "dynamic";
+
+                return (
+                  <option key={opt.id} value={opt.id}>
+                    {opt.label} — {formatCostPerQuestion(previewCost)}/q · ~{formatTokenCount(previewTok)} tok {rateStr ? `· ${rateStr}` : ""} ({tag})
+                  </option>
+                );
+              })}
+            </select>
+            <span className="h2h-effort-select-caret" aria-hidden>
+              <ChevronDownIcon size={14} />
             </span>
           </div>
-
-          <div className="h2h-effort-button-group">
-            {effortOptionsList.map((opt) => {
-              const isSelected = opt.id === currentActiveEffort;
-              const preview = resolveModelForEffort(rawM, opt.id, livebench);
-              const previewCost = preview?.cost?.cost_per_question;
-              const previewTok = preview?.cost?.avg_output_tokens;
-              const inP = preview?.pricing?.input_per_million ?? preview?.cost?.input_price_per_million ?? 0;
-              const outP = preview?.pricing?.output_per_million ?? preview?.cost?.output_price_per_million ?? 0;
-              const rateStr = inP > 0 || outP > 0 ? `${formatPerMillion(inP)}/${formatPerMillion(outP)}/M` : null;
-
-              return (
-                <button
-                  key={opt.id}
-                  type="button"
-                  className="h2h-effort-btn"
-                  data-slot={slot}
-                  data-selected={isSelected}
-                  data-benchmarked={opt.hasBenchmark}
-                  onClick={() => handleEffortSelect(slot, index, opt, rawM)}
-                  title={`${opt.label}: ~${formatTokenCount(previewTok)} reasoning tokens @ ${formatPerMillion(inP)} in / ${formatPerMillion(outP)} out (${formatCostPerQuestion(previewCost)}/q)`}
-                  aria-label={`Select ${opt.label} reasoning effort`}
-                >
-                  <span className="h2h-effort-btn-top">
-                    <span className="h2h-effort-btn-text">{opt.label}</span>
-                    {opt.hasBenchmark && (
-                      <span className="h2h-effort-btn-dot" title="LiveBench evaluation data available" />
-                    )}
-                    {opt.thinking && <span className="h2h-effort-btn-tag">think</span>}
-                  </span>
-                  <span className="h2h-effort-btn-bottom">
-                    {rateStr && <span className="h2h-effort-btn-rate mono">{rateStr}</span>}
-                    {previewCost != null && (
-                      <span className="h2h-effort-btn-cost mono">{formatCostPerQuestion(previewCost)}</span>
-                    )}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          {effortInsight && (
-            <div className="h2h-effort-variance-insight">
-              {effortInsight.message}
-            </div>
-          )}
         </div>
 
         <div className="h2h-card-stats">
@@ -358,42 +336,6 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
             </span>
           </div>
         </div>
-
-        {/* Highlighted Cost Formula & Token Breakdown */}
-        {costBreakdown.hasPricing && (
-          <div className="h2h-cost-formula-card" data-slot={slot}>
-            <div className="h2h-formula-head">
-              <span className="h2h-formula-badge">
-                <span className="h2h-formula-badge-dot" /> Cost Formula Breakdown
-              </span>
-              <span className="h2h-formula-total mono">
-                {formatCostPerQuestion(costBreakdown.totalCost)} / query
-              </span>
-            </div>
-
-            <div className="h2h-formula-math mono">
-              <div className="h2h-math-item">
-                <span className="h2h-math-tag">Prompt in</span>
-                <span className="h2h-math-calc">
-                  {formatTokenCount(costBreakdown.inputTokens)} tok × {formatPerMillion(costBreakdown.inputPrice)}/M
-                </span>
-                <span className="h2h-math-val">${costBreakdown.inputCost.toFixed(4)}</span>
-              </div>
-              <span className="h2h-math-plus">+</span>
-              <div className="h2h-math-item">
-                <span className="h2h-math-tag">Reasoning out ({resolvedM.activeEffort.toUpperCase()})</span>
-                <span className="h2h-math-calc">
-                  {formatTokenCount(costBreakdown.outputTokens)} tok × {formatPerMillion(costBreakdown.outputPrice)}/M
-                </span>
-                <span className="h2h-math-val">${costBreakdown.outputCost.toFixed(4)}</span>
-              </div>
-            </div>
-
-            <p className="h2h-formula-note">
-              Query cost is calculated as <code>(Input Tok × P<sub>in</sub> + Output Tok × P<sub>out</sub>) / 1M</code>. Higher reasoning effort expands output tokens (<b>{formatTokenCount(costBreakdown.outputTokens)} tok</b>) at <b>{formatPerMillion(costBreakdown.outputPrice)}/Mtok</b>, while prompt tokens (<b>{formatTokenCount(costBreakdown.inputTokens)} tok</b>) remain constant.
-            </p>
-          </div>
-        )}
 
         <div className="h2h-card-meta">
           <span>
