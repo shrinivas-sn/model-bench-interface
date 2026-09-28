@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import type { LivebenchModel } from "@/lib/data";
-import { formatFamilyLabel } from "@/lib/picker.mjs";
+import { formatFamilyLabel, formatPerMillion } from "@/lib/picker.mjs";
 import {
   formatCostPerQuestion,
   formatTokenCount,
   formatWorkloadCost,
   calculateCostComparison,
+  calculateQuestionCostBreakdown,
 } from "@/lib/cost.mjs";
 
 type Props = {
@@ -21,6 +22,9 @@ export function CostEstimator({ modelA, modelB }: Props) {
   const [queryCount, setQueryCount] = useState<number>(1000);
 
   const comparison = calculateCostComparison(modelA, modelB, queryCount);
+  const breakdownA = calculateQuestionCostBreakdown(modelA);
+  const breakdownB = calculateQuestionCostBreakdown(modelB);
+
   const labelA = formatFamilyLabel(modelA.family_id || modelA.benchmark_name);
   const labelB = formatFamilyLabel(modelB.family_id || modelB.benchmark_name);
   const effortA = modelA.effort ? modelA.effort.toUpperCase() : "STANDARD";
@@ -31,13 +35,18 @@ export function CostEstimator({ modelA, modelB }: Props) {
   const pctA = totalBoth > 0 ? Math.round(((comparison.totalCostA ?? 0) / totalBoth) * 100) : 50;
   const pctB = 100 - pctA;
 
+  const workloadInCostA = breakdownA.inputCost * queryCount;
+  const workloadOutCostA = breakdownA.outputCost * queryCount;
+  const workloadInCostB = breakdownB.inputCost * queryCount;
+  const workloadOutCostB = breakdownB.outputCost * queryCount;
+
   return (
     <div className="card cost-estimator-card">
       <div className="cost-estimator-header">
         <div className="cost-estimator-title-wrap">
           <span className="h2h-card-heading">Workload & Cost Estimator</span>
           <p className="cost-estimator-desc">
-            LiveBench measured cost per question factoring in token pricing and reasoning output expansion.
+            Projected compute cost across query volumes, derived directly from input/output token pricing and reasoning expansion.
           </p>
         </div>
 
@@ -76,12 +85,18 @@ export function CostEstimator({ modelA, modelB }: Props) {
           </div>
           <div className="cost-model-metrics">
             <div className="cost-metric-row">
-              <span className="dim">Per question:</span>
+              <span className="dim">Token Rates:</span>
+              <span className="mono">
+                {formatPerMillion(breakdownA.inputPrice)} in / {formatPerMillion(breakdownA.outputPrice)} out /M
+              </span>
+            </div>
+            <div className="cost-metric-row">
+              <span className="dim">Cost per question:</span>
               <span className="mono">{formatCostPerQuestion(comparison.costPerQA)}</span>
             </div>
             <div className="cost-metric-row">
-              <span className="dim">Avg reasoning tokens:</span>
-              <span className="mono">{formatTokenCount(comparison.tokensOutA)}</span>
+              <span className="dim">Reasoning tokens:</span>
+              <span className="mono">~{formatTokenCount(comparison.tokensOutA)}</span>
             </div>
           </div>
         </div>
@@ -101,12 +116,18 @@ export function CostEstimator({ modelA, modelB }: Props) {
           </div>
           <div className="cost-model-metrics">
             <div className="cost-metric-row">
-              <span className="dim">Per question:</span>
+              <span className="dim">Token Rates:</span>
+              <span className="mono">
+                {formatPerMillion(breakdownB.inputPrice)} in / {formatPerMillion(breakdownB.outputPrice)} out /M
+              </span>
+            </div>
+            <div className="cost-metric-row">
+              <span className="dim">Cost per question:</span>
               <span className="mono">{formatCostPerQuestion(comparison.costPerQB)}</span>
             </div>
             <div className="cost-metric-row">
-              <span className="dim">Avg reasoning tokens:</span>
-              <span className="mono">{formatTokenCount(comparison.tokensOutB)}</span>
+              <span className="dim">Reasoning tokens:</span>
+              <span className="mono">~{formatTokenCount(comparison.tokensOutB)}</span>
             </div>
           </div>
         </div>
@@ -158,7 +179,47 @@ export function CostEstimator({ modelA, modelB }: Props) {
           </thead>
           <tbody>
             <tr>
-              <td>Cost per benchmark question</td>
+              <td>Input token price ($ / 1Mtok)</td>
+              <td className="mono num">{formatPerMillion(breakdownA.inputPrice)}</td>
+              <td className="mono num">{formatPerMillion(breakdownB.inputPrice)}</td>
+              <td className="mono num">
+                <span className="dim">
+                  {breakdownA.inputPrice === breakdownB.inputPrice ? "equal" : `${(breakdownA.inputPrice / (breakdownB.inputPrice || 1)).toFixed(1)}×`}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Output token price ($ / 1Mtok)</td>
+              <td className="mono num">{formatPerMillion(breakdownA.outputPrice)}</td>
+              <td className="mono num">{formatPerMillion(breakdownB.outputPrice)}</td>
+              <td className="mono num">
+                <span className="dim">
+                  {breakdownA.outputPrice === breakdownB.outputPrice ? "equal" : `${(breakdownA.outputPrice / (breakdownB.outputPrice || 1)).toFixed(1)}×`}
+                </span>
+              </td>
+            </tr>
+            <tr>
+              <td>Avg prompt tokens (fixed)</td>
+              <td className="mono num">{formatTokenCount(comparison.tokensInA)}</td>
+              <td className="mono num">{formatTokenCount(comparison.tokensInB)}</td>
+              <td className="mono num">
+                <span className="dim">fixed</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Avg reasoning tokens ({effortA} vs {effortB})</td>
+              <td className="mono num">{formatTokenCount(comparison.tokensOutA)}</td>
+              <td className="mono num">{formatTokenCount(comparison.tokensOutB)}</td>
+              <td className="mono num">
+                {comparison.tokenMultiplier && comparison.tokenLeader !== "equal" ? (
+                  <span>{comparison.tokenMultiplier}× volume</span>
+                ) : (
+                  <span className="dim">≈</span>
+                )}
+              </td>
+            </tr>
+            <tr>
+              <td>Single query cost (Tin·Pin + Tout·Pout)</td>
               <td className="mono num">{formatCostPerQuestion(comparison.costPerQA)}</td>
               <td className="mono num">{formatCostPerQuestion(comparison.costPerQB)}</td>
               <td className="mono num">
@@ -172,33 +233,25 @@ export function CostEstimator({ modelA, modelB }: Props) {
               </td>
             </tr>
             <tr>
-              <td>Avg reasoning / output tokens</td>
-              <td className="mono num">{formatTokenCount(comparison.tokensOutA)}</td>
-              <td className="mono num">{formatTokenCount(comparison.tokensOutB)}</td>
-              <td className="mono num">
-                {comparison.tokenMultiplier && comparison.tokenLeader !== "equal" ? (
-                  <span>{comparison.tokenMultiplier}× volume</span>
-                ) : (
-                  <span className="dim">≈</span>
-                )}
-              </td>
+              <td>Prompt spend for {queryCount.toLocaleString()} queries</td>
+              <td className="mono num">{formatWorkloadCost(workloadInCostA)}</td>
+              <td className="mono num">{formatWorkloadCost(workloadInCostB)}</td>
+              <td className="mono num"><span className="dim">—</span></td>
             </tr>
             <tr>
-              <td>Avg prompt / input tokens</td>
-              <td className="mono num">{formatTokenCount(comparison.tokensInA)}</td>
-              <td className="mono num">{formatTokenCount(comparison.tokensInB)}</td>
-              <td className="mono num">
-                <span className="dim">—</span>
-              </td>
+              <td>Reasoning spend for {queryCount.toLocaleString()} queries</td>
+              <td className="mono num">{formatWorkloadCost(workloadOutCostA)}</td>
+              <td className="mono num">{formatWorkloadCost(workloadOutCostB)}</td>
+              <td className="mono num"><span className="dim">—</span></td>
             </tr>
             <tr>
-              <td>Total for {queryCount.toLocaleString()} queries</td>
-              <td className="mono num">{formatWorkloadCost(comparison.totalCostA)}</td>
-              <td className="mono num">{formatWorkloadCost(comparison.totalCostB)}</td>
+              <td><strong>Total spend for {queryCount.toLocaleString()} queries</strong></td>
+              <td className="mono num"><strong>{formatWorkloadCost(comparison.totalCostA)}</strong></td>
+              <td className="mono num"><strong>{formatWorkloadCost(comparison.totalCostB)}</strong></td>
               <td className="mono num">
                 {comparison.savings && comparison.savings > 0 ? (
                   <span className="delta-up">
-                    Save {formatWorkloadCost(comparison.savings)} with {comparison.cheaperSlot}
+                    Save {formatWorkloadCost(comparison.savings)} ({comparison.cheaperSlot})
                   </span>
                 ) : (
                   <span className="dim">≈</span>

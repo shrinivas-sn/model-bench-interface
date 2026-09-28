@@ -1077,18 +1077,60 @@ tbody tr:hover td {
 }
 
 @media (max-width: 768px) {
+  .h2h-root {
+    gap: 16px;
+  }
   .h2h-cards-container {
     flex-direction: column;
+    gap: 8px;
+  }
+  .h2h-model-card {
+    padding: 12px 14px;
   }
   .h2h-card-swap-wrap {
     margin: -6px 0;
   }
   .h2h-card-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    padding: 8px 0;
+  }
+  .h2h-card-stat {
+    padding: 4px 6px;
+  }
+  .h2h-stat-label {
+    font-size: 10px;
+  }
+  .h2h-stat-value {
+    font-size: 12.5px;
+  }
+  .h2h-compare-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+  .h2h-capabilities-card,
+  .h2h-radar-card,
+  .cost-estimator-card {
+    padding: 14px 12px;
+    gap: 12px;
+  }
+  .cap-row {
+    padding: 4px 0;
+    gap: 4px;
+  }
+  .cap-bar-track {
+    height: 6px;
   }
   .cost-estimator-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .cost-model-box {
+    padding: 12px;
+    gap: 8px;
+  }
+  .cost-model-total {
+    font-size: 24px;
   }
   .cost-volume-controls {
     width: 100%;

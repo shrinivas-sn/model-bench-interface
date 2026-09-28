@@ -7,7 +7,6 @@ import Link from "next/link";
 
 import type { LivebenchModel } from "@/lib/data";
 import {
-  effortOptions,
   formatFamilyLabel,
   formatPerMillion,
   groupModels,
@@ -16,7 +15,7 @@ import {
   writeRecents,
 } from "@/lib/picker.mjs";
 import { EffortChip } from "./EffortChip";
-import { ArrowLeftIcon, CheckIcon, ChevronDownIcon, SearchIcon } from "./icons";
+import { ArrowLeftIcon, ChevronDownIcon, SearchIcon } from "./icons";
 import "./model-picker.css";
 
 export type ModelPickerProps = {
@@ -30,7 +29,7 @@ export type ModelPickerProps = {
   onOpenChange?(open: boolean): void;
 };
 
-type Stage = "company" | "model" | "effort";
+type Stage = "company" | "model";
 
 /** Shapes returned by lib/picker.mjs, typed here so the render code is checked. */
 type PickerFamily = {
@@ -85,7 +84,6 @@ export function ModelPicker({
   const [search, setSearch] = useState("");
   const [stage, setStage] = useState<Stage>("company");
   const [vendor, setVendor] = useState<string | null>(null);
-  const [familyId, setFamilyId] = useState<string | null>(null);
   const [recents, setRecents] = useState<string[]>([]);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -102,7 +100,6 @@ export function ModelPicker({
     setSearch("");
     setStage("company");
     setVendor(null);
-    setFamilyId(null);
     setRecents(readRecents(storage()));
   }, [isOpen]);
 
@@ -134,11 +131,6 @@ export function ModelPicker({
     [groups, vendor]
   );
 
-  const activeFamily = useMemo<PickerFamily | null>(
-    () => activeGroup?.families.find((f) => f.family_id === familyId) ?? null,
-    [activeGroup, familyId]
-  );
-
   const results = useMemo<{ family: PickerFamily; vendor: string; vendor_name: string }[]>(
     () => searchFamilies(groups, search),
     [groups, search]
@@ -162,23 +154,17 @@ export function ModelPicker({
     [onChange, setIsOpen]
   );
 
-  /** Choosing a family takes the user to the reasoning effort stage. */
+  /** Choosing a family immediately selects its primary variant and closes the picker. */
   const chooseFamily = useCallback(
     (family: PickerFamily) => {
-      setVendor(family.variants[0]?.display_vendor ?? vendor);
-      setFamilyId(family.family_id);
-      setStage("effort");
-      // Clear the query so the effort step renders cleanly
-      setSearch("");
+      const bestName = family.variants[0]?.benchmark_name || family.primary?.benchmark_name || family.family_id;
+      commit(bestName);
     },
-    [vendor]
+    [commit]
   );
 
   const goBack = useCallback(() => {
-    if (stage === "effort") {
-      setStage("model");
-      setFamilyId(null);
-    } else if (stage === "model") {
+    if (stage === "model") {
       setStage("company");
       setVendor(null);
     } else {
@@ -316,85 +302,6 @@ export function ModelPicker({
     </Command.Group>
   );
 
-  const options: LivebenchModel[] = activeFamily
-    ? (effortOptions(activeFamily).variants as LivebenchModel[])
-    : [];
-  const effortLabels = options.map((v) => v.effort ?? "not stated");
-  const selectedEffort = selectedEffortFor(activeFamily);
-
-  const effortStage = activeFamily && (
-    <>
-      <div className="picker-family-preview">
-        <div className="picker-family-preview-head">
-          <span className="picker-family-preview-title">
-            {formatFamilyLabel(activeFamily.family_id)}
-          </span>
-          <span className="picker-item-sub">{activeFamily.vendor_name}</span>
-          {activeFamily.variants.some((v) => v.thinking) && (
-            <span className="thinking-badge">thinking</span>
-          )}
-        </div>
-        <div className="picker-family-meta">
-          <span>
-            Price <b className="mono">
-              {formatPerMillion(activeFamily.pricing?.input_per_million ?? null)} /{" "}
-              {formatPerMillion(activeFamily.pricing?.output_per_million ?? null)}
-            </b>{" "}
-            per Mtok
-          </span>
-          {activeFamily.primary.context_length ? (
-            <span>
-              Context <b className="mono">
-                {(activeFamily.primary.context_length / 1000).toFixed(0)}k
-              </b>
-            </span>
-          ) : null}
-          {activeFamily.overall_score != null && (
-            <span>
-              Mean score <b className="mono">{activeFamily.overall_score}</b>
-            </span>
-          )}
-          {activeFamily.primary.external_benchmarks?.artificial_analysis?.intelligence_index ? (
-            <span>
-              Intelligence index <b className="mono">{activeFamily.primary.external_benchmarks.artificial_analysis.intelligence_index}</b>
-            </span>
-          ) : null}
-        </div>
-      </div>
-
-      <Command.Group
-        heading={`Reasoning effort — ${options.length} variant${options.length === 1 ? "" : "s"}`}
-        className="picker-group"
-      >
-        <div className="picker-effort-grid">
-          {options.map((v, i) => {
-            const label = (v.effort ?? "not stated").toUpperCase();
-            // Only disambiguate when two variants genuinely share a label.
-            const duplicate = effortLabels.filter((l) => l === (v.effort ?? "not stated")).length > 1;
-            const isSelected = v.benchmark_name === selectedEffort;
-            return (
-              <button
-                key={v.benchmark_name}
-                type="button"
-                className="picker-effort-btn"
-                data-selected={isSelected}
-                onClick={() => commit(v.benchmark_name)}
-                aria-label={`Select ${formatFamilyLabel(activeFamily.family_id)} at ${label}`}
-              >
-                <span>
-                  {isSelected && <CheckIcon size={12} />} {label}
-                </span>
-                <span className="picker-effort-btn-note">
-                  {v.thinking ? "thinking" : duplicate ? v.benchmark_name.split("-").slice(-3).join("-") : "standard"}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </Command.Group>
-    </>
-  );
-
   const searchResults = (
     <Command.Group heading={`${results.length} match${results.length === 1 ? "" : "es"}`} className="picker-group">
       {results.map(({ family }) => familyRow(family, `hit-${family.vendor}`))}
@@ -419,7 +326,7 @@ export function ModelPicker({
         </span>
         <Command.Input
           className="picker-input"
-          placeholder="Search company, model or effort…"
+          placeholder="Search company or model…"
           value={search}
           onValueChange={setSearch}
           autoFocus={!isMobile}
@@ -429,8 +336,8 @@ export function ModelPicker({
         </span>
       </div>
 
-      {/* Breadcrumb trail: where am I, and what have I already narrowed to. */}
-      {!searching && stage !== "company" && (
+      {/* Breadcrumb trail: Companies > Vendor Name */}
+      {!searching && stage === "model" && (
         <div className="picker-stage-head">
           <button type="button" className="picker-back-btn" onClick={goBack}>
             <ArrowLeftIcon size={13} /> Back
@@ -438,17 +345,9 @@ export function ModelPicker({
           <div className="picker-crumbs">
             <span className="picker-crumb">Companies</span>
             <span className="picker-crumb-sep">›</span>
-            <span className="picker-crumb" data-current={stage === "model"}>
+            <span className="picker-crumb" data-current="true">
               {activeGroup?.vendor_name ?? "—"}
             </span>
-            {stage === "effort" && (
-              <>
-                <span className="picker-crumb-sep">›</span>
-                <span className="picker-crumb" data-current="true">
-                  {activeFamily ? formatFamilyLabel(activeFamily.family_id) : "—"}
-                </span>
-              </>
-            )}
           </div>
         </div>
       )}
@@ -458,7 +357,7 @@ export function ModelPicker({
           <Command.Empty className="picker-empty">
             No model matches &ldquo;{search}&rdquo;.
             <div className="picker-empty-hint">
-              Try a company (anthropic), a family (opus), or an effort (xhigh). Names that
+              Try a company (anthropic), a family (opus), or a model name. Names that
               could not be matched to the OpenRouter catalog are listed on{" "}
               <Link href="/quality" onClick={() => setIsOpen(false)}>
                 /quality
@@ -470,10 +369,8 @@ export function ModelPicker({
           searchResults
         ) : stage === "company" ? (
           companyStage
-        ) : stage === "model" ? (
-          modelStage
         ) : (
-          effortStage
+          modelStage
         )}
       </Command.List>
     </Command>

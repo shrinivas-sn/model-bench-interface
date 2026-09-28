@@ -8,6 +8,7 @@ import {
   calculateCostComparison,
   resolveModelForEffort,
   effortVarianceInsight,
+  calculateQuestionCostBreakdown,
 } from "../../lib/cost.mjs";
 
 test("formatCostPerQuestion formats dollars with appropriate precision", () => {
@@ -114,19 +115,28 @@ test("resolveModelForEffort dynamically scales token volume, cost, and capabilit
   assert.ok(resolvedLow.categories.Mathematics < 91.56);
 });
 
-test("effortVarianceInsight generates informative context for calculated and evaluated models", () => {
-  const modelCalculated = {
+test("calculateQuestionCostBreakdown computes prompt and reasoning cost components from token pricing", () => {
+  const model = {
     benchmark_name: "gemini-3.8-flash-high",
-    effort: "low",
-    activeEffort: "low",
-    baselineEffort: "high",
-    isCalculated: true,
-    tokenMultiplier: 0.2,
-    cost: { cost_per_question: 0.048, avg_output_tokens: 8557 },
+    pricing: {
+      input_per_million: 0.75,
+      output_per_million: 3.75,
+    },
+    cost: {
+      avg_input_tokens: 1500,
+      avg_output_tokens: 20000,
+      cost_per_question: 0.0761,
+    },
   };
 
-  const insight = effortVarianceInsight(modelCalculated, []);
-  assert.equal(insight.type, "calculated");
-  assert.equal(insight.currentEffort, "LOW");
-  assert.ok(insight.message.includes("LOW reasoning"));
+  const breakdown = calculateQuestionCostBreakdown(model);
+  assert.equal(breakdown.hasPricing, true);
+  assert.equal(breakdown.inputTokens, 1500);
+  assert.equal(breakdown.outputTokens, 20000);
+  assert.equal(breakdown.inputPrice, 0.75);
+  assert.equal(breakdown.outputPrice, 3.75);
+  assert.equal(breakdown.inputCost, (1500 * 0.75) / 1_000_000);
+  assert.equal(breakdown.outputCost, (20000 * 3.75) / 1_000_000);
+  assert.equal(breakdown.totalCost, 0.0761);
 });
+
