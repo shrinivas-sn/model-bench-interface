@@ -5,8 +5,8 @@
 ## Current state
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
 - **Ingestion**: 4 declarative adapters (`openrouter` reasoning/benchmarks, `swe-bench-verified` reasoning effort, `livebench-scores`, `livebench-cost`) → 458 catalog models, 63 LiveBench rows.
-- **UI**: Interactive effort button panel on comparison cards, dynamic card-level `$/Question` & reasoning token metrics, and real-time Effort-Dynamic Cost & Workload Estimator with proportional breakdown and token volume multipliers.
-- **Gates**: `verify:fixtures` 4/4 · `npm test` 72/72 · `tsc` clean · `npm run build` 7/7 static pages · `verify:ui` 116/116 checks.
+- **UI**: Interactive effort button panel on comparison cards, dynamic effort-resolved model engine (`LOW`, `MEDIUM`, `HIGH`, `XHIGH`, `MAX`), dynamic card-level `$/Question` & reasoning token metrics, and real-time Effort-Dynamic Cost & Workload Estimator.
+- **Gates**: `verify:fixtures` 4/4 · `npm test` 73/73 · `tsc` clean · `npm run build` 7/7 static pages · `verify:ui` 116/116 checks.
 
 ## Pending
 - Manual alias table for SWE-bench systems (51/180 matched) & 8 unmatched LiveBench names on `/quality`.
