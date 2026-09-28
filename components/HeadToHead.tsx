@@ -238,6 +238,18 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     [a, b, swe]
   );
 
+  // One glanceable tally for the collapsed summary row.
+  const { aWins, bWins } = useMemo(() => {
+    let aw = 0;
+    let bw = 0;
+    for (const it of officialBenchmarks) {
+      if (it.valA == null || it.valB == null) continue;
+      if (it.valA > it.valB) aw += 1;
+      else if (it.valB > it.valA) bw += 1;
+    }
+    return { aWins: aw, bWins: bw };
+  }, [officialBenchmarks]);
+
   if (!a || !b || !rawA || !rawB) {
     return (
       <div className="card">
@@ -377,127 +389,79 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         {modelCard(b, rawB, "B", 1)}
       </div>
 
-      {/* Official Developer & Terminal Benchmarks Panel */}
-      <div className="h2h-benchmarks-card">
-        <div className="h2h-benchmarks-header">
-          <div className="row-between">
-            <div>
-              <h3 className="h2h-benchmarks-title">Official Developer & Terminal Benchmarks</h3>
-              <p className="h2h-benchmarks-subtitle">
-                Key validated benchmarks: Reasoning, Coding Proficiency, Autonomous Terminal/Tools, and Real-World SWE-bench GitHub issues.
-              </p>
-            </div>
-            <div className="h2h-legend">
-              <span className="h2h-legend-item">
-                <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
-                A · <span className="h2h-legend-name">{labelOf(a)}</span>
-              </span>
-              <span className="h2h-legend-item">
-                <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
-                B · <span className="h2h-legend-name">{labelOf(b)}</span>
-              </span>
-            </div>
-          </div>
+      {/* Official benchmarks — one compact table, collapsed until asked for */}
+      <details className="h2h-benchmarks-card">
+        <summary className="h2h-benchmarks-summary">
+          <span className="h2h-card-heading">Official benchmarks</span>
+          <span className="h2h-bench-summary-leader">
+            {aWins === bWins ? (
+              <>tied {aWins}–{bWins}</>
+            ) : aWins > bWins ? (
+              <><strong data-slot="A">A</strong> leads {aWins}–{bWins}</>
+            ) : (
+              <><strong data-slot="B">B</strong> leads {bWins}–{aWins}</>
+            )}
+          </span>
+          <span className="dim">{officialBenchmarks.length} benchmarks</span>
+          <ChevronDownIcon size={14} />
+        </summary>
+
+        <div className="h2h-bench-table-wrap">
+          <table className="h2h-bench-table">
+            <thead>
+              <tr>
+                <th>Benchmark</th>
+                <th className="num">A · {labelOf(a)}</th>
+                <th className="num">B · {labelOf(b)}</th>
+                <th className="num">Δ</th>
+              </tr>
+            </thead>
+            <tbody>
+              {officialBenchmarks.map((item) => {
+                const va = item.valA;
+                const vb = item.valB;
+                const hasBoth = va != null && vb != null;
+                const aLeads = hasBoth && va > vb;
+                const bLeads = hasBoth && vb > va;
+                const unitSuffix = item.unit === "%" ? "%" : item.unit === "elo" ? " elo" : "";
+
+                return (
+                  <tr key={item.id}>
+                    <td className="mono">
+                      {item.name}
+                      <small className="dim"> · {item.authority}</small>
+                    </td>
+                    <td className="mono num" data-lead={aLeads}>
+                      {va != null ? `${va.toFixed(1)}${unitSuffix}` : "—"}
+                    </td>
+                    <td className="mono num" data-lead={bLeads}>
+                      {vb != null ? `${vb.toFixed(1)}${unitSuffix}` : "—"}
+                    </td>
+                    <td className="num">
+                      {hasBoth ? <Delta a={va} b={vb} /> : <span className="unknown">—</span>}
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
 
-        <div className="h2h-bench-grid">
-          {officialBenchmarks.map((item) => {
-            const va = item.valA;
-            const vb = item.valB;
-            const hasBoth = va != null && vb != null;
-            const aLeads = hasBoth && va > vb;
-            const bLeads = hasBoth && vb > va;
-
-            const pctA = va != null ? Math.min(100, Math.max(0, (va / item.max) * 100)) : 0;
-            const pctB = vb != null ? Math.min(100, Math.max(0, (vb / item.max) * 100)) : 0;
-
-            return (
-              <div key={item.id} className="h2h-bench-item" data-category={item.category}>
-                <div className="h2h-bench-item-header">
-                  <div className="h2h-bench-item-title-wrap">
-                    <span className="h2h-bench-item-name">{item.name}</span>
-                    <span className="h2h-bench-authority-badge">{item.authority}</span>
-                  </div>
-                  <div className="h2h-bench-delta-wrap">
-                    {hasBoth ? (
-                      <span className={`h2h-bench-lead-badge ${aLeads ? "slot-a" : bLeads ? "slot-b" : "tied"}`}>
-                        {aLeads
-                          ? `A leads +${(va - vb).toFixed(1)}${item.unit === "%" ? "%" : ""}`
-                          : bLeads
-                          ? `B leads +${(vb - va).toFixed(1)}${item.unit === "%" ? "%" : ""}`
-                          : "Tied"}
-                      </span>
-                    ) : va != null ? (
-                      <span className="h2h-bench-lead-badge slot-a">Only A measured</span>
-                    ) : vb != null ? (
-                      <span className="h2h-bench-lead-badge slot-b">Only B measured</span>
-                    ) : (
-                      <span className="unknown">not evaluated</span>
-                    )}
-                  </div>
-                </div>
-
-                <p className="h2h-bench-item-desc">{item.description}</p>
-
-                <div className="h2h-bench-bars">
-                  <div className="h2h-bench-bar-item" data-slot="A" data-lead={aLeads}>
-                    <div className="h2h-bench-bar-label-wrap">
-                      <span className="h2h-bench-bar-slot">A</span>
-                    </div>
-                    <div className="h2h-bench-bar-track">
-                      <div
-                        className="h2h-bench-bar-fill"
-                        data-slot="A"
-                        style={{ width: `${pctA}%` }}
-                      />
-                    </div>
-                    <span className="h2h-bench-bar-val mono" data-lead={aLeads}>
-                      {va != null ? `${va.toFixed(1)}${item.unit === "%" ? "%" : item.unit === "elo" ? " elo" : ""}` : "—"}
-                    </span>
-                  </div>
-
-                  <div className="h2h-bench-bar-item" data-slot="B" data-lead={bLeads}>
-                    <div className="h2h-bench-bar-label-wrap">
-                      <span className="h2h-bench-bar-slot">B</span>
-                    </div>
-                    <div className="h2h-bench-bar-track">
-                      <div
-                        className="h2h-bench-bar-fill"
-                        data-slot="B"
-                        style={{ width: `${pctB}%` }}
-                      />
-                    </div>
-                    <span className="h2h-bench-bar-val mono" data-lead={bLeads}>
-                      {vb != null ? `${vb.toFixed(1)}${item.unit === "%" ? "%" : item.unit === "elo" ? " elo" : ""}` : "—"}
-                    </span>
-                  </div>
-                </div>
-
-                {(item.detailA || item.detailB || item.urlA || item.urlB) && (
-                  <div className="h2h-bench-links">
-                    {item.detailA && item.detailA !== "Not evaluated" && (
-                      <span className="dim">A: {item.detailA}</span>
-                    )}
-                    {item.detailB && item.detailB !== "Not evaluated" && (
-                      <span className="dim">B: {item.detailB}</span>
-                    )}
-                    {item.urlA && (
-                      <a href={item.urlA} target="_blank" rel="noopener noreferrer" className="h2h-bench-link">
-                        A source ↗
-                      </a>
-                    )}
-                    {item.urlB && (
-                      <a href={item.urlB} target="_blank" rel="noopener noreferrer" className="h2h-bench-link">
-                        B source ↗
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            );
-          })}
+        <div className="h2h-bench-sources">
+          {officialBenchmarks.some((it) => it.urlA || it.urlB) && (
+            <>
+              <span className="dim">Sources:</span>
+              {[...new Set(officialBenchmarks.flatMap((it) => [it.urlA, it.urlB].filter(Boolean)))].map(
+                (u) => (
+                  <a key={u} href={u} target="_blank" rel="noopener noreferrer" className="h2h-bench-link">
+                    {new URL(u).hostname.replace(/^www\./, "")} ↗
+                  </a>
+                )
+              )}
+            </>
+          )}
         </div>
-      </div>
+      </details>
 
       <div className="h2h-compare-grid">
         <div className="h2h-capabilities-card">

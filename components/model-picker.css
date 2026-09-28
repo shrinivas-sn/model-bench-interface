@@ -2,6 +2,10 @@
    Model picker — company > model > effort
    Styled entirely from the :root tokens in globals.css. No colour literals
    outside colour-mix() against a token.
+
+   Same rule as globals.css: gold and blue mean Model A and Model B, so the
+   only coloured surfaces in here are the two slot badges. Everything else is
+   graphite, including every focus ring.
    ========================================================================= */
 
 .model-picker-wrap {
@@ -37,7 +41,7 @@
 }
 
 .picker-trigger-btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -66,7 +70,7 @@
 
 .picker-slot-badge[data-slot="B"] {
   background: var(--series-b);
-  color: #0b1626;
+  color: var(--accent-ink);
 }
 
 .picker-trigger-text {
@@ -119,7 +123,10 @@
   flex-shrink: 0;
 }
 
-/* ---------- effort chips (ordinal, single-hue ramp) ---------- */
+/* ---------- effort chips ----------
+   Effort is ordinal, so its ramp is lightness on one neutral — not a hue ramp.
+   The old version used five steps of the accent colour, which meant the app's
+   interactive colour was also a data attribute and neither read clearly. */
 
 .effort-chip {
   display: inline-flex;
@@ -137,33 +144,33 @@
 }
 
 .effort-chip-max {
-  background: var(--accent);
+  background: var(--text-main);
   color: var(--accent-ink);
-  border-color: var(--accent);
+  border-color: var(--text-main);
 }
 
 .effort-chip-xhigh {
-  background: color-mix(in srgb, var(--accent) 34%, var(--bg-inset));
-  color: var(--accent-hover);
-  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  background: color-mix(in srgb, var(--text-main) 34%, var(--bg-inset));
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--text-main) 40%, transparent);
 }
 
 .effort-chip-high {
-  background: color-mix(in srgb, var(--accent) 20%, var(--bg-inset));
-  color: color-mix(in srgb, var(--accent) 82%, var(--text-main));
-  border-color: color-mix(in srgb, var(--accent) 26%, transparent);
+  background: color-mix(in srgb, var(--text-main) 20%, var(--bg-inset));
+  color: var(--text-main);
+  border-color: color-mix(in srgb, var(--text-main) 26%, transparent);
 }
 
 .effort-chip-medium {
-  background: color-mix(in srgb, var(--accent) 12%, var(--bg-inset));
-  color: color-mix(in srgb, var(--accent) 62%, var(--text-muted));
-  border-color: color-mix(in srgb, var(--accent) 16%, transparent);
+  background: color-mix(in srgb, var(--text-main) 12%, var(--bg-inset));
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-main) 16%, transparent);
 }
 
 .effort-chip-low {
-  background: color-mix(in srgb, var(--accent) 7%, var(--bg-inset));
+  background: color-mix(in srgb, var(--text-main) 7%, var(--bg-inset));
   color: var(--text-muted);
-  border-color: color-mix(in srgb, var(--accent) 12%, transparent);
+  border-color: color-mix(in srgb, var(--text-main) 12%, transparent);
 }
 
 .effort-chip-null {
@@ -194,7 +201,7 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: color-mix(in srgb, #000 72%, transparent);
+  background: rgb(0 0 0 / 0.72);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -220,7 +227,7 @@
   position: fixed;
   inset: 0;
   z-index: 100;
-  background: color-mix(in srgb, #000 72%, transparent);
+  background: rgb(0 0 0 / 0.72);
 }
 
 .picker-sheet-content {
@@ -333,13 +340,13 @@
 }
 
 .picker-empty-hint a {
-  color: var(--accent);
+  color: var(--focus);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 /* cmdk renders its group heading as [cmdk-group-heading]. */
-.picker-group [cmdk-group-heading],
-.picker-group-heading {
+.picker-group [cmdk-group-heading] {
   padding: 12px 14px 6px;
   font-size: 10.5px;
   font-weight: 700;
@@ -423,7 +430,8 @@
 
 .picker-score-bar-fill {
   height: 100%;
-  background: var(--accent);
+  /* Neutral data ink: this bar is not Model A, so it must not be gold. */
+  background: var(--text-main);
   border-radius: 9999px;
 }
 
@@ -469,7 +477,7 @@
 }
 
 .picker-back-btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 1px;
 }
 
@@ -494,13 +502,6 @@
 
 .picker-crumb-sep {
   color: var(--border-strong);
-}
-
-.picker-stage-note {
-  margin-left: auto;
-  font-size: 11.5px;
-  color: var(--text-faint);
-  white-space: nowrap;
 }
 
 /* stage 1 — companies. cmdk renders its items inside [cmdk-group-items], so the
@@ -533,12 +534,12 @@
 }
 
 .picker-company-btn:hover {
-  border-color: var(--accent);
+  border-color: var(--border-strong);
   background: var(--bg-hover);
 }
 
 .picker-company-btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 1px;
 }
 
@@ -546,88 +547,6 @@
   font-size: 11px;
   color: var(--text-faint);
   font-family: var(--font-mono), monospace;
-}
-
-/* stage 3 — effort selection */
-.picker-effort-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 14px;
-}
-
-.picker-effort-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-  min-width: 84px;
-  min-height: 52px;
-  justify-content: center;
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--bg-inset);
-  color: var(--text-main);
-  font-family: inherit;
-  font-size: 12.5px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  cursor: pointer;
-  transition: border-color var(--motion-duration) var(--motion-ease),
-    background var(--motion-duration) var(--motion-ease);
-}
-
-.picker-effort-btn:hover {
-  border-color: var(--accent);
-  background: var(--bg-hover);
-}
-
-.picker-effort-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 1px;
-}
-
-.picker-effort-btn[data-selected="true"] {
-  border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 16%, var(--bg-inset));
-}
-
-.picker-effort-btn-note {
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  color: var(--text-faint);
-  text-transform: none;
-}
-
-.picker-family-preview {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 14px;
-  border-bottom: 1px solid var(--border);
-}
-
-.picker-family-preview-head {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.picker-family-preview-title {
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.picker-family-meta {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-  font-size: 12px;
-  color: var(--text-muted);
 }
 
 /* ---------- one-liner reasoning effort dropdown row ---------- */
@@ -671,12 +590,16 @@
   flex-shrink: 0;
 }
 
+/* --series-healthy never existed, so this dot rendered transparent. Green =
+   there is a benchmarked run behind the number. */
 .h2h-effort-status-dot.evaluated {
-  background: var(--series-healthy);
+  background: var(--ok);
 }
 
+/* Orange = scaled from pricing, not measured — the same meaning --warn carries
+   on the data-health page. */
 .h2h-effort-status-dot.dynamic {
-  background: var(--accent);
+  background: var(--warn);
 }
 
 .h2h-effort-select-wrap {
@@ -716,16 +639,8 @@
 }
 
 .h2h-effort-select:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 1px;
-}
-
-.h2h-effort-row[data-slot="A"] .h2h-effort-select:focus-visible {
-  outline-color: var(--series-a);
-}
-
-.h2h-effort-row[data-slot="B"] .h2h-effort-select:focus-visible {
-  outline-color: var(--series-b);
 }
 
 .h2h-effort-select-caret {
@@ -766,7 +681,7 @@
 }
 
 .picker-swap-btn:focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--focus);
   outline-offset: 2px;
 }
 
@@ -777,284 +692,118 @@
 }
 
 /* =========================================================================
-   Official Developer Benchmarks Card & Grid
+   Official Benchmarks — compact collapsed table
    ========================================================================= */
 
 .h2h-benchmarks-card {
   background: var(--bg-card);
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-}
-
-.h2h-benchmarks-header {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 16px;
-}
-
-.h2h-benchmarks-title {
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--text-main);
-  margin: 0;
-}
-
-.h2h-benchmarks-subtitle {
-  font-size: 12.5px;
-  color: var(--text-muted);
-  line-height: 1.45;
-  margin: 4px 0 0 0;
-  max-width: 850px;
-}
-
-.h2h-bench-tabs {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: thin;
-}
-
-.h2h-bench-tab-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  background: var(--bg-inset);
-  color: var(--text-muted);
-  font-size: 12px;
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all var(--motion-duration) var(--motion-ease);
-}
-
-.h2h-bench-tab-btn:hover {
-  background: var(--bg-hover);
-  color: var(--text-main);
-  border-color: var(--border-strong);
-}
-
-.h2h-bench-tab-btn.active {
-  background: var(--bg-card);
-  color: var(--accent);
-  border-color: var(--accent);
-  font-weight: 600;
-  box-shadow: 0 0 0 1px var(--accent);
-}
-
-.h2h-bench-tab-count {
-  font-size: 11px;
-  opacity: 0.75;
-}
-
-.h2h-bench-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-  gap: 14px;
-}
-
-.h2h-bench-item {
-  background: var(--bg-inset);
-  border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: border-color var(--motion-duration) var(--motion-ease);
+  padding: 14px 16px;
 }
 
-.h2h-bench-item:hover {
-  border-color: var(--border-strong);
-}
-
-.h2h-bench-item-header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.h2h-bench-item-title-wrap {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.h2h-bench-item-name {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--text-main);
-}
-
-.h2h-bench-authority-badge {
-  font-size: 10.5px;
-  font-weight: 600;
-  padding: 2px 7px;
-  border-radius: var(--radius-sm);
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text-faint);
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-}
-
-.h2h-bench-delta-wrap {
-  flex-shrink: 0;
-}
-
-.h2h-bench-lead-badge {
-  font-size: 11px;
-  font-weight: 700;
-  padding: 2px 8px;
-  border-radius: var(--radius-sm);
-  white-space: nowrap;
-}
-
-.h2h-bench-lead-badge.slot-a {
-  background: color-mix(in srgb, var(--series-a) 18%, transparent);
-  color: var(--series-a);
-  border: 1px solid color-mix(in srgb, var(--series-a) 40%, transparent);
-}
-
-.h2h-bench-lead-badge.slot-b {
-  background: color-mix(in srgb, var(--series-b) 18%, transparent);
-  color: var(--series-b);
-  border: 1px solid color-mix(in srgb, var(--series-b) 40%, transparent);
-}
-
-.h2h-bench-lead-badge.tied {
-  background: var(--bg-card);
-  color: var(--text-muted);
-  border: 1px solid var(--border);
-}
-
-.h2h-bench-item-desc {
-  font-size: 11.5px;
-  color: var(--text-muted);
-  line-height: 1.4;
-  margin: 0;
-}
-
-.h2h-bench-bars {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.h2h-bench-bar-item {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.h2h-bench-bar-label-wrap {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  min-width: 24px;
-  flex-shrink: 0;
-}
-
-.h2h-bench-bar-slot {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 18px;
-  height: 18px;
-  border-radius: var(--radius-sm);
-  font-size: 10.5px;
-  font-weight: 700;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text-muted);
-}
-
-.h2h-bench-bar-item[data-slot="A"] .h2h-bench-bar-slot {
-  color: var(--series-a);
-  border-color: color-mix(in srgb, var(--series-a) 30%, transparent);
-}
-
-.h2h-bench-bar-item[data-slot="B"] .h2h-bench-bar-slot {
-  color: var(--series-b);
-  border-color: color-mix(in srgb, var(--series-b) 30%, transparent);
-}
-
-.h2h-bench-bar-track {
-  flex: 1;
-  height: 14px;
-  background: var(--bg-card);
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border);
-  overflow: hidden;
-  position: relative;
-}
-
-.h2h-bench-bar-fill {
-  height: 100%;
-  border-radius: var(--radius-sm);
-  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.h2h-bench-bar-fill[data-slot="A"] {
-  background: var(--series-a);
-}
-
-.h2h-bench-bar-fill[data-slot="B"] {
-  background: var(--series-b);
-}
-
-.h2h-bench-bar-val {
-  font-size: 12.5px;
-  font-weight: 600;
-  min-width: 52px;
-  text-align: right;
-  flex-shrink: 0;
-  color: var(--text-muted);
-}
-
-.h2h-bench-bar-val[data-lead="true"] {
-  color: var(--text-main);
-  font-weight: 700;
-}
-
-.h2h-bench-links {
+.h2h-benchmarks-summary {
   display: flex;
   align-items: center;
   gap: 12px;
+  cursor: pointer;
+  user-select: none;
+  list-style: none;
+  font-size: 13px;
+}
+
+.h2h-benchmarks-summary::-webkit-details-marker {
+  display: none;
+}
+
+.h2h-benchmarks-summary > svg {
+  color: var(--text-faint);
+  transition: transform 200ms var(--motion-ease);
+}
+
+.h2h-benchmarks-card[open] > .h2h-benchmarks-summary > svg {
+  transform: rotate(180deg);
+}
+
+.h2h-bench-summary-leader {
+  font-size: 12.5px;
+  color: var(--text-muted);
+}
+
+.h2h-bench-summary-leader strong[data-slot="A"] {
+  color: var(--series-a);
+}
+
+.h2h-bench-summary-leader strong[data-slot="B"] {
+  color: var(--series-b);
+}
+
+.h2h-bench-table-wrap {
+  overflow-x: auto;
+  margin-top: 12px;
+}
+
+.h2h-bench-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+
+.h2h-bench-table th {
+  text-align: left;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-faint);
+  font-weight: 700;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.h2h-bench-table td {
+  padding: 7px 8px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-muted);
+}
+
+.h2h-bench-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.h2h-bench-table td.num,
+.h2h-bench-table th.num {
+  text-align: right;
+}
+
+.h2h-bench-table td[data-lead="true"] {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.h2h-bench-table td:first-child small {
+  font-size: 10.5px;
+}
+
+.h2h-bench-sources {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
   font-size: 11px;
-  padding-top: 4px;
+  margin-top: 10px;
+  padding-top: 8px;
   border-top: 1px solid var(--border);
 }
 
 .h2h-bench-link {
   color: var(--text-muted);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
   transition: color var(--motion-duration) var(--motion-ease);
 }
 
 .h2h-bench-link:hover {
-  color: var(--accent);
-  text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .h2h-bench-grid {
-    grid-template-columns: 1fr;
-  }
+  color: var(--text-main);
 }
 
 /* ---------- animations ---------- */

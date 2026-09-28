@@ -2,6 +2,16 @@
 
 Overflow from STATUS.md, moved verbatim at trim time.
 
+## 28/09/2026 — from STATUS.md
+
+### Superseded state (before the benchmarks collapse)
+
+- **UI**: Clean one-liner reasoning effort dropdown, unified Official Developer & Terminal Benchmarks showcase (Reasoning, Coding Proficiency, Autonomous Terminal/Tools, SWE-bench GitHub issues), and real-time Workload & Cost Estimator with transparent formula breakdown.
+
+### Next up (as recorded pre-collapse)
+
+1. **Additional Developer Benchmarks**: Monitor upstream SWE-bench Verified and Artificial Analysis feeds for new model evaluations.
+
 ## 26/09/2026 — from STATUS.md
 
 ### Superseded state (morning)
