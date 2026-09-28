@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T07:31:14.345Z",
+  "generated_at": "2026-09-28T08:52:50.531Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -61,16 +61,16 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.035,
-      "output_per_million": 0.29
+      "input_per_million": 0.0245,
+      "output_per_million": 0.6
     },
     {
       "id": "~deepseek/deepseek-pro-latest",
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2442,
-      "output_per_million": 0.7326
+      "input_per_million": 0.128,
+      "output_per_million": 1.9584
     },
     {
       "id": "~deepseek/deepseek-v4-flash-latest",
@@ -101,8 +101,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.5,
-      "output_per_million": 2.8
+      "input_per_million": 1,
+      "output_per_million": 9
     },
     {
       "id": "~openai/gpt-astra-latest",
@@ -165,8 +165,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1310720,
-      "input_per_million": 0.2737,
-      "output_per_million": 0.8602
+      "input_per_million": 0.1785,
+      "output_per_million": 2.805
     },
     {
       "id": "aion-labs/aion-2.0",
@@ -613,16 +613,16 @@
       "title": "DeepSeek: DeepSeek V3",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.32,
-      "output_per_million": 0.89
+      "input_per_million": 0.2574,
+      "output_per_million": 1.0287
     },
     {
       "id": "deepseek/deepseek-chat-v3-0324",
       "title": "DeepSeek: DeepSeek V3 0324",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.25,
-      "output_per_million": 1
+      "input_per_million": 0.29,
+      "output_per_million": 1.14
     },
     {
       "id": "deepseek/deepseek-chat-v3.1",
@@ -669,8 +669,8 @@
       "title": "DeepSeek: DeepSeek V3.2",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.269,
-      "output_per_million": 0.4
+      "input_per_million": 0.28,
+      "output_per_million": 0.42
     },
     {
       "id": "deepseek/deepseek-v3.2-exp",
@@ -685,8 +685,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0469,
-      "output_per_million": 0.0938
+      "input_per_million": 0.14,
+      "output_per_million": 0.28
     },
     {
       "id": "deepseek/deepseek-v4-flash-0731",
@@ -701,32 +701,32 @@
       "title": "DeepSeek: DeepSeek V4 Flash Vision Exp",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2156,
-      "output_per_million": 0.6468
+      "input_per_million": 0.44,
+      "output_per_million": 1.32
     },
     {
       "id": "deepseek/deepseek-v4-pro",
       "title": "DeepSeek: DeepSeek V4 Pro 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.348,
-      "output_per_million": 0.696
+      "input_per_million": 0.9553,
+      "output_per_million": 1.9105
     },
     {
       "id": "deepseek/deepseek-v4-pro-0813",
       "title": "DeepSeek: DeepSeek V4 Pro 0813",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.245,
-      "output_per_million": 3.5
+      "input_per_million": 0.3995,
+      "output_per_million": 4.2
     },
     {
       "id": "deepseek/deepseek-v4.1-flash",
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.035,
-      "output_per_million": 0.29
+      "input_per_million": 0.0245,
+      "output_per_million": 0.6
     },
     {
       "id": "deepseek/deepseek-v4.1-flash:batch",
@@ -1037,8 +1037,8 @@
       "title": "Google: Gemma 4 26B A4B",
       "vendor": "google",
       "context_length": 262144,
-      "input_per_million": 0.0675,
-      "output_per_million": 0.225
+      "input_per_million": 0.09,
+      "output_per_million": 0.3
     },
     {
       "id": "google/gemma-4-26b-a4b-it:free",
@@ -1357,8 +1357,8 @@
       "title": "MiniMax: MiniMax M2",
       "vendor": "minimax",
       "context_length": 204800,
-      "input_per_million": 0.255,
-      "output_per_million": 1.02
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "minimax/minimax-m2-her",
@@ -1389,8 +1389,8 @@
       "title": "MiniMax: MiniMax M2.7",
       "vendor": "minimax",
       "context_length": 204800,
-      "input_per_million": 0.21,
-      "output_per_million": 0.84
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "minimax/minimax-m3",
@@ -1637,8 +1637,8 @@
       "title": "MoonshotAI: Kimi K2.6",
       "vendor": "moonshot",
       "context_length": 262144,
-      "input_per_million": 0.95,
-      "output_per_million": 4
+      "input_per_million": 0.65,
+      "output_per_million": 3.41
     },
     {
       "id": "moonshotai/kimi-k2.7-code",
@@ -2997,8 +2997,8 @@
       "title": "Qwen: Qwen3.5-35B-A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.3125,
-      "output_per_million": 1.25
+      "input_per_million": 0.1625,
+      "output_per_million": 1.3
     },
     {
       "id": "qwen/qwen3.5-397b-a17b",
@@ -3621,8 +3621,8 @@
       "title": "Z.ai: GLM 5.1",
       "vendor": "other",
       "context_length": 204800,
-      "input_per_million": 0.9646,
-      "output_per_million": 3.0316
+      "input_per_million": 1.4,
+      "output_per_million": 4.4
     },
     {
       "id": "z-ai/glm-5.2",
@@ -3637,16 +3637,16 @@
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1310720,
-      "input_per_million": 0.2737,
-      "output_per_million": 0.8602
+      "input_per_million": 1.4,
+      "output_per_million": 4.4
     },
     {
       "id": "z-ai/glm-5.3-flash",
       "title": "Z.ai: GLM 5.3 Flash",
       "vendor": "other",
       "context_length": 1310720,
-      "input_per_million": 0.045,
-      "output_per_million": 0.14
+      "input_per_million": 0.15,
+      "output_per_million": 0.5
     },
     {
       "id": "z-ai/glm-5.3-flash:batch",
@@ -4344,8 +4344,8 @@
         "cost_per_question": 0.0105
       },
       "pricing": {
-        "input_per_million": 0.0469,
-        "output_per_million": 0.0938,
+        "input_per_million": 0.14,
+        "output_per_million": 0.28,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4454,8 +4454,8 @@
         "cost_per_question": 0.0388
       },
       "pricing": {
-        "input_per_million": 0.2156,
-        "output_per_million": 0.6468,
+        "input_per_million": 0.44,
+        "output_per_million": 1.32,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4509,8 +4509,8 @@
         "cost_per_question": 0.0357
       },
       "pricing": {
-        "input_per_million": 0.348,
-        "output_per_million": 0.696,
+        "input_per_million": 0.9553,
+        "output_per_million": 1.9105,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4564,8 +4564,8 @@
         "cost_per_question": 0.0342
       },
       "pricing": {
-        "input_per_million": 0.245,
-        "output_per_million": 3.5,
+        "input_per_million": 0.3995,
+        "output_per_million": 4.2,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4619,8 +4619,8 @@
         "cost_per_question": 0.0237
       },
       "pricing": {
-        "input_per_million": 0.035,
-        "output_per_million": 0.29,
+        "input_per_million": 0.0245,
+        "output_per_million": 0.6,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -5059,8 +5059,8 @@
         "cost_per_question": 0.3429
       },
       "pricing": {
-        "input_per_million": 0.2737,
-        "output_per_million": 0.8602,
+        "input_per_million": 1.4,
+        "output_per_million": 4.4,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -5114,8 +5114,8 @@
         "cost_per_question": 0.0218
       },
       "pricing": {
-        "input_per_million": 0.045,
-        "output_per_million": 0.14,
+        "input_per_million": 0.15,
+        "output_per_million": 0.5,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -6158,8 +6158,8 @@
         "cost_per_question": 0.119
       },
       "pricing": {
-        "input_per_million": 0.95,
-        "output_per_million": 4,
+        "input_per_million": 0.65,
+        "output_per_million": 3.41,
         "source": "openrouter"
       },
       "context_length": 262144
