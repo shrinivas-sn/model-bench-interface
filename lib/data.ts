@@ -6,6 +6,9 @@ export type CatalogModel = {
   /** Dollars per million tokens. Every price in this file shares this unit. */
   input_per_million: number | null;
   output_per_million: number | null;
+  supported_efforts?: string[] | null;
+  default_effort?: string | null;
+  benchmarks?: Record<string, any> | null;
 };
 
 export type LivebenchModel = {
@@ -16,6 +19,9 @@ export type LivebenchModel = {
   display_vendor: string;
   family_id: string;
   effort: "max" | "xhigh" | "high" | "medium" | "low" | null;
+  supported_efforts?: string[] | null;
+  default_effort?: string | null;
+  external_benchmarks?: Record<string, any> | null;
   thinking: boolean;
   tasks: Record<string, number>;
   categories: Record<string, number>;
@@ -40,6 +46,7 @@ export type SweRow = {
   resolved_pct: number | null;
   run_date: string | null;
   agent: string | null;
+  reasoning_effort?: string | null;
   is_open_model: boolean | null;
   checked: boolean | null;
   canonical_id: string | null;

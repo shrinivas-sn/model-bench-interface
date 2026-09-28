@@ -162,22 +162,16 @@ export function ModelPicker({
     [onChange, setIsOpen]
   );
 
-  /** A family with exactly one variant skips the effort step entirely. */
+  /** Choosing a family takes the user to the reasoning effort stage. */
   const chooseFamily = useCallback(
     (family: PickerFamily) => {
-      const { hasChoice, defaultName } = effortOptions(family);
-      if (!hasChoice) {
-        commit(defaultName || family.variants[0]?.benchmark_name);
-        return;
-      }
       setVendor(family.variants[0]?.display_vendor ?? vendor);
       setFamilyId(family.family_id);
       setStage("effort");
-      // Clear the query, or the results list keeps rendering instead of the
-      // effort step — picking a model from search would never reach it.
+      // Clear the query so the effort step renders cleanly
       setSearch("");
     },
-    [commit, vendor]
+    [vendor]
   );
 
   const goBack = useCallback(() => {
@@ -360,6 +354,11 @@ export function ModelPicker({
               Mean score <b className="mono">{activeFamily.overall_score}</b>
             </span>
           )}
+          {activeFamily.primary.external_benchmarks?.artificial_analysis?.intelligence_index ? (
+            <span>
+              Intelligence index <b className="mono">{activeFamily.primary.external_benchmarks.artificial_analysis.intelligence_index}</b>
+            </span>
+          ) : null}
         </div>
       </div>
 

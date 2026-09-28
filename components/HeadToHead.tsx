@@ -135,6 +135,13 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
 
   const modelCard = (m: LivebenchModel, slot: "A" | "B", index: number) => {
     const sweRow = sweFor(m);
+    const familyVariants = livebench.filter(
+      (v) =>
+        (m.family_id && v.family_id === m.family_id) ||
+        (m.canonical_id && v.canonical_id === m.canonical_id)
+    );
+    const hasMultipleVariants = familyVariants.length > 1;
+
     return (
       <div className="h2h-model-card" data-slot={slot}>
         <ModelPicker
@@ -144,6 +151,51 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           slotLabel={slot}
           vendorDisplay={vendorDisplay}
         />
+
+        <div className="h2h-effort-strip" role="group" aria-label={`Reasoning effort for ${labelOf(m)}`}>
+          <span className="h2h-effort-strip-title">Reasoning effort</span>
+          <div className="h2h-effort-pills">
+            {hasMultipleVariants ? (
+              familyVariants.map((v) => {
+                const isSelected = v.benchmark_name === m.benchmark_name;
+                const effortLabel = (v.effort ?? "standard").toUpperCase();
+                return (
+                  <button
+                    key={v.benchmark_name}
+                    type="button"
+                    className="h2h-effort-pill"
+                    data-slot={slot}
+                    data-selected={isSelected}
+                    onClick={() => handleSlotChange(index, v.benchmark_name)}
+                    aria-label={`Select ${effortLabel} effort evaluation`}
+                  >
+                    <span>{effortLabel}</span>
+                    {v.thinking && <span className="h2h-effort-pill-tag">think</span>}
+                  </button>
+                );
+              })
+            ) : m.effort ? (
+              <div className="h2h-effort-pill-single-wrap">
+                <span className="h2h-effort-pill-single" data-slot={slot}>
+                  {m.effort.toUpperCase()}
+                </span>
+                <span className="h2h-effort-note">LiveBench evaluation</span>
+              </div>
+            ) : (
+              <span className="h2h-effort-pill-single dim">Standard (non-reasoning)</span>
+            )}
+
+            {m.supported_efforts && m.supported_efforts.length > familyVariants.length && (
+              <span
+                className="h2h-effort-supported-badge"
+                title={`Provider supports: ${m.supported_efforts.join(", ")}`}
+              >
+                {m.supported_efforts.length} API tiers
+              </span>
+            )}
+          </div>
+        </div>
+
         <div className="h2h-card-stats">
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">$/Mtok in / out</span>

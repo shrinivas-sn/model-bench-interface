@@ -11,15 +11,10 @@ Single running log — update in place each session. Overflow moved verbatim to
   27/09 no longer resolves; `shrinu` is the account's actual workers.dev subdomain.
   Released 28/09 with the redesign; `/` and `/matrix` return 200, unknown paths 404.
 - Project: `E:\model-bench` — Next.js 15 static export (`output: "export"`), no server, no DB.
-- Ingestion: GitHub Actions cron at 02:30 UTC → 4 declarative adapters → `store/*.jsonl` →
-  `data/scores.json`. 458 catalog models, 63 LiveBench rows, 180 SWE-bench systems.
-- UI: three-stage picker (company → model → reasoning effort), recent picks leading the default
-  A/B pair, app-owned AND-token search, A/B identity by colour plus a named legend, and a
-  data-status strip with last-ingest recency on every route.
-- Palette: five colours — graphite (surfaces/text), amber (accent + Model A), blue (Model B),
-  green (healthy), red (error). Every price is USD per million tokens.
-- Gates: `npm test` 65/65 · `npx tsc --noEmit` clean · `npm run build` 7/7 static pages ·
-  `npm run verify:ui` 116/116 browser checks.
+- Ingestion: GitHub Actions cron at 02:30 UTC → 4 declarative adapters (`openrouter` with `reasoning` and `benchmarks`, `swe-bench-verified` with `reasoning_effort`, `livebench-scores`, `livebench-cost`) → `store/*.jsonl` → `data/scores.json`. 458 catalog models, 63 LiveBench rows, 180 SWE-bench systems.
+- UI: Interactive reasoning effort switcher directly on Head-to-Head cards for instant 1-click effort switching (e.g. Claude Opus 5.5 Max vs X-High); three-stage picker with explicit effort stage for all models displaying provider API tiers and Artificial Analysis intelligence indices.
+- Palette: five colours — graphite (surfaces/text), amber (accent + Model A), blue (Model B), green (healthy), red (error). Every price is USD per million tokens.
+- Gates: `npm run verify:fixtures` 4/4 (1.00 ratio) · `npm test` 65/65 · `npx tsc --noEmit` clean · `npm run build` 7/7 static pages · `npm run verify:ui` 116/116 browser checks.
 
 ## Pending
 

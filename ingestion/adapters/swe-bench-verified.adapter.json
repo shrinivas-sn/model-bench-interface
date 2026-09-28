@@ -22,6 +22,7 @@
     "resolved_pct": { "path": "resolved", "normalize": "number" },
     "run_date": { "path": "date", "normalize": "iso-date" },
     "agent": { "path": "agent", "normalize": "text" },
+    "reasoning_effort": { "path": "reasoning_effort", "normalize": "text" },
     "is_open_model": { "path": "os_model", "normalize": "bool" },
     "checked": { "path": "checked", "normalize": "bool" }
   },

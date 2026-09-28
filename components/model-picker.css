@@ -630,9 +630,122 @@
   color: var(--text-muted);
 }
 
-.picker-family-meta b {
-  color: var(--text-main);
+/* ---------- h2h effort selector strip ---------- */
+
+.h2h-effort-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--bg-inset) 70%, transparent);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
+}
+
+.h2h-effort-strip-title {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   font-weight: 600;
+  color: var(--text-faint);
+  white-space: nowrap;
+}
+
+.h2h-effort-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.h2h-effort-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-muted);
+  transition: all var(--motion-duration) var(--motion-ease);
+}
+
+.h2h-effort-pill:hover {
+  border-color: var(--border-strong);
+  color: var(--text-main);
+  background: var(--bg-hover);
+}
+
+.h2h-effort-pill[data-selected="true"][data-slot="A"] {
+  border-color: var(--series-a);
+  background: color-mix(in srgb, var(--series-a) 18%, var(--bg-inset));
+  color: var(--series-a);
+}
+
+.h2h-effort-pill[data-selected="true"][data-slot="B"] {
+  border-color: var(--series-b);
+  background: color-mix(in srgb, var(--series-b) 18%, var(--bg-inset));
+  color: var(--series-b);
+}
+
+.h2h-effort-pill:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.h2h-effort-pill-tag {
+  font-size: 9px;
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--series-a) 20%, transparent);
+  color: var(--series-a);
+}
+
+.h2h-effort-pill-single-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.h2h-effort-pill-single {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: var(--radius-sm);
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+}
+
+.h2h-effort-pill-single[data-slot="A"] {
+  color: var(--series-a);
+  border-color: color-mix(in srgb, var(--series-a) 40%, var(--border));
+}
+
+.h2h-effort-pill-single[data-slot="B"] {
+  color: var(--series-b);
+  border-color: color-mix(in srgb, var(--series-b) 40%, var(--border));
+}
+
+.h2h-effort-note {
+  font-size: 10px;
+  color: var(--text-faint);
+}
+
+.h2h-effort-supported-badge {
+  font-size: 10px;
+  color: var(--text-faint);
+  background: var(--bg-inset);
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px dashed var(--border);
 }
 
 /* ---------- swap button ---------- */

@@ -41,6 +41,12 @@ async function buildCatalog() {
     // so every price in `scores.json` shares one unit (see the pricing join below).
     const perMillion = (v) =>
       v == null || v < 0 ? null : Number((v * 1e6).toFixed(4));
+    const supported_efforts =
+      Array.isArray(f.reasoning?.supported_efforts) && f.reasoning.supported_efforts.length > 0
+        ? f.reasoning.supported_efforts
+        : Array.isArray(f.supported_parameters) && f.supported_parameters.includes("reasoning_effort")
+        ? ["max", "high", "medium", "low"]
+        : null;
     models.set(id, {
       id,
       title: f.title || id,
@@ -48,6 +54,9 @@ async function buildCatalog() {
       context_length: f.context_length ?? null,
       input_per_million: perMillion(f.prompt_price),
       output_per_million: perMillion(f.completion_price),
+      supported_efforts,
+      default_effort: f.reasoning?.default_effort ?? null,
+      benchmarks: f.benchmarks || null,
     });
   }
   return models;
@@ -149,6 +158,7 @@ async function sweBenchRows(aliasIndex) {
       resolved_pct: f.resolved_pct ?? null,
       run_date: f.run_date || null,
       agent: f.agent || null,
+      reasoning_effort: f.reasoning_effort || null,
       is_open_model: f.is_open_model ?? null,
       checked: f.checked ?? null,
       canonical_id: hit?.canonical ?? null,
@@ -195,6 +205,11 @@ async function main() {
       };
     } else {
       m.pricing = null;
+    }
+    m.supported_efforts = c?.supported_efforts || (m.effort ? [m.effort] : null);
+    m.default_effort = c?.default_effort || m.effort || null;
+    if (c?.benchmarks) {
+      m.external_benchmarks = c.benchmarks;
     }
   }
 
