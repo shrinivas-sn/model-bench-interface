@@ -1,10 +1,12 @@
 "use client";
 
-import { useMemo, useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
 import { ModelPicker } from "@/components/ModelPicker";
+import { SwapIcon } from "@/components/icons";
 import type { LivebenchModel, SweRow } from "@/lib/data";
+import { defaultPair, formatFamilyLabel, formatPerMillion, readRecents } from "@/lib/picker.mjs";
 
 type Props = {
   livebench: LivebenchModel[];
@@ -13,10 +15,12 @@ type Props = {
   vendorDisplay?: Record<string, string>;
 };
 
-function fmtPrice(p: number | null | undefined) {
-  if (p == null) return "—";
-  if (p === 0) return "free";
-  return `$${p < 1 ? p.toFixed(2) : p.toFixed(1)}`;
+function storage(): Storage | null {
+  try {
+    return typeof window === "undefined" ? null : window.localStorage;
+  } catch {
+    return null;
+  }
 }
 
 function Delta({ a, b }: { a: number; b: number }) {
@@ -29,42 +33,54 @@ function Delta({ a, b }: { a: number; b: number }) {
   );
 }
 
+function priceSummary(m: LivebenchModel) {
+  if (!m.pricing) return "—";
+  return `${formatPerMillion(m.pricing.input_per_million)} / ${formatPerMillion(
+    m.pricing.output_per_million
+  )}`;
+}
+
 export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }: Props) {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  const defaultA = useMemo(() => {
-    return (
-      livebench.find((m) => m.benchmark_name === "claude-opus-5-5-max-effort")?.benchmark_name ||
-      livebench.find((m) => m.benchmark_name.includes("opus-5"))?.benchmark_name ||
-      livebench[0]?.benchmark_name ||
-      ""
-    );
-  }, [livebench]);
-
-  const defaultB = useMemo(() => {
-    return (
-      livebench.find((m) => m.benchmark_name === "gpt-5.5-xhigh")?.benchmark_name ||
-      livebench.find((m) => m.benchmark_name.includes("gpt-5"))?.benchmark_name ||
-      (livebench[1] || livebench[0])?.benchmark_name ||
-      ""
-    );
-  }, [livebench]);
-
   const paramA = searchParams.get("a");
   const paramB = searchParams.get("b");
+  const isKnown = (name: string | null) =>
+    Boolean(name) && livebench.some((m) => m.benchmark_name === name);
 
-  const validA = paramA && livebench.some((m) => m.benchmark_name === paramA) ? paramA : defaultA;
-  const validB = paramB && livebench.some((m) => m.benchmark_name === paramB) ? paramB : defaultB;
+  const fallback = useMemo(() => defaultPair(livebench, []), [livebench]);
+  const defaultA = fallback[0];
+  const defaultB = fallback[1];
 
-  const [slots, setSlots] = useState<string[]>([validA, validB]);
+  const [slots, setSlots] = useState<string[]>(() => [
+    isKnown(paramA) ? (paramA as string) : defaultA,
+    isKnown(paramB) ? (paramB as string) : defaultB,
+  ]);
 
+  // Keep URL and state in step when someone follows a shared link.
   useEffect(() => {
-    const curA = paramA && livebench.some((m) => m.benchmark_name === paramA) ? paramA : defaultA;
-    const curB = paramB && livebench.some((m) => m.benchmark_name === paramB) ? paramB : defaultB;
-    setSlots([curA, curB]);
+    setSlots([
+      isKnown(paramA) ? (paramA as string) : defaultA,
+      isKnown(paramB) ? (paramB as string) : defaultB,
+    ]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramA, paramB, defaultA, defaultB, livebench]);
+
+  // With no link to follow, lead with what this visitor picked last time —
+  // the whole point of recents is not having to search again.
+  const appliedRecents = useRef(false);
+  useEffect(() => {
+    if (appliedRecents.current) return;
+    appliedRecents.current = true;
+    if (paramA || paramB) return;
+    const recents = readRecents(storage());
+    if (!recents.length) return;
+    const [a, b] = defaultPair(livebench, recents);
+    if (a && b) setSlots([a, b]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const updateSlots = (nextSlots: string[]) => {
     setSlots(nextSlots);
@@ -80,12 +96,16 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     updateSlots(next);
   };
 
-  const handleSwap = () => {
-    updateSlots([slots[1], slots[0]]);
-  };
+  const handleSwap = () => updateSlots([slots[1], slots[0]]);
 
-  const a = useMemo(() => livebench.find((m) => m.benchmark_name === slots[0]) || null, [livebench, slots]);
-  const b = useMemo(() => livebench.find((m) => m.benchmark_name === slots[1]) || null, [livebench, slots]);
+  const a = useMemo(
+    () => livebench.find((m) => m.benchmark_name === slots[0]) ?? null,
+    [livebench, slots]
+  );
+  const b = useMemo(
+    () => livebench.find((m) => m.benchmark_name === slots[1]) ?? null,
+    [livebench, slots]
+  );
 
   const taskKeys = useMemo(() => {
     const keys = new Set<string>();
@@ -98,9 +118,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     if (!id) return null;
     const rows = swe.filter((r) => r.canonical_id === id && r.resolved_pct != null);
     if (!rows.length) return null;
-    const best = Math.max(...rows.map((r) => r.resolved_pct as number));
-    const n = rows.length;
-    return { n, best };
+    return { n: rows.length, best: Math.max(...rows.map((r) => r.resolved_pct as number)) };
   };
 
   if (!a || !b) {
@@ -113,156 +131,128 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     );
   }
 
-  return (
-    <div className="h2h-root">
-      {/* Top Model Cards */}
-      <div className="h2h-cards-container">
-        {/* Model Card A */}
-        <div className="h2h-model-card">
-          <ModelPicker
-            models={livebench}
-            value={slots[0]}
-            onChange={(name) => handleSlotChange(0, name)}
-            slotLabel="A"
-            vendorDisplay={vendorDisplay}
-          />
-          <div className="h2h-card-stats">
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">Price (in / out)</span>
-              <span className="h2h-stat-value mono">
-                {fmtPrice(a.pricing?.prompt)} / {fmtPrice(a.pricing?.completion)}
-              </span>
-            </div>
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">Context Window</span>
-              <span className="h2h-stat-value mono">
-                {a.context_length ? `${(a.context_length / 1000).toFixed(0)}k tokens` : "—"}
-              </span>
-            </div>
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">SWE-bench Best</span>
-              <span className="h2h-stat-value mono">
-                {sweFor(a) ? `${sweFor(a)!.best.toFixed(1)}% (${sweFor(a)!.n})` : "none"}
-              </span>
-            </div>
+  const labelOf = (m: LivebenchModel) => formatFamilyLabel(m.family_id || m.benchmark_name);
+
+  const modelCard = (m: LivebenchModel, slot: "A" | "B", index: number) => {
+    const sweRow = sweFor(m);
+    return (
+      <div className="h2h-model-card" data-slot={slot}>
+        <ModelPicker
+          models={livebench}
+          value={slots[index]}
+          onChange={(name) => handleSlotChange(index, name)}
+          slotLabel={slot}
+          vendorDisplay={vendorDisplay}
+        />
+        <div className="h2h-card-stats">
+          <div className="h2h-card-stat">
+            <span className="h2h-stat-label">$/Mtok in / out</span>
+            <span className="h2h-stat-value mono">{priceSummary(m)}</span>
           </div>
-          <div className="h2h-card-meta">
-            <span>
-              Method:{" "}
-              {a.alias_method ? (
-                <span className={`match-${a.alias_method}`}>{a.alias_method}</span>
-              ) : (
-                <span className="badge badge-stale">unmatched</span>
-              )}
+          <div className="h2h-card-stat">
+            <span className="h2h-stat-label">Context</span>
+            <span className="h2h-stat-value mono">
+              {m.context_length ? `${(m.context_length / 1000).toFixed(0)}k` : "—"}
             </span>
-            <small className="mono dim">
-              {a.benchmark_name}
-            </small>
+          </div>
+          <div className="h2h-card-stat">
+            <span className="h2h-stat-label">SWE-bench best</span>
+            <span className="h2h-stat-value mono">
+              {sweRow ? `${sweRow.best.toFixed(1)}% (${sweRow.n})` : "no match"}
+            </span>
           </div>
         </div>
+        <div className="h2h-card-meta">
+          <span>
+            {m.alias_method ? (
+              <span className={`match-${m.alias_method}`}>{m.alias_method} match</span>
+            ) : (
+              <span className="badge badge-stale">unmatched</span>
+            )}
+          </span>
+          <small className="mono dim">{m.benchmark_name}</small>
+        </div>
+      </div>
+    );
+  };
 
-        {/* Swap Button */}
+  return (
+    <div className="h2h-root">
+      <div className="h2h-cards-container">
+        {modelCard(a, "A", 0)}
+
         <div className="h2h-card-swap-wrap">
           <button
             type="button"
             className="picker-swap-btn"
             onClick={handleSwap}
-            title="Swap Model A and Model B"
-            aria-label="Swap Model A and Model B"
+            title="Swap model A and model B"
+            aria-label="Swap model A and model B"
           >
-            ⇄
+            <SwapIcon size={18} />
           </button>
         </div>
 
-        {/* Model Card B */}
-        <div className="h2h-model-card">
-          <ModelPicker
-            models={livebench}
-            value={slots[1]}
-            onChange={(name) => handleSlotChange(1, name)}
-            slotLabel="B"
-            vendorDisplay={vendorDisplay}
-          />
-          <div className="h2h-card-stats">
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">Price (in / out)</span>
-              <span className="h2h-stat-value mono">
-                {fmtPrice(b.pricing?.prompt)} / {fmtPrice(b.pricing?.completion)}
-              </span>
-            </div>
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">Context Window</span>
-              <span className="h2h-stat-value mono">
-                {b.context_length ? `${(b.context_length / 1000).toFixed(0)}k tokens` : "—"}
-              </span>
-            </div>
-            <div className="h2h-card-stat">
-              <span className="h2h-stat-label">SWE-bench Best</span>
-              <span className="h2h-stat-value mono">
-                {sweFor(b) ? `${sweFor(b)!.best.toFixed(1)}% (${sweFor(b)!.n})` : "none"}
-              </span>
-            </div>
-          </div>
-          <div className="h2h-card-meta">
-            <span>
-              Method:{" "}
-              {b.alias_method ? (
-                <span className={`match-${b.alias_method}`}>{b.alias_method}</span>
-              ) : (
-                <span className="badge badge-stale">unmatched</span>
-              )}
-            </span>
-            <small className="mono dim">
-              {b.benchmark_name}
-            </small>
-          </div>
-        </div>
+        {modelCard(b, "B", 1)}
       </div>
 
-      {/* Middle: Paired Capability Bars + Radar Chart */}
       <div className="h2h-compare-grid">
         <div className="h2h-capabilities-card">
+          <div className="row-between">
+            <span className="h2h-card-heading">Capability axes</span>
+            <div className="h2h-legend">
+              <span className="h2h-legend-item">
+                <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
+                A · <span className="h2h-legend-name">{labelOf(a)}</span>
+              </span>
+              <span className="h2h-legend-item">
+                <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
+                B · <span className="h2h-legend-name">{labelOf(b)}</span>
+              </span>
+            </div>
+          </div>
+
           {capabilities.map((cap) => {
             const va = a.categories[cap];
             const vb = b.categories[cap];
             const hasBoth = va != null && vb != null;
-            const aWins = hasBoth && va >= vb;
-            const bWins = hasBoth && vb >= va;
+            const aLeads = hasBoth && va >= vb;
+            const bLeads = hasBoth && vb >= va;
 
             return (
               <div key={cap} className="cap-row">
                 <div className="cap-header">
                   <span className="cap-name">{cap}</span>
-                  <div className="cap-delta">
-                    {hasBoth ? <Delta a={va} b={vb} /> : <span className="dim">—</span>}
-                  </div>
+                  <span className="cap-delta">
+                    {hasBoth ? <Delta a={va} b={vb} /> : <span className="unknown">not stated</span>}
+                  </span>
                 </div>
 
                 <div className="cap-bars">
-                  {/* Model A Bar */}
-                  <div className="cap-bar-item">
+                  <div className="cap-bar-item" data-slot="A" data-lead={aLeads}>
                     <span className="cap-bar-label">A</span>
                     <div className="cap-bar-track">
                       <div
-                        className={`cap-bar-fill ${aWins ? "cap-winner" : "cap-loser"}`}
+                        className="cap-bar-fill"
+                        data-slot="A"
                         style={{ width: `${va != null ? Math.min(100, Math.max(0, va)) : 0}%` }}
                       />
                     </div>
-                    <span className={`cap-bar-val mono ${aWins ? "cap-winner-text" : ""}`}>
+                    <span className="cap-bar-val mono" data-lead={aLeads}>
                       {va?.toFixed(1) ?? "—"}
                     </span>
                   </div>
 
-                  {/* Model B Bar */}
-                  <div className="cap-bar-item">
+                  <div className="cap-bar-item" data-slot="B" data-lead={bLeads}>
                     <span className="cap-bar-label">B</span>
                     <div className="cap-bar-track">
                       <div
-                        className={`cap-bar-fill ${bWins ? "cap-winner" : "cap-loser"}`}
+                        className="cap-bar-fill"
+                        data-slot="B"
                         style={{ width: `${vb != null ? Math.min(100, Math.max(0, vb)) : 0}%` }}
                       />
                     </div>
-                    <span className={`cap-bar-val mono ${bWins ? "cap-winner-text" : ""}`}>
+                    <span className="cap-bar-val mono" data-lead={bLeads}>
                       {vb?.toFixed(1) ?? "—"}
                     </span>
                   </div>
@@ -273,21 +263,27 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         </div>
 
         <div className="h2h-radar-card">
+          <span className="h2h-card-heading">Shape of the two models</span>
           <RadarChart
             axes={capabilities}
             series={[
-              { label: "A", values: a.categories },
-              { label: "B", values: b.categories },
+              { label: `A · ${labelOf(a)}`, values: a.categories },
+              { label: `B · ${labelOf(b)}`, values: b.categories },
             ]}
           />
-          <div className="h2h-radar-legend">
-            <span><span style={{ color: "var(--primary)" }}>■</span> Model A</span>
-            <span><span style={{ color: "#60a5fa" }}>■</span> Model B</span>
+          <div className="h2h-legend">
+            <span className="h2h-legend-item">
+              <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
+              <span className="h2h-legend-name">{labelOf(a)}</span>
+            </span>
+            <span className="h2h-legend-item">
+              <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
+              <span className="h2h-legend-name">{labelOf(b)}</span>
+            </span>
           </div>
         </div>
       </div>
 
-      {/* per-task detail */}
       <details className="h2h-tasks-details">
         <summary className="h2h-tasks-summary">
           Per-task LiveBench scores ({taskKeys.length} tasks)
@@ -297,9 +293,9 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
             <thead>
               <tr>
                 <th>Task</th>
-                <th style={{ textAlign: "right" }}>A</th>
-                <th style={{ textAlign: "right" }}>B</th>
-                <th style={{ textAlign: "right" }}>Δ</th>
+                <th className="num">A · {labelOf(a)}</th>
+                <th className="num">B · {labelOf(b)}</th>
+                <th className="num">Δ</th>
               </tr>
             </thead>
             <tbody>
@@ -309,10 +305,10 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
                 return (
                   <tr key={t}>
                     <td className="mono">{t}</td>
-                    <td className="mono" style={{ textAlign: "right" }}>{va?.toFixed(1) ?? "—"}</td>
-                    <td className="mono" style={{ textAlign: "right" }}>{vb?.toFixed(1) ?? "—"}</td>
-                    <td style={{ textAlign: "right" }}>
-                      {va != null && vb != null ? <Delta a={va} b={vb} /> : <span className="dim">—</span>}
+                    <td className="mono num">{va?.toFixed(1) ?? "—"}</td>
+                    <td className="mono num">{vb?.toFixed(1) ?? "—"}</td>
+                    <td className="num">
+                      {va != null && vb != null ? <Delta a={va} b={vb} /> : <span className="unknown">—</span>}
                     </td>
                   </tr>
                 );

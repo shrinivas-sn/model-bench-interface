@@ -3,8 +3,9 @@ export type CatalogModel = {
   title: string;
   vendor: string;
   context_length: number | null;
-  prompt_price: number | null;
-  completion_price: number | null;
+  /** Dollars per million tokens. Every price in this file shares this unit. */
+  input_per_million: number | null;
+  output_per_million: number | null;
 };
 
 export type LivebenchModel = {
@@ -23,7 +24,11 @@ export type LivebenchModel = {
     output_price_per_million: number | null;
     cost_per_question: number | null;
   } | null;
-  pricing: { prompt: number; completion: number; source: string } | null;
+  pricing: {
+    input_per_million: number | null;
+    output_per_million: number | null;
+    source: "openrouter" | "livebench";
+  } | null;
   context_length?: number | null;
 };
 

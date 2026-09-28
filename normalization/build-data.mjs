@@ -36,16 +36,18 @@ async function buildCatalog() {
     const f = fieldsOf(rec);
     const id = f.source_id || rec.source_id;
     if (!id) continue;
-    const prompt = f.prompt_price;
-    const completion = f.completion_price;
-    // OpenRouter's "-1" pricing = unknown -> null
+    // OpenRouter's "-1" pricing = unknown -> null.
+    // Its `pricing.prompt` is dollars per TOKEN; normalise to per-million here
+    // so every price in `scores.json` shares one unit (see the pricing join below).
+    const perMillion = (v) =>
+      v == null || v < 0 ? null : Number((v * 1e6).toFixed(4));
     models.set(id, {
       id,
       title: f.title || id,
       vendor: vendorFor(id),
       context_length: f.context_length ?? null,
-      prompt_price: prompt != null && prompt >= 0 ? prompt : null,
-      completion_price: completion != null && completion >= 0 ? completion : null,
+      input_per_million: perMillion(f.prompt_price),
+      output_per_million: perMillion(f.completion_price),
     });
   }
   return models;
@@ -169,15 +171,26 @@ async function main() {
 
   // Join price from OpenRouter into matched models (single price source);
   // fallback to LiveBench's own cost CSV for unmatched models.
+  //
+  // UNIT CONTRACT: the two sources do not share a unit. OpenRouter's
+  // `prompt_price` is dollars per TOKEN (e.g. 0.00001), while LiveBench's
+  // `input_price_per_million` is dollars per MILLION. Emitting either raw into
+  // one field is what made every price in the UI read $0.00/M — so every price
+  // is normalised to per-million before it leaves this file. The app only ever
+  // reads `input_per_million` / `output_per_million`.
   for (const m of lb.models) {
     const c = m.canonical_id ? catalog.get(m.canonical_id) : null;
-    if (c && c.prompt_price != null) {
-      m.pricing = { prompt: c.prompt_price, completion: c.completion_price, source: "openrouter" };
+    if (c && c.input_per_million != null) {
+      m.pricing = {
+        input_per_million: c.input_per_million,
+        output_per_million: c.output_per_million,
+        source: "openrouter",
+      };
       m.context_length = c.context_length;
     } else if (m.cost && m.cost.input_price_per_million != null) {
       m.pricing = {
-        prompt: m.cost.input_price_per_million,
-        completion: m.cost.output_price_per_million,
+        input_per_million: m.cost.input_price_per_million,
+        output_per_million: m.cost.output_price_per_million,
         source: "livebench",
       };
     } else {

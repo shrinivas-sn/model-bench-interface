@@ -47,6 +47,48 @@ Append durable decisions; do not rewrite history.
   the daily cron — so the initial `.gitignore` excluding `store/`/`data/` was a bug (it would have
   broken the workflow's `git add store/ data/` on CI). Transient per-run logs under `runs/` stay
   untracked.
+- **28/09/2026 — Palette overridden: five colours (graphite + amber + blue + green + red).**
+  The Jev gate had resolved terminal-dev / zinc-emerald on 26/09. The owner rejected it as the
+  generic emerald-on-near-black "AI product" look. The replacement is deliberately authored, not
+  generated: one neutral graphite scale carries every surface, line and text tier, and only four
+  hues carry meaning — amber is the accent and the Model A series, blue is Model B, green means
+  healthy, red means error. Two consequences worth keeping:
+  - **Effort chips are one amber ramp, not five hues.** Reasoning effort is ordinal data; five
+    unrelated colours encoded no ordering at all. Chip intensity now rises with effort level.
+  - **The background is not near-black and not a coloured gradient.** `#0f1216` with a
+    neutral-to-neutral 180° wash, and surfaces layered by lightness so borders are not the only
+    thing separating regions. `--text-faint` was raised to `#828d9c` after the browser probe
+    measured the previous value at 4.18:1, below the 4.5:1 AA floor.
+  Typography (Inter + JetBrains Mono) and motion (snappy-utilitarian) are unchanged.
+
+- **28/09/2026 — All prices are USD per million tokens, normalised in `build-data.mjs`.**
+  OpenRouter's API reports `pricing.prompt` in dollars **per token** (e.g. 0.00001) while
+  LiveBench's cost CSV reports dollars **per million**. Both were written into the same
+  `pricing.prompt` field, so the app multiplied nothing and rendered `$0.00/M` for 57 of 63
+  rows. The unit is now fixed at the boundary: `build-data.mjs` emits only
+  `pricing.input_per_million` / `pricing.output_per_million` (and the catalog matches), and the
+  app reads only those. Any future price source must be converted before it leaves the build
+  step — never in a component.
+
+- **28/09/2026 — Model selection is a three-stage flow; the app owns search.**
+  Company → model → reasoning effort, with the effort stage skipped entirely for families that
+  have only one variant. Search moved off cmdk's built-in filter (`shouldFilter={false}`) to
+  `searchFamilies` in `lib/picker.mjs`: every whitespace token must match (AND, not OR) and
+  matches rank label > word > effort > benchmark name > vendor, so "opus max" narrows.
+  Unmatched benchmark names stay searchable and reachable rather than being filtered away.
+  Recents (`localStorage`, `mb.recentModels`) lead step one and supply the default A/B pair, so
+  the same comparison never has to be searched twice.
+
+- **28/09/2026 — UI changes are verified in a browser, not by reading code.**
+  `probe/verify-ui.mjs` (wired as `npm run verify:ui`) serves the built `out/` folder, drives it
+  with puppeteer-core against the installed Chrome, and measures: horizontal overflow, tap
+  targets ≥44px, text contrast against the effective background, and the complete picker
+  journey including the mobile bottom sheet at 390px. It caught a real defect that reading the
+  code did not — selecting a model from a search query never reached the effort step, because a
+  non-empty query kept overriding the stage. Because the site is a static export, the status
+  strip uses a client `RelativeTime` component: a build-time relative age would freeze into the
+  HTML.
+
 - **27/09/2026 — Hosting: Static export for Cloudflare Workers Static Assets.**
   Added `output: "export"` and `trailingSlash: false` to `next.config.mjs`.
   The 26/09 note "API routes can run ingestion on demand" is superseded: ingestion runs exclusively

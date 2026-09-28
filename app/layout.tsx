@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { AppNav } from "@/components/AppNav";
-import { FreshnessBadge } from "@/components/FreshnessBadge";
+import { DataStatusStrip } from "@/components/DataStatusStrip";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
@@ -21,19 +21,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <header className="site-header">
             <div className="header-inner">
               <span className="brand">
-                Model&nbsp;Bench<span className="brand-cursor">_</span>
+                Model&nbsp;Bench<span className="brand-mark" aria-hidden />
               </span>
               <AppNav />
-              <FreshnessBadge />
             </div>
           </header>
+          <DataStatusStrip />
           <main className="site-main">{children}</main>
           <footer className="site-footer">
             <small>
-              Data: OpenRouter catalog · LiveBench 2026-06-25 · SWE-bench Verified — ingested
-              with <code>@shrinivas-sn/adapter-ingestion</code>
+              OpenRouter catalog · LiveBench 2026-06-25 · SWE-bench Verified — ingested with{" "}
+              <code>@shrinivas-sn/adapter-ingestion</code>
             </small>
-            <small className="mono dim">terminal-dev · zinc-emerald · Jev tokens</small>
+            <small className="dim">
+              Prices are USD per million tokens. Per-benchmark scores are never averaged across
+              benchmarks.
+            </small>
           </footer>
         </div>
       </body>

@@ -3,9 +3,12 @@ const R = 110;
 const CX = SIZE / 2;
 const CY = SIZE / 2 + 6;
 
+/* Series colours come from the design tokens so the radar, the paired bars and
+   the card edges can never drift apart. Opacity is applied via fillOpacity
+   rather than baked into a colour literal. */
 const SERIES = [
-  { color: "var(--primary)", fill: "rgba(16,185,129,0.14)" },
-  { color: "#60a5fa", fill: "rgba(96,165,250,0.14)" },
+  { color: "var(--series-a)", fillOpacity: 0.16 },
+  { color: "var(--series-b)", fillOpacity: 0.16 },
 ];
 
 function pointFor(axisIndex: number, n: number, value: number) {
@@ -63,7 +66,16 @@ export function RadarChart({
             return `${x.toFixed(1)},${y.toFixed(1)}`;
           })
           .join(" ");
-        return <polygon key={s.label} points={pts} fill={c.fill} stroke={c.color} strokeWidth={1.5} />;
+        return (
+          <polygon
+            key={s.label}
+            points={pts}
+            fill={c.color}
+            fillOpacity={c.fillOpacity}
+            stroke={c.color}
+            strokeWidth={1.5}
+          />
+        );
       })}
       {series.map((s, si) =>
         axes.map((axis, i) => {

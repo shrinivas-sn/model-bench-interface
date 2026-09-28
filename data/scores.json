@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27T08:27:40.940Z",
+  "generated_at": "2026-09-28T07:30:50.172Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -29,3664 +29,3664 @@
       "title": "Anthropic: Claude Fable Latest",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "~anthropic/claude-haiku-latest",
       "title": "Anthropic: Claude Haiku Latest",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "~anthropic/claude-opus-latest",
       "title": "Anthropic: Claude Opus Latest",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000004,
-      "completion_price": 0.00002
+      "input_per_million": 4,
+      "output_per_million": 20
     },
     {
       "id": "~anthropic/claude-sonnet-latest",
       "title": "Anthropic: Claude Sonnet Latest",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "~deepseek/deepseek-flash-latest",
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 3.5e-8,
-      "completion_price": 2.9e-7
+      "input_per_million": 0.035,
+      "output_per_million": 0.29
     },
     {
       "id": "~deepseek/deepseek-pro-latest",
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.442e-7,
-      "completion_price": 7.326e-7
+      "input_per_million": 0.2442,
+      "output_per_million": 0.7326
     },
     {
       "id": "~deepseek/deepseek-v4-flash-latest",
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1310720,
-      "prompt_price": 2.1e-8,
-      "completion_price": 3.2e-7
+      "input_per_million": 0.021,
+      "output_per_million": 0.32
     },
     {
       "id": "~google/gemini-flash-latest",
       "title": "Google: Gemini Flash Latest",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.00000375
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
     },
     {
       "id": "~google/gemini-pro-latest",
       "title": "Google: Gemini Pro Latest",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "~moonshotai/kimi-latest",
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "prompt_price": 5e-7,
-      "completion_price": 0.0000028
+      "input_per_million": 0.5,
+      "output_per_million": 2.8
     },
     {
       "id": "~openai/gpt-astra-latest",
       "title": "OpenAI: GPT Astra Latest",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "~openai/gpt-luna-latest",
       "title": "OpenAI: GPT Luna Latest",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 1e-7,
-      "completion_price": 5e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.5
     },
     {
       "id": "~openai/gpt-mini-latest",
       "title": "OpenAI: GPT Mini Latest",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.0000045
+      "input_per_million": 0.75,
+      "output_per_million": 4.5
     },
     {
       "id": "~openai/gpt-sol-latest",
       "title": "OpenAI: GPT Sol Latest",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "~openai/gpt-terra-latest",
       "title": "OpenAI: GPT Terra Latest",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "~x-ai/grok-latest",
       "title": "xAI: Grok Latest",
       "vendor": "xai",
       "context_length": 500000,
-      "prompt_price": 0.0000016,
-      "completion_price": 0.0000048
+      "input_per_million": 1.6,
+      "output_per_million": 4.8
     },
     {
       "id": "~z-ai/glm-flash-latest",
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 4.5e-8,
-      "completion_price": 1.4e-7
+      "input_per_million": 0.045,
+      "output_per_million": 0.14
     },
     {
       "id": "~z-ai/glm-latest",
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 2.737e-7,
-      "completion_price": 8.602e-7
+      "input_per_million": 0.2737,
+      "output_per_million": 0.8602
     },
     {
       "id": "aion-labs/aion-2.0",
       "title": "AionLabs: Aion-2.0",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 8e-7,
-      "completion_price": 0.0000016
+      "input_per_million": 0.8,
+      "output_per_million": 1.6
     },
     {
       "id": "aion-labs/aion-3.0",
       "title": "AionLabs: Aion-3.0",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000006
+      "input_per_million": 3,
+      "output_per_million": 6
     },
     {
       "id": "aion-labs/aion-3.0-mini",
       "title": "AionLabs: Aion-3.0-Mini",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 7e-7,
-      "completion_price": 0.0000014
+      "input_per_million": 0.7,
+      "output_per_million": 1.4
     },
     {
       "id": "aion-labs/aion-3.5",
       "title": "AionLabs: Aion 3.5",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000006
+      "input_per_million": 3,
+      "output_per_million": 6
     },
     {
       "id": "aion-labs/aion-3.5-mini",
       "title": "AionLabs: Aion 3.5 Mini",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 7e-7,
-      "completion_price": 0.0000014
+      "input_per_million": 0.7,
+      "output_per_million": 1.4
     },
     {
       "id": "aion-labs/aion-rp-llama-3.1-8b",
       "title": "AionLabs: Aion-RP 1.0 (8B)",
       "vendor": "meta",
       "context_length": 32768,
-      "prompt_price": 8e-7,
-      "completion_price": 0.0000016
+      "input_per_million": 0.8,
+      "output_per_million": 1.6
     },
     {
       "id": "amazon/nova-2-lite-v1",
       "title": "Amazon: Nova 2 Lite",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
     },
     {
       "id": "amazon/nova-lite-v1",
       "title": "Amazon: Nova Lite 1.0",
       "vendor": "other",
       "context_length": 300000,
-      "prompt_price": 6e-8,
-      "completion_price": 2.4e-7
+      "input_per_million": 0.06,
+      "output_per_million": 0.24
     },
     {
       "id": "amazon/nova-micro-v1",
       "title": "Amazon: Nova Micro 1.0",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 3.5e-8,
-      "completion_price": 1.4e-7
+      "input_per_million": 0.035,
+      "output_per_million": 0.14
     },
     {
       "id": "amazon/nova-premier-v1",
       "title": "Amazon: Nova Premier 1.0",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "amazon/nova-pro-v1",
       "title": "Amazon: Nova Pro 1.0",
       "vendor": "other",
       "context_length": 300000,
-      "prompt_price": 8e-7,
-      "completion_price": 0.0000032
+      "input_per_million": 0.8,
+      "output_per_million": 3.2
     },
     {
       "id": "anthracite-org/magnum-v4-72b",
       "title": "Magnum v4 72B",
       "vendor": "other",
       "context_length": 32768,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.000005
+      "input_per_million": 2.5,
+      "output_per_million": 5
     },
     {
       "id": "anthropic/claude-fable-5",
       "title": "Anthropic: Claude Fable 5",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "anthropic/claude-fable-5:batch",
       "title": "Anthropic: Claude Fable 5 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-fable-5.1",
       "title": "Anthropic: Claude Fable 5.1",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "anthropic/claude-fable-5.1:batch",
       "title": "Anthropic: Claude Fable 5.1 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-haiku-4.5",
       "title": "Anthropic: Claude Haiku 4.5",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "anthropic/claude-haiku-4.5:batch",
       "title": "Anthropic: Claude Haiku 4.5 (batch)",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 5e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.5,
+      "output_per_million": 2.5
     },
     {
       "id": "anthropic/claude-opus-4.1",
       "title": "Anthropic: Claude Opus 4.1",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.000015,
-      "completion_price": 0.000075
+      "input_per_million": 15,
+      "output_per_million": 75
     },
     {
       "id": "anthropic/claude-opus-4.1:batch",
       "title": "Anthropic: Claude Opus 4.1 (batch)",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.0000075,
-      "completion_price": 0.0000375
+      "input_per_million": 7.5,
+      "output_per_million": 37.5
     },
     {
       "id": "anthropic/claude-opus-4.5",
       "title": "Anthropic: Claude Opus 4.5",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-opus-4.5:batch",
       "title": "Anthropic: Claude Opus 4.5 (batch)",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "anthropic/claude-opus-4.6",
       "title": "Anthropic: Claude Opus 4.6",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-opus-4.6:batch",
       "title": "Anthropic: Claude Opus 4.6 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "anthropic/claude-opus-4.7",
       "title": "Anthropic: Claude Opus 4.7",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-opus-4.7:batch",
       "title": "Anthropic: Claude Opus 4.7 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "anthropic/claude-opus-4.8",
       "title": "Anthropic: Claude Opus 4.8",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-opus-4.8:batch",
       "title": "Anthropic: Claude Opus 4.8 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "anthropic/claude-opus-5",
       "title": "Anthropic: Claude Opus 5",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "anthropic/claude-opus-5:batch",
       "title": "Anthropic: Claude Opus 5 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000125
+      "input_per_million": 2.5,
+      "output_per_million": 12.5
     },
     {
       "id": "anthropic/claude-opus-5.5",
       "title": "Anthropic: Claude Opus 5.5",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000004,
-      "completion_price": 0.00002
+      "input_per_million": 4,
+      "output_per_million": 20
     },
     {
       "id": "anthropic/claude-opus-5.5:batch",
       "title": "Anthropic: Claude Opus 5.5 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "anthropic/claude-sonnet-4",
       "title": "Anthropic: Claude Sonnet 4",
       "vendor": "anthropic",
       "context_length": 200000,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "anthropic/claude-sonnet-4.5",
       "title": "Anthropic: Claude Sonnet 4.5",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "anthropic/claude-sonnet-4.5:batch",
       "title": "Anthropic: Claude Sonnet 4.5 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000015,
-      "completion_price": 0.0000075
+      "input_per_million": 1.5,
+      "output_per_million": 7.5
     },
     {
       "id": "anthropic/claude-sonnet-4.6",
       "title": "Anthropic: Claude Sonnet 4.6",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "anthropic/claude-sonnet-4.6:batch",
       "title": "Anthropic: Claude Sonnet 4.6 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.0000015,
-      "completion_price": 0.0000075
+      "input_per_million": 1.5,
+      "output_per_million": 7.5
     },
     {
       "id": "anthropic/claude-sonnet-5",
       "title": "Anthropic: Claude Sonnet 5",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "anthropic/claude-sonnet-5:batch",
       "title": "Anthropic: Claude Sonnet 5 (batch)",
       "vendor": "anthropic",
       "context_length": 1000000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "arcee-ai/trinity-large-thinking",
       "title": "Arcee AI: Trinity Large Thinking",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2.5e-7,
-      "completion_price": 8e-7
+      "input_per_million": 0.25,
+      "output_per_million": 0.8
     },
     {
       "id": "baidu/ernie-4.5-vl-424b-a47b",
       "title": "Baidu: ERNIE 4.5 VL 424B A47B",
       "vendor": "other",
       "context_length": 123000,
-      "prompt_price": 4.2e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.42,
+      "output_per_million": 1.25
     },
     {
       "id": "bytedance-seed/seed-1.6",
       "title": "ByteDance Seed: Seed 1.6",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.25,
+      "output_per_million": 2
     },
     {
       "id": "bytedance-seed/seed-1.6-flash",
       "title": "ByteDance Seed: Seed 1.6 Flash",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 7.5e-8,
-      "completion_price": 3e-7
+      "input_per_million": 0.075,
+      "output_per_million": 0.3
     },
     {
       "id": "bytedance-seed/seed-2-1-turbo",
       "title": "ByteDance Seed: Seed 2.1 Turbo",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 5e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.5,
+      "output_per_million": 2.5
     },
     {
       "id": "bytedance-seed/seed-2.0-code",
       "title": "ByteDance Seed: Seed-2.0-Code",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 5e-7,
-      "completion_price": 0.000003
+      "input_per_million": 0.5,
+      "output_per_million": 3
     },
     {
       "id": "bytedance-seed/seed-2.0-lite",
       "title": "ByteDance Seed: Seed-2.0-Lite",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.25,
+      "output_per_million": 2
     },
     {
       "id": "bytedance-seed/seed-2.0-mini",
       "title": "ByteDance Seed: Seed-2.0-Mini",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 1e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.4
     },
     {
       "id": "bytedance/ui-tars-1.5-7b",
       "title": "ByteDance: UI-TARS 7B",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 1e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.2
     },
     {
       "id": "cognitivecomputations/dolphin-mistral-24b-venice-edition",
       "title": "Venice: Uncensored",
       "vendor": "mistral",
       "context_length": 128000,
-      "prompt_price": 2e-7,
-      "completion_price": 9e-7
+      "input_per_million": 0.2,
+      "output_per_million": 0.9
     },
     {
       "id": "cohere/command-a",
       "title": "Cohere: Command A",
       "vendor": "other",
       "context_length": 256000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "cohere/command-a-plus",
       "title": "Cohere: Command A+",
       "vendor": "other",
       "context_length": 192000,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.3,
+      "output_per_million": 1.5
     },
     {
       "id": "cohere/command-r-08-2024",
       "title": "Cohere: Command R (08-2024)",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "cohere/command-r-plus-08-2024",
       "title": "Cohere: Command R+ (08-2024)",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "cohere/command-r7b-12-2024",
       "title": "Cohere: Command R7B (12-2024)",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 3.75e-8,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.0375,
+      "output_per_million": 0.15
     },
     {
       "id": "cohere/north-mini-code:free",
       "title": "Cohere: North Mini Code (free)",
       "vendor": "other",
       "context_length": 256000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "deepseek/deepseek-chat",
       "title": "DeepSeek: DeepSeek V3",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 3.2e-7,
-      "completion_price": 8.9e-7
+      "input_per_million": 0.32,
+      "output_per_million": 0.89
     },
     {
       "id": "deepseek/deepseek-chat-v3-0324",
       "title": "DeepSeek: DeepSeek V3 0324",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.25,
+      "output_per_million": 1
     },
     {
       "id": "deepseek/deepseek-chat-v3.1",
       "title": "DeepSeek: DeepSeek V3.1",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 2.5e-7,
-      "completion_price": 9.5e-7
+      "input_per_million": 0.25,
+      "output_per_million": 0.95
     },
     {
       "id": "deepseek/deepseek-r1",
       "title": "DeepSeek: R1",
       "vendor": "deepseek",
       "context_length": 64000,
-      "prompt_price": 7e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.7,
+      "output_per_million": 2.5
     },
     {
       "id": "deepseek/deepseek-r1-0528",
       "title": "DeepSeek: R1 0528",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 5e-7,
-      "completion_price": 0.00000215
+      "input_per_million": 0.5,
+      "output_per_million": 2.15
     },
     {
       "id": "deepseek/deepseek-r1-distill-llama-70b",
       "title": "DeepSeek: R1 Distill Llama 70B",
       "vendor": "deepseek",
       "context_length": 8192,
-      "prompt_price": 8e-7,
-      "completion_price": 8e-7
+      "input_per_million": 0.8,
+      "output_per_million": 0.8
     },
     {
       "id": "deepseek/deepseek-v3.1-terminus",
       "title": "DeepSeek: DeepSeek V3.1 Terminus",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 2.7e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.27,
+      "output_per_million": 1
     },
     {
       "id": "deepseek/deepseek-v3.2",
       "title": "DeepSeek: DeepSeek V3.2",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 2.69e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.269,
+      "output_per_million": 0.4
     },
     {
       "id": "deepseek/deepseek-v3.2-exp",
       "title": "DeepSeek: DeepSeek V3.2 Exp",
       "vendor": "deepseek",
       "context_length": 163840,
-      "prompt_price": 2.7e-7,
-      "completion_price": 4.1e-7
+      "input_per_million": 0.27,
+      "output_per_million": 0.41
     },
     {
       "id": "deepseek/deepseek-v4-flash",
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 4.69e-8,
-      "completion_price": 9.38e-8
+      "input_per_million": 0.0469,
+      "output_per_million": 0.0938
     },
     {
       "id": "deepseek/deepseek-v4-flash-0731",
       "title": "DeepSeek: DeepSeek V4 Flash 0731",
       "vendor": "deepseek",
       "context_length": 1310720,
-      "prompt_price": 2.1e-8,
-      "completion_price": 3.2e-7
+      "input_per_million": 0.021,
+      "output_per_million": 0.32
     },
     {
       "id": "deepseek/deepseek-v4-flash-vision-exp",
       "title": "DeepSeek: DeepSeek V4 Flash Vision Exp",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.156e-7,
-      "completion_price": 6.468e-7
+      "input_per_million": 0.2156,
+      "output_per_million": 0.6468
     },
     {
       "id": "deepseek/deepseek-v4-pro",
       "title": "DeepSeek: DeepSeek V4 Pro 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 3.48e-7,
-      "completion_price": 6.96e-7
+      "input_per_million": 0.348,
+      "output_per_million": 0.696
     },
     {
       "id": "deepseek/deepseek-v4-pro-0813",
       "title": "DeepSeek: DeepSeek V4 Pro 0813",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 2.4502e-7,
-      "completion_price": 0.0000035
+      "input_per_million": 0.245,
+      "output_per_million": 3.5
     },
     {
       "id": "deepseek/deepseek-v4.1-flash",
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 3.5e-8,
-      "completion_price": 2.9e-7
+      "input_per_million": 0.035,
+      "output_per_million": 0.29
     },
     {
       "id": "deepseek/deepseek-v4.1-flash:batch",
       "title": "DeepSeek: DeepSeek V4.1 Flash (batch)",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "prompt_price": 1.12e-7,
-      "completion_price": 3.36e-7
+      "input_per_million": 0.112,
+      "output_per_million": 0.336
     },
     {
       "id": "dots-studio/dots-3-note-preview:free",
       "title": "Dots Studio: Dots3-Note Preview (free)",
       "vendor": "other",
       "context_length": 512000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "fireworks/ember-1",
       "title": "Fireworks: Ember-1",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "google/gemini-2.5-flash",
       "title": "Google: Gemini 2.5 Flash",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
     },
     {
       "id": "google/gemini-2.5-flash-image",
       "title": "Google: Nano Banana (Gemini 2.5 Flash Image)",
       "vendor": "google",
       "context_length": 32768,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
     },
     {
       "id": "google/gemini-2.5-flash-lite",
       "title": "Google: Gemini 2.5 Flash Lite",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 1e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.4
     },
     {
       "id": "google/gemini-2.5-flash-lite:batch",
       "title": "Google: Gemini 2.5 Flash Lite (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 5e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.2
     },
     {
       "id": "google/gemini-2.5-flash:batch",
       "title": "Google: Gemini 2.5 Flash (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.15,
+      "output_per_million": 1.25
     },
     {
       "id": "google/gemini-2.5-pro",
       "title": "Google: Gemini 2.5 Pro",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "google/gemini-2.5-pro-preview",
       "title": "Google: Gemini 2.5 Pro Preview 06-05",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "google/gemini-2.5-pro:batch",
       "title": "Google: Gemini 2.5 Pro (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 6.25e-7,
-      "completion_price": 0.000005
+      "input_per_million": 0.625,
+      "output_per_million": 5
     },
     {
       "id": "google/gemini-3-flash-preview",
       "title": "Google: Gemini 3 Flash Preview",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 5e-7,
-      "completion_price": 0.000003
+      "input_per_million": 0.5,
+      "output_per_million": 3
     },
     {
       "id": "google/gemini-3-flash-preview:batch",
       "title": "Google: Gemini 3 Flash Preview (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.25,
+      "output_per_million": 1.5
     },
     {
       "id": "google/gemini-3-pro-image",
       "title": "Google: Nano Banana Pro (Gemini 3 Pro Image)",
       "vendor": "google",
       "context_length": 131072,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "google/gemini-3-pro-image-preview",
       "title": "Google: Nano Banana Pro (Gemini 3 Pro Image Preview)",
       "vendor": "google",
       "context_length": 65536,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "google/gemini-3.1-flash-image",
       "title": "Google: Nano Banana 2 (Gemini 3.1 Flash Image)",
       "vendor": "google",
       "context_length": 131072,
-      "prompt_price": 5e-7,
-      "completion_price": 0.000003
+      "input_per_million": 0.5,
+      "output_per_million": 3
     },
     {
       "id": "google/gemini-3.1-flash-image-preview",
       "title": "Google: Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "vendor": "google",
       "context_length": 65536,
-      "prompt_price": 5e-7,
-      "completion_price": 0.000003
+      "input_per_million": 0.5,
+      "output_per_million": 3
     },
     {
       "id": "google/gemini-3.1-flash-lite",
       "title": "Google: Gemini 3.1 Flash Lite",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.25,
+      "output_per_million": 1.5
     },
     {
       "id": "google/gemini-3.1-flash-lite-image",
       "title": "Google: Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
       "vendor": "google",
       "context_length": 65536,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.25,
+      "output_per_million": 1.5
     },
     {
       "id": "google/gemini-3.1-flash-lite-preview",
       "title": "Google: Gemini 3.1 Flash Lite Preview",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.25,
+      "output_per_million": 1.5
     },
     {
       "id": "google/gemini-3.1-flash-lite:batch",
       "title": "Google: Gemini 3.1 Flash Lite (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 1.25e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.125,
+      "output_per_million": 0.75
     },
     {
       "id": "google/gemini-3.1-pro-preview",
       "title": "Google: Gemini 3.1 Pro Preview",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "google/gemini-3.1-pro-preview-customtools",
       "title": "Google: Gemini 3.1 Pro Preview Custom Tools",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "google/gemini-3.1-pro-preview:batch",
       "title": "Google: Gemini 3.1 Pro Preview (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000006
+      "input_per_million": 1,
+      "output_per_million": 6
     },
     {
       "id": "google/gemini-3.5-flash",
       "title": "Google: Gemini 3.5 Flash",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0.0000015,
-      "completion_price": 0.000009
+      "input_per_million": 1.5,
+      "output_per_million": 9
     },
     {
       "id": "google/gemini-3.5-flash-lite",
       "title": "Google: Gemini 3.5 Flash Lite",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.3,
+      "output_per_million": 2.5
     },
     {
       "id": "google/gemini-3.5-flash-lite:batch",
       "title": "Google: Gemini 3.5 Flash Lite (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.15,
+      "output_per_million": 1.25
     },
     {
       "id": "google/gemini-3.5-flash:batch",
       "title": "Google: Gemini 3.5 Flash (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.0000045
+      "input_per_million": 0.75,
+      "output_per_million": 4.5
     },
     {
       "id": "google/gemini-3.6-flash",
       "title": "Google: Gemini 3.6 Flash",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.00000375
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
     },
     {
       "id": "google/gemini-3.6-flash:batch",
       "title": "Google: Gemini 3.6 Flash (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 3.75e-7,
-      "completion_price": 0.000001875
+      "input_per_million": 0.375,
+      "output_per_million": 1.875
     },
     {
       "id": "google/gemini-3.7-flash",
       "title": "Google: Gemini 3.7 Flash",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.00000375
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
     },
     {
       "id": "google/gemini-3.7-flash:batch",
       "title": "Google: Gemini 3.7 Flash (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 3.75e-7,
-      "completion_price": 0.000001875
+      "input_per_million": 0.375,
+      "output_per_million": 1.875
     },
     {
       "id": "google/gemini-3.8-flash",
       "title": "Google: Gemini 3.8 Flash",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.00000375
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
     },
     {
       "id": "google/gemini-3.8-flash:batch",
       "title": "Google: Gemini 3.8 Flash (batch)",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 3.75e-7,
-      "completion_price": 0.000001875
+      "input_per_million": 0.375,
+      "output_per_million": 1.875
     },
     {
       "id": "google/gemma-2-27b-it",
       "title": "Google: Gemma 2 27B",
       "vendor": "google",
       "context_length": 8192,
-      "prompt_price": 6.5e-7,
-      "completion_price": 6.5e-7
+      "input_per_million": 0.65,
+      "output_per_million": 0.65
     },
     {
       "id": "google/gemma-3-12b-it",
       "title": "Google: Gemma 3 12B",
       "vendor": "google",
       "context_length": 131072,
-      "prompt_price": 5e-8,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.15
     },
     {
       "id": "google/gemma-3-27b-it",
       "title": "Google: Gemma 3 27B",
       "vendor": "google",
       "context_length": 131072,
-      "prompt_price": 8e-8,
-      "completion_price": 4.5e-7
+      "input_per_million": 0.08,
+      "output_per_million": 0.45
     },
     {
       "id": "google/gemma-3-4b-it",
       "title": "Google: Gemma 3 4B",
       "vendor": "google",
       "context_length": 131072,
-      "prompt_price": 5e-8,
-      "completion_price": 1e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.1
     },
     {
       "id": "google/gemma-4-26b-a4b-it",
       "title": "Google: Gemma 4 26B A4B",
       "vendor": "google",
       "context_length": 262144,
-      "prompt_price": 6.75e-8,
-      "completion_price": 2.25e-7
+      "input_per_million": 0.0675,
+      "output_per_million": 0.225
     },
     {
       "id": "google/gemma-4-26b-a4b-it:free",
       "title": "Google: Gemma 4 26B A4B (free)",
       "vendor": "google",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "google/gemma-4-31b-it",
       "title": "Google: Gemma 4 31B",
       "vendor": "google",
       "context_length": 262144,
-      "prompt_price": 9e-8,
-      "completion_price": 3.4e-7
+      "input_per_million": 0.09,
+      "output_per_million": 0.34
     },
     {
       "id": "google/gemma-4-31b-it:free",
       "title": "Google: Gemma 4 31B (free)",
       "vendor": "google",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "google/lyria-3-clip-preview",
       "title": "Google: Lyria 3 Clip Preview",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "google/lyria-3-pro-preview",
       "title": "Google: Lyria 3 Pro Preview",
       "vendor": "google",
       "context_length": 1048576,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "gryphe/mythomax-l2-13b",
       "title": "MythoMax 13B",
       "vendor": "other",
       "context_length": 8192,
-      "prompt_price": 8e-8,
-      "completion_price": 1.1e-7
+      "input_per_million": 0.08,
+      "output_per_million": 0.11
     },
     {
       "id": "ibm-granite/granite-4.0-h-micro",
       "title": "IBM: Granite 4.0 Micro",
       "vendor": "other",
       "context_length": 131000,
-      "prompt_price": 1.7e-8,
-      "completion_price": 1.12e-7
+      "input_per_million": 0.017,
+      "output_per_million": 0.112
     },
     {
       "id": "ibm-granite/granite-4.2-8b",
       "title": "IBM: Granite 4.2 8B",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 6e-8,
-      "completion_price": 2.5e-7
+      "input_per_million": 0.06,
+      "output_per_million": 0.25
     },
     {
       "id": "inception/mercury-2",
       "title": "Inception: Mercury 2",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 2.5e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.25,
+      "output_per_million": 0.75
     },
     {
       "id": "inception/mercury-2.5",
       "title": "Inception: Mercury 2.5",
       "vendor": "other",
       "context_length": 260000,
-      "prompt_price": 4e-8,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.04,
+      "output_per_million": 0.15
     },
     {
       "id": "inclusionai/ling-3.0-flash",
       "title": "inclusionAI: Ling 3.0 Flash",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2.1e-8,
-      "completion_price": 6.3e-8
+      "input_per_million": 0.021,
+      "output_per_million": 0.063
     },
     {
       "id": "inclusionai/ling-3.0-flash-fin",
       "title": "inclusionAI: Ling 3.0 Flash Fin",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 6e-8,
-      "completion_price": 1.8e-7
+      "input_per_million": 0.06,
+      "output_per_million": 0.18
     },
     {
       "id": "inclusionai/ling-3.0-flash-fin:free",
       "title": "inclusionAI: Ling 3.0 Flash Fin (free)",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "inclusionai/ling-3.0-flash-sante:free",
       "title": "inclusionAI: Ling 3.0 Flash Sante (free)",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "inclusionai/ling-3.0-flash-vl",
       "title": "inclusionAI: Ling 3.0 Flash VL",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2.1e-8,
-      "completion_price": 6.16e-8
+      "input_per_million": 0.021,
+      "output_per_million": 0.0616
     },
     {
       "id": "inference-net/schematron-v2-small",
       "title": "Inference.net: Schematron V2 Small",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 5e-8,
-      "completion_price": 2.3e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.23
     },
     {
       "id": "inference-net/schematron-v2-turbo",
       "title": "Inference.net: Schematron V2 Turbo",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 3e-8,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.03,
+      "output_per_million": 0.15
     },
     {
       "id": "kwaipilot/kat-coder-pro-v2.5",
       "title": "Kwaipilot: KAT-Coder-Pro V2.5",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 7.4e-7,
-      "completion_price": 0.00000296
+      "input_per_million": 0.74,
+      "output_per_million": 2.96
     },
     {
       "id": "liquid/lfm-2.5-2.6b:free",
       "title": "LiquidAI: LFM2.5-2.6B (free)",
       "vendor": "other",
       "context_length": 65536,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "mancer/weaver",
       "title": "Mancer: Weaver (alpha)",
       "vendor": "other",
       "context_length": 8000,
-      "prompt_price": 4e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.4,
+      "output_per_million": 0.75
     },
     {
       "id": "meituan/longcat-2.0",
       "title": "Meituan: LongCat 2.0",
       "vendor": "other",
       "context_length": 1048756,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "meta-llama/llama-3.1-70b-instruct",
       "title": "Meta: Llama 3.1 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 4e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.4,
+      "output_per_million": 0.4
     },
     {
       "id": "meta-llama/llama-3.1-8b-instruct",
       "title": "Meta: Llama 3.1 8B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 5e-8,
-      "completion_price": 8e-8
+      "input_per_million": 0.05,
+      "output_per_million": 0.08
     },
     {
       "id": "meta-llama/llama-3.2-1b-instruct",
       "title": "Meta: Llama 3.2 1B Instruct",
       "vendor": "meta",
       "context_length": 60000,
-      "prompt_price": 2.7e-8,
-      "completion_price": 2.01e-7
+      "input_per_million": 0.027,
+      "output_per_million": 0.201
     },
     {
       "id": "meta-llama/llama-3.2-3b-instruct",
       "title": "Meta: Llama 3.2 3B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 5e-8,
-      "completion_price": 3.3e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.33
     },
     {
       "id": "meta-llama/llama-3.3-70b-instruct",
       "title": "Meta: Llama 3.3 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 1e-7,
-      "completion_price": 3.2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.32
     },
     {
       "id": "meta-llama/llama-4-maverick",
       "title": "Meta: Llama 4 Maverick",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 1.875e-7,
-      "completion_price": 6.525e-7
+      "input_per_million": 0.1875,
+      "output_per_million": 0.6525
     },
     {
       "id": "meta-llama/llama-4-scout",
       "title": "Meta: Llama 4 Scout",
       "vendor": "meta",
       "context_length": 1310720,
-      "prompt_price": 1e-7,
-      "completion_price": 3e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.3
     },
     {
       "id": "meta-llama/llama-guard-4-12b",
       "title": "Meta: Llama Guard 4 12B",
       "vendor": "meta",
       "context_length": 163840,
-      "prompt_price": 1.8e-7,
-      "completion_price": 1.8e-7
+      "input_per_million": 0.18,
+      "output_per_million": 0.18
     },
     {
       "id": "meta/muse-glimmer-30b",
       "title": "Meta: Muse Glimmer 30B",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "meta/muse-spark-1.1",
       "title": "Meta: Muse Spark 1.1",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00000425
+      "input_per_million": 1.25,
+      "output_per_million": 4.25
     },
     {
       "id": "meta/muse-spark-1.2",
       "title": "Meta: Muse Spark 1.2",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00000425
+      "input_per_million": 1.25,
+      "output_per_million": 4.25
     },
     {
       "id": "meta/muse-spark-1.2-contributor",
       "title": "Meta: Muse Spark 1.2 Contributor",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 1e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.2
     },
     {
       "id": "meta/muse-spark-1.3",
       "title": "Meta: Muse Spark 1.3",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00000425
+      "input_per_million": 1.25,
+      "output_per_million": 4.25
     },
     {
       "id": "meta/muse-spark-1.3-contributor",
       "title": "Meta: Muse Spark 1.3 Contributor",
       "vendor": "meta",
       "context_length": 1048576,
-      "prompt_price": 1e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.2
     },
     {
       "id": "microsoft/phi-4",
       "title": "Microsoft: Phi 4",
       "vendor": "other",
       "context_length": 16384,
-      "prompt_price": 7e-8,
-      "completion_price": 1.4e-7
+      "input_per_million": 0.07,
+      "output_per_million": 0.14
     },
     {
       "id": "microsoft/wizardlm-2-8x22b",
       "title": "WizardLM-2 8x22B",
       "vendor": "other",
       "context_length": 65535,
-      "prompt_price": 6.2e-7,
-      "completion_price": 6.2e-7
+      "input_per_million": 0.62,
+      "output_per_million": 0.62
     },
     {
       "id": "minimax/minimax-01",
       "title": "MiniMax: MiniMax-01",
       "vendor": "minimax",
       "context_length": 1000192,
-      "prompt_price": 2e-7,
-      "completion_price": 0.0000011
+      "input_per_million": 0.2,
+      "output_per_million": 1.1
     },
     {
       "id": "minimax/minimax-m1",
       "title": "MiniMax: MiniMax M1",
       "vendor": "minimax",
       "context_length": 1000000,
-      "prompt_price": 4e-7,
-      "completion_price": 0.0000022
+      "input_per_million": 0.4,
+      "output_per_million": 2.2
     },
     {
       "id": "minimax/minimax-m2",
       "title": "MiniMax: MiniMax M2",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 2.55e-7,
-      "completion_price": 0.00000102
+      "input_per_million": 0.255,
+      "output_per_million": 1.02
     },
     {
       "id": "minimax/minimax-m2-her",
       "title": "MiniMax: MiniMax M2-her",
       "vendor": "minimax",
       "context_length": 65536,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "minimax/minimax-m2.1",
       "title": "MiniMax: MiniMax M2.1",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "minimax/minimax-m2.5",
       "title": "MiniMax: MiniMax M2.5",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 2.7e-7,
-      "completion_price": 0.00000108
+      "input_per_million": 0.27,
+      "output_per_million": 1.08
     },
     {
       "id": "minimax/minimax-m2.7",
       "title": "MiniMax: MiniMax M2.7",
       "vendor": "minimax",
       "context_length": 204800,
-      "prompt_price": 2.1e-7,
-      "completion_price": 8.4e-7
+      "input_per_million": 0.21,
+      "output_per_million": 0.84
     },
     {
       "id": "minimax/minimax-m3",
       "title": "MiniMax: MiniMax M3",
       "vendor": "minimax",
       "context_length": 1048576,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.3,
+      "output_per_million": 1.2
     },
     {
       "id": "mistralai/codestral-2508",
       "title": "Mistral: Codestral 2508",
       "vendor": "mistral",
       "context_length": 256000,
-      "prompt_price": 3e-7,
-      "completion_price": 9e-7
+      "input_per_million": 0.3,
+      "output_per_million": 0.9
     },
     {
       "id": "mistralai/codestral-2508:batch",
       "title": "Mistral: Codestral 2508 (batch)",
       "vendor": "mistral",
       "context_length": 256000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 4.5e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.45
     },
     {
       "id": "mistralai/devstral-2512",
       "title": "Mistral: Devstral 2 2512",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 4e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.4,
+      "output_per_million": 2
     },
     {
       "id": "mistralai/ministral-14b-2512",
       "title": "Mistral: Ministral 3 14B 2512",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 2e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.2,
+      "output_per_million": 0.2
     },
     {
       "id": "mistralai/ministral-3b-2512",
       "title": "Mistral: Ministral 3 3B 2512",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 1e-7,
-      "completion_price": 1e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.1
     },
     {
       "id": "mistralai/ministral-8b-2512",
       "title": "Mistral: Ministral 3 8B 2512",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 1.5e-7,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.15
     },
     {
       "id": "mistralai/ministral-8b-2512:batch",
       "title": "Mistral: Ministral 3 8B 2512 (batch)",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 7.5e-8,
-      "completion_price": 7.5e-8
+      "input_per_million": 0.075,
+      "output_per_million": 0.075
     },
     {
       "id": "mistralai/mistral-large",
       "title": "Mistral Large",
       "vendor": "mistral",
       "context_length": 128000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "mistralai/mistral-large-2407",
       "title": "Mistral Large 2407",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "mistralai/mistral-large-2512",
       "title": "Mistral: Mistral Large 3 2512",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.5,
+      "output_per_million": 1.5
     },
     {
       "id": "mistralai/mistral-large-2512:batch",
       "title": "Mistral: Mistral Large 3 2512 (batch)",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 2.5e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.25,
+      "output_per_million": 0.75
     },
     {
       "id": "mistralai/mistral-medium-3",
       "title": "Mistral: Mistral Medium 3",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 4e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.4,
+      "output_per_million": 2
     },
     {
       "id": "mistralai/mistral-medium-3-5",
       "title": "Mistral: Mistral Medium 3.5",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 0.0000015,
-      "completion_price": 0.0000075
+      "input_per_million": 1.5,
+      "output_per_million": 7.5
     },
     {
       "id": "mistralai/mistral-medium-3-5:batch",
       "title": "Mistral: Mistral Medium 3.5 (batch)",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.00000375
+      "input_per_million": 0.75,
+      "output_per_million": 3.75
     },
     {
       "id": "mistralai/mistral-medium-3.1",
       "title": "Mistral: Mistral Medium 3.1",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 4e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.4,
+      "output_per_million": 2
     },
     {
       "id": "mistralai/mistral-medium-3.1:batch",
       "title": "Mistral: Mistral Medium 3.1 (batch)",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 2e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.2,
+      "output_per_million": 1
     },
     {
       "id": "mistralai/mistral-nemo",
       "title": "Mistral: Mistral Nemo",
       "vendor": "mistral",
       "context_length": 131072,
-      "prompt_price": 1.9e-8,
-      "completion_price": 3e-8
+      "input_per_million": 0.019,
+      "output_per_million": 0.03
     },
     {
       "id": "mistralai/mistral-saba",
       "title": "Mistral: Saba",
       "vendor": "mistral",
       "context_length": 32768,
-      "prompt_price": 2e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.2,
+      "output_per_million": 0.6
     },
     {
       "id": "mistralai/mistral-small-24b-instruct-2501",
       "title": "Mistral: Mistral Small 3",
       "vendor": "mistral",
       "context_length": 32768,
-      "prompt_price": 5e-8,
-      "completion_price": 8e-8
+      "input_per_million": 0.05,
+      "output_per_million": 0.08
     },
     {
       "id": "mistralai/mistral-small-2603",
       "title": "Mistral: Mistral Small 4",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "mistralai/mistral-small-2603:batch",
       "title": "Mistral: Mistral Small 4 (batch)",
       "vendor": "mistral",
       "context_length": 262144,
-      "prompt_price": 7.5e-8,
-      "completion_price": 3e-7
+      "input_per_million": 0.075,
+      "output_per_million": 0.3
     },
     {
       "id": "mistralai/mistral-small-3.1-24b-instruct",
       "title": "Mistral: Mistral Small 3.1 24B",
       "vendor": "mistral",
       "context_length": 128000,
-      "prompt_price": 3.51e-7,
-      "completion_price": 5.55e-7
+      "input_per_million": 0.351,
+      "output_per_million": 0.555
     },
     {
       "id": "mistralai/mistral-small-3.2-24b-instruct",
       "title": "Mistral: Mistral Small 3.2 24B",
       "vendor": "mistral",
       "context_length": 256000,
-      "prompt_price": 9.375e-8,
-      "completion_price": 2.5e-7
+      "input_per_million": 0.0938,
+      "output_per_million": 0.25
     },
     {
       "id": "mistralai/mixtral-8x22b-instruct",
       "title": "Mistral: Mixtral 8x22B Instruct",
       "vendor": "mistral",
       "context_length": 65536,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "mistralai/voxtral-small-24b-2507",
       "title": "Mistral: Voxtral Small 24B 2507",
       "vendor": "mistral",
       "context_length": 32768,
-      "prompt_price": 1e-7,
-      "completion_price": 3e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.3
     },
     {
       "id": "moonshotai/kimi-k2",
       "title": "MoonshotAI: Kimi K2 0711",
       "vendor": "moonshot",
       "context_length": 131072,
-      "prompt_price": 5.7e-7,
-      "completion_price": 0.0000023
+      "input_per_million": 0.57,
+      "output_per_million": 2.3
     },
     {
       "id": "moonshotai/kimi-k2-0905",
       "title": "MoonshotAI: Kimi K2 0905",
       "vendor": "moonshot",
       "context_length": 262144,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.6,
+      "output_per_million": 2.5
     },
     {
       "id": "moonshotai/kimi-k2-thinking",
       "title": "MoonshotAI: Kimi K2 Thinking",
       "vendor": "moonshot",
       "context_length": 262144,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000025
+      "input_per_million": 0.6,
+      "output_per_million": 2.5
     },
     {
       "id": "moonshotai/kimi-k2.5",
       "title": "MoonshotAI: Kimi K2.5",
       "vendor": "moonshot",
       "context_length": 262144,
-      "prompt_price": 4.5e-7,
-      "completion_price": 0.00000225
+      "input_per_million": 0.45,
+      "output_per_million": 2.25
     },
     {
       "id": "moonshotai/kimi-k2.6",
       "title": "MoonshotAI: Kimi K2.6",
       "vendor": "moonshot",
       "context_length": 262144,
-      "prompt_price": 9.5e-7,
-      "completion_price": 0.000004
+      "input_per_million": 0.95,
+      "output_per_million": 4
     },
     {
       "id": "moonshotai/kimi-k2.7-code",
       "title": "MoonshotAI: Kimi K2.7 Code",
       "vendor": "moonshot",
       "context_length": 262144,
-      "prompt_price": 6.562e-7,
-      "completion_price": 0.0000033
+      "input_per_million": 0.6562,
+      "output_per_million": 3.3
     },
     {
       "id": "moonshotai/kimi-k3",
       "title": "MoonshotAI: Kimi K3",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "moonshotai/kimi-k3:batch",
       "title": "MoonshotAI: Kimi K3 (batch)",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "prompt_price": 0.00000228,
-      "completion_price": 0.0000114
+      "input_per_million": 2.28,
+      "output_per_million": 11.4
     },
     {
       "id": "morph/morph-v3-fast",
       "title": "Morph: Morph V3 Fast",
       "vendor": "other",
       "context_length": 81920,
-      "prompt_price": 8e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.8,
+      "output_per_million": 1.2
     },
     {
       "id": "morph/morph-v3-large",
       "title": "Morph: Morph V3 Large",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 9e-7,
-      "completion_price": 0.0000019
+      "input_per_million": 0.9,
+      "output_per_million": 1.9
     },
     {
       "id": "nousresearch/hermes-3-llama-3.1-405b",
       "title": "Nous: Hermes 3 405B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000001
+      "input_per_million": 1,
+      "output_per_million": 1
     },
     {
       "id": "nousresearch/hermes-3-llama-3.1-70b",
       "title": "Nous: Hermes 3 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "prompt_price": 7e-7,
-      "completion_price": 7e-7
+      "input_per_million": 0.7,
+      "output_per_million": 0.7
     },
     {
       "id": "nousresearch/hermes-4-405b",
       "title": "Nous: Hermes 4 405B",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000003
+      "input_per_million": 1,
+      "output_per_million": 3
     },
     {
       "id": "nvidia/nemotron-3-nano-30b-a3b",
       "title": "NVIDIA: Nemotron 3 Nano 30B A3B",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 5e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.2
     },
     {
       "id": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
       "title": "NVIDIA: Nemotron 3 Nano Omni (free)",
       "vendor": "other",
       "context_length": 256000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b",
       "title": "NVIDIA: Nemotron 3 Super",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 8e-8,
-      "completion_price": 4.5e-7
+      "input_per_million": 0.08,
+      "output_per_million": 0.45
     },
     {
       "id": "nvidia/nemotron-3-super-120b-a12b:free",
       "title": "NVIDIA: Nemotron 3 Super (free)",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b",
       "title": "NVIDIA: Nemotron 3 Ultra",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000024
+      "input_per_million": 0.6,
+      "output_per_million": 2.4
     },
     {
       "id": "nvidia/nemotron-3-ultra-550b-a55b:free",
       "title": "NVIDIA: Nemotron 3 Ultra (free)",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "nvidia/nemotron-3.5-content-safety",
       "title": "NVIDIA: Nemotron 3.5 Content Safety",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 2e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.2,
+      "output_per_million": 0.2
     },
     {
       "id": "nvidia/nemotron-3.5-content-safety:free",
       "title": "NVIDIA: Nemotron 3.5 Content Safety (free)",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "nvidia/nemotron-3.5-lightning",
       "title": "NVIDIA: Nemotron 3.5 Lightning",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 8e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.08,
+      "output_per_million": 0.2
     },
     {
       "id": "nvidia/nemotron-3.5-lightning:free",
       "title": "NVIDIA: Nemotron 3.5 Lightning (free)",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "openai/gpt-3.5-turbo",
       "title": "OpenAI: GPT-3.5 Turbo",
       "vendor": "openai",
       "context_length": 16385,
-      "prompt_price": 5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.5,
+      "output_per_million": 1.5
     },
     {
       "id": "openai/gpt-3.5-turbo-0613",
       "title": "OpenAI: GPT-3.5 Turbo (older v0613)",
       "vendor": "openai",
       "context_length": 4095,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000002
+      "input_per_million": 1,
+      "output_per_million": 2
     },
     {
       "id": "openai/gpt-3.5-turbo-16k",
       "title": "OpenAI: GPT-3.5 Turbo 16k",
       "vendor": "openai",
       "context_length": 16385,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000004
+      "input_per_million": 3,
+      "output_per_million": 4
     },
     {
       "id": "openai/gpt-3.5-turbo-instruct",
       "title": "OpenAI: GPT-3.5 Turbo Instruct",
       "vendor": "openai",
       "context_length": 4095,
-      "prompt_price": 0.0000015,
-      "completion_price": 0.000002
+      "input_per_million": 1.5,
+      "output_per_million": 2
     },
     {
       "id": "openai/gpt-3.5-turbo:batch",
       "title": "OpenAI: GPT-3.5 Turbo (batch)",
       "vendor": "openai",
       "context_length": 16385,
-      "prompt_price": 2.5e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.25,
+      "output_per_million": 0.75
     },
     {
       "id": "openai/gpt-4",
       "title": "OpenAI: GPT-4",
       "vendor": "openai",
       "context_length": 8191,
-      "prompt_price": 0.00003,
-      "completion_price": 0.00006
+      "input_per_million": 30,
+      "output_per_million": 60
     },
     {
       "id": "openai/gpt-4-turbo",
       "title": "OpenAI: GPT-4 Turbo",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00003
+      "input_per_million": 10,
+      "output_per_million": 30
     },
     {
       "id": "openai/gpt-4-turbo:batch",
       "title": "OpenAI: GPT-4 Turbo (batch)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000015
+      "input_per_million": 5,
+      "output_per_million": 15
     },
     {
       "id": "openai/gpt-4.1",
       "title": "OpenAI: GPT-4.1",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000008
+      "input_per_million": 2,
+      "output_per_million": 8
     },
     {
       "id": "openai/gpt-4.1-mini",
       "title": "OpenAI: GPT-4.1 Mini",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 4e-7,
-      "completion_price": 0.0000016
+      "input_per_million": 0.4,
+      "output_per_million": 1.6
     },
     {
       "id": "openai/gpt-4.1-mini:batch",
       "title": "OpenAI: GPT-4.1 Mini (batch)",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 2e-7,
-      "completion_price": 8e-7
+      "input_per_million": 0.2,
+      "output_per_million": 0.8
     },
     {
       "id": "openai/gpt-4.1-nano",
       "title": "OpenAI: GPT-4.1 Nano",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 1e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.4
     },
     {
       "id": "openai/gpt-4.1-nano:batch",
       "title": "OpenAI: GPT-4.1 Nano (batch)",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 5e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.2
     },
     {
       "id": "openai/gpt-4.1:batch",
       "title": "OpenAI: GPT-4.1 (batch)",
       "vendor": "openai",
       "context_length": 1047576,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000004
+      "input_per_million": 1,
+      "output_per_million": 4
     },
     {
       "id": "openai/gpt-4o",
       "title": "OpenAI: GPT-4o",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-4o-2024-05-13",
       "title": "OpenAI: GPT-4o (2024-05-13)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000015
+      "input_per_million": 5,
+      "output_per_million": 15
     },
     {
       "id": "openai/gpt-4o-2024-08-06",
       "title": "OpenAI: GPT-4o (2024-08-06)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-4o-2024-11-20",
       "title": "OpenAI: GPT-4o (2024-11-20)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-4o-mini",
       "title": "OpenAI: GPT-4o-mini",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "openai/gpt-4o-mini-2024-07-18",
       "title": "OpenAI: GPT-4o-mini (2024-07-18)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "openai/gpt-4o-mini:batch",
       "title": "OpenAI: GPT-4o-mini (batch)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 7.5e-8,
-      "completion_price": 3e-7
+      "input_per_million": 0.075,
+      "output_per_million": 0.3
     },
     {
       "id": "openai/gpt-4o:batch",
       "title": "OpenAI: GPT-4o (batch)",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.000005
+      "input_per_million": 1.25,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-5",
       "title": "OpenAI: GPT-5",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5-image",
       "title": "OpenAI: GPT-5 Image",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00001
+      "input_per_million": 10,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5-image-mini",
       "title": "OpenAI: GPT-5 Image Mini",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.000002
+      "input_per_million": 2.5,
+      "output_per_million": 2
     },
     {
       "id": "openai/gpt-5-mini",
       "title": "OpenAI: GPT-5 Mini",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.25,
+      "output_per_million": 2
     },
     {
       "id": "openai/gpt-5-mini:batch",
       "title": "OpenAI: GPT-5 Mini (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 1.25e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.125,
+      "output_per_million": 1
     },
     {
       "id": "openai/gpt-5-nano",
       "title": "OpenAI: GPT-5 Nano",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 5e-8,
-      "completion_price": 4e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.4
     },
     {
       "id": "openai/gpt-5-nano:batch",
       "title": "OpenAI: GPT-5 Nano (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 2.5e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.025,
+      "output_per_million": 0.2
     },
     {
       "id": "openai/gpt-5-pro",
       "title": "OpenAI: GPT-5 Pro",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.000015,
-      "completion_price": 0.00012
+      "input_per_million": 15,
+      "output_per_million": 120
     },
     {
       "id": "openai/gpt-5-pro:batch",
       "title": "OpenAI: GPT-5 Pro (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.0000075,
-      "completion_price": 0.00006
+      "input_per_million": 7.5,
+      "output_per_million": 60
     },
     {
       "id": "openai/gpt-5:batch",
       "title": "OpenAI: GPT-5 (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 6.25e-7,
-      "completion_price": 0.000005
+      "input_per_million": 0.625,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-5.1",
       "title": "OpenAI: GPT-5.1",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5.1-codex",
       "title": "OpenAI: GPT-5.1-Codex",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5.1-codex-max",
       "title": "OpenAI: GPT-5.1-Codex-Max",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.00001
+      "input_per_million": 1.25,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5.1-codex-mini",
       "title": "OpenAI: GPT-5.1-Codex-Mini",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 2.5e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.25,
+      "output_per_million": 2
     },
     {
       "id": "openai/gpt-5.1:batch",
       "title": "OpenAI: GPT-5.1 (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 6.25e-7,
-      "completion_price": 0.000005
+      "input_per_million": 0.625,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-5.2",
       "title": "OpenAI: GPT-5.2",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000175,
-      "completion_price": 0.000014
+      "input_per_million": 1.75,
+      "output_per_million": 14
     },
     {
       "id": "openai/gpt-5.2-chat",
       "title": "OpenAI: GPT-5.2 Chat",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.00000175,
-      "completion_price": 0.000014
+      "input_per_million": 1.75,
+      "output_per_million": 14
     },
     {
       "id": "openai/gpt-5.2-codex",
       "title": "OpenAI: GPT-5.2-Codex",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000175,
-      "completion_price": 0.000014
+      "input_per_million": 1.75,
+      "output_per_million": 14
     },
     {
       "id": "openai/gpt-5.2-pro",
       "title": "OpenAI: GPT-5.2 Pro",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.000021,
-      "completion_price": 0.000168
+      "input_per_million": 21,
+      "output_per_million": 168
     },
     {
       "id": "openai/gpt-5.2-pro:batch",
       "title": "OpenAI: GPT-5.2 Pro (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.0000105,
-      "completion_price": 0.000084
+      "input_per_million": 10.5,
+      "output_per_million": 84
     },
     {
       "id": "openai/gpt-5.2:batch",
       "title": "OpenAI: GPT-5.2 (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 8.75e-7,
-      "completion_price": 0.000007
+      "input_per_million": 0.875,
+      "output_per_million": 7
     },
     {
       "id": "openai/gpt-5.3-codex",
       "title": "OpenAI: GPT-5.3-Codex",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.00000175,
-      "completion_price": 0.000014
+      "input_per_million": 1.75,
+      "output_per_million": 14
     },
     {
       "id": "openai/gpt-5.4",
       "title": "OpenAI: GPT-5.4",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.000015
+      "input_per_million": 2.5,
+      "output_per_million": 15
     },
     {
       "id": "openai/gpt-5.4-image-2",
       "title": "OpenAI: GPT-5.4 Image 2",
       "vendor": "openai",
       "context_length": 272000,
-      "prompt_price": 0.000008,
-      "completion_price": 0.000015
+      "input_per_million": 8,
+      "output_per_million": 15
     },
     {
       "id": "openai/gpt-5.4-mini",
       "title": "OpenAI: GPT-5.4 Mini",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 7.5e-7,
-      "completion_price": 0.0000045
+      "input_per_million": 0.75,
+      "output_per_million": 4.5
     },
     {
       "id": "openai/gpt-5.4-mini:batch",
       "title": "OpenAI: GPT-5.4 Mini (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 3.75e-7,
-      "completion_price": 0.00000225
+      "input_per_million": 0.375,
+      "output_per_million": 2.25
     },
     {
       "id": "openai/gpt-5.4-nano",
       "title": "OpenAI: GPT-5.4 Nano",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 2e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.2,
+      "output_per_million": 1.25
     },
     {
       "id": "openai/gpt-5.4-nano:batch",
       "title": "OpenAI: GPT-5.4 Nano (batch)",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 1e-7,
-      "completion_price": 6.25e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.625
     },
     {
       "id": "openai/gpt-5.4-pro",
       "title": "OpenAI: GPT-5.4 Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00003,
-      "completion_price": 0.00018
+      "input_per_million": 30,
+      "output_per_million": 180
     },
     {
       "id": "openai/gpt-5.4-pro:batch",
       "title": "OpenAI: GPT-5.4 Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000015,
-      "completion_price": 0.00009
+      "input_per_million": 15,
+      "output_per_million": 90
     },
     {
       "id": "openai/gpt-5.4:batch",
       "title": "OpenAI: GPT-5.4 (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.0000075
+      "input_per_million": 1.25,
+      "output_per_million": 7.5
     },
     {
       "id": "openai/gpt-5.5",
       "title": "OpenAI: GPT-5.5",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.00003
+      "input_per_million": 5,
+      "output_per_million": 30
     },
     {
       "id": "openai/gpt-5.5-pro",
       "title": "OpenAI: GPT-5.5 Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00003,
-      "completion_price": 0.00018
+      "input_per_million": 30,
+      "output_per_million": 180
     },
     {
       "id": "openai/gpt-5.5-pro:batch",
       "title": "OpenAI: GPT-5.5 Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000015,
-      "completion_price": 0.00009
+      "input_per_million": 15,
+      "output_per_million": 90
     },
     {
       "id": "openai/gpt-5.5:batch",
       "title": "OpenAI: GPT-5.5 (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.000015
+      "input_per_million": 2.5,
+      "output_per_million": 15
     },
     {
       "id": "openai/gpt-5.6-luna",
       "title": "OpenAI: GPT-5.6 Luna",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 2e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.2,
+      "output_per_million": 1.2
     },
     {
       "id": "openai/gpt-5.6-luna-pro",
       "title": "OpenAI: GPT-5.6 Luna Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 2e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.2,
+      "output_per_million": 1.2
     },
     {
       "id": "openai/gpt-5.6-luna-pro:batch",
       "title": "OpenAI: GPT-5.6 Luna Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 1e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.6
     },
     {
       "id": "openai/gpt-5.6-luna:batch",
       "title": "OpenAI: GPT-5.6 Luna (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 1e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.6
     },
     {
       "id": "openai/gpt-5.6-sol",
       "title": "OpenAI: GPT-5.6 Sol",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5.6-sol-pro",
       "title": "OpenAI: GPT-5.6 Sol Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-5.6-sol-pro:batch",
       "title": "OpenAI: GPT-5.6 Sol Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-5.6-sol:batch",
       "title": "OpenAI: GPT-5.6 Sol (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-5.6-terra",
       "title": "OpenAI: GPT-5.6 Terra",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "openai/gpt-5.6-terra-pro",
       "title": "OpenAI: GPT-5.6 Terra Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000012
+      "input_per_million": 2,
+      "output_per_million": 12
     },
     {
       "id": "openai/gpt-5.6-terra-pro:batch",
       "title": "OpenAI: GPT-5.6 Terra Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000006
+      "input_per_million": 1,
+      "output_per_million": 6
     },
     {
       "id": "openai/gpt-5.6-terra:batch",
       "title": "OpenAI: GPT-5.6 Terra (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000006
+      "input_per_million": 1,
+      "output_per_million": 6
     },
     {
       "id": "openai/gpt-6-astra",
       "title": "OpenAI: GPT-6 Astra",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "openai/gpt-6-astra-pro",
       "title": "OpenAI: GPT-6 Astra Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.00001,
-      "completion_price": 0.00005
+      "input_per_million": 10,
+      "output_per_million": 50
     },
     {
       "id": "openai/gpt-6-astra-pro:batch",
       "title": "OpenAI: GPT-6 Astra Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "openai/gpt-6-astra:batch",
       "title": "OpenAI: GPT-6 Astra (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.000025
+      "input_per_million": 5,
+      "output_per_million": 25
     },
     {
       "id": "openai/gpt-6-luna",
       "title": "OpenAI: GPT-6 Luna",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 1e-7,
-      "completion_price": 5e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.5
     },
     {
       "id": "openai/gpt-6-luna-pro",
       "title": "OpenAI: GPT-6 Luna Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 1e-7,
-      "completion_price": 5e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.5
     },
     {
       "id": "openai/gpt-6-luna-pro:batch",
       "title": "OpenAI: GPT-6 Luna Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 5e-8,
-      "completion_price": 2.5e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.25
     },
     {
       "id": "openai/gpt-6-luna:batch",
       "title": "OpenAI: GPT-6 Luna (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 5e-8,
-      "completion_price": 2.5e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.25
     },
     {
       "id": "openai/gpt-6-sol",
       "title": "OpenAI: GPT-6 Sol",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-6-sol-pro",
       "title": "OpenAI: GPT-6 Sol Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.00001
+      "input_per_million": 2,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-6-sol-pro:batch",
       "title": "OpenAI: GPT-6 Sol Pro (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-6-sol:batch",
       "title": "OpenAI: GPT-6 Sol (batch)",
       "vendor": "openai",
       "context_length": 1050000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000005
+      "input_per_million": 1,
+      "output_per_million": 5
     },
     {
       "id": "openai/gpt-audio",
       "title": "OpenAI: GPT Audio",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.00001
+      "input_per_million": 2.5,
+      "output_per_million": 10
     },
     {
       "id": "openai/gpt-audio-mini",
       "title": "OpenAI: GPT Audio Mini",
       "vendor": "openai",
       "context_length": 128000,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000024
+      "input_per_million": 0.6,
+      "output_per_million": 2.4
     },
     {
       "id": "openai/gpt-chat-latest",
       "title": "OpenAI: GPT Chat Latest",
       "vendor": "openai",
       "context_length": 400000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.00003
+      "input_per_million": 5,
+      "output_per_million": 30
     },
     {
       "id": "openai/gpt-oss-120b",
       "title": "OpenAI: gpt-oss-120b",
       "vendor": "openai",
       "context_length": 131072,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "openai/gpt-oss-120b:batch",
       "title": "OpenAI: gpt-oss-120b (batch)",
       "vendor": "openai",
       "context_length": 131072,
-      "prompt_price": 2.96e-8,
-      "completion_price": 1.36e-7
+      "input_per_million": 0.0296,
+      "output_per_million": 0.136
     },
     {
       "id": "openai/gpt-oss-20b",
       "title": "OpenAI: gpt-oss-20b",
       "vendor": "openai",
       "context_length": 131072,
-      "prompt_price": 1.8e-8,
-      "completion_price": 9e-8
+      "input_per_million": 0.018,
+      "output_per_million": 0.09
     },
     {
       "id": "openai/gpt-oss-20b:batch",
       "title": "OpenAI: gpt-oss-20b (batch)",
       "vendor": "openai",
       "context_length": 131072,
-      "prompt_price": 2.4e-8,
-      "completion_price": 1.12e-7
+      "input_per_million": 0.024,
+      "output_per_million": 0.112
     },
     {
       "id": "openai/gpt-oss-safeguard-20b",
       "title": "OpenAI: gpt-oss-safeguard-20b",
       "vendor": "openai",
       "context_length": 131072,
-      "prompt_price": 7.5e-8,
-      "completion_price": 3e-7
+      "input_per_million": 0.075,
+      "output_per_million": 0.3
     },
     {
       "id": "openai/o1",
       "title": "OpenAI: o1",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.000015,
-      "completion_price": 0.00006
+      "input_per_million": 15,
+      "output_per_million": 60
     },
     {
       "id": "openai/o1-pro",
       "title": "OpenAI: o1-pro",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.00015,
-      "completion_price": 0.0006
+      "input_per_million": 150,
+      "output_per_million": 600
     },
     {
       "id": "openai/o3",
       "title": "OpenAI: o3",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000008
+      "input_per_million": 2,
+      "output_per_million": 8
     },
     {
       "id": "openai/o3-mini",
       "title": "OpenAI: o3 Mini",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.0000011,
-      "completion_price": 0.0000044
+      "input_per_million": 1.1,
+      "output_per_million": 4.4
     },
     {
       "id": "openai/o3-mini-high",
       "title": "OpenAI: o3 Mini High",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.0000011,
-      "completion_price": 0.0000044
+      "input_per_million": 1.1,
+      "output_per_million": 4.4
     },
     {
       "id": "openai/o3-mini:batch",
       "title": "OpenAI: o3 Mini (batch)",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 5.5e-7,
-      "completion_price": 0.0000022
+      "input_per_million": 0.55,
+      "output_per_million": 2.2
     },
     {
       "id": "openai/o3-pro",
       "title": "OpenAI: o3 Pro",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.00002,
-      "completion_price": 0.00008
+      "input_per_million": 20,
+      "output_per_million": 80
     },
     {
       "id": "openai/o3:batch",
       "title": "OpenAI: o3 (batch)",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000004
+      "input_per_million": 1,
+      "output_per_million": 4
     },
     {
       "id": "openai/o4-mini",
       "title": "OpenAI: o4 Mini",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.0000011,
-      "completion_price": 0.0000044
+      "input_per_million": 1.1,
+      "output_per_million": 4.4
     },
     {
       "id": "openai/o4-mini-high",
       "title": "OpenAI: o4 Mini High",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 0.0000011,
-      "completion_price": 0.0000044
+      "input_per_million": 1.1,
+      "output_per_million": 4.4
     },
     {
       "id": "openai/o4-mini:batch",
       "title": "OpenAI: o4 Mini (batch)",
       "vendor": "openai",
       "context_length": 200000,
-      "prompt_price": 5.5e-7,
-      "completion_price": 0.0000022
+      "input_per_million": 0.55,
+      "output_per_million": 2.2
     },
     {
       "id": "openrouter/auto",
       "title": "Auto Router",
       "vendor": "other",
       "context_length": 2000000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "openrouter/auto-beta",
       "title": "Auto Router (Beta)",
       "vendor": "other",
       "context_length": 2000000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "openrouter/bodybuilder",
       "title": "Body Builder (beta)",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "openrouter/free",
       "title": "Free Models Router",
       "vendor": "other",
       "context_length": 200000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "openrouter/fusion",
       "title": "OpenRouter: Fusion",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "openrouter/pareto-code",
       "title": "Pareto Code Router",
       "vendor": "other",
       "context_length": 2000000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "perceptron/perceptron-mk1",
       "title": "Perceptron: Perceptron Mk1",
       "vendor": "other",
       "context_length": 32768,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.15,
+      "output_per_million": 1.5
     },
     {
       "id": "perceptron/perceptron-mk1.5",
       "title": "Perceptron: Perceptron Mk1.5",
       "vendor": "other",
       "context_length": 36864,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.0000015
+      "input_per_million": 0.15,
+      "output_per_million": 1.5
     },
     {
       "id": "perplexity/sonar",
       "title": "Perplexity: Sonar",
       "vendor": "other",
       "context_length": 127072,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000001
+      "input_per_million": 1,
+      "output_per_million": 1
     },
     {
       "id": "perplexity/sonar-deep-research",
       "title": "Perplexity: Sonar Deep Research",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000008
+      "input_per_million": 2,
+      "output_per_million": 8
     },
     {
       "id": "perplexity/sonar-pro",
       "title": "Perplexity: Sonar Pro",
       "vendor": "other",
       "context_length": 200000,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "perplexity/sonar-pro-search",
       "title": "Perplexity: Sonar Pro Search",
       "vendor": "other",
       "context_length": 200000,
-      "prompt_price": 0.000003,
-      "completion_price": 0.000015
+      "input_per_million": 3,
+      "output_per_million": 15
     },
     {
       "id": "perplexity/sonar-reasoning-pro",
       "title": "Perplexity: Sonar Reasoning Pro",
       "vendor": "other",
       "context_length": 128000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000008
+      "input_per_million": 2,
+      "output_per_million": 8
     },
     {
       "id": "poolside/laguna-s-2.1",
       "title": "Poolside: Laguna S 2.1",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 9e-8,
-      "completion_price": 1.8e-7
+      "input_per_million": 0.09,
+      "output_per_million": 0.18
     },
     {
       "id": "poolside/laguna-s-2.1:free",
       "title": "Poolside: Laguna S 2.1 (free)",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "poolside/laguna-xs-2.1",
       "title": "Poolside: Laguna XS 2.1",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 6e-8,
-      "completion_price": 1.2e-7
+      "input_per_million": 0.06,
+      "output_per_million": 0.12
     },
     {
       "id": "poolside/laguna-xs-2.1:free",
       "title": "Poolside: Laguna XS 2.1 (free)",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "prism-ml/ternary-bonsai-2-27b",
       "title": "PrismML: Ternary Bonsai 2 27B",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 7.5e-8,
-      "completion_price": 5e-7
+      "input_per_million": 0.075,
+      "output_per_million": 0.5
     },
     {
       "id": "qwen/qwen-2.5-72b-instruct",
       "title": "Qwen2.5 72B Instruct",
       "vendor": "qwen",
       "context_length": 32768,
-      "prompt_price": 3.6e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.36,
+      "output_per_million": 0.4
     },
     {
       "id": "qwen/qwen-2.5-7b-instruct",
       "title": "Qwen: Qwen2.5 7B Instruct",
       "vendor": "qwen",
       "context_length": 32768,
-      "prompt_price": 1e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.2
     },
     {
       "id": "qwen/qwen-2.5-coder-32b-instruct",
       "title": "Qwen2.5 Coder 32B Instruct",
       "vendor": "qwen",
       "context_length": 32768,
-      "prompt_price": 6.6e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.66,
+      "output_per_million": 1
     },
     {
       "id": "qwen/qwen-plus",
       "title": "Qwen: Qwen-Plus",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 2.6e-7,
-      "completion_price": 7.8e-7
+      "input_per_million": 0.26,
+      "output_per_million": 0.78
     },
     {
       "id": "qwen/qwen-plus-2025-07-28",
       "title": "Qwen: Qwen Plus 0728",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 2.6e-7,
-      "completion_price": 7.8e-7
+      "input_per_million": 0.26,
+      "output_per_million": 0.78
     },
     {
       "id": "qwen/qwen2.5-vl-72b-instruct",
       "title": "Qwen: Qwen2.5 VL 72B Instruct",
       "vendor": "qwen",
       "context_length": 128000,
-      "prompt_price": 8e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.8,
+      "output_per_million": 1
     },
     {
       "id": "qwen/qwen3-14b",
       "title": "Qwen: Qwen3 14B",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 1.2e-7,
-      "completion_price": 2.4e-7
+      "input_per_million": 0.12,
+      "output_per_million": 0.24
     },
     {
       "id": "qwen/qwen3-235b-a22b",
       "title": "Qwen: Qwen3 235B A22B",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 4.55e-7,
-      "completion_price": 0.00000182
+      "input_per_million": 0.455,
+      "output_per_million": 1.82
     },
     {
       "id": "qwen/qwen3-235b-a22b-2507",
       "title": "Qwen: Qwen3 235B A22B Instruct 2507",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 8.75e-8,
-      "completion_price": 3.5e-7
+      "input_per_million": 0.0875,
+      "output_per_million": 0.35
     },
     {
       "id": "qwen/qwen3-235b-a22b-thinking-2507",
       "title": "Qwen: Qwen3 235B A22B Thinking 2507",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 2.3e-7,
-      "completion_price": 0.0000023
+      "input_per_million": 0.23,
+      "output_per_million": 2.3
     },
     {
       "id": "qwen/qwen3-30b-a3b",
       "title": "Qwen: Qwen3 30B A3B",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 1.2e-7,
-      "completion_price": 5e-7
+      "input_per_million": 0.12,
+      "output_per_million": 0.5
     },
     {
       "id": "qwen/qwen3-30b-a3b-instruct-2507",
       "title": "Qwen: Qwen3 30B A3B Instruct 2507",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1e-7,
-      "completion_price": 3e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.3
     },
     {
       "id": "qwen/qwen3-30b-a3b-thinking-2507",
       "title": "Qwen: Qwen3 30B A3B Thinking 2507",
       "vendor": "qwen",
       "context_length": 81920,
-      "prompt_price": 2e-7,
-      "completion_price": 0.0000024
+      "input_per_million": 0.2,
+      "output_per_million": 2.4
     },
     {
       "id": "qwen/qwen3-32b",
       "title": "Qwen: Qwen3 32B",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 8e-8,
-      "completion_price": 2.8e-7
+      "input_per_million": 0.08,
+      "output_per_million": 0.28
     },
     {
       "id": "qwen/qwen3-8b",
       "title": "Qwen: Qwen3 8B",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 1.17e-7,
-      "completion_price": 4.55e-7
+      "input_per_million": 0.117,
+      "output_per_million": 0.455
     },
     {
       "id": "qwen/qwen3-coder",
       "title": "Qwen: Qwen3 Coder 480B A35B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 3e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.3,
+      "output_per_million": 1
     },
     {
       "id": "qwen/qwen3-coder-30b-a3b-instruct",
       "title": "Qwen: Qwen3 Coder 30B A3B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 7e-8,
-      "completion_price": 2.8e-7
+      "input_per_million": 0.07,
+      "output_per_million": 0.28
     },
     {
       "id": "qwen/qwen3-coder-flash",
       "title": "Qwen: Qwen3 Coder Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 1.95e-7,
-      "completion_price": 9.75e-7
+      "input_per_million": 0.195,
+      "output_per_million": 0.975
     },
     {
       "id": "qwen/qwen3-coder-next",
       "title": "Qwen: Qwen3 Coder Next",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.2e-7,
-      "completion_price": 8e-7
+      "input_per_million": 0.12,
+      "output_per_million": 0.8
     },
     {
       "id": "qwen/qwen3-coder-plus",
       "title": "Qwen: Qwen3 Coder Plus",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 6.5e-7,
-      "completion_price": 0.00000325
+      "input_per_million": 0.65,
+      "output_per_million": 3.25
     },
     {
       "id": "qwen/qwen3-max",
       "title": "Qwen: Qwen3 Max",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 7.8e-7,
-      "completion_price": 0.0000039
+      "input_per_million": 0.78,
+      "output_per_million": 3.9
     },
     {
       "id": "qwen/qwen3-max-thinking",
       "title": "Qwen: Qwen3 Max Thinking",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 7.8e-7,
-      "completion_price": 0.0000039
+      "input_per_million": 0.78,
+      "output_per_million": 3.9
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-instruct",
       "title": "Qwen: Qwen3 Next 80B A3B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1e-7,
-      "completion_price": 0.0000011
+      "input_per_million": 0.1,
+      "output_per_million": 1.1
     },
     {
       "id": "qwen/qwen3-next-80b-a3b-thinking",
       "title": "Qwen: Qwen3 Next 80B A3B Thinking",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.15,
+      "output_per_million": 1.2
     },
     {
       "id": "qwen/qwen3-vl-235b-a22b-instruct",
       "title": "Qwen: Qwen3 VL 235B A22B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 2.1e-7,
-      "completion_price": 0.0000019
+      "input_per_million": 0.21,
+      "output_per_million": 1.9
     },
     {
       "id": "qwen/qwen3-vl-235b-a22b-thinking",
       "title": "Qwen: Qwen3 VL 235B A22B Thinking",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 4e-7,
-      "completion_price": 0.000004
+      "input_per_million": 0.4,
+      "output_per_million": 4
     },
     {
       "id": "qwen/qwen3-vl-30b-a3b-instruct",
       "title": "Qwen: Qwen3 VL 30B A3B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "qwen/qwen3-vl-30b-a3b-thinking",
       "title": "Qwen: Qwen3 VL 30B A3B Thinking",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 2e-7,
-      "completion_price": 0.0000024
+      "input_per_million": 0.2,
+      "output_per_million": 2.4
     },
     {
       "id": "qwen/qwen3-vl-32b-instruct",
       "title": "Qwen: Qwen3 VL 32B Instruct",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 1.04e-7,
-      "completion_price": 4.16e-7
+      "input_per_million": 0.104,
+      "output_per_million": 0.416
     },
     {
       "id": "qwen/qwen3-vl-8b-instruct",
       "title": "Qwen: Qwen3 VL 8B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.17e-7,
-      "completion_price": 4.55e-7
+      "input_per_million": 0.117,
+      "output_per_million": 0.455
     },
     {
       "id": "qwen/qwen3-vl-8b-thinking",
       "title": "Qwen: Qwen3 VL 8B Thinking",
       "vendor": "qwen",
       "context_length": 131072,
-      "prompt_price": 1.8e-7,
-      "completion_price": 0.0000021
+      "input_per_million": 0.18,
+      "output_per_million": 2.1
     },
     {
       "id": "qwen/qwen3.5-122b-a10b",
       "title": "Qwen: Qwen3.5-122B-A10B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 2.6e-7,
-      "completion_price": 0.00000208
+      "input_per_million": 0.26,
+      "output_per_million": 2.08
     },
     {
       "id": "qwen/qwen3.5-27b",
       "title": "Qwen: Qwen3.5-27B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.95e-7,
-      "completion_price": 0.00000156
+      "input_per_million": 0.195,
+      "output_per_million": 1.56
     },
     {
       "id": "qwen/qwen3.5-35b-a3b",
       "title": "Qwen: Qwen3.5-35B-A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 3.125e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.3125,
+      "output_per_million": 1.25
     },
     {
       "id": "qwen/qwen3.5-397b-a17b",
       "title": "Qwen: Qwen3.5 397B A17B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 5.5e-7,
-      "completion_price": 0.0000035
+      "input_per_million": 0.55,
+      "output_per_million": 3.5
     },
     {
       "id": "qwen/qwen3.5-9b",
       "title": "Qwen: Qwen3.5-9B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1e-7,
-      "completion_price": 1.5e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.15
     },
     {
       "id": "qwen/qwen3.5-flash-02-23",
       "title": "Qwen: Qwen3.5-Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 6.5e-8,
-      "completion_price": 2.6e-7
+      "input_per_million": 0.065,
+      "output_per_million": 0.26
     },
     {
       "id": "qwen/qwen3.5-plus-02-15",
       "title": "Qwen: Qwen3.5 Plus 2026-02-15",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 2.6e-7,
-      "completion_price": 0.00000156
+      "input_per_million": 0.26,
+      "output_per_million": 1.56
     },
     {
       "id": "qwen/qwen3.5-plus-20260420",
       "title": "Qwen: Qwen3.5 Plus 2026-04-20",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 3e-7,
-      "completion_price": 0.0000018
+      "input_per_million": 0.3,
+      "output_per_million": 1.8
     },
     {
       "id": "qwen/qwen3.6-27b",
       "title": "Qwen: Qwen3.6 27B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 3.2e-7,
-      "completion_price": 0.0000032
+      "input_per_million": 0.32,
+      "output_per_million": 3.2
     },
     {
       "id": "qwen/qwen3.6-35b-a3b",
       "title": "Qwen: Qwen3.6 35B A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 1.5e-7,
-      "completion_price": 0.000001
+      "input_per_million": 0.15,
+      "output_per_million": 1
     },
     {
       "id": "qwen/qwen3.6-flash",
       "title": "Qwen: Qwen3.6 Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 1.875e-7,
-      "completion_price": 0.000001125
+      "input_per_million": 0.1875,
+      "output_per_million": 1.125
     },
     {
       "id": "qwen/qwen3.6-max-preview",
       "title": "Qwen: Qwen3.6 Max Preview",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 0.000001027,
-      "completion_price": 0.000006162
+      "input_per_million": 1.027,
+      "output_per_million": 6.162
     },
     {
       "id": "qwen/qwen3.6-plus",
       "title": "Qwen: Qwen3.6 Plus",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 3.25e-7,
-      "completion_price": 0.00000195
+      "input_per_million": 0.325,
+      "output_per_million": 1.95
     },
     {
       "id": "qwen/qwen3.7-flash",
       "title": "Qwen: Qwen3.7 Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 3e-8,
-      "completion_price": 1.3e-7
+      "input_per_million": 0.03,
+      "output_per_million": 0.13
     },
     {
       "id": "qwen/qwen3.7-max",
       "title": "Qwen: Qwen3.7 Max",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 0.000001475,
-      "completion_price": 0.000004425
+      "input_per_million": 1.475,
+      "output_per_million": 4.425
     },
     {
       "id": "qwen/qwen3.7-plus",
       "title": "Qwen: Qwen3.7 Plus",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 3.2e-7,
-      "completion_price": 0.00000128
+      "input_per_million": 0.32,
+      "output_per_million": 1.28
     },
     {
       "id": "qwen/qwen3.8-2.4t-a95b",
       "title": "Qwen: Qwen3.8 2.4T A95B",
       "vendor": "qwen",
       "context_length": 1048576,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "qwen/qwen3.8-27b",
       "title": "Qwen: Qwen3.8 27B",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 4.2e-7,
-      "completion_price": 0.000003
+      "input_per_million": 0.42,
+      "output_per_million": 3
     },
     {
       "id": "qwen/qwen3.8-27b:free",
       "title": "Qwen: Qwen3.8 27B (free)",
       "vendor": "qwen",
       "context_length": 262144,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "qwen/qwen3.8-flash",
       "title": "Qwen: Qwen3.8 Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 4.7e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.47
     },
     {
       "id": "qwen/qwen3.8-max-0902",
       "title": "Qwen: Qwen3.8 Max (0902)",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "qwen/qwen3.8-max-prime",
       "title": "Qwen: Qwen3.8 Max Prime",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 0.000004,
-      "completion_price": 0.000012
+      "input_per_million": 4,
+      "output_per_million": 12
     },
     {
       "id": "qwen/qwen3.8-omni-flash",
       "title": "Qwen: Qwen3.8 Omni Flash",
       "vendor": "qwen",
       "context_length": 1000000,
-      "prompt_price": 1.5e-7,
-      "completion_price": 4.7e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.47
     },
     {
       "id": "rekaai/reka-edge",
       "title": "Reka Edge",
       "vendor": "other",
       "context_length": 16384,
-      "prompt_price": 1e-7,
-      "completion_price": 1e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.1
     },
     {
       "id": "rekaai/reka-flash-3",
       "title": "Reka Flash 3",
       "vendor": "other",
       "context_length": 65536,
-      "prompt_price": 1e-7,
-      "completion_price": 2e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.2
     },
     {
       "id": "relace/relace-apply-3",
       "title": "Relace: Relace Apply 3",
       "vendor": "other",
       "context_length": 256000,
-      "prompt_price": 8.5e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.85,
+      "output_per_million": 1.25
     },
     {
       "id": "relace/relace-search",
       "title": "Relace: Relace Search",
       "vendor": "other",
       "context_length": 256000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000003
+      "input_per_million": 1,
+      "output_per_million": 3
     },
     {
       "id": "sakana/fugu-max",
       "title": "Sakana: Fugu Max",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "sakana/fugu-ultra",
       "title": "Sakana: Fugu Ultra",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.00003
+      "input_per_million": 5,
+      "output_per_million": 30
     },
     {
       "id": "sakana/fugu-ultra-v2",
       "title": "Sakana: Fugu Ultra v2",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0.000005,
-      "completion_price": 0.00003
+      "input_per_million": 5,
+      "output_per_million": 30
     },
     {
       "id": "sakana/sakana-namazu",
       "title": "Sakana: Sakana Namazu",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 9.5e-7,
-      "completion_price": 0.000004
+      "input_per_million": 0.95,
+      "output_per_million": 4
     },
     {
       "id": "sao10k/l3-lunaris-8b",
       "title": "Sao10K: Llama 3 8B Lunaris",
       "vendor": "other",
       "context_length": 8192,
-      "prompt_price": 4e-8,
-      "completion_price": 5e-8
+      "input_per_million": 0.04,
+      "output_per_million": 0.05
     },
     {
       "id": "sao10k/l3.1-euryale-70b",
       "title": "Sao10K: Llama 3.1 Euryale 70B v2.2",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 8.5e-7,
-      "completion_price": 8.5e-7
+      "input_per_million": 0.85,
+      "output_per_million": 0.85
     },
     {
       "id": "sao10k/l3.3-euryale-70b",
       "title": "Sao10K: Llama 3.3 Euryale 70B",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 6.5e-7,
-      "completion_price": 7.5e-7
+      "input_per_million": 0.65,
+      "output_per_million": 0.75
     },
     {
       "id": "stealth/space-bunny-alpha",
       "title": "Space Bunny Alpha",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "stepfun/step-3.5-flash",
       "title": "StepFun: Step 3.5 Flash",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 1e-7,
-      "completion_price": 3e-7
+      "input_per_million": 0.1,
+      "output_per_million": 0.3
     },
     {
       "id": "stepfun/step-3.7-flash",
       "title": "StepFun: Step 3.7 Flash",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 2e-7,
-      "completion_price": 0.00000115
+      "input_per_million": 0.2,
+      "output_per_million": 1.15
     },
     {
       "id": "tencent/hunyuan-a13b-instruct",
       "title": "Tencent: Hunyuan A13B Instruct",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 1.4e-7,
-      "completion_price": 5.7e-7
+      "input_per_million": 0.14,
+      "output_per_million": 0.57
     },
     {
       "id": "tencent/hy-mt2-1.8b",
       "title": "Tencent: Hy-MT2-1.8B",
       "vendor": "other",
       "context_length": 8192,
-      "prompt_price": 4.4e-8,
-      "completion_price": 1.77e-7
+      "input_per_million": 0.044,
+      "output_per_million": 0.177
     },
     {
       "id": "tencent/hy-mt2-30b-a3b",
       "title": "Tencent: Hy-MT2-30B-A3B",
       "vendor": "other",
       "context_length": 8192,
-      "prompt_price": 7.4e-8,
-      "completion_price": 2.95e-7
+      "input_per_million": 0.074,
+      "output_per_million": 0.295
     },
     {
       "id": "tencent/hy-mt2-7b",
       "title": "Tencent: Hy-MT2-7B",
       "vendor": "other",
       "context_length": 8192,
-      "prompt_price": 7.4e-8,
-      "completion_price": 2.95e-7
+      "input_per_million": 0.074,
+      "output_per_million": 0.295
     },
     {
       "id": "tencent/hy3",
       "title": "Tencent: Hy3",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 1.32e-7,
-      "completion_price": 5.28e-7
+      "input_per_million": 0.132,
+      "output_per_million": 0.528
     },
     {
       "id": "tencent/hy3-preview",
       "title": "Tencent: Hy3 preview",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 1.8e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.18,
+      "output_per_million": 0.6
     },
     {
       "id": "tencent/hy4-preview",
       "title": "Tencent: Hy4 preview",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 8.34e-7,
-      "completion_price": 0.000002501
+      "input_per_million": 0.834,
+      "output_per_million": 2.501
     },
     {
       "id": "thedrummer/cydonia-24b-v4.1",
       "title": "TheDrummer: Cydonia 24B V4.1",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 3e-7,
-      "completion_price": 5e-7
+      "input_per_million": 0.3,
+      "output_per_million": 0.5
     },
     {
       "id": "thedrummer/skyfall-36b-v2",
       "title": "TheDrummer: Skyfall 36B V2",
       "vendor": "other",
       "context_length": 32768,
-      "prompt_price": 5.5e-7,
-      "completion_price": 8e-7
+      "input_per_million": 0.55,
+      "output_per_million": 0.8
     },
     {
       "id": "thedrummer/unslopnemo-12b",
       "title": "TheDrummer: UnslopNemo 12B",
       "vendor": "other",
       "context_length": 1024000,
-      "prompt_price": 4e-7,
-      "completion_price": 4e-7
+      "input_per_million": 0.4,
+      "output_per_million": 0.4
     },
     {
       "id": "thinkingmachines/inkling",
       "title": "Thinking Machines: Inkling",
       "vendor": "other",
       "context_length": 524288,
-      "prompt_price": 0.000001,
-      "completion_price": 0.00000405
+      "input_per_million": 1,
+      "output_per_million": 4.05
     },
     {
       "id": "thinkingmachines/inkling-small",
       "title": "Thinking Machines: Inkling Small",
       "vendor": "other",
       "context_length": 524288,
-      "prompt_price": 4.5e-7,
-      "completion_price": 0.0000012
+      "input_per_million": 0.45,
+      "output_per_million": 1.2
     },
     {
       "id": "thinkingmachines/inkling-small:free",
       "title": "Thinking Machines: Inkling Small (free)",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "thinkingmachines/inkling:free",
       "title": "Thinking Machines: Inkling (free)",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 0,
-      "completion_price": 0
+      "input_per_million": 0,
+      "output_per_million": 0
     },
     {
       "id": "typesafe/jev-router",
       "title": "TypeSafe: Jev Router",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": null,
-      "completion_price": null
+      "input_per_million": null,
+      "output_per_million": null
     },
     {
       "id": "unbiased/pareto",
       "title": "Pareto",
       "vendor": "other",
       "context_length": 262144,
-      "prompt_price": 0.0000025,
-      "completion_price": 0.0000075
+      "input_per_million": 2.5,
+      "output_per_million": 7.5
     },
     {
       "id": "undi95/remm-slerp-l2-13b",
       "title": "ReMM SLERP 13B",
       "vendor": "other",
       "context_length": 6144,
-      "prompt_price": 3.5e-7,
-      "completion_price": 6.5e-7
+      "input_per_million": 0.35,
+      "output_per_million": 0.65
     },
     {
       "id": "upstage/solar-mini4",
       "title": "Upstage: Solar Mini 4",
       "vendor": "other",
       "context_length": 524288,
-      "prompt_price": 5e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.05,
+      "output_per_million": 0.2
     },
     {
       "id": "upstage/solar-pro-3",
       "title": "Upstage: Solar Pro 3",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 1.5e-7,
-      "completion_price": 6e-7
+      "input_per_million": 0.15,
+      "output_per_million": 0.6
     },
     {
       "id": "upstage/solar-pro4",
       "title": "Upstage: Solar Pro 4",
       "vendor": "openai",
       "context_length": 524288,
-      "prompt_price": 9e-8,
-      "completion_price": 3.6e-7
+      "input_per_million": 0.09,
+      "output_per_million": 0.36
     },
     {
       "id": "writer/palmyra-x5",
       "title": "Writer: Palmyra X5",
       "vendor": "other",
       "context_length": 1040000,
-      "prompt_price": 6e-7,
-      "completion_price": 0.000006
+      "input_per_million": 0.6,
+      "output_per_million": 6
     },
     {
       "id": "x-ai/grok-4.20",
       "title": "SpaceXAI: Grok 4.20",
       "vendor": "xai",
       "context_length": 2000000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.0000025
+      "input_per_million": 1.25,
+      "output_per_million": 2.5
     },
     {
       "id": "x-ai/grok-4.20-multi-agent",
       "title": "SpaceXAI: Grok 4.20 Multi-Agent",
       "vendor": "xai",
       "context_length": 2000000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.0000025
+      "input_per_million": 1.25,
+      "output_per_million": 2.5
     },
     {
       "id": "x-ai/grok-4.3",
       "title": "SpaceXAI: Grok 4.3",
       "vendor": "xai",
       "context_length": 1000000,
-      "prompt_price": 0.00000125,
-      "completion_price": 0.0000025
+      "input_per_million": 1.25,
+      "output_per_million": 2.5
     },
     {
       "id": "x-ai/grok-4.3:batch",
       "title": "SpaceXAI: Grok 4.3 (batch)",
       "vendor": "xai",
       "context_length": 1000000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000002
+      "input_per_million": 1,
+      "output_per_million": 2
     },
     {
       "id": "x-ai/grok-4.5",
       "title": "SpaceXAI: Grok 4.5",
       "vendor": "xai",
       "context_length": 500000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "x-ai/grok-4.6",
       "title": "SpaceXAI: Grok 4.6",
       "vendor": "xai",
       "context_length": 500000,
-      "prompt_price": 0.000002,
-      "completion_price": 0.000006
+      "input_per_million": 2,
+      "output_per_million": 6
     },
     {
       "id": "x-ai/grok-4.7",
       "title": "SpaceXAI: Grok 4.7",
       "vendor": "xai",
       "context_length": 500000,
-      "prompt_price": 0.0000016,
-      "completion_price": 0.0000048
+      "input_per_million": 1.6,
+      "output_per_million": 4.8
     },
     {
       "id": "x-ai/grok-build-0.1",
       "title": "SpaceXAI: Grok Build 0.1",
       "vendor": "xai",
       "context_length": 256000,
-      "prompt_price": 0.000001,
-      "completion_price": 0.000002
+      "input_per_million": 1,
+      "output_per_million": 2
     },
     {
       "id": "xiaomi/mimo-v2.5",
       "title": "Xiaomi: MiMo-V2.5",
       "vendor": "other",
       "context_length": 1050000,
-      "prompt_price": 1.4e-7,
-      "completion_price": 2.8e-7
+      "input_per_million": 0.14,
+      "output_per_million": 0.28
     },
     {
       "id": "xiaomi/mimo-v2.5-pro",
       "title": "Xiaomi: MiMo-V2.5-Pro",
       "vendor": "other",
       "context_length": 1050000,
-      "prompt_price": 4.35e-7,
-      "completion_price": 8.7e-7
+      "input_per_million": 0.435,
+      "output_per_million": 0.87
     },
     {
       "id": "xiaomi/mimo-v2.6-flash",
       "title": "Xiaomi: MiMo-V2.6-Flash",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 1.4e-7,
-      "completion_price": 2.8e-7
+      "input_per_million": 0.14,
+      "output_per_million": 0.28
     },
     {
       "id": "xiaomi/mimo-v2.6-pro",
       "title": "Xiaomi: MiMo-V2.6-Pro",
       "vendor": "other",
       "context_length": 1050000,
-      "prompt_price": 4.35e-7,
-      "completion_price": 8.7e-7
+      "input_per_million": 0.435,
+      "output_per_million": 0.87
     },
     {
       "id": "xiaomi/mimo-v2.6-pro-ultraspeed",
       "title": "Xiaomi: MiMo-V2.6-Pro-UltraSpeed",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 0.00000435,
-      "completion_price": 0.0000087
+      "input_per_million": 4.35,
+      "output_per_million": 8.7
     },
     {
       "id": "z-ai/glm-4.5",
       "title": "Z.ai: GLM 4.5",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000022
+      "input_per_million": 0.6,
+      "output_per_million": 2.2
     },
     {
       "id": "z-ai/glm-4.5-air",
       "title": "Z.ai: GLM 4.5 Air",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 1.3e-7,
-      "completion_price": 8.5e-7
+      "input_per_million": 0.13,
+      "output_per_million": 0.85
     },
     {
       "id": "z-ai/glm-4.5v",
       "title": "Z.ai: GLM 4.5V",
       "vendor": "other",
       "context_length": 65536,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000018
+      "input_per_million": 0.6,
+      "output_per_million": 1.8
     },
     {
       "id": "z-ai/glm-4.6",
       "title": "Z.ai: GLM 4.6",
       "vendor": "other",
       "context_length": 204800,
-      "prompt_price": 4.3e-7,
-      "completion_price": 0.00000175
+      "input_per_million": 0.43,
+      "output_per_million": 1.75
     },
     {
       "id": "z-ai/glm-4.6v",
       "title": "Z.ai: GLM 4.6V",
       "vendor": "other",
       "context_length": 131072,
-      "prompt_price": 3e-7,
-      "completion_price": 9e-7
+      "input_per_million": 0.3,
+      "output_per_million": 0.9
     },
     {
       "id": "z-ai/glm-4.7",
       "title": "Z.ai: GLM 4.7",
       "vendor": "other",
       "context_length": 204800,
-      "prompt_price": 6e-7,
-      "completion_price": 0.0000022
+      "input_per_million": 0.6,
+      "output_per_million": 2.2
     },
     {
       "id": "z-ai/glm-4.7-flash",
       "title": "Z.ai: GLM 4.7 Flash",
       "vendor": "other",
       "context_length": 200000,
-      "prompt_price": 6.05e-8,
-      "completion_price": 4e-7
+      "input_per_million": 0.0605,
+      "output_per_million": 0.4
     },
     {
       "id": "z-ai/glm-5",
       "title": "Z.ai: GLM 5",
       "vendor": "other",
       "context_length": 204800,
-      "prompt_price": 6e-7,
-      "completion_price": 0.00000192
+      "input_per_million": 0.6,
+      "output_per_million": 1.92
     },
     {
       "id": "z-ai/glm-5-turbo",
       "title": "Z.ai: GLM 5 Turbo",
       "vendor": "other",
       "context_length": 202752,
-      "prompt_price": 0.0000012,
-      "completion_price": 0.000004
+      "input_per_million": 1.2,
+      "output_per_million": 4
     },
     {
       "id": "z-ai/glm-5.1",
       "title": "Z.ai: GLM 5.1",
       "vendor": "other",
       "context_length": 204800,
-      "prompt_price": 9.646e-7,
-      "completion_price": 0.0000030316
+      "input_per_million": 0.9646,
+      "output_per_million": 3.0316
     },
     {
       "id": "z-ai/glm-5.2",
       "title": "Z.ai: GLM 5.2",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 6.496e-7,
-      "completion_price": 0.0000020416
+      "input_per_million": 0.6496,
+      "output_per_million": 2.0416
     },
     {
       "id": "z-ai/glm-5.3",
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 2.737e-7,
-      "completion_price": 8.602e-7
+      "input_per_million": 0.2737,
+      "output_per_million": 0.8602
     },
     {
       "id": "z-ai/glm-5.3-flash",
       "title": "Z.ai: GLM 5.3 Flash",
       "vendor": "other",
       "context_length": 1310720,
-      "prompt_price": 4.5e-8,
-      "completion_price": 1.4e-7
+      "input_per_million": 0.045,
+      "output_per_million": 0.14
     },
     {
       "id": "z-ai/glm-5.3-flash:batch",
       "title": "Z.ai: GLM 5.3 Flash (batch)",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 6e-8,
-      "completion_price": 2e-7
+      "input_per_million": 0.06,
+      "output_per_million": 0.2
     },
     {
       "id": "z-ai/glm-5.3-flashx",
       "title": "Z.ai: GLM 5.3 FlashX",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 3.7e-7,
-      "completion_price": 0.00000125
+      "input_per_million": 0.37,
+      "output_per_million": 1.25
     },
     {
       "id": "z-ai/glm-5.3-prime",
       "title": "Z.ai: GLM 5.3 Prime",
       "vendor": "other",
       "context_length": 1000000,
-      "prompt_price": 0.0000028,
-      "completion_price": 0.0000088
+      "input_per_million": 2.8,
+      "output_per_million": 8.8
     },
     {
       "id": "z-ai/glm-5.3:batch",
       "title": "Z.ai: GLM 5.3 (batch)",
       "vendor": "other",
       "context_length": 1048576,
-      "prompt_price": 4.5e-7,
-      "completion_price": 0.000002
+      "input_per_million": 0.45,
+      "output_per_million": 2
     },
     {
       "id": "z-ai/glm-5v-turbo",
       "title": "Z.ai: GLM 5V Turbo",
       "vendor": "other",
       "context_length": 202752,
-      "prompt_price": 0.0000012,
-      "completion_price": 0.000004
+      "input_per_million": 1.2,
+      "output_per_million": 4
     }
   ],
   "livebench": [
@@ -3739,8 +3739,8 @@
         "cost_per_question": 1.0108
       },
       "pricing": {
-        "prompt": 0.00001,
-        "completion": 0.00005,
+        "input_per_million": 10,
+        "output_per_million": 50,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -3794,8 +3794,8 @@
         "cost_per_question": 1.1939
       },
       "pricing": {
-        "prompt": 0.00001,
-        "completion": 0.00005,
+        "input_per_million": 10,
+        "output_per_million": 50,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -3849,8 +3849,8 @@
         "cost_per_question": 0.4431
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.000025,
+        "input_per_million": 5,
+        "output_per_million": 25,
         "source": "openrouter"
       },
       "context_length": 200000
@@ -3904,8 +3904,8 @@
         "cost_per_question": 0.3007
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.000025,
+        "input_per_million": 5,
+        "output_per_million": 25,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -3959,8 +3959,8 @@
         "cost_per_question": 0.4042
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.000025,
+        "input_per_million": 5,
+        "output_per_million": 25,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4014,8 +4014,8 @@
         "cost_per_question": 0.7491
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.000025,
+        "input_per_million": 5,
+        "output_per_million": 25,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4069,8 +4069,8 @@
         "cost_per_question": 0.6651
       },
       "pricing": {
-        "prompt": 0.000004,
-        "completion": 0.00002,
+        "input_per_million": 4,
+        "output_per_million": 20,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4124,8 +4124,8 @@
         "cost_per_question": 0.1992
       },
       "pricing": {
-        "prompt": 0.000004,
-        "completion": 0.00002,
+        "input_per_million": 4,
+        "output_per_million": 20,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4179,8 +4179,8 @@
         "cost_per_question": 0.5599
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.000025,
+        "input_per_million": 5,
+        "output_per_million": 25,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4234,8 +4234,8 @@
         "cost_per_question": 0.2235
       },
       "pricing": {
-        "prompt": 0.000003,
-        "completion": 0.000015,
+        "input_per_million": 3,
+        "output_per_million": 15,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4289,8 +4289,8 @@
         "cost_per_question": 0.3842
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.00001,
+        "input_per_million": 2,
+        "output_per_million": 10,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -4344,8 +4344,8 @@
         "cost_per_question": 0.0105
       },
       "pricing": {
-        "prompt": 4.69e-8,
-        "completion": 9.38e-8,
+        "input_per_million": 0.0469,
+        "output_per_million": 0.0938,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4399,8 +4399,8 @@
         "cost_per_question": 0.0442
       },
       "pricing": {
-        "prompt": 2.1e-8,
-        "completion": 3.2e-7,
+        "input_per_million": 0.021,
+        "output_per_million": 0.32,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -4454,8 +4454,8 @@
         "cost_per_question": 0.0388
       },
       "pricing": {
-        "prompt": 2.156e-7,
-        "completion": 6.468e-7,
+        "input_per_million": 0.2156,
+        "output_per_million": 0.6468,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4509,8 +4509,8 @@
         "cost_per_question": 0.0357
       },
       "pricing": {
-        "prompt": 3.48e-7,
-        "completion": 6.96e-7,
+        "input_per_million": 0.348,
+        "output_per_million": 0.696,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4564,8 +4564,8 @@
         "cost_per_question": 0.0342
       },
       "pricing": {
-        "prompt": 2.4502e-7,
-        "completion": 0.0000035,
+        "input_per_million": 0.245,
+        "output_per_million": 3.5,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4619,8 +4619,8 @@
         "cost_per_question": 0.0237
       },
       "pricing": {
-        "prompt": 3.5e-8,
-        "completion": 2.9e-7,
+        "input_per_million": 0.035,
+        "output_per_million": 0.29,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4674,8 +4674,8 @@
         "cost_per_question": 0.22
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.000012,
+        "input_per_million": 2,
+        "output_per_million": 12,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4729,8 +4729,8 @@
         "cost_per_question": 0.1858
       },
       "pricing": {
-        "prompt": 0.0000015,
-        "completion": 0.000009,
+        "input_per_million": 1.5,
+        "output_per_million": 9,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4784,8 +4784,8 @@
         "cost_per_question": 0.0439
       },
       "pricing": {
-        "prompt": 3e-7,
-        "completion": 0.0000025,
+        "input_per_million": 0.3,
+        "output_per_million": 2.5,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4839,8 +4839,8 @@
         "cost_per_question": 0.1732
       },
       "pricing": {
-        "prompt": 7.5e-7,
-        "completion": 0.00000375,
+        "input_per_million": 0.75,
+        "output_per_million": 3.75,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4894,8 +4894,8 @@
         "cost_per_question": 0.1238
       },
       "pricing": {
-        "prompt": 7.5e-7,
-        "completion": 0.00000375,
+        "input_per_million": 0.75,
+        "output_per_million": 3.75,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -4949,8 +4949,8 @@
         "cost_per_question": 0.233
       },
       "pricing": {
-        "prompt": 7.5e-7,
-        "completion": 0.00000375,
+        "input_per_million": 0.75,
+        "output_per_million": 3.75,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -5004,8 +5004,8 @@
         "cost_per_question": 0.1644
       },
       "pricing": {
-        "prompt": 6.496e-7,
-        "completion": 0.0000020416,
+        "input_per_million": 0.6496,
+        "output_per_million": 2.0416,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -5059,8 +5059,8 @@
         "cost_per_question": 0.3429
       },
       "pricing": {
-        "prompt": 2.737e-7,
-        "completion": 8.602e-7,
+        "input_per_million": 0.2737,
+        "output_per_million": 0.8602,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -5114,8 +5114,8 @@
         "cost_per_question": 0.0218
       },
       "pricing": {
-        "prompt": 4.5e-8,
-        "completion": 1.4e-7,
+        "input_per_million": 0.045,
+        "output_per_million": 0.14,
         "source": "openrouter"
       },
       "context_length": 1310720
@@ -5169,8 +5169,8 @@
         "cost_per_question": 0.1744
       },
       "pricing": {
-        "prompt": 0.00000175,
-        "completion": 0.000014,
+        "input_per_million": 1.75,
+        "output_per_million": 14,
         "source": "openrouter"
       },
       "context_length": 400000
@@ -5224,8 +5224,8 @@
         "cost_per_question": 0.1386
       },
       "pricing": {
-        "prompt": 0.00000175,
-        "completion": 0.000014,
+        "input_per_million": 1.75,
+        "output_per_million": 14,
         "source": "openrouter"
       },
       "context_length": 400000
@@ -5279,8 +5279,8 @@
         "cost_per_question": 0.2219
       },
       "pricing": {
-        "prompt": 7.5e-7,
-        "completion": 0.0000045,
+        "input_per_million": 0.75,
+        "output_per_million": 4.5,
         "source": "openrouter"
       },
       "context_length": 400000
@@ -5334,8 +5334,8 @@
         "cost_per_question": 0.0634
       },
       "pricing": {
-        "prompt": 2e-7,
-        "completion": 0.00000125,
+        "input_per_million": 0.2,
+        "output_per_million": 1.25,
         "source": "openrouter"
       },
       "context_length": 400000
@@ -5389,8 +5389,8 @@
         "cost_per_question": 0.302
       },
       "pricing": {
-        "prompt": 0.0000025,
-        "completion": 0.000015,
+        "input_per_million": 2.5,
+        "output_per_million": 15,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5444,8 +5444,8 @@
         "cost_per_question": 0.3485
       },
       "pricing": {
-        "prompt": 0.000005,
-        "completion": 0.00003,
+        "input_per_million": 5,
+        "output_per_million": 30,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5499,8 +5499,8 @@
         "cost_per_question": 0.1246
       },
       "pricing": {
-        "prompt": 2e-7,
-        "completion": 0.0000012,
+        "input_per_million": 0.2,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5554,8 +5554,8 @@
         "cost_per_question": 0.4178
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.00001,
+        "input_per_million": 2,
+        "output_per_million": 10,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5609,8 +5609,8 @@
         "cost_per_question": 0.2743
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.000012,
+        "input_per_million": 2,
+        "output_per_million": 12,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5664,8 +5664,8 @@
         "cost_per_question": 0.6046
       },
       "pricing": {
-        "prompt": 0.00001,
-        "completion": 0.00005,
+        "input_per_million": 10,
+        "output_per_million": 50,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5719,8 +5719,8 @@
         "cost_per_question": 0.019
       },
       "pricing": {
-        "prompt": 1e-7,
-        "completion": 5e-7,
+        "input_per_million": 0.1,
+        "output_per_million": 0.5,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5774,8 +5774,8 @@
         "cost_per_question": 0.2127
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.00001,
+        "input_per_million": 2,
+        "output_per_million": 10,
         "source": "openrouter"
       },
       "context_length": 1050000
@@ -5829,8 +5829,8 @@
         "cost_per_question": 0.0382
       },
       "pricing": {
-        "prompt": 0.00000125,
-        "completion": 0.0000025,
+        "input_per_million": 1.25,
+        "output_per_million": 2.5,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -5884,8 +5884,8 @@
         "cost_per_question": 0.0995
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.000006,
+        "input_per_million": 2,
+        "output_per_million": 6,
         "source": "openrouter"
       },
       "context_length": 500000
@@ -5939,8 +5939,8 @@
         "cost_per_question": 0.1614
       },
       "pricing": {
-        "prompt": 0.000002,
-        "completion": 0.000006,
+        "input_per_million": 2,
+        "output_per_million": 6,
         "source": "openrouter"
       },
       "context_length": 500000
@@ -5994,8 +5994,8 @@
         "cost_per_question": 0.5556
       },
       "pricing": {
-        "prompt": 0.0000016,
-        "completion": 0.0000048,
+        "input_per_million": 1.6,
+        "output_per_million": 4.8,
         "source": "openrouter"
       },
       "context_length": 500000
@@ -6049,8 +6049,8 @@
         "cost_per_question": 0.0163
       },
       "pricing": {
-        "prompt": 0.000001,
-        "completion": 0.000002,
+        "input_per_million": 1,
+        "output_per_million": 2,
         "source": "openrouter"
       },
       "context_length": 256000
@@ -6104,8 +6104,8 @@
         "cost_per_question": 0.2229
       },
       "pricing": {
-        "prompt": 1.87,
-        "completion": 4.68,
+        "input_per_million": 1.87,
+        "output_per_million": 4.68,
         "source": "livebench"
       }
     },
@@ -6158,8 +6158,8 @@
         "cost_per_question": 0.119
       },
       "pricing": {
-        "prompt": 9.5e-7,
-        "completion": 0.000004,
+        "input_per_million": 0.95,
+        "output_per_million": 4,
         "source": "openrouter"
       },
       "context_length": 262144
@@ -6213,8 +6213,8 @@
         "cost_per_question": 0.0685
       },
       "pricing": {
-        "prompt": 6.562e-7,
-        "completion": 0.0000033,
+        "input_per_million": 0.6562,
+        "output_per_million": 3.3,
         "source": "openrouter"
       },
       "context_length": 262144
@@ -6268,8 +6268,8 @@
         "cost_per_question": 0.2758
       },
       "pricing": {
-        "prompt": 0.000003,
-        "completion": 0.000015,
+        "input_per_million": 3,
+        "output_per_million": 15,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -6323,8 +6323,8 @@
         "cost_per_question": 0.0401
       },
       "pricing": {
-        "prompt": 3e-7,
-        "completion": 0.0000012,
+        "input_per_million": 0.3,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -6378,8 +6378,8 @@
         "cost_per_question": 0.1489
       },
       "pricing": {
-        "prompt": 0.00000125,
-        "completion": 0.00000425,
+        "input_per_million": 1.25,
+        "output_per_million": 4.25,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -6433,8 +6433,8 @@
         "cost_per_question": 0.2926
       },
       "pricing": {
-        "prompt": 0.00000125,
-        "completion": 0.00000425,
+        "input_per_million": 1.25,
+        "output_per_million": 4.25,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -6488,8 +6488,8 @@
         "cost_per_question": 0.1789
       },
       "pricing": {
-        "prompt": 0.00000125,
-        "completion": 0.00000425,
+        "input_per_million": 1.25,
+        "output_per_million": 4.25,
         "source": "openrouter"
       },
       "context_length": 1048576
@@ -6543,8 +6543,8 @@
         "cost_per_question": 0.2497
       },
       "pricing": {
-        "prompt": 6e-7,
-        "completion": 0.0000024,
+        "input_per_million": 0.6,
+        "output_per_million": 2.4,
         "source": "openrouter"
       },
       "context_length": 262144
@@ -6598,8 +6598,8 @@
         "cost_per_question": 0
       },
       "pricing": {
-        "prompt": 0,
-        "completion": 0,
+        "input_per_million": 0,
+        "output_per_million": 0,
         "source": "livebench"
       }
     },
@@ -6652,8 +6652,8 @@
         "cost_per_question": 0.1291
       },
       "pricing": {
-        "prompt": 3.2e-7,
-        "completion": 0.0000032,
+        "input_per_million": 0.32,
+        "output_per_million": 3.2,
         "source": "openrouter"
       },
       "context_length": 262144
@@ -6707,8 +6707,8 @@
         "cost_per_question": 0.1566
       },
       "pricing": {
-        "prompt": 3.25e-7,
-        "completion": 0.00000195,
+        "input_per_million": 0.325,
+        "output_per_million": 1.95,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -6762,8 +6762,8 @@
         "cost_per_question": 0.1328
       },
       "pricing": {
-        "prompt": 0.000001475,
-        "completion": 0.000004425,
+        "input_per_million": 1.475,
+        "output_per_million": 4.425,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -6817,8 +6817,8 @@
         "cost_per_question": 0.0707
       },
       "pricing": {
-        "prompt": 4.2e-7,
-        "completion": 0.000003,
+        "input_per_million": 0.42,
+        "output_per_million": 3,
         "source": "openrouter"
       },
       "context_length": 1000000
@@ -6872,8 +6872,8 @@
         "cost_per_question": 0.0322
       },
       "pricing": {
-        "prompt": 0.16,
-        "completion": 0.47,
+        "input_per_million": 0.16,
+        "output_per_million": 0.47,
         "source": "livebench"
       }
     },
@@ -6926,8 +6926,8 @@
         "cost_per_question": 0.2158
       },
       "pricing": {
-        "prompt": 2,
-        "completion": 6,
+        "input_per_million": 2,
+        "output_per_million": 6,
         "source": "livebench"
       }
     },
@@ -6980,8 +6980,8 @@
         "cost_per_question": 0.2614
       },
       "pricing": {
-        "prompt": 3,
-        "completion": 15,
+        "input_per_million": 3,
+        "output_per_million": 15,
         "source": "livebench"
       }
     },
@@ -7034,8 +7034,8 @@
         "cost_per_question": 0.0109
       },
       "pricing": {
-        "prompt": 0.14,
-        "completion": 0.28,
+        "input_per_million": 0.14,
+        "output_per_million": 0.28,
         "source": "livebench"
       }
     },
@@ -7088,8 +7088,8 @@
         "cost_per_question": 0.0765
       },
       "pricing": {
-        "prompt": 0.265,
-        "completion": 0.65,
+        "input_per_million": 0.265,
+        "output_per_million": 0.65,
         "source": "livebench"
       }
     },
@@ -7142,8 +7142,8 @@
         "cost_per_question": 0
       },
       "pricing": {
-        "prompt": 0,
-        "completion": 0,
+        "input_per_million": 0,
+        "output_per_million": 0,
         "source": "livebench"
       }
     }

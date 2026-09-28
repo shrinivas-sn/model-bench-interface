@@ -6,14 +6,18 @@ export default function Page() {
   const data = getScores();
   return (
     <>
-      <header style={{ marginBottom: 20 }}>
+      <header className="page-head">
         <h1 className="page-title">Head-to-head compare</h1>
         <p className="page-sub">
-          Pick two models. LiveBench capability axes (per-category means, never cross-benchmark
-          averages), SWE-bench Verified best runs, and OpenRouter pricing.
+          Model A against model B on LiveBench capability axes, SWE-bench Verified best runs and
+          OpenRouter pricing. Pick a company, then a model, then its reasoning effort.
+        </p>
+        <p className="page-purpose">
+          Answers one question: given these two models, which is stronger on the capabilities you
+          care about, and what does that cost per million tokens?
         </p>
       </header>
-      <Suspense fallback={<div className="card dim">Loading comparison...</div>}>
+      <Suspense fallback={<div className="card dim">Loading comparison…</div>}>
         <HeadToHead
           livebench={data.livebench}
           swe={data.swe_bench}

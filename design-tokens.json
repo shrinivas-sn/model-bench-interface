@@ -1,31 +1,65 @@
 {
-  "resolved_by": "Jev ui-design-chain-gate (live, E:/OSC/api-projects/pipeline/design)",
+  "resolved_by": "Jev ui-design-chain-gate (live, E:/OSC/api-projects/pipeline/design), then overridden by the owner",
   "context": {
     "name": "Model Bench",
     "slug": "model-bench",
     "domain": "ai-benchmark-analytics",
     "targetAudience": "developers"
   },
-  "route": "ask-user",
-  "confidences": { "archetype": 0.98, "palette": 0.99, "typography": 0.52, "motion": 0.24 },
-  "note": "archetype+palette auto-passed; typography in ask zone and motion below ask gate — both fell back to archetype_defaults for terminal-dev, which match the model's leaning. Resolved 26/09/2026.",
-  "archetype": "terminal-dev",
-  "palette": { "id": "zinc-emerald" },
+  "route": "owner-override",
+  "note": "The gate resolved terminal-dev / zinc-emerald / inter-jetbrains / snappy-utilitarian on 26/09/2026. The owner rejected that palette on 28/09/2026 as the default 'AI product' look and specified a clean five-colour combination instead. Typography (Inter + JetBrains Mono) and motion (snappy-utilitarian) are unchanged. See DOCS/CONTEXT/DECISIONS.md.",
+  "archetype": "graphite-amber",
+  "palette": {
+    "id": "graphite-amber",
+    "rule": "One neutral scale carries every surface and line; four hues carry meaning. Hue is never used decoratively.",
+    "colors": {
+      "graphite": "the neutral scale — surfaces, lines, text (#0f1216 → #3d4956, text #828d9c → #e7ecf2)",
+      "amber": "primary accent and the Model A series — #e2a13f",
+      "blue": "the Model B series — #6ea8fe",
+      "green": "healthy state — fresh data, an axis the leading model wins — #4fb286",
+      "red": "error state — a failed source, a regression — #e2685f"
+    },
+    "effort_chips": "Ordinal data gets an ordinal ramp: all five effort levels are the same amber at increasing intensity, not five different hues.",
+    "background": "Deliberately not near-black and not a coloured gradient: #0f1216 with a neutral-to-neutral 180deg wash (#151b23 → #0f1216) so surfaces read as top-lit rather than flat."
+  },
   "typography": { "id": "inter-jetbrains" },
   "motion": { "curve": { "id": "snappy-utilitarian" } },
   "css_variables": {
-    "--bg-canvas": "#09090b",
-    "--bg-card": "#18181b",
-    "--primary": "#10b981",
-    "--text-main": "#fafafa",
-    "--text-muted": "#a1a1aa",
-    "--border": "#27272a",
-    "--font-heading": "Inter, sans-serif",
+    "--bg-canvas": "#0f1216",
+    "--bg-canvas-soft": "#151b23",
+    "--bg-card": "#171d25",
+    "--bg-inset": "#11161c",
+    "--bg-hover": "#1d242e",
+    "--bg-raised": "#222b36",
+    "--border": "#232b35",
+    "--border-hover": "#2f3946",
+    "--border-strong": "#3d4956",
+    "--text-main": "#e7ecf2",
+    "--text-muted": "#97a2b0",
+    "--text-faint": "#828d9c",
+    "--accent": "#e2a13f",
+    "--accent-hover": "#f0b757",
+    "--accent-ink": "#1c1408",
+    "--series-a": "#e2a13f",
+    "--series-b": "#6ea8fe",
+    "--ok": "#4fb286",
+    "--warn": "#d9a441",
+    "--danger": "#e2685f",
     "--font-body": "Inter, sans-serif",
     "--font-mono": "'JetBrains Mono', monospace",
-    "--motion-duration": "120ms",
+    "--motion-duration": "140ms",
+    "--motion-ease": "cubic-bezier(0.2, 0, 0, 1)",
     "--spring-stiffness": "400",
     "--spring-damping": "30",
     "--spring-mass": "0.7"
+  },
+  "contrast": {
+    "method": "browser-measured (probe/verify-ui.mjs) in Chrome at 1280x900 and 320-844px viewports",
+    "measured": {
+      "body copy (.page-sub)": "7.25:1",
+      "secondary copy (.page-purpose)": "5.58:1",
+      "table headers (th)": "5.4:1"
+    },
+    "floor": "4.5:1 (WCAG AA) for all text tiers, including --text-faint"
   }
 }

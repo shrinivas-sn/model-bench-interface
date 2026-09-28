@@ -11,6 +11,7 @@
     "verify:fixtures": "node ingestion/verify-fixtures.mjs",
     "build:data": "node normalization/build-data.mjs",
     "test": "node --test ingestion/test/*.test.mjs normalization/test/*.test.mjs",
+    "verify:ui": "node probe/verify-ui.mjs",
     "deploy": "npm run build && node --dns-result-order=ipv4first ./node_modules/wrangler/bin/wrangler.js deploy"
   },
   "dependencies": {
