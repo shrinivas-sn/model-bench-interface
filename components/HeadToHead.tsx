@@ -50,16 +50,6 @@ function priceSummary(m: LivebenchModel) {
 
 const EFFORT_ORDER = ["low", "medium", "high", "xhigh", "max", "standard", "none"];
 
-const BENCHMARK_TABS = [
-  { id: "all", label: "All Benchmarks" },
-  { id: "swe", label: "SWE-bench Verified" },
-  { id: "coding", label: "Coding & Terminal" },
-  { id: "agentic", label: "Agentic & Tools" },
-  { id: "polyglot", label: "Polyglot Languages" },
-  { id: "reasoning", label: "Reasoning & Math" },
-  { id: "design", label: "Design Arena" },
-];
-
 function getEffortListForModel(m: LivebenchModel, livebench: LivebenchModel[]) {
   const familyVariants = livebench.filter(
     (v) =>
@@ -243,17 +233,10 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     return { n: rows.length, best: Math.max(...rows.map((r) => r.resolved_pct as number)) };
   };
 
-  const [benchFilter, setBenchFilter] = useState<string>("all");
-
   const officialBenchmarks = useMemo(
     () => (a && b ? buildOfficialBenchmarkComparison(a, b, swe) : []),
     [a, b, swe]
   );
-
-  const filteredBenchmarks = useMemo(() => {
-    if (benchFilter === "all") return officialBenchmarks;
-    return officialBenchmarks.filter((item) => item.category === benchFilter);
-  }, [officialBenchmarks, benchFilter]);
 
   if (!a || !b || !rawA || !rawB) {
     return (
@@ -394,54 +377,31 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         {modelCard(b, rawB, "B", 1)}
       </div>
 
-      {/* Official Developer & Coding Benchmarks Panel */}
+      {/* Official Developer & Terminal Benchmarks Panel */}
       <div className="h2h-benchmarks-card">
         <div className="h2h-benchmarks-header">
-          <div className="h2h-benchmarks-header-text">
-            <div className="row-between">
-              <h3 className="h2h-benchmarks-title">Official Developer & Coding Benchmarks</h3>
-              <div className="h2h-legend">
-                <span className="h2h-legend-item">
-                  <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
-                  A · <span className="h2h-legend-name">{labelOf(a)}</span>
-                </span>
-                <span className="h2h-legend-item">
-                  <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
-                  B · <span className="h2h-legend-name">{labelOf(b)}</span>
-                </span>
-              </div>
+          <div className="row-between">
+            <div>
+              <h3 className="h2h-benchmarks-title">Official Developer & Terminal Benchmarks</h3>
+              <p className="h2h-benchmarks-subtitle">
+                Key validated benchmarks: Reasoning, Coding Proficiency, Autonomous Terminal/Tools, and Real-World SWE-bench GitHub issues.
+              </p>
             </div>
-            <p className="h2h-benchmarks-subtitle">
-              Validated metrics from official evaluation authorities: SWE-bench Verified (500 real GitHub issues), Artificial Analysis Indices (Coding, Agentic, Intelligence), LiveBench Polyglot code tasks, and Design Arena.
-            </p>
-          </div>
-
-          <div className="h2h-bench-tabs" role="tablist" aria-label="Benchmark category filters">
-            {BENCHMARK_TABS.map((tab) => {
-              const count =
-                tab.id === "all"
-                  ? officialBenchmarks.length
-                  : officialBenchmarks.filter((item) => item.category === tab.id).length;
-              if (count === 0 && tab.id !== "all") return null;
-              const isActive = benchFilter === tab.id;
-              return (
-                <button
-                  key={tab.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isActive}
-                  className={`h2h-bench-tab-btn ${isActive ? "active" : ""}`}
-                  onClick={() => setBenchFilter(tab.id)}
-                >
-                  {tab.label} <span className="h2h-bench-tab-count">({count})</span>
-                </button>
-              );
-            })}
+            <div className="h2h-legend">
+              <span className="h2h-legend-item">
+                <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
+                A · <span className="h2h-legend-name">{labelOf(a)}</span>
+              </span>
+              <span className="h2h-legend-item">
+                <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
+                B · <span className="h2h-legend-name">{labelOf(b)}</span>
+              </span>
+            </div>
           </div>
         </div>
 
         <div className="h2h-bench-grid">
-          {filteredBenchmarks.map((item) => {
+          {officialBenchmarks.map((item) => {
             const va = item.valA;
             const vb = item.valB;
             const hasBoth = va != null && vb != null;

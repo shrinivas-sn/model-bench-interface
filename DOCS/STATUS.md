@@ -4,14 +4,13 @@
 
 ## Current state
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
-- **Ingestion**: 4 declarative adapters (`openrouter` reasoning/benchmarks, `swe-bench-verified` reasoning effort, `livebench-scores`, `livebench-cost`) → 458 catalog models, 63 LiveBench rows.
-- **UI**: Interactive effort button panel on comparison cards, dynamic effort-resolved model engine (`LOW`, `MEDIUM`, `HIGH`, `XHIGH`, `MAX`), dynamic card-level `$/Question` & reasoning token metrics, and real-time Effort-Dynamic Cost & Workload Estimator.
-- **Gates**: `verify:fixtures` 4/4 · `npm test` 73/73 · `tsc` clean · `npm run build` 7/7 static pages · `verify:ui` 116/116 checks.
+- **Ingestion & Aliasing**: 4 declarative adapters (`openrouter`, `swe-bench-verified`, `livebench-scores`, `livebench-cost`) → 458 catalog models, 63 LiveBench rows, 72 matched SWE-bench Verified runs.
+- **UI**: Clean one-liner reasoning effort dropdown, unified Official Developer & Terminal Benchmarks showcase (Reasoning, Coding Proficiency, Autonomous Terminal/Tools, SWE-bench GitHub issues), and real-time Workload & Cost Estimator with transparent formula breakdown.
+- **Gates**: `verify:fixtures` 4/4 · `npm test` 76/76 · `tsc` clean · `npm run build` 7/7 static pages · `verify:ui` 115/115 checks.
 
 ## Pending
-- Manual alias table for SWE-bench systems (51/180 matched) & 8 unmatched LiveBench names on `/quality`.
 - Cloudflare Workers Builds webhook verification for automatic cron sync redeployments.
 
 ## Next up (start here)
-1. **SWE-bench & LiveBench Aliases**: Add manual mappings in `normalization/registry.mjs` to lift the 51/180 match rate and resolve unmatched names.
-2. **Cloudflare Builds**: Verify auto-deploy webhook on GitHub commits for daily cron sync.
+1. **Live Deployment Verification**: Confirm static export and build assets deployed on Cloudflare Workers.
+2. **Additional Developer Benchmarks**: Monitor upstream SWE-bench Verified and Artificial Analysis feeds for new model evaluations.
