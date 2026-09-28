@@ -29,6 +29,8 @@ export type LivebenchModel = {
     input_price_per_million: number | null;
     output_price_per_million: number | null;
     cost_per_question: number | null;
+    avg_input_tokens?: number | null;
+    avg_output_tokens?: number | null;
   } | null;
   pricing: {
     input_per_million: number | null;

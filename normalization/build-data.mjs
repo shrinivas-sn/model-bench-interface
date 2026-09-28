@@ -74,11 +74,14 @@ async function livebenchModels(aliasIndex) {
   const costByModel = new Map();
   for (const rec of costRecs) {
     const f = fieldsOf(rec);
+    const raw = rec.raw || {};
     if (!f.model) continue;
     costByModel.set(f.model, {
       input_price_per_million: f.input_price_per_million ?? null,
       output_price_per_million: f.output_price_per_million ?? null,
       cost_per_question: f.cost_per_question ?? null,
+      avg_input_tokens: raw.avg_input_tokens ?? null,
+      avg_output_tokens: raw.avg_output_tokens ?? null,
     });
   }
 

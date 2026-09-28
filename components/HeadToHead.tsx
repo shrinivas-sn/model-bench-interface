@@ -4,9 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { RadarChart } from "@/components/RadarChart";
 import { ModelPicker } from "@/components/ModelPicker";
+import { CostEstimator } from "@/components/CostEstimator";
 import { SwapIcon } from "@/components/icons";
 import type { LivebenchModel, SweRow } from "@/lib/data";
 import { defaultPair, formatFamilyLabel, formatPerMillion, readRecents } from "@/lib/picker.mjs";
+import { formatCostPerQuestion, formatTokenCount, effortVarianceInsight } from "@/lib/cost.mjs";
 
 type Props = {
   livebench: LivebenchModel[];
@@ -197,6 +199,7 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     const currentActiveEffort = overrideEffort[slot] || m.effort?.toLowerCase() || "standard";
     const activeOpt = effortOptionsList.find((opt) => opt.id === currentActiveEffort) || effortOptionsList[0];
     const isLivebenchEvaluated = activeOpt?.hasBenchmark;
+    const effortInsight = effortVarianceInsight(m, livebench);
 
     const handleEffortSelect = (opt: (typeof effortOptionsList)[0]) => {
       if (opt.variant) {
@@ -265,12 +268,29 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
               <b>{(m.effort || "High").toUpperCase()}</b>.
             </div>
           )}
+
+          {effortInsight && (
+            <div className="h2h-effort-variance-insight">
+              ⚡ <b>{effortInsight.currentEffort}</b> uses{" "}
+              <b>{effortInsight.tokenRatio ? `${effortInsight.tokenRatio}× reasoning tokens` : "more tokens"}</b> and costs{" "}
+              <b>{effortInsight.costRatio}×</b> ({formatCostPerQuestion(effortInsight.currentCost)} vs{" "}
+              {formatCostPerQuestion(effortInsight.otherCost)}) compared to {effortInsight.otherEffort}.
+            </div>
+          )}
         </div>
 
         <div className="h2h-card-stats">
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">$/Mtok in / out</span>
             <span className="h2h-stat-value mono">{priceSummary(m)}</span>
+          </div>
+          <div className="h2h-card-stat">
+            <span className="h2h-stat-label">$/Question</span>
+            <span className="h2h-stat-value mono">{formatCostPerQuestion(m.cost?.cost_per_question)}</span>
+          </div>
+          <div className="h2h-card-stat">
+            <span className="h2h-stat-label">Reasoning Tok</span>
+            <span className="h2h-stat-value mono">{formatTokenCount(m.cost?.avg_output_tokens)}</span>
           </div>
           <div className="h2h-card-stat">
             <span className="h2h-stat-label">Context</span>
@@ -406,6 +426,8 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
           </div>
         </div>
       </div>
+
+      <CostEstimator modelA={a} modelB={b} />
 
       <details className="h2h-tasks-details">
         <summary className="h2h-tasks-summary">
