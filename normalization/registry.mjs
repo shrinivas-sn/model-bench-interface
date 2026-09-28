@@ -36,7 +36,7 @@ export function normKey(s) {
 
 /** Tail tokens that mark reasoning-effort/variant noise when stripping from the end. */
 const TAIL_NOISE = new Set([
-  "effort", "xhigh", "high", "medium", "low", "max", "thinking", "auto", "64k", "preview",
+  "effort", "xhigh", "high", "medium", "low", "max", "thinking", "auto", "64k", "preview", "instruct", "reasoner", "exp",
 ]);
 
 const EIGHT_DIGIT = /^\d{8}$/;
@@ -96,6 +96,7 @@ export function slugAliasFor(id) {
  * Build the alias index from the OpenRouter catalog. For each model, indexes:
  *   norm(full id) | norm(slug w/o date) | norm(bare name after vendor/)
  *   | norm(display title) | norm(title minus leading vendor token)
+ *   plus systematic subfamily/version permutations (claude-4.5-opus <-> claude-opus-4.5)
  */
 export function buildAliasIndex(openrouterModels) {
   const index = new Map(); // normKey -> canonical id
@@ -113,12 +114,31 @@ export function buildAliasIndex(openrouterModels) {
       const bare = slug.includes("/") ? slug.split("/").slice(1).join("/") : slug;
       put(normKey(bare), id);
     }
-    put(normKey(id.includes("/") ? id.split("/").slice(1).join("/") : id), id);
+    const bareId = id.includes("/") ? id.split("/").slice(1).join("/") : id;
+    const bareNorm = normKey(bareId);
+    put(bareNorm, id);
+
+    // Systematic transposition of version/subfamily naming (e.g. claude-opus-4.5 <-> claude-4.5-opus, gemini-pro-1.5 <-> gemini-1.5-pro)
+    const mClaude = bareNorm.match(/^claude-(opus|sonnet|haiku|fable)-(.*)$/);
+    if (mClaude) put(`claude-${mClaude[2]}-${mClaude[1]}`, id);
+    const mClaudeRev = bareNorm.match(/^claude-(.*?)-(opus|sonnet|haiku|fable)$/);
+    if (mClaudeRev) put(`claude-${mClaudeRev[2]}-${mClaudeRev[1]}`, id);
+
+    const mGemini = bareNorm.match(/^gemini-(pro|flash|flash-lite)-(.*)$/);
+    if (mGemini) put(`gemini-${mGemini[2]}-${mGemini[1]}`, id);
+    const mGeminiRev = bareNorm.match(/^gemini-(.*?)-(pro|flash|flash-lite)$/);
+    if (mGeminiRev) put(`gemini-${mGeminiRev[2]}-${mGeminiRev[1]}`, id);
+
     const title = m.title || m.name;
     if (title) {
       const t = normKey(title);
       put(t, id);
-      put(t.replace(/^[a-z0-9]+-/, ""), id); // title minus leading vendor token
+      const stripped = t.replace(/^[a-z0-9]+-/, ""); // title minus leading vendor token
+      put(stripped, id);
+      const mTitleClaude = stripped.match(/^claude-(opus|sonnet|haiku|fable)-(.*)$/);
+      if (mTitleClaude) put(`claude-${mTitleClaude[2]}-${mTitleClaude[1]}`, id);
+      const mTitleClaudeRev = stripped.match(/^claude-(.*?)-(opus|sonnet|haiku|fable)$/);
+      if (mTitleClaudeRev) put(`claude-${mTitleClaudeRev[2]}-${mTitleClaudeRev[1]}`, id);
     }
   }
   return index;

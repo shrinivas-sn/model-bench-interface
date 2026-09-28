@@ -61,10 +61,10 @@ test("livebench gpt-5.2-2025-12-11-high -> openai/gpt-5.2 (date-stripped)", () =
   assert.equal(hit.method, "date-stripped");
 });
 
-test("display title with word-order difference does NOT false-match", () => {
-  // "claude-4-5-opus" (SWE-bench style) must not match "claude-opus-4-5" (title style)
+test("SWE-bench display name with subfamily-version transposition matches canonical model", () => {
+  // "Claude 4.5 Opus" (SWE-bench style) matches "anthropic/claude-opus-4.5"
   const hit = resolveAlias(index(), "Claude 4.5 Opus");
-  assert.equal(hit, null);
+  assert.equal(hit?.canonical, "anthropic/claude-opus-4.5");
 });
 
 test("org-qualified SWE-bench name matches via vendor-prefixed bare key", () => {

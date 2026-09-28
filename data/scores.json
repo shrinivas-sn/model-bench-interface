@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28T11:55:59.467Z",
+  "generated_at": "2026-09-28T12:17:56.848Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -26829,8 +26829,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251205_sonar-foundation-agent_claude-opus-4-5"
     },
     {
@@ -26844,8 +26844,8 @@
       "reasoning_effort": "medium",
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251215_livesweagent_claude-opus-4-5"
     },
     {
@@ -26889,8 +26889,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250804_epam-ai-run-claude-4-sonnet"
     },
     {
@@ -26919,8 +26919,8 @@
       "reasoning_effort": "high",
       "is_open_model": false,
       "checked": null,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20260217_mini-v2.0.0_claude-4-5-opus-high"
     },
     {
@@ -26994,8 +26994,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": null,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-4.6",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20260217_mini-v2.0.0_claude-4-6-opus"
     },
     {
@@ -27039,8 +27039,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251103_sonar-foundation-agent_claude-sonnet-4-5"
     },
     {
@@ -27054,8 +27054,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250720_Lingxi-v1.5_claude-4-sonnet-20250514"
     },
     {
@@ -27114,8 +27114,8 @@
       "reasoning_effort": "medium",
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251124_mini-v1.16.0_claude-opus-4-5-20251101"
     },
     {
@@ -27234,8 +27234,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250522_tools_claude-4-sonnet"
     },
     {
@@ -27279,8 +27279,8 @@
       "reasoning_effort": "high",
       "is_open_model": false,
       "checked": null,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20260217_mini-v2.0.0_claude-4-5-sonnet-high"
     },
     {
@@ -27294,8 +27294,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250710_bloop"
     },
     {
@@ -27369,8 +27369,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250611_moatless_claude-4-sonnet-20250514"
     },
     {
@@ -27414,8 +27414,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250929_mini-v1.13.3_sonnet-4-5-20250929"
     },
     {
@@ -27444,8 +27444,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250524_openhands_claude_4_sonnet"
     },
     {
@@ -27519,8 +27519,8 @@
       "reasoning_effort": null,
       "is_open_model": true,
       "checked": false,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "qwen/qwen3-coder",
+      "alias_method": "suffix-stripped",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250805_openhands-Qwen3-Coder-480B-A35B-Instruct"
     },
     {
@@ -27609,8 +27609,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250522_sweagent_claude-4-sonnet-20250514"
     },
     {
@@ -27624,8 +27624,8 @@
       "reasoning_effort": "high",
       "is_open_model": false,
       "checked": null,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-haiku-4.5",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20260217_mini-v2.0.0_claude-4-5-haiku-high"
     },
     {
@@ -27759,8 +27759,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-4",
+      "alias_method": "exact",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250726_mini-v1.0.0_claude-sonnet-4-20250514"
     },
     {
@@ -27984,8 +27984,8 @@
       "reasoning_effort": null,
       "is_open_model": true,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "deepseek/deepseek-v3.2",
+      "alias_method": "suffix-stripped",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20251201_mini-v1.17.1_deepseek-v3.2-reasoner"
     },
     {
@@ -29334,8 +29334,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "meta-llama/llama-4-maverick",
+      "alias_method": "suffix-stripped",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250720_mini-v0.0.0-Llama-4-Maverick-17B-Instruct"
     },
     {
@@ -29409,8 +29409,8 @@
       "reasoning_effort": null,
       "is_open_model": false,
       "checked": true,
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "meta-llama/llama-4-scout",
+      "alias_method": "suffix-stripped",
       "url": "https://github.com/SWE-bench/experiments/tree/main/evaluation/verified/20250720_mini-v0.0.0-Llama-4-Scout-17B-Instruct"
     },
     {
@@ -29525,7 +29525,7 @@
       "livebench_models": 63,
       "livebench_matched": 55,
       "swe_bench_systems": 180,
-      "swe_bench_matched": 51
+      "swe_bench_matched": 72
     },
     "unmatched": {
       "livebench": [

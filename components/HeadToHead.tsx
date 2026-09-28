@@ -14,6 +14,7 @@ import {
   formatTokenCount,
   resolveModelForEffort,
 } from "@/lib/cost.mjs";
+import { buildOfficialBenchmarkComparison } from "@/lib/benchmarks.mjs";
 
 type Props = {
   livebench: LivebenchModel[];
@@ -48,6 +49,16 @@ function priceSummary(m: LivebenchModel) {
 }
 
 const EFFORT_ORDER = ["low", "medium", "high", "xhigh", "max", "standard", "none"];
+
+const BENCHMARK_TABS = [
+  { id: "all", label: "All Benchmarks" },
+  { id: "swe", label: "SWE-bench Verified" },
+  { id: "coding", label: "Coding & Terminal" },
+  { id: "agentic", label: "Agentic & Tools" },
+  { id: "polyglot", label: "Polyglot Languages" },
+  { id: "reasoning", label: "Reasoning & Math" },
+  { id: "design", label: "Design Arena" },
+];
 
 function getEffortListForModel(m: LivebenchModel, livebench: LivebenchModel[]) {
   const familyVariants = livebench.filter(
@@ -232,6 +243,18 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
     return { n: rows.length, best: Math.max(...rows.map((r) => r.resolved_pct as number)) };
   };
 
+  const [benchFilter, setBenchFilter] = useState<string>("all");
+
+  const officialBenchmarks = useMemo(
+    () => (a && b ? buildOfficialBenchmarkComparison(a, b, swe) : []),
+    [a, b, swe]
+  );
+
+  const filteredBenchmarks = useMemo(() => {
+    if (benchFilter === "all") return officialBenchmarks;
+    return officialBenchmarks.filter((item) => item.category === benchFilter);
+  }, [officialBenchmarks, benchFilter]);
+
   if (!a || !b || !rawA || !rawB) {
     return (
       <div className="card">
@@ -369,6 +392,151 @@ export function HeadToHead({ livebench, swe, capabilities, vendorDisplay = {} }:
         </div>
 
         {modelCard(b, rawB, "B", 1)}
+      </div>
+
+      {/* Official Developer & Coding Benchmarks Panel */}
+      <div className="h2h-benchmarks-card">
+        <div className="h2h-benchmarks-header">
+          <div className="h2h-benchmarks-header-text">
+            <div className="row-between">
+              <h3 className="h2h-benchmarks-title">Official Developer & Coding Benchmarks</h3>
+              <div className="h2h-legend">
+                <span className="h2h-legend-item">
+                  <span className="h2h-legend-swatch" data-slot="A" aria-hidden />
+                  A · <span className="h2h-legend-name">{labelOf(a)}</span>
+                </span>
+                <span className="h2h-legend-item">
+                  <span className="h2h-legend-swatch" data-slot="B" aria-hidden />
+                  B · <span className="h2h-legend-name">{labelOf(b)}</span>
+                </span>
+              </div>
+            </div>
+            <p className="h2h-benchmarks-subtitle">
+              Validated metrics from official evaluation authorities: SWE-bench Verified (500 real GitHub issues), Artificial Analysis Indices (Coding, Agentic, Intelligence), LiveBench Polyglot code tasks, and Design Arena.
+            </p>
+          </div>
+
+          <div className="h2h-bench-tabs" role="tablist" aria-label="Benchmark category filters">
+            {BENCHMARK_TABS.map((tab) => {
+              const count =
+                tab.id === "all"
+                  ? officialBenchmarks.length
+                  : officialBenchmarks.filter((item) => item.category === tab.id).length;
+              if (count === 0 && tab.id !== "all") return null;
+              const isActive = benchFilter === tab.id;
+              return (
+                <button
+                  key={tab.id}
+                  type="button"
+                  role="tab"
+                  aria-selected={isActive}
+                  className={`h2h-bench-tab-btn ${isActive ? "active" : ""}`}
+                  onClick={() => setBenchFilter(tab.id)}
+                >
+                  {tab.label} <span className="h2h-bench-tab-count">({count})</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="h2h-bench-grid">
+          {filteredBenchmarks.map((item) => {
+            const va = item.valA;
+            const vb = item.valB;
+            const hasBoth = va != null && vb != null;
+            const aLeads = hasBoth && va > vb;
+            const bLeads = hasBoth && vb > va;
+
+            const pctA = va != null ? Math.min(100, Math.max(0, (va / item.max) * 100)) : 0;
+            const pctB = vb != null ? Math.min(100, Math.max(0, (vb / item.max) * 100)) : 0;
+
+            return (
+              <div key={item.id} className="h2h-bench-item" data-category={item.category}>
+                <div className="h2h-bench-item-header">
+                  <div className="h2h-bench-item-title-wrap">
+                    <span className="h2h-bench-item-name">{item.name}</span>
+                    <span className="h2h-bench-authority-badge">{item.authority}</span>
+                  </div>
+                  <div className="h2h-bench-delta-wrap">
+                    {hasBoth ? (
+                      <span className={`h2h-bench-lead-badge ${aLeads ? "slot-a" : bLeads ? "slot-b" : "tied"}`}>
+                        {aLeads
+                          ? `A leads +${(va - vb).toFixed(1)}${item.unit === "%" ? "%" : ""}`
+                          : bLeads
+                          ? `B leads +${(vb - va).toFixed(1)}${item.unit === "%" ? "%" : ""}`
+                          : "Tied"}
+                      </span>
+                    ) : va != null ? (
+                      <span className="h2h-bench-lead-badge slot-a">Only A measured</span>
+                    ) : vb != null ? (
+                      <span className="h2h-bench-lead-badge slot-b">Only B measured</span>
+                    ) : (
+                      <span className="unknown">not evaluated</span>
+                    )}
+                  </div>
+                </div>
+
+                <p className="h2h-bench-item-desc">{item.description}</p>
+
+                <div className="h2h-bench-bars">
+                  <div className="h2h-bench-bar-item" data-slot="A" data-lead={aLeads}>
+                    <div className="h2h-bench-bar-label-wrap">
+                      <span className="h2h-bench-bar-slot">A</span>
+                    </div>
+                    <div className="h2h-bench-bar-track">
+                      <div
+                        className="h2h-bench-bar-fill"
+                        data-slot="A"
+                        style={{ width: `${pctA}%` }}
+                      />
+                    </div>
+                    <span className="h2h-bench-bar-val mono" data-lead={aLeads}>
+                      {va != null ? `${va.toFixed(1)}${item.unit === "%" ? "%" : item.unit === "elo" ? " elo" : ""}` : "—"}
+                    </span>
+                  </div>
+
+                  <div className="h2h-bench-bar-item" data-slot="B" data-lead={bLeads}>
+                    <div className="h2h-bench-bar-label-wrap">
+                      <span className="h2h-bench-bar-slot">B</span>
+                    </div>
+                    <div className="h2h-bench-bar-track">
+                      <div
+                        className="h2h-bench-bar-fill"
+                        data-slot="B"
+                        style={{ width: `${pctB}%` }}
+                      />
+                    </div>
+                    <span className="h2h-bench-bar-val mono" data-lead={bLeads}>
+                      {vb != null ? `${vb.toFixed(1)}${item.unit === "%" ? "%" : item.unit === "elo" ? " elo" : ""}` : "—"}
+                    </span>
+                  </div>
+                </div>
+
+                {(item.detailA || item.detailB || item.urlA || item.urlB) && (
+                  <div className="h2h-bench-links">
+                    {item.detailA && item.detailA !== "Not evaluated" && (
+                      <span className="dim">A: {item.detailA}</span>
+                    )}
+                    {item.detailB && item.detailB !== "Not evaluated" && (
+                      <span className="dim">B: {item.detailB}</span>
+                    )}
+                    {item.urlA && (
+                      <a href={item.urlA} target="_blank" rel="noopener noreferrer" className="h2h-bench-link">
+                        A source ↗
+                      </a>
+                    )}
+                    {item.urlB && (
+                      <a href={item.urlB} target="_blank" rel="noopener noreferrer" className="h2h-bench-link">
+                        B source ↗
+                      </a>
+                    )}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
       </div>
 
       <div className="h2h-compare-grid">
