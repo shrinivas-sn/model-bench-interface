@@ -55,14 +55,20 @@ export type SweRow = {
   url: string | null;
 };
 
-export type TerminalBenchRow = {
-  model_display: string | null;
-  canonical_id: string;
-  resolved_pct: number;
-  benchmark: string;
-  version: string;
-  captured_at: string | null;
-  url: string | null;
+export type TerminalBenchRun = {
+  run_id: string;
+  canonical_id: string | null;
+  alias_method: string | null;
+  model_label: string;
+  model_org: string | null;
+  agent_label: string | null;
+  reasoning_effort: string | null;
+  accuracy: number;
+  ci95_half_width: number | null;
+  n_trials: number | null;
+  total_cost_usd: number | null;
+  run_date: string | null;
+  leaderboard_title: string;
 };
 
 export type ScoresData = {
@@ -70,10 +76,15 @@ export type ScoresData = {
   release: string;
   vendor_display: Record<string, string>;
   capabilities: string[];
+  sources: {
+    livebench: { release: string; url: string };
+    terminal_bench: { title: string; url: string } | null;
+    artificial_analysis: { connected: boolean; url: string; fetched_at?: string | null };
+  };
   catalog: CatalogModel[];
   livebench: LivebenchModel[];
   swe_bench: SweRow[];
-  terminal_bench?: TerminalBenchRow[];
+  terminal_bench: TerminalBenchRun[];
   data_quality: {
     counts: {
       catalog_models: number;
@@ -81,8 +92,14 @@ export type ScoresData = {
       livebench_matched: number;
       swe_bench_systems: number;
       swe_bench_matched: number;
+      terminal_bench_runs: number;
+      terminal_bench_matched: number;
     };
-    unmatched: { livebench: string[]; swe_bench_model_display: string[] };
+    unmatched: {
+      livebench: string[];
+      swe_bench_model_display: string[];
+      terminal_bench: string[];
+    };
   };
 };
 

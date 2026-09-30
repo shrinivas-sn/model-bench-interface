@@ -8,7 +8,7 @@
  *  - Per-benchmark comparison only — NO cross-benchmark averaging.
  *  - Every alias match records its method; unmatched names are REPORTED, never guessed.
  */
-import { writeFileSync, mkdirSync, existsSync } from "node:fs";
+import { writeFileSync, mkdirSync, existsSync, readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
@@ -21,8 +21,12 @@ import {
   round2,
   assertTasksCategorised,
 } from "./livebench-scores.mjs";
+import { resolveSourceModel } from "./manual-aliases.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
+const manualAliases = JSON.parse(
+  readFileSync(join(dirname(fileURLToPath(import.meta.url)), "manual-aliases.json"), "utf8")
+);
 
 function storePath(name) {
   return join(ROOT, "store", `${name}.jsonl`);
@@ -172,32 +176,52 @@ async function sweBenchRows(aliasIndex) {
   return { rows, missingModelDisplay };
 }
 
-// ---------- Terminal-Bench 2.0 ----------
-// The official tbench.ai leaderboard has no public JSON endpoint, so the snapshot
-// lives in store/terminal-bench-2.jsonl (captured 2026-09-27 from BenchLM's
-// aggregation of provider self-reports). Rows carry a pre-resolved canonical_id
-// from the same alias discipline as the other sources.
-async function terminalBenchRows() {
-  const recs = existsSync(storePath("terminal-bench-2"))
-    ? await readLatestRecords(storePath("terminal-bench-2"))
+// ---------- Terminal-Bench ----------
+async function terminalBenchRows(aliasIndex) {
+  const recs = existsSync(storePath("terminal-bench"))
+    ? await readLatestRecords(storePath("terminal-bench"))
     : [];
+  if (!recs.length) return { rows: [], leaderboard_title: null, unmatched: [] };
+
+  const titles = recs.map((r) => fieldsOf(r).leaderboard_title).filter(Boolean);
+  const newestTitle = titles[0] || "Terminal-Bench 4.0";
+
   const rows = [];
+  const unmatched = [];
   for (const rec of recs) {
-    const rawRows = rec.raw?.rows ?? rec.fields?.rows ?? [];
-    for (const r of rawRows) {
-      if (!r.canonical_id || r.resolved_pct == null) continue;
-      rows.push({
-        model_display: r.model || null,
-        canonical_id: r.canonical_id,
-        resolved_pct: Number(r.resolved_pct),
-        benchmark: rec.fields?.benchmark || "Terminal-Bench 2.0",
-        version: rec.fields?.version || "2.0",
-        captured_at: rec.fields?.captured_at || null,
-        url: rec.fields?.records_url || rec.source_url || null,
-      });
+    const f = fieldsOf(rec);
+    if (f.leaderboard_title && f.leaderboard_title !== newestTitle) {
+      continue;
     }
+    const hit = resolveSourceModel({
+      aliasIndex,
+      manual: manualAliases,
+      source: "terminal-bench",
+      org: f.model_org,
+      label: f.model_label || f.title,
+    });
+    const modelLabel = f.model_label || f.title || "";
+    if (!hit) {
+      unmatched.push(modelLabel);
+    }
+    rows.push({
+      run_id: f.source_id || rec.source_id,
+      canonical_id: hit?.canonical ?? null,
+      alias_method: hit?.method ?? null,
+      model_label: modelLabel,
+      model_org: f.model_org ?? null,
+      agent_label: f.agent_label ?? null,
+      reasoning_effort: f.reasoning_effort ?? null,
+      accuracy: Number(f.accuracy),
+      ci95_half_width: f.ci95_half_width != null ? Number(f.ci95_half_width) : null,
+      n_trials: f.n_trials != null ? Number(f.n_trials) : null,
+      total_cost_usd: f.total_cost_usd != null ? Number(f.total_cost_usd) : null,
+      run_date: f.run_date || f.date || null,
+      leaderboard_title: f.leaderboard_title || newestTitle,
+    });
   }
-  return { rows };
+  rows.sort((a, b) => (b.accuracy ?? 0) - (a.accuracy ?? 0));
+  return { rows, leaderboard_title: newestTitle, unmatched };
 }
 
 // ---------- Assemble ----------
@@ -209,7 +233,7 @@ async function main() {
 
   const lb = await livebenchModels(aliasIndex);
   const swe = await sweBenchRows(aliasIndex);
-  const terminalBench = await terminalBenchRows();
+  const terminalBench = await terminalBenchRows(aliasIndex);
 
   // Join price from OpenRouter into matched models (single price source);
   // fallback to LiveBench's own cost CSV for unmatched models.
@@ -244,6 +268,7 @@ async function main() {
 
   const matchedSwe = swe.rows.filter((r) => r.canonical_id).length;
   const matchedLb = lb.models.filter((m) => m.canonical_id).length;
+  const matchedTb = terminalBench.rows.filter((r) => r.canonical_id).length;
 
   const vendor_display = Object.fromEntries(VENDORS.map((v) => [v.id, v.display]));
   vendor_display.other = "Other";
@@ -253,22 +278,31 @@ async function main() {
     release: "livebench-2026-06-25 + swe-bench-verified + openrouter",
     vendor_display,
     capabilities: [...new Set(Object.keys(LIVEBENCH_CATEGORIES).map(capabilityForLivebenchCategory))],
+    sources: {
+      livebench: { release: "2026-06-25", url: "https://livebench.ai/" },
+      terminal_bench: terminalBench.rows.length
+        ? { title: terminalBench.leaderboard_title, url: "https://www.tbench.ai/" }
+        : null,
+      artificial_analysis: { connected: false, url: "https://artificialanalysis.ai/" },
+    },
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
     swe_bench: swe.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
-    terminal_bench: terminalBench.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
+    terminal_bench: terminalBench.rows,
     data_quality: {
       counts: {
         catalog_models: catalog.size,
-      livebench_models: lb.models.length,
-      livebench_matched: matchedLb,
-      swe_bench_systems: swe.rows.length,
-      swe_bench_matched: matchedSwe,
-      terminal_bench_rows: terminalBench.rows.length,
+        livebench_models: lb.models.length,
+        livebench_matched: matchedLb,
+        swe_bench_systems: swe.rows.length,
+        swe_bench_matched: matchedSwe,
+        terminal_bench_runs: terminalBench.rows.length,
+        terminal_bench_matched: matchedTb,
       },
       unmatched: {
         livebench: lb.unmatched,
         swe_bench_model_display: swe.missingModelDisplay,
+        terminal_bench: terminalBench.unmatched,
       },
     },
   };
@@ -279,7 +313,8 @@ async function main() {
   console.log(
     `data/scores.json: catalog=${data.data_quality.counts.catalog_models} ` +
       `livebench=${lb.models.length} (matched ${matchedLb}) ` +
-      `swe=${swe.rows.length} (matched ${matchedSwe})`
+      `swe=${swe.rows.length} (matched ${matchedSwe}) ` +
+      `terminal_bench=${terminalBench.rows.length} (matched ${matchedTb})`
   );
   if (lb.unmatched.length) console.log("unmatched livebench:", lb.unmatched.join(", "));
 }

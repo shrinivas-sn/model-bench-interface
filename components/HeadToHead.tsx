@@ -7,7 +7,7 @@ import { ModelPicker } from "@/components/ModelPicker";
 import { CostEstimator } from "@/components/CostEstimator";
 import { EffortChip } from "@/components/EffortChip";
 import { ChevronDownIcon, SwapIcon } from "@/components/icons";
-import type { LivebenchModel, SweRow, TerminalBenchRow } from "@/lib/data";
+import type { LivebenchModel, SweRow, TerminalBenchRun } from "@/lib/data";
 import { defaultPair, formatFamilyLabel, formatPerMillion, readRecents } from "@/lib/picker.mjs";
 import {
   formatCostPerQuestion,
@@ -19,7 +19,7 @@ type Props = {
   livebench: LivebenchModel[];
   swe: SweRow[];
   capabilities: string[];
-  terminalBench?: TerminalBenchRow[];
+  terminalBench?: TerminalBenchRun[];
   vendorDisplay?: Record<string, string>;
 };
 
@@ -239,14 +239,14 @@ export function HeadToHead({
     return { n: rows.length, best: Math.max(...rows.map((r) => r.resolved_pct as number)) };
   };
 
-  // Terminal-Bench 2.0 (the hard agentic terminal benchmark) matched by canonical id.
+  // Terminal-Bench (the hard agentic terminal benchmark) matched by canonical id.
   const terminalBench = useMemo(() => {
     const pick = (m: LivebenchModel | null) => {
       const id = m?.canonical_id;
       if (!id) return null;
       return (
-        terminalBenchRows.filter((r) => r.canonical_id === id && r.resolved_pct != null).sort(
-          (x, y) => (y.resolved_pct as number) - (x.resolved_pct as number)
+        terminalBenchRows.filter((r) => r.canonical_id === id && r.accuracy != null).sort(
+          (x, y) => (y.accuracy as number) - (x.accuracy as number)
         )[0] ?? null
       );
     };
@@ -463,38 +463,38 @@ export function HeadToHead({
             <div className="cap-row h2h-terminal-row">
               <div className="cap-header">
                 <span className="cap-name">
-                  Terminal-Bench 2.0
+                  {tbA?.leaderboard_title || tbB?.leaderboard_title || "Terminal-Bench"}
                   <small className="dim"> · agentic terminal tasks</small>
                 </span>
                 <span className="cap-delta">
-                  {tbA && tbB ? <Delta a={tbA.resolved_pct} b={tbB.resolved_pct} /> : <span className="unknown">not stated</span>}
+                  {tbA && tbB ? <Delta a={tbA.accuracy} b={tbB.accuracy} /> : <span className="unknown">not stated</span>}
                 </span>
               </div>
               <div className="cap-bars">
-                <div className="cap-bar-item" data-slot="A" data-lead={Boolean(tbA && tbB && tbA.resolved_pct >= tbB.resolved_pct)}>
+                <div className="cap-bar-item" data-slot="A" data-lead={Boolean(tbA && tbB && tbA.accuracy >= tbB.accuracy)}>
                   <span className="cap-bar-label">A</span>
                   <div className="cap-bar-track">
                     <div
                       className="cap-bar-fill"
                       data-slot="A"
-                      style={{ width: `${tbA ? Math.min(100, Math.max(0, tbA.resolved_pct)) : 0}%` }}
+                      style={{ width: `${tbA ? Math.min(100, Math.max(0, tbA.accuracy)) : 0}%` }}
                     />
                   </div>
-                  <span className="cap-bar-val mono" data-lead={Boolean(tbA && tbB && tbA.resolved_pct >= tbB.resolved_pct)}>
-                    {tbA ? `${tbA.resolved_pct.toFixed(1)}%` : "—"}
+                  <span className="cap-bar-val mono" data-lead={Boolean(tbA && tbB && tbA.accuracy >= tbB.accuracy)}>
+                    {tbA ? `${tbA.accuracy.toFixed(1)}%` : "—"}
                   </span>
                 </div>
-                <div className="cap-bar-item" data-slot="B" data-lead={Boolean(tbB && tbA && tbB.resolved_pct >= tbA.resolved_pct)}>
+                <div className="cap-bar-item" data-slot="B" data-lead={Boolean(tbB && tbA && tbB.accuracy >= tbA.accuracy)}>
                   <span className="cap-bar-label">B</span>
                   <div className="cap-bar-track">
                     <div
                       className="cap-bar-fill"
                       data-slot="B"
-                      style={{ width: `${tbB ? Math.min(100, Math.max(0, tbB.resolved_pct)) : 0}%` }}
+                      style={{ width: `${tbB ? Math.min(100, Math.max(0, tbB.accuracy)) : 0}%` }}
                     />
                   </div>
-                  <span className="cap-bar-val mono" data-lead={Boolean(tbB && tbA && tbB.resolved_pct >= tbA.resolved_pct)}>
-                    {tbB ? `${tbB.resolved_pct.toFixed(1)}%` : "—"}
+                  <span className="cap-bar-val mono" data-lead={Boolean(tbB && tbA && tbB.accuracy >= tbA.accuracy)}>
+                    {tbB ? `${tbB.accuracy.toFixed(1)}%` : "—"}
                   </span>
                 </div>
               </div>

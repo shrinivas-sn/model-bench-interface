@@ -1,0 +1,10 @@
+{
+  "terminal-bench": {
+    "Anthropic|Fable 5.1": "anthropic/claude-fable-5.1",
+    "Anthropic|Fable 5": "anthropic/claude-fable-5",
+    "Anthropic|Opus 5": "anthropic/claude-opus-5",
+    "Anthropic|Opus 4.8": "anthropic/claude-opus-4.8",
+    "Anthropic|Sonnet 5": "anthropic/claude-sonnet-5"
+  },
+  "artificial-analysis": {}
+}
