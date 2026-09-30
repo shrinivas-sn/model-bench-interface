@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T16:16:16.981Z",
+  "generated_at": "2026-09-30T16:20:59.605Z",
   "sources": {
     "openrouter": {
       "outcome": "ok",
@@ -9,11 +9,11 @@
         "fetched": 464,
         "parsed": 464,
         "fresh": 0,
-        "changed": 464,
-        "unchanged": 0,
-        "written": 464
+        "changed": 0,
+        "unchanged": 464,
+        "written": 0
       },
-      "fetched_at": "2026-09-30T16:16:18.185Z"
+      "fetched_at": "2026-09-30T16:21:01.190Z"
     },
     "swe-bench-verified": {
       "outcome": "ok",
@@ -27,7 +27,7 @@
         "unchanged": 180,
         "written": 0
       },
-      "fetched_at": "2026-09-30T16:16:19.590Z"
+      "fetched_at": "2026-09-30T16:21:02.506Z"
     },
     "livebench-scores": {
       "outcome": "ok",
@@ -41,7 +41,7 @@
         "unchanged": 1518,
         "written": 0
       },
-      "fetched_at": "2026-09-30T16:16:20.687Z"
+      "fetched_at": "2026-09-30T16:21:03.256Z"
     },
     "livebench-cost": {
       "outcome": "ok",
@@ -55,7 +55,7 @@
         "unchanged": 66,
         "written": 0
       },
-      "fetched_at": "2026-09-30T16:16:21.115Z"
+      "fetched_at": "2026-09-30T16:21:03.657Z"
     },
     "terminal-bench": {
       "outcome": "ok",
@@ -64,12 +64,12 @@
       "stages": {
         "fetched": 27,
         "parsed": 27,
-        "fresh": 27,
+        "fresh": 0,
         "changed": 0,
-        "unchanged": 0,
-        "written": 27
+        "unchanged": 27,
+        "written": 0
       },
-      "fetched_at": "2026-09-30T16:16:21.816Z"
+      "fetched_at": "2026-09-30T16:21:04.514Z"
     }
   }
 }

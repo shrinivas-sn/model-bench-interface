@@ -22,6 +22,7 @@ import {
   assertTasksCategorised,
 } from "./livebench-scores.mjs";
 import { resolveSourceModel } from "./manual-aliases.mjs";
+import { splitEffort } from "../ingestion/sources/artificial-analysis.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const manualAliases = JSON.parse(
@@ -224,6 +225,60 @@ async function terminalBenchRows(aliasIndex) {
   return { rows, leaderboard_title: newestTitle, unmatched };
 }
 
+// ---------- Artificial Analysis ----------
+async function artificialAnalysisRows(aliasIndex) {
+  const p = storePath("artificial-analysis");
+  if (!existsSync(p)) {
+    return { rows: [], connected: false, fetched_at: null, unmatched: [] };
+  }
+  const recs = await readLatestRecords(p);
+  const rows = [];
+  const unmatched = [];
+  for (const rec of recs) {
+    const f = fieldsOf(rec);
+    const name = f.title || f.name || "";
+    const { base, effort } = splitEffort(name);
+    const creator = f.creator || null;
+    const hit = resolveSourceModel({
+      aliasIndex,
+      manual: manualAliases,
+      source: "artificial-analysis",
+      org: creator,
+      label: base,
+    });
+    if (!hit) {
+      unmatched.push(name);
+    }
+    rows.push({
+      aa_id: f.source_id || rec.source_id,
+      canonical_id: hit?.canonical ?? null,
+      alias_method: hit?.method ?? null,
+      name,
+      effort,
+      creator,
+      intelligence_index: f.intelligence_index != null ? Number(f.intelligence_index) : null,
+      coding_index: f.coding_index != null ? Number(f.coding_index) : null,
+      agentic_index: f.agentic_index != null ? Number(f.agentic_index) : null,
+      output_tps: f.output_tps != null ? Number(f.output_tps) : null,
+      ttft_s: f.ttft_s != null ? Number(f.ttft_s) : null,
+      release_date: f.release_date || null,
+    });
+  }
+
+  let fetched_at = null;
+  const freshnessPath = join(ROOT, "data", "freshness.json");
+  if (existsSync(freshnessPath)) {
+    try {
+      const fData = JSON.parse(readFileSync(freshnessPath, "utf8"));
+      fetched_at = fData?.sources?.["artificial-analysis"]?.fetched_at || null;
+    } catch {
+      // ignore read error
+    }
+  }
+
+  return { rows, connected: true, fetched_at, unmatched };
+}
+
 // ---------- Assemble ----------
 async function main() {
   const catalog = await buildCatalog();
@@ -234,6 +289,7 @@ async function main() {
   const lb = await livebenchModels(aliasIndex);
   const swe = await sweBenchRows(aliasIndex);
   const terminalBench = await terminalBenchRows(aliasIndex);
+  const aa = await artificialAnalysisRows(aliasIndex);
 
   // Join price from OpenRouter into matched models (single price source);
   // fallback to LiveBench's own cost CSV for unmatched models.
@@ -283,12 +339,17 @@ async function main() {
       terminal_bench: terminalBench.rows.length
         ? { title: terminalBench.leaderboard_title, url: "https://www.tbench.ai/" }
         : null,
-      artificial_analysis: { connected: false, url: "https://artificialanalysis.ai/" },
+      artificial_analysis: {
+        connected: aa.connected,
+        url: "https://artificialanalysis.ai/",
+        ...(aa.fetched_at ? { fetched_at: aa.fetched_at } : {}),
+      },
     },
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
     swe_bench: swe.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
     terminal_bench: terminalBench.rows,
+    artificial_analysis: aa.rows,
     data_quality: {
       counts: {
         catalog_models: catalog.size,
@@ -298,11 +359,18 @@ async function main() {
         swe_bench_matched: matchedSwe,
         terminal_bench_runs: terminalBench.rows.length,
         terminal_bench_matched: matchedTb,
+        ...(aa.connected
+          ? {
+              artificial_analysis_models: aa.rows.length,
+              artificial_analysis_matched: aa.rows.filter((r) => r.canonical_id).length,
+            }
+          : {}),
       },
       unmatched: {
         livebench: lb.unmatched,
         swe_bench_model_display: swe.missingModelDisplay,
         terminal_bench: terminalBench.unmatched,
+        ...(aa.connected ? { artificial_analysis: aa.unmatched } : {}),
       },
     },
   };

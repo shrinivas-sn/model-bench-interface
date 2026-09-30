@@ -17,6 +17,7 @@ const ADAPTERS = [
   "livebench-scores.adapter.json",
   "livebench-cost.adapter.json",
   "terminal-bench.adapter.json",
+  "artificial-analysis.adapter.json",
 ];
 
 let failed = 0;

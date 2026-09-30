@@ -71,6 +71,21 @@ export type TerminalBenchRun = {
   leaderboard_title: string;
 };
 
+export type ArtificialAnalysisModel = {
+  aa_id: string;
+  canonical_id: string | null;
+  alias_method: string | null;
+  name: string;
+  effort: string | null;
+  creator: string | null;
+  intelligence_index: number | null;
+  coding_index: number | null;
+  agentic_index: number | null;
+  output_tps: number | null;
+  ttft_s: number | null;
+  release_date: string | null;
+};
+
 export type ScoresData = {
   generated_at: string;
   release: string;
@@ -85,6 +100,7 @@ export type ScoresData = {
   livebench: LivebenchModel[];
   swe_bench: SweRow[];
   terminal_bench: TerminalBenchRun[];
+  artificial_analysis: ArtificialAnalysisModel[];
   data_quality: {
     counts: {
       catalog_models: number;
@@ -94,11 +110,14 @@ export type ScoresData = {
       swe_bench_matched: number;
       terminal_bench_runs: number;
       terminal_bench_matched: number;
+      artificial_analysis_models?: number;
+      artificial_analysis_matched?: number;
     };
     unmatched: {
       livebench: string[];
       swe_bench_model_display: string[];
       terminal_bench: string[];
+      artificial_analysis?: string[];
     };
   };
 };

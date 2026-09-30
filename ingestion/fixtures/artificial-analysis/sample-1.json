@@ -1,0 +1,17 @@
+[
+  {
+    "source_id": "36f73aaf-d38a-4b56-a2b3-d04d17186910",
+    "page_url": "https://artificialanalysis.ai/",
+    "name": "gpt-oss-20B (high)",
+    "slug": "gpt-oss-20b",
+    "creator": "OpenAI",
+    "release_date": "2025-08-05",
+    "intelligence_index": 24.5,
+    "coding_index": 18.5,
+    "agentic_index": 27.6,
+    "price_in": 0.06,
+    "price_out": 0.2,
+    "output_tps": 296.47,
+    "ttft_s": 0.65
+  }
+]

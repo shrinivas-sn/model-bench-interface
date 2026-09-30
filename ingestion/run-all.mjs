@@ -16,9 +16,11 @@ import { makeFetchImpl as openrouterFetch } from "./sources/openrouter.mjs";
 import { makeFetchImpl as sweBenchFetch } from "./sources/swe-bench.mjs";
 import { makeScoresFetchImpl, makeCostFetchImpl } from "./sources/livebench.mjs";
 import { makeFetchImpl as terminalBenchFetch } from "./sources/terminal-bench.mjs";
+import { makeFetchImpl as aaFetch, KEY_ENV } from "./sources/artificial-analysis.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+const aaKey = process.env[KEY_ENV];
 const JOBS = [
   { name: "openrouter", adapterFile: "openrouter.adapter.json", fetchImpl: openrouterFetch() },
   { name: "swe-bench-verified", adapterFile: "swe-bench-verified.adapter.json", fetchImpl: sweBenchFetch() },
@@ -26,6 +28,16 @@ const JOBS = [
   { name: "livebench-cost", adapterFile: "livebench-cost.adapter.json", fetchImpl: makeCostFetchImpl() },
   { name: "terminal-bench", adapterFile: "terminal-bench.adapter.json", fetchImpl: terminalBenchFetch() },
 ];
+
+if (aaKey) {
+  JOBS.push({
+    name: "artificial-analysis",
+    adapterFile: "artificial-analysis.adapter.json",
+    fetchImpl: aaFetch(aaKey),
+  });
+} else {
+  console.log(`SKIP artificial-analysis: ${KEY_ENV} not set`);
+}
 
 const freshness = { generated_at: new Date().toISOString(), sources: {} };
 const failures = [];

@@ -32,6 +32,8 @@ jobs:
         run: npm run verify:fixtures
 
       - name: Ingest all sources
+        env:
+          ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
         run: npm run ingest
 
       - name: Rebuild app data
