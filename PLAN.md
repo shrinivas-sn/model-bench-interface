@@ -593,3 +593,8 @@ the last entry and knows exactly where to start.)*
   - Task 3.1: `lib/compare.mjs` (`runsForVariant`, `scoreDelta`) and tests in `normalization/test/compare.test.mjs`.
   - Task 3.2: Rebuilt `components/HeadToHead.tsx` and `components/BenchBlock.tsx` on published numbers only; deleted `cost.mjs`, `benchmarks.mjs`, `CostEstimator.tsx`, `RadarChart.tsx` and their tests.
   - Task 3.3: Updated `defaultPair` in `lib/picker.mjs` to lead with `claude-fable-5-1-max-effort` vs `gpt-6-astra-max`; added unit test in `picker-stages.test.mjs`; 91 unit tests passing.
+- **30/09/2026 — Phase 4 completed.**
+  - Task 4.1: Retired SWE-bench Verified (official board stale since 26/02/2026); deleted SWE-bench routes, components, adapter, fixtures, and store; updated ingestion, data models, Nav, StatusStrip, Quality page.
+  - Task 4.2: Plain copy across all page headers, layout metadata, and `README.md`; verified 0 marketing / slop phrases.
+  - Task 4.3: Slop registry Tier A/B scan; removed dead CSS classes; added `:focus-visible` to interactive links; clean static build.
+  - Task 4.4: Recorded durable decisions in `DOCS/CONTEXT/DECISIONS.md`.
