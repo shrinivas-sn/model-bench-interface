@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-09-30T16:21:16.027Z",
-  "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
+  "generated_at": "2026-09-30T16:23:09.458Z",
+  "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
     "openai": "OpenAI",

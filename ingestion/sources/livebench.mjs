@@ -17,8 +17,17 @@
 import { parseCsv } from "./csv.mjs";
 
 export const RELEASE = "2026-06-25";
-export const SCORES_URL = `https://livebench.ai/table_${RELEASE.replaceAll("-", "_")}.csv`;
-export const COST_URL = `https://livebench.ai/cost_${RELEASE.replaceAll("-", "_")}.csv`;
+
+export function scoresUrl(release) {
+  return `https://livebench.ai/table_${release.replaceAll("-", "_")}.csv`;
+}
+
+export function costUrl(release) {
+  return `https://livebench.ai/cost_${release.replaceAll("-", "_")}.csv`;
+}
+
+export const SCORES_URL = scoresUrl(RELEASE);
+export const COST_URL = costUrl(RELEASE);
 
 const num = (v) => {
   if (v === "" || v == null) return null;
@@ -26,7 +35,7 @@ const num = (v) => {
   return Number.isFinite(n) ? n : null;
 };
 
-export function makeScoresFetchImpl() {
+export function makeScoresFetchImpl(release = RELEASE) {
   return async (url, opts = {}) => {
     const res = await fetch(url, { ...opts, headers: { "User-Agent": "model-bench-ingest" } });
     if (!res.ok) return res;
@@ -41,11 +50,11 @@ export function makeScoresFetchImpl() {
         if (score == null) continue;
         items.push({
           source_id: `${model}::${task}`,
-          record_url: `https://livebench.ai/#${RELEASE}`,
+          record_url: `https://livebench.ai/#${release}`,
           model,
           task,
           score,
-          release: RELEASE,
+          release,
         });
       }
     }
@@ -56,7 +65,7 @@ export function makeScoresFetchImpl() {
   };
 }
 
-export function makeCostFetchImpl() {
+export function makeCostFetchImpl(release = RELEASE) {
   return async (url, opts = {}) => {
     const res = await fetch(url, { ...opts, headers: { "User-Agent": "model-bench-ingest" } });
     if (!res.ok) return res;
@@ -67,14 +76,14 @@ export function makeCostFetchImpl() {
       if (!model) continue;
       items.push({
         source_id: model,
-        record_url: `https://livebench.ai/#cost-${RELEASE}`,
+        record_url: `https://livebench.ai/#cost-${release}`,
         model,
         input_price_per_million: num(row.input_price_per_million),
         output_price_per_million: num(row.output_price_per_million),
         cost_per_question: num(row.cost_per_question),
         avg_input_tokens: num(row.avg_input_tokens),
         avg_output_tokens: num(row.avg_output_tokens),
-        release: RELEASE,
+        release,
       });
     }
     return new Response(JSON.stringify(items), {
@@ -84,8 +93,47 @@ export function makeCostFetchImpl() {
   };
 }
 
+export async function discoverLatestRelease(fetchImpl = fetch) {
+  try {
+    const homeRes = await fetchImpl("https://livebench.ai/", {
+      headers: { "User-Agent": "model-bench-ingest" },
+    });
+    if (!homeRes.ok) return null;
+    const html = await homeRes.text();
+    const match = html.match(/\/static\/js\/main\.[a-zA-Z0-9._-]+\.js/);
+    if (!match) return null;
+    const jsUrl = new URL(match[0], "https://livebench.ai/").href;
+    const jsRes = await fetchImpl(jsUrl, {
+      headers: { "User-Agent": "model-bench-ingest" },
+    });
+    if (!jsRes.ok) return null;
+    const jsText = await jsRes.text();
+    const dateMatches = jsText.match(/20\d\d[-_]\d\d[-_]\d\d/g) || [];
+    const dates = Array.from(new Set(dateMatches.map((d) => d.replaceAll("_", "-"))));
+    dates.sort((a, b) => b.localeCompare(a));
+    for (const d of dates.slice(0, 10)) {
+      try {
+        const tableRes = await fetchImpl(scoresUrl(d), {
+          headers: { "User-Agent": "model-bench-ingest" },
+        });
+        if (tableRes.ok) {
+          const body = await tableRes.text();
+          if (body.startsWith("model")) {
+            return d;
+          }
+        }
+      } catch {
+        // continue trying
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 /** Transforms used for fixture capture from the downloaded CSV text. */
-export function transformScoresCsv(text) {
+export function transformScoresCsv(text, release = RELEASE) {
   return parseCsv(text).flatMap((row) => {
     const model = String(row.model || "").trim();
     if (!model) return [];
@@ -93,30 +141,30 @@ export function transformScoresCsv(text) {
       .filter(([task, raw]) => task !== "model" && num(raw) != null)
       .map(([task, raw]) => ({
         source_id: `${model}::${task}`,
-        record_url: `https://livebench.ai/#${RELEASE}`,
+        record_url: `https://livebench.ai/#${release}`,
         model,
         task,
         score: num(raw),
-        release: RELEASE,
+        release,
       }));
   });
 }
 
-export function transformCostCsv(text) {
+export function transformCostCsv(text, release = RELEASE) {
   return parseCsv(text)
     .map((row) => {
       const model = String(row.model || "").trim();
       if (!model) return null;
       return {
         source_id: model,
-        record_url: `https://livebench.ai/#cost-${RELEASE}`,
+        record_url: `https://livebench.ai/#cost-${release}`,
         model,
         input_price_per_million: num(row.input_price_per_million),
         output_price_per_million: num(row.output_price_per_million),
         cost_per_question: num(row.cost_per_question),
         avg_input_tokens: num(row.avg_input_tokens),
         avg_output_tokens: num(row.avg_output_tokens),
-        release: RELEASE,
+        release,
       };
     })
     .filter(Boolean);

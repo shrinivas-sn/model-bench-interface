@@ -69,12 +69,20 @@ async function buildCatalog() {
 
 // ---------- LiveBench: scores + cost ----------
 async function livebenchModels(aliasIndex) {
-  const recs = existsSync(storePath("livebench-scores"))
+  const allScoreRecs = existsSync(storePath("livebench-scores"))
     ? await readLatestRecords(storePath("livebench-scores"))
     : [];
-  const costRecs = existsSync(storePath("livebench-cost"))
+  const allCostRecs = existsSync(storePath("livebench-cost"))
     ? await readLatestRecords(storePath("livebench-cost"))
     : [];
+
+  const releases = Array.from(
+    new Set(allScoreRecs.map((r) => fieldsOf(r).release).filter(Boolean))
+  ).sort((a, b) => b.localeCompare(a));
+  const latestRelease = releases[0] || "2026-06-25";
+
+  const recs = allScoreRecs.filter((r) => (fieldsOf(r).release || "2026-06-25") === latestRelease);
+  const costRecs = allCostRecs.filter((r) => (fieldsOf(r).release || "2026-06-25") === latestRelease);
 
   const costByModel = new Map();
   for (const rec of costRecs) {
@@ -140,7 +148,7 @@ async function livebenchModels(aliasIndex) {
       cost: costByModel.get(benchModel) || null,
     });
   }
-  return { models, unmatched };
+  return { models, unmatched, release: latestRelease };
 }
 
 // ---------- SWE-bench Verified ----------
@@ -329,13 +337,22 @@ async function main() {
   const vendor_display = Object.fromEntries(VENDORS.map((v) => [v.id, v.display]));
   vendor_display.other = "Other";
 
+  const lbRelease = lb.release;
+  const terminalBenchTitle = terminalBench.rows.length
+    ? terminalBench.leaderboard_title
+    : null;
+  let releaseText = `LiveBench ${lbRelease} + ${terminalBenchTitle ?? "Terminal-Bench not available"} + OpenRouter prices`;
+  if (aa.connected) {
+    releaseText += " + Artificial Analysis";
+  }
+
   const data = {
     generated_at: new Date().toISOString(),
-    release: "livebench-2026-06-25 + swe-bench-verified + openrouter",
+    release: releaseText,
     vendor_display,
     capabilities: [...new Set(Object.keys(LIVEBENCH_CATEGORIES).map(capabilityForLivebenchCategory))],
     sources: {
-      livebench: { release: "2026-06-25", url: "https://livebench.ai/" },
+      livebench: { release: lbRelease, url: "https://livebench.ai/" },
       terminal_bench: terminalBench.rows.length
         ? { title: terminalBench.leaderboard_title, url: "https://www.tbench.ai/" }
         : null,
