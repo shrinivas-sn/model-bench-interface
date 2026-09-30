@@ -9,12 +9,7 @@ export default function MatrixPage() {
       <header className="page-head">
         <h1 className="page-title">All models</h1>
         <p className="page-sub">
-          Every LiveBench row with its capability means, the OpenRouter id it matched to, input
-          price per million tokens and context window.
-        </p>
-        <p className="page-purpose">
-          Answers: where does a given model actually sit across the whole field, and which
-          benchmark names could not be matched to the catalog?
+          Every model LiveBench has tested in its latest release. Sort by LiveBench overall or by price.
         </p>
       </header>
       <ModelMatrix models={data.livebench} capabilities={data.capabilities} />

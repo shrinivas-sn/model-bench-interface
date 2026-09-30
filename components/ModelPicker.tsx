@@ -216,7 +216,7 @@ export function ModelPicker({
           {family.overall_score != null && (
             <div
               className="picker-score-bar-wrap"
-              title={`Mean across LiveBench capability axes: ${family.overall_score}`}
+              title={`LiveBench overall: ${family.overall_score}`}
             >
               <div className="picker-score-bar-track">
                 <div

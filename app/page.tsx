@@ -7,14 +7,10 @@ export default function Page() {
   return (
     <>
       <header className="page-head">
-        <h1 className="page-title">Head-to-head compare</h1>
+        <h1 className="page-title">Compare two models</h1>
         <p className="page-sub">
-          Model A against model B on LiveBench capability axes, SWE-bench Verified best runs and
-          OpenRouter pricing. Pick a company, then a model, then its reasoning effort.
-        </p>
-        <p className="page-purpose">
-          Answers one question: given these two models, which is stronger on the capabilities you
-          care about, and what does that cost per million tokens?
+          Every score comes from the leaderboard that publishes it, with a link and a date. If a
+          leaderboard hasn't tested a model, the page says so. Nothing is estimated.
         </p>
       </header>
       <Suspense fallback={<div className="card dim">Loading comparison…</div>}>

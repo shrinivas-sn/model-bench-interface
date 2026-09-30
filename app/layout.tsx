@@ -10,7 +10,7 @@ const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono" });
 export const metadata: Metadata = {
   title: "Model Bench — choose the right model for the work",
   description:
-    "Interactive playground comparing Claude, GPT, Gemini and other frontier models across LiveBench, SWE-bench Verified and OpenRouter pricing. Ingested fresh via adapter-ingestion.",
+    "Compare AI models side by side on LiveBench, Terminal-Bench and Artificial Analysis — published scores only, with sources.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -30,7 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <main className="site-main">{children}</main>
           <footer className="site-footer">
             <small>
-              OpenRouter catalog · LiveBench 2026-06-25 · SWE-bench Verified — ingested with{" "}
+              OpenRouter catalog · LiveBench · Terminal-Bench · Artificial Analysis — ingested with{" "}
               <code>@shrinivas-sn/adapter-ingestion</code>
             </small>
             <small className="dim">
