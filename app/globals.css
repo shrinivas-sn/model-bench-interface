@@ -209,6 +209,11 @@ body {
   color: var(--accent-hover);
 }
 
+.data-strip a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
 .site-footer {
   border-top: 1px solid var(--border);
   padding: 20px 24px;
@@ -960,6 +965,11 @@ tbody tr:hover td {
 
 .bench-source:hover {
   color: var(--accent-hover);
+}
+
+.bench-source:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
 }
 
 .bench-runs-grid {
