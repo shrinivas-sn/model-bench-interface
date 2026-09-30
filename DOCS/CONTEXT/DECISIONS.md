@@ -95,3 +95,7 @@ Append durable decisions; do not rewrite history.
   in GitHub Actions daily cron (or local script), writing to `data/scores.json` and `data/freshness.json`.
   The frontend is completely static, with zero server runtime or database, achieving fastest load
   times and zero-cost hosting on Cloudflare Workers Static Assets.
+
+- **30/09/2026 — Published numbers only.** No estimated, scaled or derived scores. Effort levels shown only when the benchmark tested them. Supersedes the 28/09 effort-scaling and workload estimator.
+- **30/09/2026 — Sources: LiveBench (newest release), Terminal-Bench official board (tbench.ai), Artificial Analysis official API, OpenRouter for prices.** SWE-bench Verified retired: official board last updated 26/02/2026. BenchLM and OpenRouter-relayed benchmark numbers dropped: second-hand.
+- **30/09/2026 — Name matching:** reviewed table normalization/manual-aliases.json; entries only after checking both names are the same model and version.
