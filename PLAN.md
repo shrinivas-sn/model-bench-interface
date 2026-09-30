@@ -580,3 +580,7 @@ status file and in the session's final message.)*
 *(Append only. Newest at the bottom. Never rewrite an entry — if it turned out wrong,
 add a new one saying so. This log is what makes resuming cheap: a cold session reads
 the last entry and knows exactly where to start.)*
+
+- **30/09/2026 — Phase 1 completed.**
+  - Task 1.1: `supportedEffortsFrom` exported and used; OpenRouter relayed `benchmarks` dropped; `external_benchmarks` removed; 77 tests passing.
+  - Task 1.2: `livebench-scores.mjs` implemented; `categoryAverages`, `overallScore`, `round2`, `assertTasksCategorised` tested and integrated into `build-data.mjs`, `lib/picker.mjs`, `ModelMatrix.tsx`; 83 tests passing; `npx tsc --noEmit` clean.
