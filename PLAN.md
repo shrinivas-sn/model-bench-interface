@@ -589,3 +589,7 @@ the last entry and knows exactly where to start.)*
   - Task 2.2: `manual-aliases.json` & `manual-aliases.mjs` implemented; `store/terminal-bench-2.jsonl` removed; `TerminalBenchRun` type added in `lib/data.ts`; `build-data.mjs` maps official runs.
   - Task 2.3: `artificial-analysis.mjs` (official key-gated API source), adapter, sample fixture, tests in `artificial-analysis.test.mjs`; ingest workflow updated; `lib/data.ts` and `build-data.mjs` updated.
   - Task 2.4: `discoverLatestRelease` and URL builders in `livebench.mjs`; tests in `livebench-release.test.mjs`; `run-all.mjs` and `build-data.mjs` discover and filter to latest release; 98 unit tests passing; all fixtures pass.
+- **30/09/2026 — Phase 3 completed.**
+  - Task 3.1: `lib/compare.mjs` (`runsForVariant`, `scoreDelta`) and tests in `normalization/test/compare.test.mjs`.
+  - Task 3.2: Rebuilt `components/HeadToHead.tsx` and `components/BenchBlock.tsx` on published numbers only; deleted `cost.mjs`, `benchmarks.mjs`, `CostEstimator.tsx`, `RadarChart.tsx` and their tests.
+  - Task 3.3: Updated `defaultPair` in `lib/picker.mjs` to lead with `claude-fable-5-1-max-effort` vs `gpt-6-astra-max`; added unit test in `picker-stages.test.mjs`; 91 unit tests passing.
