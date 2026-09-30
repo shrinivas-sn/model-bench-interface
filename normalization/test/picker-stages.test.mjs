@@ -274,6 +274,17 @@ test("defaultPair falls back to two distinct models with no recents at all", () 
   assert.ok(a.length > 0 && b.length > 0);
 });
 
+test("defaultPair prefers claude-fable-5-1-max-effort and gpt-6-astra-max when present", () => {
+  const modelsWithNewDefaults = [
+    ...MODELS,
+    mk("claude-fable-5-1-max-effort", { vendor: "anthropic", family: "claude-fable-5.1", effort: "max" }),
+    mk("gpt-6-astra-max", { vendor: "openai", family: "gpt-6-astra", effort: "max" }),
+  ];
+  const [a, b] = defaultPair(modelsWithNewDefaults, []);
+  assert.equal(a, "claude-fable-5-1-max-effort");
+  assert.equal(b, "gpt-6-astra-max");
+});
+
 test("defaultPair copes with a single-model dataset without looping", () => {
   const only = [mk("solo/model", { vendor: "other", family: "solo" })];
   const [a, b] = defaultPair(only, []);
