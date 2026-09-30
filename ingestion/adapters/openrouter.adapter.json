@@ -21,8 +21,7 @@
     "prompt_price": { "path": "pricing.prompt", "normalize": "number" },
     "completion_price": { "path": "pricing.completion", "normalize": "number" },
     "supported_parameters": { "path": "supported_parameters" },
-    "reasoning": { "path": "reasoning" },
-    "benchmarks": { "path": "benchmarks" }
+    "reasoning": { "path": "reasoning" }
   },
   "required": ["title"],
   "canary": {

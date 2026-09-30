@@ -67,3 +67,21 @@ export function stripEffort(name) {
   return key;
 }
 
+/**
+ * Return supported reasoning effort levels only when the provider publishes them.
+ * No fallbacks or assumed levels.
+ *
+ * @param {object} [fields]
+ * @returns {string[] | null}
+ */
+export function supportedEffortsFrom(fields) {
+  if (
+    fields &&
+    Array.isArray(fields.reasoning?.supported_efforts) &&
+    fields.reasoning.supported_efforts.length > 0
+  ) {
+    return fields.reasoning.supported_efforts;
+  }
+  return null;
+}
+

@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { EFFORT_LEVELS, parseEffort, stripEffort } from "../effort.mjs";
+import { EFFORT_LEVELS, parseEffort, stripEffort, supportedEffortsFrom } from "../effort.mjs";
 
 test("EFFORT_LEVELS exports levels in display order (strongest first)", () => {
   assert.deepEqual(EFFORT_LEVELS, ["max", "xhigh", "high", "medium", "low"]);
@@ -107,5 +107,17 @@ test("stripEffort removes explicit effort suffixes", () => {
   assert.equal(stripEffort("model-medium"), "model");
   assert.equal(stripEffort("model-low"), "model");
   assert.equal(stripEffort(""), "");
+});
+
+test("supportedEffortsFrom returns array only when reasoning.supported_efforts is non-empty", () => {
+  assert.deepEqual(
+    supportedEffortsFrom({ reasoning: { supported_efforts: ["high", "low"] } }),
+    ["high", "low"]
+  );
+  assert.equal(
+    supportedEffortsFrom({ supported_parameters: ["reasoning_effort"] }),
+    null
+  );
+  assert.equal(supportedEffortsFrom({}), null);
 });
 

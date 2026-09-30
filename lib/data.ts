@@ -8,7 +8,6 @@ export type CatalogModel = {
   output_per_million: number | null;
   supported_efforts?: string[] | null;
   default_effort?: string | null;
-  benchmarks?: Record<string, any> | null;
 };
 
 export type LivebenchModel = {
@@ -21,7 +20,6 @@ export type LivebenchModel = {
   effort: "max" | "xhigh" | "high" | "medium" | "low" | null;
   supported_efforts?: string[] | null;
   default_effort?: string | null;
-  external_benchmarks?: Record<string, any> | null;
   thinking: boolean;
   tasks: Record<string, number>;
   categories: Record<string, number>;

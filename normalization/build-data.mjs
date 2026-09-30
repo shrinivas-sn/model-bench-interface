@@ -14,7 +14,7 @@ import { fileURLToPath } from "node:url";
 import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
 import { buildAliasIndex, resolveAlias, vendorFor, VENDORS } from "./registry.mjs";
 import { LIVEBENCH_CATEGORIES, capabilityForLivebenchCategory } from "./categories.mjs";
-import { parseEffort, stripEffort } from "./effort.mjs";
+import { parseEffort, stripEffort, supportedEffortsFrom } from "./effort.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -41,12 +41,7 @@ async function buildCatalog() {
     // so every price in `scores.json` shares one unit (see the pricing join below).
     const perMillion = (v) =>
       v == null || v < 0 ? null : Number((v * 1e6).toFixed(4));
-    const supported_efforts =
-      Array.isArray(f.reasoning?.supported_efforts) && f.reasoning.supported_efforts.length > 0
-        ? f.reasoning.supported_efforts
-        : Array.isArray(f.supported_parameters) && f.supported_parameters.includes("reasoning_effort")
-        ? ["max", "high", "medium", "low"]
-        : null;
+    const supported_efforts = supportedEffortsFrom(f);
     models.set(id, {
       id,
       title: f.title || id,
@@ -56,7 +51,6 @@ async function buildCatalog() {
       output_per_million: perMillion(f.completion_price),
       supported_efforts,
       default_effort: f.reasoning?.default_effort ?? null,
-      benchmarks: f.benchmarks || null,
     });
   }
   return models;
@@ -238,11 +232,8 @@ async function main() {
     } else {
       m.pricing = null;
     }
-    m.supported_efforts = c?.supported_efforts || (m.effort ? [m.effort] : null);
-    m.default_effort = c?.default_effort || m.effort || null;
-    if (c?.benchmarks) {
-      m.external_benchmarks = c.benchmarks;
-    }
+    m.supported_efforts = c?.supported_efforts ?? null;
+    m.default_effort = c?.default_effort ?? null;
   }
 
   const matchedSwe = swe.rows.filter((r) => r.canonical_id).length;
