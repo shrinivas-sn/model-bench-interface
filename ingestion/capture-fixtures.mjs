@@ -8,7 +8,6 @@ import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ADAPTER_URL, transformEnvelope } from "./sources/openrouter.mjs";
-import { ADAPTER_URL as SWE_URL, transformLeaderboards } from "./sources/swe-bench.mjs";
 import { SCORES_URL, COST_URL, transformScoresCsv, transformCostCsv } from "./sources/livebench.mjs";
 import {
   ADAPTER_URL as TBENCH_URL,
@@ -22,7 +21,6 @@ const H = { "User-Agent": "model-bench-ingest" };
 
 const LIMITS = {
   openrouter: 6,
-  "swe-bench-verified": 4,
   "livebench-scores": 60,
   "livebench-cost": 6,
   "terminal-bench": 6,
@@ -43,14 +41,6 @@ const jobs = [
       const res = await fetch(ADAPTER_URL, { headers: H });
       if (!res.ok) throw new Error(`openrouter ${res.status}`);
       return transformEnvelope(await res.json()).slice(0, LIMITS.openrouter);
-    },
-  },
-  {
-    name: "swe-bench-verified",
-    run: async () => {
-      const res = await fetch(SWE_URL, { headers: H });
-      if (!res.ok) throw new Error(`swe-bench ${res.status}`);
-      return transformLeaderboards(await res.json()).slice(0, LIMITS["swe-bench-verified"]);
     },
   },
   {

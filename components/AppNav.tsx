@@ -13,19 +13,13 @@ const TABS = [
     href: "/",
     label: "Compare",
     hint: "two models, side by side",
-    title: "Pick two models and compare capability, price and SWE-bench results",
+    title: "Pick two models and compare capability, price and benchmark results",
   },
   {
     href: "/matrix",
     label: "All models",
     hint: "every score in one table",
     title: "LiveBench capability scores for every model, sortable as one table",
-  },
-  {
-    href: "/swe-bench",
-    label: "Agent runs",
-    hint: "SWE-bench Verified",
-    title: "Which agent + model systems actually resolve real GitHub issues",
   },
   {
     href: "/quality",

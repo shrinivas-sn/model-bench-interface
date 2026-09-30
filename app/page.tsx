@@ -20,7 +20,6 @@ export default function Page() {
       <Suspense fallback={<div className="card dim">Loading comparison…</div>}>
         <HeadToHead
           livebench={data.livebench}
-          swe={data.swe_bench}
           capabilities={data.capabilities}
           terminalBench={data.terminal_bench ?? []}
           artificialAnalysis={data.artificial_analysis ?? []}

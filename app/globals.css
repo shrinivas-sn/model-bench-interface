@@ -1268,29 +1268,6 @@ tbody tr:hover td {
   gap: 6px;
 }
 
-.swe-system {
-  max-width: 320px;
-}
-
-.swe-score {
-  font-weight: 600;
-}
-
-.swe-link {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  padding: 0 4px;
-  color: var(--text-main);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  font-size: 12.5px;
-}
-
-.swe-link:hover {
-  color: var(--accent-hover);
-}
-
 /* ---------- motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {

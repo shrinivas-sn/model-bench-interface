@@ -3,10 +3,11 @@ import { summarizeFreshness, summarizeRelease } from "@/lib/status.mjs";
 import { RelativeTime } from "@/components/RelativeTime";
 
 const SOURCE_LABELS: Record<string, string> = {
-  openrouter: "OpenRouter catalog",
-  "swe-bench-verified": "SWE-bench Verified leaderboard",
+  openrouter: "OpenRouter catalog (prices)",
   "livebench-scores": "LiveBench scores",
   "livebench-cost": "LiveBench cost",
+  "terminal-bench": "Terminal-Bench leaderboard",
+  "artificial-analysis": "Artificial Analysis API",
 };
 
 function fmtAbsolute(iso: string) {
@@ -21,26 +22,28 @@ export default function QualityPage() {
   const summary = summarizeFreshness(fresh?.sources ?? {});
 
   const methodCounts = new Map<string, number>();
-  for (const m of [...data.livebench, ...data.swe_bench]) {
+  for (const m of [
+    ...data.livebench,
+    ...data.terminal_bench,
+    ...data.artificial_analysis,
+  ]) {
     const key = m.canonical_id ? (m.alias_method ?? "exact") : "unmatched";
     methodCounts.set(key, (methodCounts.get(key) ?? 0) + 1);
   }
   const methods = [...methodCounts.entries()].sort((a, b) => b[1] - a[1]);
 
-  const unmatchedSwe = q.counts.swe_bench_systems - q.counts.swe_bench_matched;
   const unmatchedLb = q.counts.livebench_models - q.counts.livebench_matched;
+  const unmatchedTb = q.counts.terminal_bench_runs - q.counts.terminal_bench_matched;
+  const unmatchedAa =
+    (q.counts.artificial_analysis_models ?? 0) - (q.counts.artificial_analysis_matched ?? 0);
 
   return (
     <>
       <header className="page-head">
         <h1 className="page-title">Data health</h1>
         <p className="page-sub">
-          A comparison is only as good as its freshness and its name matching. Both are shown here
-          without rounding up.
-        </p>
-        <p className="page-purpose">
-          Answers: is this data current, and how many benchmark names did the matcher have to
-          admit it could not place?
+          Which sources were fetched, when, and which model names could not be matched. Unmatched
+          names are listed, never guessed.
         </p>
       </header>
 
@@ -131,8 +134,8 @@ export default function QualityPage() {
             ))}
           </div>
           <small className="dim" style={{ display: "block", marginTop: 10, lineHeight: 1.6 }}>
-            exact = full-name match · suffix/date-stripped = matched after removing reasoning-effort
-            tags or run dates · unmatched = never guessed.
+            exact = full-name match · manual = reviewed alias table · suffix/date-stripped = matched
+            after removing reasoning-effort tags or run dates · unmatched = never guessed.
           </small>
         </div>
       </div>
@@ -152,12 +155,21 @@ export default function QualityPage() {
             </span>
           </p>
           <p className="kv-row">
-            <span>SWE-bench systems matched</span>
+            <span>Terminal-Bench runs matched</span>
             <span className="mono">
-              {q.counts.swe_bench_matched} / {q.counts.swe_bench_systems}
-              {unmatchedSwe > 0 && <span className="dim"> ({unmatchedSwe} unmatched)</span>}
+              {q.counts.terminal_bench_matched} / {q.counts.terminal_bench_runs}
+              {unmatchedTb > 0 && <span className="dim"> ({unmatchedTb} unmatched)</span>}
             </span>
           </p>
+          {data.sources.artificial_analysis?.connected && q.counts.artificial_analysis_models ? (
+            <p className="kv-row">
+              <span>Artificial Analysis models matched</span>
+              <span className="mono">
+                {q.counts.artificial_analysis_matched} / {q.counts.artificial_analysis_models}
+                {unmatchedAa > 0 && <span className="dim"> ({unmatchedAa} unmatched)</span>}
+              </span>
+            </p>
+          ) : null}
         </div>
         <small className="dim" style={{ display: "block", marginTop: 12, lineHeight: 1.6 }}>
           Unmatched rows still appear everywhere in the app, labelled <em>unmatched</em> — they are
@@ -187,6 +199,56 @@ export default function QualityPage() {
           <p className="dim">Every benchmark name matched to the catalog.</p>
         )}
       </div>
+
+      <div className="card" style={{ marginTop: 16 }}>
+        <h2 className="card-title">
+          Unmatched Terminal-Bench names ({q.unmatched.terminal_bench.length})
+        </h2>
+        {q.unmatched.terminal_bench.length ? (
+          <>
+            <div className="tag-list">
+              {q.unmatched.terminal_bench.map((n) => (
+                <span key={n} className="badge badge-stale mono">
+                  {n}
+                </span>
+              ))}
+            </div>
+            <small className="dim" style={{ display: "block", marginTop: 12, lineHeight: 1.6 }}>
+              To fix: add these to the manual alias table in{" "}
+              <code>normalization/manual-aliases.json</code>, then re-run{" "}
+              <code>npm run build:data</code>.
+            </small>
+          </>
+        ) : (
+          <p className="dim">Every Terminal-Bench name matched to the catalog.</p>
+        )}
+      </div>
+
+      {data.sources.artificial_analysis?.connected && q.unmatched.artificial_analysis ? (
+        <div className="card" style={{ marginTop: 16 }}>
+          <h2 className="card-title">
+            Unmatched Artificial Analysis names ({q.unmatched.artificial_analysis.length})
+          </h2>
+          {q.unmatched.artificial_analysis.length ? (
+            <>
+              <div className="tag-list">
+                {q.unmatched.artificial_analysis.map((n) => (
+                  <span key={n} className="badge badge-stale mono">
+                    {n}
+                  </span>
+                ))}
+              </div>
+              <small className="dim" style={{ display: "block", marginTop: 12, lineHeight: 1.6 }}>
+                To fix: add these to the manual alias table in{" "}
+                <code>normalization/manual-aliases.json</code>, then re-run{" "}
+                <code>npm run build:data</code>.
+              </small>
+            </>
+          ) : (
+            <p className="dim">Every Artificial Analysis name matched to the catalog.</p>
+          )}
+        </div>
+      ) : null}
     </>
   );
 }

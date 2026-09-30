@@ -151,40 +151,6 @@ async function livebenchModels(aliasIndex) {
   return { models, unmatched, release: latestRelease };
 }
 
-// ---------- SWE-bench Verified ----------
-async function sweBenchRows(aliasIndex) {
-  const recs = existsSync(storePath("swe-bench-verified"))
-    ? await readLatestRecords(storePath("swe-bench-verified"))
-    : [];
-  const rows = [];
-  const missingModelDisplay = [];
-  for (const rec of recs) {
-    const f = fieldsOf(rec);
-    const systemName = f.title || f.source_id;
-    const sourceName = [f.model_org, f.model_display].filter(Boolean).join(" ");
-    const hit = sourceName
-      ? resolveAlias(aliasIndex, sourceName) || resolveAlias(aliasIndex, f.model_display || "")
-      : null;
-    if (!f.model_display) missingModelDisplay.push(systemName);
-    rows.push({
-      source_id: f.source_id || rec.source_id,
-      system: systemName,
-      model_alias: f.model_display || null,
-      org: f.model_org || null,
-      resolved_pct: f.resolved_pct ?? null,
-      run_date: f.run_date || null,
-      agent: f.agent || null,
-      reasoning_effort: f.reasoning_effort || null,
-      is_open_model: f.is_open_model ?? null,
-      checked: f.checked ?? null,
-      canonical_id: hit?.canonical ?? null,
-      alias_method: hit?.method ?? null,
-      url: f.url || rec.url || null,
-    });
-  }
-  return { rows, missingModelDisplay };
-}
-
 // ---------- Terminal-Bench ----------
 async function terminalBenchRows(aliasIndex) {
   const recs = existsSync(storePath("terminal-bench"))
@@ -295,7 +261,6 @@ async function main() {
   );
 
   const lb = await livebenchModels(aliasIndex);
-  const swe = await sweBenchRows(aliasIndex);
   const terminalBench = await terminalBenchRows(aliasIndex);
   const aa = await artificialAnalysisRows(aliasIndex);
 
@@ -330,7 +295,6 @@ async function main() {
     m.default_effort = c?.default_effort ?? null;
   }
 
-  const matchedSwe = swe.rows.filter((r) => r.canonical_id).length;
   const matchedLb = lb.models.filter((m) => m.canonical_id).length;
   const matchedTb = terminalBench.rows.filter((r) => r.canonical_id).length;
 
@@ -364,7 +328,6 @@ async function main() {
     },
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
-    swe_bench: swe.rows.sort((a, b) => (b.resolved_pct ?? 0) - (a.resolved_pct ?? 0)),
     terminal_bench: terminalBench.rows,
     artificial_analysis: aa.rows,
     data_quality: {
@@ -372,8 +335,6 @@ async function main() {
         catalog_models: catalog.size,
         livebench_models: lb.models.length,
         livebench_matched: matchedLb,
-        swe_bench_systems: swe.rows.length,
-        swe_bench_matched: matchedSwe,
         terminal_bench_runs: terminalBench.rows.length,
         terminal_bench_matched: matchedTb,
         ...(aa.connected
@@ -385,7 +346,6 @@ async function main() {
       },
       unmatched: {
         livebench: lb.unmatched,
-        swe_bench_model_display: swe.missingModelDisplay,
         terminal_bench: terminalBench.unmatched,
         ...(aa.connected ? { artificial_analysis: aa.unmatched } : {}),
       },
@@ -398,7 +358,6 @@ async function main() {
   console.log(
     `data/scores.json: catalog=${data.data_quality.counts.catalog_models} ` +
       `livebench=${lb.models.length} (matched ${matchedLb}) ` +
-      `swe=${swe.rows.length} (matched ${matchedSwe}) ` +
       `terminal_bench=${terminalBench.rows.length} (matched ${matchedTb})`
   );
   if (lb.unmatched.length) console.log("unmatched livebench:", lb.unmatched.join(", "));

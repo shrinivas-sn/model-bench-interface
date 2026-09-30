@@ -13,7 +13,6 @@ import { fileURLToPath } from "node:url";
 import { runIngest } from "@shrinivas-sn/adapter-ingestion";
 import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
 import { makeFetchImpl as openrouterFetch } from "./sources/openrouter.mjs";
-import { makeFetchImpl as sweBenchFetch } from "./sources/swe-bench.mjs";
 import {
   makeScoresFetchImpl,
   makeCostFetchImpl,
@@ -33,7 +32,6 @@ console.log(`LiveBench release: ${lbRelease}`);
 const aaKey = process.env[KEY_ENV];
 const JOBS = [
   { name: "openrouter", adapterFile: "openrouter.adapter.json", fetchImpl: openrouterFetch() },
-  { name: "swe-bench-verified", adapterFile: "swe-bench-verified.adapter.json", fetchImpl: sweBenchFetch() },
   {
     name: "livebench-scores",
     adapterFile: "livebench-scores.adapter.json",

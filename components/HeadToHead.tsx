@@ -11,7 +11,6 @@ import type {
   ScoresData,
   TerminalBenchRun,
   ArtificialAnalysisModel,
-  SweRow,
 } from "@/lib/data";
 import {
   defaultPair,
@@ -29,7 +28,6 @@ type Props = {
   artificialAnalysis?: ArtificialAnalysisModel[];
   sources: ScoresData["sources"];
   vendorDisplay?: Record<string, string>;
-  swe?: SweRow[];
 };
 
 function storage(): Storage | null {

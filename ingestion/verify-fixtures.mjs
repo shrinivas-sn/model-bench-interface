@@ -13,7 +13,6 @@ const GATE = 0.8;
 
 const ADAPTERS = [
   "openrouter.adapter.json",
-  "swe-bench-verified.adapter.json",
   "livebench-scores.adapter.json",
   "livebench-cost.adapter.json",
   "terminal-bench.adapter.json",

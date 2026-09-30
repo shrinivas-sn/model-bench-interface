@@ -113,8 +113,8 @@ test("summarizeFreshness reports no-data instead of pretending success", () => {
 
 test("summarizeRelease splits the provenance line on plus signs", () => {
   assert.equal(
-    summarizeRelease("livebench-2026-06-25 + swe-bench-verified + openrouter"),
-    "livebench-2026-06-25 · swe-bench-verified · openrouter"
+    summarizeRelease("LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices"),
+    "LiveBench 2026-06-25 · Terminal-Bench 4.0 · OpenRouter prices"
   );
   assert.equal(summarizeRelease(""), "");
   assert.equal(summarizeRelease(null), "");

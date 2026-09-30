@@ -49,7 +49,7 @@ export function DataStatusStrip() {
           ·
         </span>
         <span className="mono">
-          {counts.livebench_models} models · {counts.swe_bench_systems} agent runs
+          {counts.livebench_models} models · {counts.terminal_bench_runs} Terminal-Bench runs
         </span>
         {s.tone !== "ok" && (
           <>
