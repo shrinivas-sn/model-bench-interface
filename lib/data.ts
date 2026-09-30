@@ -21,6 +21,7 @@ export type LivebenchModel = {
   supported_efforts?: string[] | null;
   default_effort?: string | null;
   thinking: boolean;
+  overall: number | null;
   tasks: Record<string, number>;
   categories: Record<string, number>;
   cost: {

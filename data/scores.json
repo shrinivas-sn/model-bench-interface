@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T16:08:42.482Z",
+  "generated_at": "2026-09-30T16:11:51.948Z",
   "release": "livebench-2026-06-25 + swe-bench-verified + openrouter",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -5675,6 +5675,7 @@
       "family_id": "anthropic/claude-fable-5.1",
       "effort": "max",
       "thinking": false,
+      "overall": 83.41,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 82.609,
@@ -5701,12 +5702,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 97.01,
-        "Coding": 86.38,
-        "Language": 89.5,
-        "Data Analysis": 80.28,
-        "Agentic Coding": 66.06,
         "Reasoning": 91.69,
+        "Coding": 86.38,
+        "Agentic Coding": 66.06,
+        "Mathematics": 97.01,
+        "Data Analysis": 80.28,
+        "Language": 89.5,
         "Instruction Following": 72.99
       },
       "cost": {
@@ -5740,6 +5741,7 @@
       "family_id": "anthropic/claude-fable-5",
       "effort": "max",
       "thinking": false,
+      "overall": 82.97,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 80.435,
@@ -5766,12 +5768,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 95.99,
-        "Coding": 85.99,
-        "Language": 90.68,
-        "Data Analysis": 80.54,
-        "Agentic Coding": 62.17,
         "Reasoning": 89.65,
+        "Coding": 85.99,
+        "Agentic Coding": 62.17,
+        "Mathematics": 95.99,
+        "Data Analysis": 80.54,
+        "Language": 90.68,
         "Instruction Following": 75.77
       },
       "cost": {
@@ -5805,6 +5807,7 @@
       "family_id": "anthropic/claude-opus-4.5",
       "effort": "high",
       "thinking": true,
+      "overall": 72.58,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 80.435,
@@ -5831,12 +5834,12 @@
         "zebra_puzzle": 77.5
       },
       "categories": {
-        "Mathematics": 90.39,
-        "Coding": 79.65,
-        "Language": 81.26,
-        "Data Analysis": 74.44,
-        "Agentic Coding": 39.7,
         "Reasoning": 80.09,
+        "Coding": 79.65,
+        "Agentic Coding": 39.7,
+        "Mathematics": 90.39,
+        "Data Analysis": 74.44,
+        "Language": 81.26,
         "Instruction Following": 62.55
       },
       "cost": {
@@ -5864,6 +5867,7 @@
       "family_id": "anthropic/claude-opus-4.6",
       "effort": "high",
       "thinking": true,
+      "overall": 74.52,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 76.087,
@@ -5890,12 +5894,12 @@
         "zebra_puzzle": 94
       },
       "categories": {
-        "Mathematics": 89.32,
-        "Coding": 78.18,
-        "Language": 83.27,
-        "Data Analysis": 69.89,
-        "Agentic Coding": 48.99,
         "Reasoning": 88.67,
+        "Coding": 78.18,
+        "Agentic Coding": 48.99,
+        "Mathematics": 89.32,
+        "Data Analysis": 69.89,
+        "Language": 83.27,
         "Instruction Following": 63.31
       },
       "cost": {
@@ -5928,6 +5932,7 @@
       "family_id": "anthropic/claude-opus-4.7",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 76.53,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -5954,12 +5959,12 @@
         "zebra_puzzle": 98
       },
       "categories": {
-        "Mathematics": 92.85,
-        "Coding": 82.09,
-        "Language": 77.91,
-        "Data Analysis": 78.26,
-        "Agentic Coding": 50.66,
         "Reasoning": 87.19,
+        "Coding": 82.09,
+        "Agentic Coding": 50.66,
+        "Mathematics": 92.85,
+        "Data Analysis": 78.26,
+        "Language": 77.91,
         "Instruction Following": 66.74
       },
       "cost": {
@@ -5993,6 +5998,7 @@
       "family_id": "anthropic/claude-opus-4.8",
       "effort": "max",
       "thinking": false,
+      "overall": 76.22,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 84.783,
@@ -6019,12 +6025,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 94.32,
-        "Coding": 81.83,
-        "Language": 79.66,
-        "Data Analysis": 66.03,
-        "Agentic Coding": 50.5,
         "Reasoning": 89.19,
+        "Coding": 81.83,
+        "Agentic Coding": 50.5,
+        "Mathematics": 94.32,
+        "Data Analysis": 66.03,
+        "Language": 79.66,
         "Instruction Following": 72.03
       },
       "cost": {
@@ -6058,6 +6064,7 @@
       "family_id": "anthropic/claude-opus-5.5",
       "effort": "max",
       "thinking": false,
+      "overall": 83.22,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 86.957,
@@ -6084,12 +6091,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 97.08,
-        "Coding": 89.25,
-        "Language": 86.27,
-        "Data Analysis": 80.31,
-        "Agentic Coding": 71.72,
         "Reasoning": 92.15,
+        "Coding": 89.25,
+        "Agentic Coding": 71.72,
+        "Mathematics": 97.08,
+        "Data Analysis": 80.31,
+        "Language": 86.27,
         "Instruction Following": 65.74
       },
       "cost": {
@@ -6123,6 +6130,7 @@
       "family_id": "anthropic/claude-opus-5.5",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 82.06,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 86.957,
@@ -6149,12 +6157,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.8,
-        "Coding": 89.25,
-        "Language": 85.5,
-        "Data Analysis": 79.8,
-        "Agentic Coding": 65.35,
         "Reasoning": 90.65,
+        "Coding": 89.25,
+        "Agentic Coding": 65.35,
+        "Mathematics": 96.8,
+        "Data Analysis": 79.8,
+        "Language": 85.5,
         "Instruction Following": 67.05
       },
       "cost": {
@@ -6188,6 +6196,7 @@
       "family_id": "anthropic/claude-opus-5",
       "effort": "max",
       "thinking": false,
+      "overall": 80.08,
       "tasks": {
         "AMPS_Hard": 99.01,
         "code_completion": 82.609,
@@ -6214,12 +6223,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 95.73,
-        "Coding": 81.45,
-        "Language": 88.69,
-        "Data Analysis": 74.55,
-        "Agentic Coding": 65.2,
         "Reasoning": 91.21,
+        "Coding": 81.45,
+        "Agentic Coding": 65.2,
+        "Mathematics": 95.73,
+        "Data Analysis": 74.55,
+        "Language": 88.69,
         "Instruction Following": 63.77
       },
       "cost": {
@@ -6253,6 +6262,7 @@
       "family_id": "anthropic/claude-sonnet-4.6",
       "effort": "medium",
       "thinking": true,
+      "overall": 72.99,
       "tasks": {
         "AMPS_Hard": 76,
         "code_completion": 78.261,
@@ -6279,12 +6289,12 @@
         "zebra_puzzle": 96
       },
       "categories": {
-        "Mathematics": 86.99,
-        "Coding": 79.27,
-        "Language": 76.1,
-        "Data Analysis": 77.95,
-        "Agentic Coding": 42.63,
         "Reasoning": 84.77,
+        "Coding": 79.27,
+        "Agentic Coding": 42.63,
+        "Mathematics": 86.99,
+        "Data Analysis": 77.95,
+        "Language": 76.1,
         "Instruction Following": 63.22
       },
       "cost": {
@@ -6317,6 +6327,7 @@
       "family_id": "anthropic/claude-sonnet-5.5",
       "effort": "max",
       "thinking": false,
+      "overall": 75.67,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 86.957,
@@ -6343,12 +6354,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.13,
-        "Coding": 91.37,
-        "Language": 77.98,
-        "Data Analysis": 59.49,
-        "Agentic Coding": 56.31,
         "Reasoning": 91.63,
+        "Coding": 91.37,
+        "Agentic Coding": 56.31,
+        "Mathematics": 96.13,
+        "Data Analysis": 59.49,
+        "Language": 77.98,
         "Instruction Following": 56.79
       },
       "cost": {
@@ -6382,6 +6393,7 @@
       "family_id": "anthropic/claude-sonnet-5.5",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 77.75,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 84.783,
@@ -6408,12 +6420,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.69,
-        "Coding": 88.87,
-        "Language": 83.43,
-        "Data Analysis": 78.62,
-        "Agentic Coding": 39.34,
         "Reasoning": 86.81,
+        "Coding": 88.87,
+        "Agentic Coding": 39.34,
+        "Mathematics": 96.69,
+        "Data Analysis": 78.62,
+        "Language": 83.43,
         "Instruction Following": 70.52
       },
       "cost": {
@@ -6447,6 +6459,7 @@
       "family_id": "anthropic/claude-sonnet-5",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 76.04,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -6473,12 +6486,12 @@
         "zebra_puzzle": 88
       },
       "categories": {
-        "Mathematics": 92.94,
-        "Coding": 80.68,
-        "Language": 74.97,
-        "Data Analysis": 71.74,
-        "Agentic Coding": 59.39,
         "Reasoning": 88.69,
+        "Coding": 80.68,
+        "Agentic Coding": 59.39,
+        "Mathematics": 92.94,
+        "Data Analysis": 71.74,
+        "Language": 74.97,
         "Instruction Following": 63.86
       },
       "cost": {
@@ -6512,6 +6525,7 @@
       "family_id": "deepseek/deepseek-v4-flash",
       "effort": null,
       "thinking": false,
+      "overall": 65.48,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 65.217,
@@ -6538,12 +6552,12 @@
         "zebra_puzzle": 49.25
       },
       "categories": {
-        "Mathematics": 79.65,
-        "Coding": 69.23,
-        "Language": 70.12,
-        "Data Analysis": 68.02,
-        "Agentic Coding": 37.63,
         "Reasoning": 70.58,
+        "Coding": 69.23,
+        "Agentic Coding": 37.63,
+        "Mathematics": 79.65,
+        "Data Analysis": 68.02,
+        "Language": 70.12,
         "Instruction Following": 63.14
       },
       "cost": {
@@ -6574,6 +6588,7 @@
       "family_id": "deepseek/deepseek-v4-flash-0731",
       "effort": null,
       "thinking": false,
+      "overall": 74.17,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 73.913,
@@ -6600,12 +6615,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 86.79,
-        "Coding": 74.98,
-        "Language": 79.17,
-        "Data Analysis": 79.33,
-        "Agentic Coding": 46.77,
         "Reasoning": 86.63,
+        "Coding": 74.98,
+        "Agentic Coding": 46.77,
+        "Mathematics": 86.79,
+        "Data Analysis": 79.33,
+        "Language": 79.17,
         "Instruction Following": 65.52
       },
       "cost": {
@@ -6637,6 +6652,7 @@
       "family_id": "deepseek/deepseek-v4-flash-vision-exp",
       "effort": null,
       "thinking": false,
+      "overall": 76.76,
       "tasks": {
         "AMPS_Hard": 88,
         "code_completion": 67.391,
@@ -6663,12 +6679,12 @@
         "zebra_puzzle": 98.75
       },
       "categories": {
-        "Mathematics": 87.81,
-        "Coding": 68.2,
-        "Language": 80.36,
-        "Data Analysis": 79.48,
-        "Agentic Coding": 65.1,
         "Reasoning": 85.4,
+        "Coding": 68.2,
+        "Agentic Coding": 65.1,
+        "Mathematics": 87.81,
+        "Data Analysis": 79.48,
+        "Language": 80.36,
         "Instruction Following": 70.96
       },
       "cost": {
@@ -6700,6 +6716,7 @@
       "family_id": "deepseek/deepseek-v4-pro",
       "effort": null,
       "thinking": false,
+      "overall": 71.57,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 69.565,
@@ -6726,12 +6743,12 @@
         "zebra_puzzle": 92
       },
       "categories": {
-        "Mathematics": 90.68,
-        "Coding": 69.99,
-        "Language": 78.13,
-        "Data Analysis": 74.54,
-        "Agentic Coding": 42.63,
         "Reasoning": 82.69,
+        "Coding": 69.99,
+        "Agentic Coding": 42.63,
+        "Mathematics": 90.68,
+        "Data Analysis": 74.54,
+        "Language": 78.13,
         "Instruction Following": 62.35
       },
       "cost": {
@@ -6762,6 +6779,7 @@
       "family_id": "deepseek/deepseek-v4-pro-0813",
       "effort": null,
       "thinking": false,
+      "overall": 77.44,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -6788,12 +6806,12 @@
         "zebra_puzzle": 96.75
       },
       "categories": {
-        "Mathematics": 95.09,
-        "Coding": 77.16,
-        "Language": 82.07,
-        "Data Analysis": 79.24,
-        "Agentic Coding": 54.95,
         "Reasoning": 85.84,
+        "Coding": 77.16,
+        "Agentic Coding": 54.95,
+        "Mathematics": 95.09,
+        "Data Analysis": 79.24,
+        "Language": 82.07,
         "Instruction Following": 67.7
       },
       "cost": {
@@ -6825,6 +6843,7 @@
       "family_id": "deepseek/deepseek-v4.1-flash",
       "effort": null,
       "thinking": false,
+      "overall": 81.11,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 82.609,
@@ -6851,12 +6870,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 93.29,
-        "Coding": 80.04,
-        "Language": 81.19,
-        "Data Analysis": 79.25,
-        "Agentic Coding": 77.27,
         "Reasoning": 86.69,
+        "Coding": 80.04,
+        "Agentic Coding": 77.27,
+        "Mathematics": 93.29,
+        "Data Analysis": 79.25,
+        "Language": 81.19,
         "Instruction Following": 70.03
       },
       "cost": {
@@ -6888,6 +6907,7 @@
       "family_id": "google/gemini-3.1-pro-preview",
       "effort": "high",
       "thinking": false,
+      "overall": 76.95,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -6914,12 +6934,12 @@
         "zebra_puzzle": 85.25
       },
       "categories": {
-        "Mathematics": 91.04,
-        "Coding": 76.45,
-        "Language": 85.38,
-        "Data Analysis": 78.54,
-        "Agentic Coding": 44.14,
         "Reasoning": 84,
+        "Coding": 76.45,
+        "Agentic Coding": 44.14,
+        "Mathematics": 91.04,
+        "Data Analysis": 78.54,
+        "Language": 85.38,
         "Instruction Following": 79.1
       },
       "cost": {
@@ -6951,6 +6971,7 @@
       "family_id": "google/gemini-3.5-flash",
       "effort": "high",
       "thinking": false,
+      "overall": 74.64,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 76.087,
@@ -6977,12 +6998,12 @@
         "zebra_puzzle": 77.25
       },
       "categories": {
-        "Mathematics": 88.24,
-        "Coding": 78.18,
-        "Language": 84.58,
-        "Data Analysis": 64.86,
-        "Agentic Coding": 48.99,
         "Reasoning": 82,
+        "Coding": 78.18,
+        "Agentic Coding": 48.99,
+        "Mathematics": 88.24,
+        "Data Analysis": 64.86,
+        "Language": 84.58,
         "Instruction Following": 75.6
       },
       "cost": {
@@ -7015,6 +7036,7 @@
       "family_id": "google/gemini-3.5-flash-lite",
       "effort": "high",
       "thinking": false,
+      "overall": 63.94,
       "tasks": {
         "AMPS_Hard": 95,
         "code_completion": 76.087,
@@ -7041,12 +7063,12 @@
         "zebra_puzzle": 32.75
       },
       "categories": {
-        "Mathematics": 73.74,
-        "Coding": 76.07,
-        "Language": 71.82,
-        "Data Analysis": 53.25,
-        "Agentic Coding": 45.25,
         "Reasoning": 60.19,
+        "Coding": 76.07,
+        "Agentic Coding": 45.25,
+        "Mathematics": 73.74,
+        "Data Analysis": 53.25,
+        "Language": 71.82,
         "Instruction Following": 67.24
       },
       "cost": {
@@ -7079,6 +7101,7 @@
       "family_id": "google/gemini-3.6-flash",
       "effort": "high",
       "thinking": false,
+      "overall": 73.59,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -7105,12 +7128,12 @@
         "zebra_puzzle": 85.75
       },
       "categories": {
-        "Mathematics": 86.4,
-        "Coding": 77.86,
-        "Language": 83.9,
-        "Data Analysis": 63,
-        "Agentic Coding": 43.43,
         "Reasoning": 85.15,
+        "Coding": 77.86,
+        "Agentic Coding": 43.43,
+        "Mathematics": 86.4,
+        "Data Analysis": 63,
+        "Language": 83.9,
         "Instruction Following": 75.37
       },
       "cost": {
@@ -7143,6 +7166,7 @@
       "family_id": "google/gemini-3.7-flash",
       "effort": "high",
       "thinking": false,
+      "overall": 78.83,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 76.087,
@@ -7169,12 +7193,12 @@
         "zebra_puzzle": 94.5
       },
       "categories": {
-        "Mathematics": 93.47,
-        "Coding": 78.89,
-        "Language": 85.45,
-        "Data Analysis": 67.96,
-        "Agentic Coding": 58.28,
         "Reasoning": 87.8,
+        "Coding": 78.89,
+        "Agentic Coding": 58.28,
+        "Mathematics": 93.47,
+        "Data Analysis": 67.96,
+        "Language": 85.45,
         "Instruction Following": 79.93
       },
       "cost": {
@@ -7206,6 +7230,7 @@
       "family_id": "google/gemini-3.8-flash",
       "effort": "high",
       "thinking": false,
+      "overall": 75.83,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 71.739,
@@ -7232,12 +7257,12 @@
         "zebra_puzzle": 98.25
       },
       "categories": {
-        "Mathematics": 91.56,
-        "Coding": 72.49,
-        "Language": 87.79,
-        "Data Analysis": 54.01,
-        "Agentic Coding": 54.24,
         "Reasoning": 89.29,
+        "Coding": 72.49,
+        "Agentic Coding": 54.24,
+        "Mathematics": 91.56,
+        "Data Analysis": 54.01,
+        "Language": 87.79,
         "Instruction Following": 81.41
       },
       "cost": {
@@ -7269,6 +7294,7 @@
       "family_id": "z-ai/glm-5.2",
       "effort": null,
       "thinking": false,
+      "overall": 73.16,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -7295,12 +7321,12 @@
         "zebra_puzzle": 65.5
       },
       "categories": {
-        "Mathematics": 89.78,
-        "Coding": 79.65,
-        "Language": 76.24,
-        "Data Analysis": 73.74,
-        "Agentic Coding": 51.77,
         "Reasoning": 78.63,
+        "Coding": 79.65,
+        "Agentic Coding": 51.77,
+        "Mathematics": 89.78,
+        "Data Analysis": 73.74,
+        "Language": 76.24,
         "Instruction Following": 62.29
       },
       "cost": {
@@ -7331,6 +7357,7 @@
       "family_id": "z-ai/glm-5.3",
       "effort": null,
       "thinking": false,
+      "overall": 76.14,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 80.435,
@@ -7357,12 +7384,12 @@
         "zebra_puzzle": 88.75
       },
       "categories": {
-        "Mathematics": 87.9,
-        "Coding": 78.95,
-        "Language": 79.86,
-        "Data Analysis": 70.24,
-        "Agentic Coding": 60.91,
         "Reasoning": 85.8,
+        "Coding": 78.95,
+        "Agentic Coding": 60.91,
+        "Mathematics": 87.9,
+        "Data Analysis": 70.24,
+        "Language": 79.86,
         "Instruction Following": 69.3
       },
       "cost": {
@@ -7394,6 +7421,7 @@
       "family_id": "z-ai/glm-5.3-flash",
       "effort": null,
       "thinking": false,
+      "overall": 71.59,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 80.435,
@@ -7420,12 +7448,12 @@
         "zebra_puzzle": 79.5
       },
       "categories": {
-        "Mathematics": 81.24,
-        "Coding": 78.95,
-        "Language": 77.31,
-        "Data Analysis": 76.4,
-        "Agentic Coding": 56.77,
         "Reasoning": 77.64,
+        "Coding": 78.95,
+        "Agentic Coding": 56.77,
+        "Mathematics": 81.24,
+        "Data Analysis": 76.4,
+        "Language": 77.31,
         "Instruction Following": 52.82
       },
       "cost": {
@@ -7457,6 +7485,7 @@
       "family_id": "openai/gpt-5.2",
       "effort": "high",
       "thinking": false,
+      "overall": 74.63,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 76.087,
@@ -7483,12 +7512,12 @@
         "zebra_puzzle": 84
       },
       "categories": {
-        "Mathematics": 93.17,
-        "Coding": 76.07,
-        "Language": 79.81,
-        "Data Analysis": 78.16,
-        "Agentic Coding": 50.25,
         "Reasoning": 83.21,
+        "Coding": 76.07,
+        "Agentic Coding": 50.25,
+        "Mathematics": 93.17,
+        "Data Analysis": 78.16,
+        "Language": 79.81,
         "Instruction Following": 61.77
       },
       "cost": {
@@ -7522,6 +7551,7 @@
       "family_id": "openai/gpt-5.2-codex",
       "effort": null,
       "thinking": false,
+      "overall": 73.98,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 86.957,
@@ -7548,12 +7578,12 @@
         "zebra_puzzle": 70
       },
       "categories": {
-        "Mathematics": 88.77,
-        "Coding": 83.62,
-        "Language": 73.68,
-        "Data Analysis": 78.2,
-        "Agentic Coding": 49.39,
         "Reasoning": 77.71,
+        "Coding": 83.62,
+        "Agentic Coding": 49.39,
+        "Mathematics": 88.77,
+        "Data Analysis": 78.2,
+        "Language": 73.68,
         "Instruction Following": 66.45
       },
       "cost": {
@@ -7586,6 +7616,7 @@
       "family_id": "openai/gpt-5.4-mini",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 66.37,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 75.556,
@@ -7612,12 +7643,12 @@
         "zebra_puzzle": 60.372
       },
       "categories": {
-        "Mathematics": 78.46,
-        "Coding": 71.62,
-        "Language": 70.95,
-        "Data Analysis": 70.79,
-        "Agentic Coding": 41.67,
         "Reasoning": 71.32,
+        "Coding": 71.62,
+        "Agentic Coding": 41.67,
+        "Mathematics": 78.46,
+        "Data Analysis": 70.79,
+        "Language": 70.95,
         "Instruction Following": 59.8
       },
       "cost": {
@@ -7651,6 +7682,7 @@
       "family_id": "openai/gpt-5.4-nano",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 69.58,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 67.391,
@@ -7677,12 +7709,12 @@
         "zebra_puzzle": 97.619
       },
       "categories": {
-        "Mathematics": 90.98,
-        "Coding": 70.84,
-        "Language": 62.51,
-        "Data Analysis": 67.64,
-        "Agentic Coding": 46.77,
         "Reasoning": 81.1,
+        "Coding": 70.84,
+        "Agentic Coding": 46.77,
+        "Mathematics": 90.98,
+        "Data Analysis": 67.64,
+        "Language": 62.51,
         "Instruction Following": 67.2
       },
       "cost": {
@@ -7716,6 +7748,7 @@
       "family_id": "openai/gpt-5.4",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 77.97,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -7742,12 +7775,12 @@
         "zebra_puzzle": 98
       },
       "categories": {
-        "Mathematics": 94.15,
-        "Coding": 77.54,
-        "Language": 82.63,
-        "Data Analysis": 79.31,
-        "Agentic Coding": 53.84,
         "Reasoning": 88.12,
+        "Coding": 77.54,
+        "Agentic Coding": 53.84,
+        "Mathematics": 94.15,
+        "Data Analysis": 79.31,
+        "Language": 82.63,
         "Instruction Following": 70.22
       },
       "cost": {
@@ -7781,6 +7814,7 @@
       "family_id": "openai/gpt-5.5",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 80.19,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 82.609,
@@ -7807,12 +7841,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 95.86,
-        "Coding": 82.15,
-        "Language": 87.36,
-        "Data Analysis": 81.58,
-        "Agentic Coding": 53.99,
         "Reasoning": 89.65,
+        "Coding": 82.15,
+        "Agentic Coding": 53.99,
+        "Mathematics": 95.86,
+        "Data Analysis": 81.58,
+        "Language": 87.36,
         "Instruction Following": 70.73
       },
       "cost": {
@@ -7846,6 +7880,7 @@
       "family_id": "openai/gpt-5.6-luna",
       "effort": null,
       "thinking": false,
+      "overall": 73.56,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 86.957,
@@ -7872,12 +7907,12 @@
         "zebra_puzzle": 93.5
       },
       "categories": {
-        "Mathematics": 87.2,
-        "Coding": 82.91,
-        "Language": 72.57,
-        "Data Analysis": 78.03,
-        "Agentic Coding": 48.43,
         "Reasoning": 85.64,
+        "Coding": 82.91,
+        "Agentic Coding": 48.43,
+        "Mathematics": 87.2,
+        "Data Analysis": 78.03,
+        "Language": 72.57,
         "Instruction Following": 60.12
       },
       "cost": {
@@ -7912,6 +7947,7 @@
       "family_id": "openai/gpt-5.6-sol",
       "effort": null,
       "thinking": false,
+      "overall": 81.05,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 84.783,
@@ -7938,12 +7974,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.2,
-        "Coding": 83.94,
-        "Language": 87.68,
-        "Data Analysis": 79.84,
-        "Agentic Coding": 56.21,
         "Reasoning": 91.65,
+        "Coding": 83.94,
+        "Agentic Coding": 56.21,
+        "Mathematics": 96.2,
+        "Data Analysis": 79.84,
+        "Language": 87.68,
         "Instruction Following": 71.85
       },
       "cost": {
@@ -7978,6 +8014,7 @@
       "family_id": "openai/gpt-5.6-terra",
       "effort": null,
       "thinking": false,
+      "overall": 77.94,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -8004,12 +8041,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 94.91,
-        "Coding": 78.25,
-        "Language": 82.89,
-        "Data Analysis": 79.31,
-        "Agentic Coding": 54.95,
         "Reasoning": 90.63,
+        "Coding": 78.25,
+        "Agentic Coding": 54.95,
+        "Mathematics": 94.91,
+        "Data Analysis": 79.31,
+        "Language": 82.89,
         "Instruction Following": 64.62
       },
       "cost": {
@@ -8044,6 +8081,7 @@
       "family_id": "openai/gpt-6-astra",
       "effort": null,
       "thinking": false,
+      "overall": 82.16,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -8070,12 +8108,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.81,
-        "Coding": 80.36,
-        "Language": 89.43,
-        "Data Analysis": 82.97,
-        "Agentic Coding": 57.32,
         "Reasoning": 92.65,
+        "Coding": 80.36,
+        "Agentic Coding": 57.32,
+        "Mathematics": 96.81,
+        "Data Analysis": 82.97,
+        "Language": 89.43,
         "Instruction Following": 75.58
       },
       "cost": {
@@ -8109,6 +8147,7 @@
       "family_id": "openai/gpt-6-luna",
       "effort": null,
       "thinking": false,
+      "overall": 72.03,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -8135,12 +8174,12 @@
         "zebra_puzzle": 96
       },
       "categories": {
-        "Mathematics": 89.12,
-        "Coding": 78.95,
-        "Language": 73.83,
-        "Data Analysis": 73.37,
-        "Agentic Coding": 51.21,
         "Reasoning": 81.77,
+        "Coding": 78.95,
+        "Agentic Coding": 51.21,
+        "Mathematics": 89.12,
+        "Data Analysis": 73.37,
+        "Language": 73.83,
         "Instruction Following": 55.93
       },
       "cost": {
@@ -8175,6 +8214,7 @@
       "family_id": "openai/gpt-6-sol",
       "effort": null,
       "thinking": false,
+      "overall": 79.25,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -8201,12 +8241,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.36,
-        "Coding": 81.77,
-        "Language": 85.3,
-        "Data Analysis": 81.19,
-        "Agentic Coding": 52.88,
         "Reasoning": 88.65,
+        "Coding": 81.77,
+        "Agentic Coding": 52.88,
+        "Mathematics": 96.36,
+        "Data Analysis": 81.19,
+        "Language": 85.3,
         "Instruction Following": 68.57
       },
       "cost": {
@@ -8241,6 +8281,7 @@
       "family_id": "openai/gpt-6.1-sol",
       "effort": null,
       "thinking": false,
+      "overall": 81.62,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -8267,12 +8308,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.83,
-        "Coding": 80.36,
-        "Language": 90.13,
-        "Data Analysis": 82.66,
-        "Agentic Coding": 54.55,
         "Reasoning": 92.63,
+        "Coding": 80.36,
+        "Agentic Coding": 54.55,
+        "Mathematics": 96.83,
+        "Data Analysis": 82.66,
+        "Language": 90.13,
         "Instruction Following": 74.15
       },
       "cost": {
@@ -8306,6 +8347,7 @@
       "family_id": "openai/gpt-6.1-sol",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 81.11,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 82.609,
@@ -8332,12 +8374,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 96.48,
-        "Coding": 80.74,
-        "Language": 88.64,
-        "Data Analysis": 82.18,
-        "Agentic Coding": 56.77,
         "Reasoning": 91.63,
+        "Coding": 80.74,
+        "Agentic Coding": 56.77,
+        "Mathematics": 96.48,
+        "Data Analysis": 82.18,
+        "Language": 88.64,
         "Instruction Following": 71.33
       },
       "cost": {
@@ -8371,6 +8413,7 @@
       "family_id": "x-ai/grok-4.3",
       "effort": null,
       "thinking": false,
+      "overall": 62.25,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 65.217,
@@ -8397,12 +8440,12 @@
         "zebra_puzzle": 57.75
       },
       "categories": {
-        "Mathematics": 84.34,
-        "Coding": 69.93,
-        "Language": 73.58,
-        "Data Analysis": 55.77,
-        "Agentic Coding": 18.54,
         "Reasoning": 70.82,
+        "Coding": 69.93,
+        "Agentic Coding": 18.54,
+        "Mathematics": 84.34,
+        "Data Analysis": 55.77,
+        "Language": 73.58,
         "Instruction Following": 62.75
       },
       "cost": {
@@ -8435,6 +8478,7 @@
       "family_id": "x-ai/grok-4.5",
       "effort": null,
       "thinking": false,
+      "overall": 75.77,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 69.565,
@@ -8461,12 +8505,12 @@
         "zebra_puzzle": 94
       },
       "categories": {
-        "Mathematics": 90.82,
-        "Coding": 68.59,
-        "Language": 82.8,
-        "Data Analysis": 73.04,
-        "Agentic Coding": 56.46,
         "Reasoning": 87.17,
+        "Coding": 68.59,
+        "Agentic Coding": 56.46,
+        "Mathematics": 90.82,
+        "Data Analysis": 73.04,
+        "Language": 82.8,
         "Instruction Following": 71.53
       },
       "cost": {
@@ -8498,6 +8542,7 @@
       "family_id": "x-ai/grok-4.6",
       "effort": null,
       "thinking": false,
+      "overall": 78.04,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 76.087,
@@ -8524,12 +8569,12 @@
         "zebra_puzzle": 95.5
       },
       "categories": {
-        "Mathematics": 92.57,
-        "Coding": 76.78,
-        "Language": 83.7,
-        "Data Analysis": 73.86,
-        "Agentic Coding": 57.02,
         "Reasoning": 90.51,
+        "Coding": 76.78,
+        "Agentic Coding": 57.02,
+        "Mathematics": 92.57,
+        "Data Analysis": 73.86,
+        "Language": 83.7,
         "Instruction Following": 71.87
       },
       "cost": {
@@ -8562,6 +8607,7 @@
       "family_id": "x-ai/grok-4.7",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 77.4,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -8588,12 +8634,12 @@
         "zebra_puzzle": 86
       },
       "categories": {
-        "Mathematics": 95.68,
-        "Coding": 77.16,
-        "Language": 80.14,
-        "Data Analysis": 76.88,
-        "Agentic Coding": 53.99,
         "Reasoning": 82.65,
+        "Coding": 77.16,
+        "Agentic Coding": 53.99,
+        "Mathematics": 95.68,
+        "Data Analysis": 76.88,
+        "Language": 80.14,
         "Instruction Following": 75.28
       },
       "cost": {
@@ -8626,6 +8672,7 @@
       "family_id": "x-ai/grok-build-0.1",
       "effort": null,
       "thinking": false,
+      "overall": 67.78,
       "tasks": {
         "AMPS_Hard": 66,
         "code_completion": 67.391,
@@ -8652,12 +8699,12 @@
         "zebra_puzzle": 68.25
       },
       "categories": {
-        "Mathematics": 78.43,
-        "Coding": 65.39,
-        "Language": 72.46,
-        "Data Analysis": 70.79,
-        "Agentic Coding": 45.81,
         "Reasoning": 76.37,
+        "Coding": 65.39,
+        "Agentic Coding": 45.81,
+        "Mathematics": 78.43,
+        "Data Analysis": 70.79,
+        "Language": 72.46,
         "Instruction Following": 65.22
       },
       "cost": {
@@ -8685,6 +8732,7 @@
       "family_id": "inkling",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 71.92,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 67.391,
@@ -8711,12 +8759,12 @@
         "zebra_puzzle": 88
       },
       "categories": {
-        "Mathematics": 88.36,
-        "Coding": 71.02,
-        "Language": 73.46,
-        "Data Analysis": 72.78,
-        "Agentic Coding": 49.39,
         "Reasoning": 78.35,
+        "Coding": 71.02,
+        "Agentic Coding": 49.39,
+        "Mathematics": 88.36,
+        "Data Analysis": 72.78,
+        "Language": 73.46,
         "Instruction Following": 70.1
       },
       "cost": {
@@ -8743,6 +8791,7 @@
       "family_id": "moonshotai/kimi-k2.6",
       "effort": null,
       "thinking": true,
+      "overall": 70.54,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 78.261,
@@ -8769,12 +8818,12 @@
         "zebra_puzzle": 78.5
       },
       "categories": {
-        "Mathematics": 84.28,
-        "Coding": 78.57,
-        "Language": 75.14,
-        "Data Analysis": 65.13,
-        "Agentic Coding": 46.92,
         "Reasoning": 79.38,
+        "Coding": 78.57,
+        "Agentic Coding": 46.92,
+        "Mathematics": 84.28,
+        "Data Analysis": 65.13,
+        "Language": 75.14,
         "Instruction Following": 64.36
       },
       "cost": {
@@ -8802,6 +8851,7 @@
       "family_id": "moonshotai/kimi-k2.7-code",
       "effort": null,
       "thinking": false,
+      "overall": 68.41,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 76.087,
@@ -8828,12 +8878,12 @@
         "zebra_puzzle": 96
       },
       "categories": {
-        "Mathematics": 79.6,
-        "Coding": 73.96,
-        "Language": 77.91,
-        "Data Analysis": 62.66,
-        "Agentic Coding": 45.66,
         "Reasoning": 82.81,
+        "Coding": 73.96,
+        "Agentic Coding": 45.66,
+        "Mathematics": 79.6,
+        "Data Analysis": 62.66,
+        "Language": 77.91,
         "Instruction Following": 56.29
       },
       "cost": {
@@ -8861,6 +8911,7 @@
       "family_id": "moonshotai/kimi-k3",
       "effort": null,
       "thinking": false,
+      "overall": 79.19,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 82.609,
@@ -8887,12 +8938,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 84.44,
-        "Coding": 81.45,
-        "Language": 85.53,
-        "Data Analysis": 78.73,
-        "Agentic Coding": 62.17,
         "Reasoning": 90.67,
+        "Coding": 81.45,
+        "Agentic Coding": 62.17,
+        "Mathematics": 84.44,
+        "Data Analysis": 78.73,
+        "Language": 85.53,
         "Instruction Following": 71.36
       },
       "cost": {
@@ -8924,6 +8975,7 @@
       "family_id": "minimax/minimax-m3",
       "effort": null,
       "thinking": false,
+      "overall": 67.26,
       "tasks": {
         "AMPS_Hard": 75,
         "code_completion": 67.391,
@@ -8950,12 +9002,12 @@
         "zebra_puzzle": 61
       },
       "categories": {
-        "Mathematics": 76.95,
-        "Coding": 68.2,
-        "Language": 76.84,
-        "Data Analysis": 76.17,
-        "Agentic Coding": 40.66,
         "Reasoning": 74.48,
+        "Coding": 68.2,
+        "Agentic Coding": 40.66,
+        "Mathematics": 76.95,
+        "Data Analysis": 76.17,
+        "Language": 76.84,
         "Instruction Following": 57.51
       },
       "cost": {
@@ -8983,6 +9035,7 @@
       "family_id": "meta/muse-spark-1.1",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 75.3,
       "tasks": {
         "AMPS_Hard": 82,
         "code_completion": 78.261,
@@ -9009,12 +9062,12 @@
         "zebra_puzzle": 96
       },
       "categories": {
-        "Mathematics": 87.14,
-        "Coding": 77.16,
-        "Language": 74.34,
-        "Data Analysis": 72.55,
-        "Agentic Coding": 58.54,
         "Reasoning": 87.73,
+        "Coding": 77.16,
+        "Agentic Coding": 58.54,
+        "Mathematics": 87.14,
+        "Data Analysis": 72.55,
+        "Language": 74.34,
         "Instruction Following": 69.64
       },
       "cost": {
@@ -9048,6 +9101,7 @@
       "family_id": "meta/muse-spark-1.2",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 77.95,
       "tasks": {
         "AMPS_Hard": 89,
         "code_completion": 80.435,
@@ -9074,12 +9128,12 @@
         "zebra_puzzle": 95.25
       },
       "categories": {
-        "Mathematics": 91.2,
-        "Coding": 77.54,
-        "Language": 78.57,
-        "Data Analysis": 76.46,
-        "Agentic Coding": 57.58,
         "Reasoning": 90,
+        "Coding": 77.54,
+        "Agentic Coding": 57.58,
+        "Mathematics": 91.2,
+        "Data Analysis": 76.46,
+        "Language": 78.57,
         "Instruction Following": 74.33
       },
       "cost": {
@@ -9113,6 +9167,7 @@
       "family_id": "meta/muse-spark-1.3",
       "effort": "xhigh",
       "thinking": false,
+      "overall": 81.59,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 80.435,
@@ -9139,12 +9194,12 @@
         "zebra_puzzle": 98
       },
       "categories": {
-        "Mathematics": 95.95,
-        "Coding": 81.06,
-        "Language": 82.79,
-        "Data Analysis": 79.57,
-        "Agentic Coding": 64.09,
         "Reasoning": 89.65,
+        "Coding": 81.06,
+        "Agentic Coding": 64.09,
+        "Mathematics": 95.95,
+        "Data Analysis": 79.57,
+        "Language": 82.79,
         "Instruction Following": 78
       },
       "cost": {
@@ -9179,6 +9234,7 @@
       "family_id": "nvidia/nemotron-3-ultra-550b-a55b",
       "effort": null,
       "thinking": false,
+      "overall": 67.36,
       "tasks": {
         "AMPS_Hard": 96,
         "code_completion": 69.565,
@@ -9205,12 +9261,12 @@
         "zebra_puzzle": 71.25
       },
       "categories": {
-        "Mathematics": 88.66,
-        "Coding": 70.7,
-        "Language": 70.81,
-        "Data Analysis": 54.46,
-        "Agentic Coding": 38.74,
         "Reasoning": 74.7,
+        "Coding": 70.7,
+        "Agentic Coding": 38.74,
+        "Mathematics": 88.66,
+        "Data Analysis": 54.46,
+        "Language": 70.81,
         "Instruction Following": 73.45
       },
       "cost": {
@@ -9241,6 +9297,7 @@
       "family_id": "ox-alpha-max",
       "effort": null,
       "thinking": false,
+      "overall": 69.24,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 78.261,
@@ -9267,12 +9324,12 @@
         "zebra_puzzle": 79.5
       },
       "categories": {
-        "Mathematics": 77.53,
-        "Coding": 75.75,
-        "Language": 66.14,
-        "Data Analysis": 75.77,
-        "Agentic Coding": 52.63,
         "Reasoning": 76.59,
+        "Coding": 75.75,
+        "Agentic Coding": 52.63,
+        "Mathematics": 77.53,
+        "Data Analysis": 75.77,
+        "Language": 66.14,
         "Instruction Following": 60.25
       },
       "cost": {
@@ -9299,6 +9356,7 @@
       "family_id": "qwen/qwen3.6-27b",
       "effort": null,
       "thinking": false,
+      "overall": 64.03,
       "tasks": {
         "AMPS_Hard": 93,
         "code_completion": 71.739,
@@ -9325,12 +9383,12 @@
         "zebra_puzzle": 53.75
       },
       "categories": {
-        "Mathematics": 79.87,
-        "Coding": 71.78,
-        "Language": 63.3,
-        "Data Analysis": 70.43,
-        "Agentic Coding": 39.29,
         "Reasoning": 70.28,
+        "Coding": 71.78,
+        "Agentic Coding": 39.29,
+        "Mathematics": 79.87,
+        "Data Analysis": 70.43,
+        "Language": 63.3,
         "Instruction Following": 53.23
       },
       "cost": {
@@ -9358,6 +9416,7 @@
       "family_id": "qwen/qwen3.6-plus",
       "effort": null,
       "thinking": false,
+      "overall": 68.91,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 76.087,
@@ -9384,12 +9443,12 @@
         "zebra_puzzle": 68
       },
       "categories": {
-        "Mathematics": 83.72,
-        "Coding": 78.18,
-        "Language": 74.99,
-        "Data Analysis": 69.91,
-        "Agentic Coding": 41.36,
         "Reasoning": 75.83,
+        "Coding": 78.18,
+        "Agentic Coding": 41.36,
+        "Mathematics": 83.72,
+        "Data Analysis": 69.91,
+        "Language": 74.99,
         "Instruction Following": 58.34
       },
       "cost": {
@@ -9417,6 +9476,7 @@
       "family_id": "qwen/qwen3.7-max",
       "effort": null,
       "thinking": false,
+      "overall": 73.14,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 69.565,
@@ -9443,12 +9503,12 @@
         "zebra_puzzle": 74.5
       },
       "categories": {
-        "Mathematics": 85.25,
-        "Coding": 74.22,
-        "Language": 79.74,
-        "Data Analysis": 71.79,
-        "Agentic Coding": 43.59,
         "Reasoning": 83.34,
+        "Coding": 74.22,
+        "Agentic Coding": 43.59,
+        "Mathematics": 85.25,
+        "Data Analysis": 71.79,
+        "Language": 79.74,
         "Instruction Following": 74.04
       },
       "cost": {
@@ -9476,6 +9536,7 @@
       "family_id": "qwen/qwen3.8-27b",
       "effort": null,
       "thinking": false,
+      "overall": 75.27,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 73.913,
@@ -9502,12 +9563,12 @@
         "zebra_puzzle": 96.5
       },
       "categories": {
-        "Mathematics": 86.21,
-        "Coding": 75.69,
-        "Language": 74.35,
-        "Data Analysis": 76.59,
-        "Agentic Coding": 61.36,
         "Reasoning": 80.03,
+        "Coding": 75.69,
+        "Agentic Coding": 61.36,
+        "Mathematics": 86.21,
+        "Data Analysis": 76.59,
+        "Language": 74.35,
         "Instruction Following": 72.66
       },
       "cost": {
@@ -9539,6 +9600,7 @@
       "family_id": "qwen3-8-flash-next",
       "effort": null,
       "thinking": false,
+      "overall": 76.19,
       "tasks": {
         "AMPS_Hard": 99,
         "code_completion": 76.087,
@@ -9565,12 +9627,12 @@
         "zebra_puzzle": 98.75
       },
       "categories": {
-        "Mathematics": 85.82,
-        "Coding": 72.55,
-        "Language": 74.64,
-        "Data Analysis": 74.24,
-        "Agentic Coding": 61.62,
         "Reasoning": 87.38,
+        "Coding": 72.55,
+        "Agentic Coding": 61.62,
+        "Mathematics": 85.82,
+        "Data Analysis": 74.24,
+        "Language": 74.64,
         "Instruction Following": 77.11
       },
       "cost": {
@@ -9597,6 +9659,7 @@
       "family_id": "qwen3-8-max",
       "effort": null,
       "thinking": false,
+      "overall": 78.46,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 73.913,
@@ -9623,12 +9686,12 @@
         "zebra_puzzle": 100
       },
       "categories": {
-        "Mathematics": 91.31,
-        "Coding": 72.87,
-        "Language": 79.69,
-        "Data Analysis": 78.41,
-        "Agentic Coding": 64.65,
         "Reasoning": 88.21,
+        "Coding": 72.87,
+        "Agentic Coding": 64.65,
+        "Mathematics": 91.31,
+        "Data Analysis": 78.41,
+        "Language": 79.69,
         "Instruction Following": 74.08
       },
       "cost": {
@@ -9655,6 +9718,7 @@
       "family_id": "smaug-agentic",
       "effort": null,
       "thinking": false,
+      "overall": 79.51,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -9681,12 +9745,12 @@
         "zebra_puzzle": 98.25
       },
       "categories": {
-        "Mathematics": 83.92,
-        "Coding": 82.47,
-        "Language": 84.36,
-        "Data Analysis": 79.9,
-        "Agentic Coding": 64.65,
         "Reasoning": 90.27,
+        "Coding": 82.47,
+        "Agentic Coding": 64.65,
+        "Mathematics": 83.92,
+        "Data Analysis": 79.9,
+        "Language": 84.36,
         "Instruction Following": 70.99
       },
       "cost": {
@@ -9713,6 +9777,7 @@
       "family_id": "smaug-flash",
       "effort": null,
       "thinking": false,
+      "overall": 77.44,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 73.913,
@@ -9739,12 +9804,12 @@
         "zebra_puzzle": 98
       },
       "categories": {
-        "Mathematics": 90.06,
-        "Coding": 77.1,
-        "Language": 79.21,
-        "Data Analysis": 79.12,
-        "Agentic Coding": 61.06,
         "Reasoning": 86.23,
+        "Coding": 77.1,
+        "Agentic Coding": 61.06,
+        "Mathematics": 90.06,
+        "Data Analysis": 79.12,
+        "Language": 79.21,
         "Instruction Following": 69.26
       },
       "cost": {
@@ -9771,6 +9836,7 @@
       "family_id": "smaug-mini",
       "effort": null,
       "thinking": false,
+      "overall": 76.93,
       "tasks": {
         "AMPS_Hard": 98,
         "code_completion": 80.435,
@@ -9797,12 +9863,12 @@
         "zebra_puzzle": 94
       },
       "categories": {
-        "Mathematics": 89.74,
-        "Coding": 75.43,
-        "Language": 77,
-        "Data Analysis": 78.81,
-        "Agentic Coding": 60.81,
         "Reasoning": 82.81,
+        "Coding": 75.43,
+        "Agentic Coding": 60.81,
+        "Mathematics": 89.74,
+        "Data Analysis": 78.81,
+        "Language": 77,
         "Instruction Following": 73.92
       },
       "cost": {
@@ -9829,6 +9895,7 @@
       "family_id": "union-alpha",
       "effort": null,
       "thinking": false,
+      "overall": 76.13,
       "tasks": {
         "AMPS_Hard": 97,
         "code_completion": 82.609,
@@ -9855,12 +9922,12 @@
         "zebra_puzzle": 70
       },
       "categories": {
-        "Mathematics": 95.29,
-        "Coding": 82.15,
-        "Language": 85.89,
-        "Data Analysis": 74.6,
-        "Agentic Coding": 54.7,
         "Reasoning": 80.75,
+        "Coding": 82.15,
+        "Agentic Coding": 54.7,
+        "Mathematics": 95.29,
+        "Data Analysis": 74.6,
+        "Language": 85.89,
         "Instruction Following": 59.53
       },
       "cost": {

@@ -9,17 +9,11 @@ import { EffortChip } from "@/components/EffortChip";
 type SortKey = "mean-desc" | "mean-asc" | "name" | "price-asc";
 
 const SORTS: { id: SortKey; label: string }[] = [
-  { id: "mean-desc", label: "Mean score, high → low" },
-  { id: "mean-asc", label: "Mean score, low → high" },
+  { id: "mean-desc", label: "LiveBench overall, high → low" },
+  { id: "mean-asc", label: "LiveBench overall, low → high" },
   { id: "name", label: "Model name" },
   { id: "price-asc", label: "Input price, cheap → expensive" },
 ];
-
-function meanOf(m: LivebenchModel) {
-  const vals = Object.values(m.categories ?? {});
-  if (!vals.length) return null;
-  return vals.reduce((s, v) => s + v, 0) / vals.length;
-}
 
 export function ModelMatrix({
   models,
@@ -55,9 +49,9 @@ export function ModelMatrix({
           return px - py;
         }
         case "mean-asc":
-          return (meanOf(x) ?? -1) - (meanOf(y) ?? -1);
+          return (x.overall ?? -1) - (y.overall ?? -1);
         default:
-          return (meanOf(y) ?? -1) - (meanOf(x) ?? -1);
+          return (y.overall ?? -1) - (x.overall ?? -1);
       }
     });
 
@@ -112,6 +106,7 @@ export function ModelMatrix({
               <tr>
                 <th>Model</th>
                 <th>OpenRouter id</th>
+                <th className="num">LiveBench overall</th>
                 {capabilities.map((c) => (
                   <th key={c} className="num">
                     {c === "Instruction Following" ? "IF" : c}
@@ -137,6 +132,9 @@ export function ModelMatrix({
                     ) : (
                       <span className="badge badge-stale">unmatched</span>
                     )}
+                  </td>
+                  <td className={`mono num${m.overall == null ? " unknown" : ""}`}>
+                    {m.overall?.toFixed(1) ?? "—"}
                   </td>
                   {capabilities.map((c) => {
                     const v = m.categories[c];

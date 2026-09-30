@@ -15,6 +15,12 @@ import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
 import { buildAliasIndex, resolveAlias, vendorFor, VENDORS } from "./registry.mjs";
 import { LIVEBENCH_CATEGORIES, capabilityForLivebenchCategory } from "./categories.mjs";
 import { parseEffort, stripEffort, supportedEffortsFrom } from "./effort.mjs";
+import {
+  categoryAverages,
+  overallScore,
+  round2,
+  assertTasksCategorised,
+} from "./livebench-scores.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -80,15 +86,18 @@ async function livebenchModels(aliasIndex) {
   }
 
   const byModel = new Map(); // benchmark model -> Map(task -> score)
+  const allTasksSeen = new Set();
   for (const rec of recs) {
     const f = fieldsOf(rec);
     const model = f.model;
     const task = f.task;
     const score = f.score;
     if (!model || !task || score == null) continue;
+    allTasksSeen.add(task);
     if (!byModel.has(model)) byModel.set(model, new Map());
     byModel.get(model).set(task, score);
   }
+  assertTasksCategorised([...allTasksSeen], LIVEBENCH_CATEGORIES);
 
   const unmatched = [];
   const models = [];
@@ -97,19 +106,15 @@ async function livebenchModels(aliasIndex) {
     if (!hit) unmatched.push(benchModel);
 
     const taskObj = {};
-    const catScores = {};
     for (const [task, score] of tasks) {
       taskObj[task] = score;
-      const cat = Object.entries(LIVEBENCH_CATEGORIES).find(([, ts]) => ts.includes(task))?.[0];
-      if (!cat) continue;
-      catScores[cat] = catScores[cat] || { sum: 0, count: 0 };
-      catScores[cat].sum += score;
-      catScores[cat].count += 1;
     }
+    const avg = categoryAverages(taskObj, LIVEBENCH_CATEGORIES);
     const categories = {};
-    for (const [cat, agg] of Object.entries(catScores)) {
-      categories[capabilityForLivebenchCategory(cat) || cat] = Number((agg.sum / agg.count).toFixed(2));
+    for (const [cat, val] of Object.entries(avg)) {
+      categories[capabilityForLivebenchCategory(cat) || cat] = round2(val);
     }
+    const overall = round2(overallScore(avg, Object.keys(LIVEBENCH_CATEGORIES)));
 
     const { effort, thinking } = parseEffort(benchModel);
     const family_id = hit?.canonical ?? stripEffort(benchModel);
@@ -124,6 +129,7 @@ async function livebenchModels(aliasIndex) {
       family_id,
       effort,
       thinking,
+      overall,
       tasks: taskObj,
       categories,
       cost: costByModel.get(benchModel) || null,
