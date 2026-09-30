@@ -10,6 +10,12 @@ import { fileURLToPath } from "node:url";
 import { ADAPTER_URL, transformEnvelope } from "./sources/openrouter.mjs";
 import { ADAPTER_URL as SWE_URL, transformLeaderboards } from "./sources/swe-bench.mjs";
 import { SCORES_URL, COST_URL, transformScoresCsv, transformCostCsv } from "./sources/livebench.mjs";
+import {
+  ADAPTER_URL as TBENCH_URL,
+  decodeFlight,
+  extractLeaderboard,
+  toItems as tbenchToItems,
+} from "./sources/terminal-bench.mjs";
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const H = { "User-Agent": "model-bench-ingest" };
@@ -19,6 +25,7 @@ const LIMITS = {
   "swe-bench-verified": 4,
   "livebench-scores": 60,
   "livebench-cost": 6,
+  "terminal-bench": 6,
 };
 
 function writeFixture(name, items) {
@@ -60,6 +67,17 @@ const jobs = [
       const res = await fetch(COST_URL, { headers: H });
       if (!res.ok) throw new Error(`livebench-cost ${res.status}`);
       return transformCostCsv(await res.text()).slice(0, LIMITS["livebench-cost"]);
+    },
+  },
+  {
+    name: "terminal-bench",
+    run: async () => {
+      const res = await fetch(TBENCH_URL, { headers: H });
+      if (!res.ok) throw new Error(`terminal-bench ${res.status}`);
+      const text = await res.text();
+      const board = extractLeaderboard(decodeFlight(text));
+      if (!board) throw new Error("terminal-bench leaderboard not found in page");
+      return tbenchToItems(board).slice(0, LIMITS["terminal-bench"]);
     },
   },
 ];

@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "host": "www.tbench.ai",
+  "access": { "tier": 3, "kind": "json-api", "url": "https://www.tbench.ai/" },
+  "fetch": { "method": "GET", "timeout_ms": 60000, "max_records": 500, "max_response_bytes": 20971520 },
+  "records_path": "$",
+  "map": {
+    "source_id": { "path": "source_id" },
+    "url": { "path": "page_url" },
+    "title": { "path": "model_label", "normalize": "text" },
+    "leaderboard_title": { "path": "leaderboard_title", "normalize": "text" },
+    "model_org": { "path": "model_org", "normalize": "text" },
+    "agent_label": { "path": "agent_label", "normalize": "text" },
+    "agent_org": { "path": "agent_org", "normalize": "text" },
+    "reasoning_effort": { "path": "reasoning_effort", "normalize": "text" },
+    "accuracy": { "path": "accuracy", "normalize": "number" },
+    "ci95_half_width": { "path": "ci95_half_width", "normalize": "number" },
+    "n_trials": { "path": "n_trials", "normalize": "number" },
+    "total_cost_usd": { "path": "total_cost_usd", "normalize": "number" },
+    "run_date": { "path": "date", "normalize": "iso-date" }
+  },
+  "required": ["title", "accuracy", "leaderboard_title"],
+  "canary": { "min_records": 10, "median_window": 5, "count_drop_ratio": 0.4, "required_field_ratio": 0.9 }
+}

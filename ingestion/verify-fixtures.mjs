@@ -16,6 +16,7 @@ const ADAPTERS = [
   "swe-bench-verified.adapter.json",
   "livebench-scores.adapter.json",
   "livebench-cost.adapter.json",
+  "terminal-bench.adapter.json",
 ];
 
 let failed = 0;

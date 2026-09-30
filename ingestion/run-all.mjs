@@ -15,6 +15,7 @@ import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
 import { makeFetchImpl as openrouterFetch } from "./sources/openrouter.mjs";
 import { makeFetchImpl as sweBenchFetch } from "./sources/swe-bench.mjs";
 import { makeScoresFetchImpl, makeCostFetchImpl } from "./sources/livebench.mjs";
+import { makeFetchImpl as terminalBenchFetch } from "./sources/terminal-bench.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -23,6 +24,7 @@ const JOBS = [
   { name: "swe-bench-verified", adapterFile: "swe-bench-verified.adapter.json", fetchImpl: sweBenchFetch() },
   { name: "livebench-scores", adapterFile: "livebench-scores.adapter.json", fetchImpl: makeScoresFetchImpl() },
   { name: "livebench-cost", adapterFile: "livebench-cost.adapter.json", fetchImpl: makeCostFetchImpl() },
+  { name: "terminal-bench", adapterFile: "terminal-bench.adapter.json", fetchImpl: terminalBenchFetch() },
 ];
 
 const freshness = { generated_at: new Date().toISOString(), sources: {} };
