@@ -1305,3 +1305,129 @@ tbody tr:hover td {
     scroll-behavior: auto !important;
   }
 }
+
+/* Benchmark blocks */
+
+.bench-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  width: 100%;
+}
+
+.bench-block-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bench-block-title {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-main);
+}
+
+.bench-block-measures {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.bench-block-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bench-block-footer {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+
+.bench-source {
+  color: var(--text-main);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.bench-source:hover {
+  color: var(--accent-hover);
+}
+
+.bench-runs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .bench-runs-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.bench-run-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.bench-run-col-title {
+  font-size: 12px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bench-run-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.bench-run-item {
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--text-muted);
+  padding: 6px 8px;
+  background: var(--bg-inset);
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) - 2px);
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.bench-run-item[data-picked="true"] {
+  border-color: var(--border-strong);
+  color: var(--text-main);
+}
+
+.badge-picked {
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 1px 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--ok) 15%, transparent);
+  color: var(--ok);
+  margin-left: 6px;
+  white-space: nowrap;
+}
+
+.bench-aa-sub {
+  font-size: 11px;
+  color: var(--text-faint);
+  display: block;
+}
+

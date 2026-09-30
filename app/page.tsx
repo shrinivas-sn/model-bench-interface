@@ -23,6 +23,8 @@ export default function Page() {
           swe={data.swe_bench}
           capabilities={data.capabilities}
           terminalBench={data.terminal_bench ?? []}
+          artificialAnalysis={data.artificial_analysis ?? []}
+          sources={data.sources}
           vendorDisplay={data.vendor_display}
         />
       </Suspense>
