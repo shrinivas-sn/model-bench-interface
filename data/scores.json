@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-01T09:16:53.939Z",
+  "generated_at": "2026-10-02T08:49:46.634Z",
   "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -101,8 +101,8 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.027,
-      "output_per_million": 0.6,
+      "input_per_million": 0.015,
+      "output_per_million": 0.3,
       "supported_efforts": [
         "max",
         "high",
@@ -115,8 +115,8 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2276,
-      "output_per_million": 3.5,
+      "input_per_million": 0.132,
+      "output_per_million": 0.396,
       "supported_efforts": [
         "max",
         "high",
@@ -129,8 +129,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0108,
-      "output_per_million": 1.28,
+      "input_per_million": 0.0058,
+      "output_per_million": 1.6,
       "supported_efforts": [
         "max",
         "high",
@@ -171,8 +171,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.6846,
-      "output_per_million": 10,
+      "input_per_million": 1.39,
+      "output_per_million": 13,
       "supported_efforts": [
         "max",
         "high",
@@ -282,8 +282,8 @@
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.02,
-      "output_per_million": 0.3,
+      "input_per_million": 0.0262,
+      "output_per_million": 0.9,
       "supported_efforts": [
         "max",
         "high",
@@ -296,7 +296,7 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.1454,
+      "input_per_million": 0.12,
       "output_per_million": 4,
       "supported_efforts": [
         "max",
@@ -840,6 +840,16 @@
       "default_effort": "high"
     },
     {
+      "id": "apodex/apodex-1.1-mini:free",
+      "title": "Apodex: Apodex 1.1 Mini (free)",
+      "vendor": "other",
+      "context_length": 262144,
+      "input_per_million": 0,
+      "output_per_million": 0,
+      "supported_efforts": null,
+      "default_effort": null
+    },
+    {
       "id": "arcee-ai/trinity-large-thinking",
       "title": "Arcee AI: Trinity Large Thinking",
       "vendor": "other",
@@ -1121,7 +1131,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0731",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0108,
+      "input_per_million": 0.0077,
       "output_per_million": 1.28,
       "supported_efforts": [
         "max",
@@ -1176,8 +1186,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.03,
-      "output_per_million": 0.5,
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
       "supported_efforts": [
         "max",
         "high",
@@ -2503,8 +2513,8 @@
       "title": "MoonshotAI: Kimi K3",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.6846,
-      "output_per_million": 10,
+      "input_per_million": 2.7,
+      "output_per_million": 13.5,
       "supported_efforts": [
         "max",
         "high",
@@ -2655,8 +2665,8 @@
       "title": "NVIDIA: Nemotron 3 Ultra",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.6,
-      "output_per_million": 2.4,
+      "input_per_million": 0.5,
+      "output_per_million": 2.2,
       "supported_efforts": [
         "high",
         "medium"
@@ -2701,8 +2711,8 @@
       "title": "NVIDIA: Nemotron 3.5 Lightning",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.0595,
-      "output_per_million": 0.17,
+      "input_per_million": 0.06,
+      "output_per_million": 0.16,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4426,8 +4436,8 @@
       "title": "Qwen: Qwen3 30B A3B Instruct 2507",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.0481,
-      "output_per_million": 0.193,
+      "input_per_million": 0.1,
+      "output_per_million": 0.3,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4646,8 +4656,8 @@
       "title": "Qwen: Qwen3.5-35B-A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.1625,
-      "output_per_million": 1.3,
+      "input_per_million": 0.15,
+      "output_per_million": 1,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5157,7 +5167,7 @@
       "title": "Thinking Machines: Inkling",
       "vendor": "other",
       "context_length": 524288,
-      "input_per_million": 1,
+      "input_per_million": 0.95,
       "output_per_million": 4.05,
       "supported_efforts": [
         "max",
@@ -5237,6 +5247,16 @@
       "context_length": 262144,
       "input_per_million": 2.5,
       "output_per_million": 7.5,
+      "supported_efforts": null,
+      "default_effort": null
+    },
+    {
+      "id": "unbiased/pareto-26.10-preview",
+      "title": "Pareto 26.10 Preview",
+      "vendor": "other",
+      "context_length": 1048576,
+      "input_per_million": 0.8,
+      "output_per_million": 3.2,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5576,8 +5596,8 @@
       "title": "Z.ai: GLM 5.2",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 1.4,
-      "output_per_million": 4.4,
+      "input_per_million": 0.41,
+      "output_per_million": 3.99,
       "supported_efforts": [
         "xhigh",
         "high"
@@ -5589,7 +5609,7 @@
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.2219,
+      "input_per_million": 1.4,
       "output_per_million": 4.4,
       "supported_efforts": [
         "max",
@@ -6645,7 +6665,7 @@
         "avg_output_tokens": 21079
       },
       "pricing": {
-        "input_per_million": 0.0108,
+        "input_per_million": 0.0077,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -6900,8 +6920,8 @@
         "avg_output_tokens": 36355
       },
       "pricing": {
-        "input_per_million": 0.03,
-        "output_per_million": 0.5,
+        "input_per_million": 0.3,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7351,8 +7371,8 @@
         "avg_output_tokens": 23463
       },
       "pricing": {
-        "input_per_million": 1.4,
-        "output_per_million": 4.4,
+        "input_per_million": 0.41,
+        "output_per_million": 3.99,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7414,7 +7434,7 @@
         "avg_output_tokens": 62090
       },
       "pricing": {
-        "input_per_million": 0.2219,
+        "input_per_million": 1.4,
         "output_per_million": 4.4,
         "source": "openrouter"
       },
@@ -8968,8 +8988,8 @@
         "avg_output_tokens": 13647
       },
       "pricing": {
-        "input_per_million": 0.6846,
-        "output_per_million": 10,
+        "input_per_million": 2.7,
+        "output_per_million": 13.5,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9291,8 +9311,8 @@
         "avg_output_tokens": 41654
       },
       "pricing": {
-        "input_per_million": 0.6,
-        "output_per_million": 2.4,
+        "input_per_million": 0.5,
+        "output_per_million": 2.2,
         "source": "openrouter"
       },
       "context_length": 262144,
@@ -10370,7 +10390,7 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 466,
+      "catalog_models": 468,
       "livebench_models": 67,
       "livebench_matched": 59,
       "terminal_bench_runs": 27,
