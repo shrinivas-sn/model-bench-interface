@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-04T08:40:54.171Z",
+  "generated_at": "2026-10-05T09:28:41.196Z",
   "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -171,7 +171,7 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.6624,
+      "input_per_million": 0.66,
       "output_per_million": 13,
       "supported_efforts": [
         "max",
@@ -296,8 +296,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.05,
-      "output_per_million": 5,
+      "input_per_million": 0.03,
+      "output_per_million": 12,
       "supported_efforts": [
         "max",
         "high",
@@ -1038,8 +1038,8 @@
       "title": "DeepSeek: DeepSeek V3 0324",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.25,
-      "output_per_million": 1,
+      "input_per_million": 0.29,
+      "output_per_million": 1.14,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -1118,7 +1118,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0224,
+      "input_per_million": 0.03,
       "output_per_million": 1.28,
       "supported_efforts": [
         "xhigh",
@@ -1172,8 +1172,8 @@
       "title": "DeepSeek: DeepSeek V4 Pro 0813",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.33,
-      "output_per_million": 4.2,
+      "input_per_million": 0.45,
+      "output_per_million": 5,
       "supported_efforts": [
         "max",
         "high",
@@ -1186,8 +1186,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.003,
-      "output_per_million": 2.4,
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
       "supported_efforts": [
         "max",
         "high",
@@ -1680,8 +1680,8 @@
       "title": "Google: Gemma 4 26B A4B",
       "vendor": "google",
       "context_length": 262144,
-      "input_per_million": 0.0675,
-      "output_per_million": 0.225,
+      "input_per_million": 0.09,
+      "output_per_million": 0.3,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -1964,8 +1964,8 @@
       "title": "Meta: Llama 3.3 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "input_per_million": 0.22,
-      "output_per_million": 0.5,
+      "input_per_million": 0.1,
+      "output_per_million": 0.32,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2523,8 +2523,8 @@
       "title": "MoonshotAI: Kimi K3",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.72,
-      "output_per_million": 13,
+      "input_per_million": 0.67,
+      "output_per_million": 14,
       "supported_efforts": [
         "max",
         "high",
@@ -2721,8 +2721,8 @@
       "title": "NVIDIA: Nemotron 3.5 Lightning",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.0595,
-      "output_per_million": 0.17,
+      "input_per_million": 0.06,
+      "output_per_million": 0.16,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -3564,8 +3564,8 @@
       "title": "OpenAI: GPT-5.6 Sol Pro",
       "vendor": "openai",
       "context_length": 1050000,
-      "input_per_million": 4,
-      "output_per_million": 20,
+      "input_per_million": 2,
+      "output_per_million": 10,
       "supported_efforts": [
         "max",
         "xhigh",
@@ -4737,7 +4737,7 @@
       "vendor": "qwen",
       "context_length": 262144,
       "input_per_million": 0.32,
-      "output_per_million": 3.2,
+      "output_per_million": 2.7,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4830,8 +4830,8 @@
       "title": "Qwen: Qwen3.8 27B",
       "vendor": "qwen",
       "context_length": 1000000,
-      "input_per_million": 0.42,
-      "output_per_million": 3,
+      "input_per_million": 0.425,
+      "output_per_million": 2.55,
       "supported_efforts": [
         "xhigh",
         "medium",
@@ -5616,8 +5616,8 @@
       "title": "Z.ai: GLM 5.2",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.38,
-      "output_per_million": 3.49,
+      "input_per_million": 0.0224,
+      "output_per_million": 16,
       "supported_efforts": [
         "xhigh",
         "high"
@@ -5629,8 +5629,8 @@
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 1.4,
-      "output_per_million": 4.4,
+      "input_per_million": 0.05,
+      "output_per_million": 7,
       "supported_efforts": [
         "max",
         "high",
@@ -6622,7 +6622,7 @@
         "avg_output_tokens": 34434
       },
       "pricing": {
-        "input_per_million": 0.0224,
+        "input_per_million": 0.03,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -6876,8 +6876,8 @@
         "avg_output_tokens": 36339
       },
       "pricing": {
-        "input_per_million": 0.33,
-        "output_per_million": 4.2,
+        "input_per_million": 0.45,
+        "output_per_million": 5,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -6940,8 +6940,8 @@
         "avg_output_tokens": 36355
       },
       "pricing": {
-        "input_per_million": 0.003,
-        "output_per_million": 2.4,
+        "input_per_million": 0.3,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7391,8 +7391,8 @@
         "avg_output_tokens": 23463
       },
       "pricing": {
-        "input_per_million": 0.38,
-        "output_per_million": 3.49,
+        "input_per_million": 0.0224,
+        "output_per_million": 16,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7454,8 +7454,8 @@
         "avg_output_tokens": 62090
       },
       "pricing": {
-        "input_per_million": 1.4,
-        "output_per_million": 4.4,
+        "input_per_million": 0.05,
+        "output_per_million": 7,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9008,8 +9008,8 @@
         "avg_output_tokens": 13647
       },
       "pricing": {
-        "input_per_million": 0.72,
-        "output_per_million": 13,
+        "input_per_million": 0.67,
+        "output_per_million": 14,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9454,7 +9454,7 @@
       },
       "pricing": {
         "input_per_million": 0.32,
-        "output_per_million": 3.2,
+        "output_per_million": 2.7,
         "source": "openrouter"
       },
       "context_length": 262144,
@@ -9633,8 +9633,8 @@
         "avg_output_tokens": 28740
       },
       "pricing": {
-        "input_per_million": 0.42,
-        "output_per_million": 3,
+        "input_per_million": 0.425,
+        "output_per_million": 2.55,
         "source": "openrouter"
       },
       "context_length": 1000000,
