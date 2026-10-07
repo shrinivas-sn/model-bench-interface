@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-10-06T09:13:32.493Z",
+  "generated_at": "2026-10-07T09:04:16.860Z",
   "sources": {
     "openrouter": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 464,
-        "parsed": 464,
-        "fresh": 0,
-        "changed": 19,
-        "unchanged": 445,
+        "fetched": 465,
+        "parsed": 465,
+        "fresh": 2,
+        "changed": 17,
+        "unchanged": 446,
         "written": 19
       },
-      "fetched_at": "2026-10-06T09:13:32.714Z"
+      "fetched_at": "2026-10-07T09:04:17.199Z"
     },
     "livebench-scores": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 1518,
-        "parsed": 1518,
-        "fresh": 0,
+        "fetched": 1541,
+        "parsed": 1541,
+        "fresh": 23,
         "changed": 0,
         "unchanged": 1518,
-        "written": 0
+        "written": 23
       },
-      "fetched_at": "2026-10-06T09:13:32.864Z",
+      "fetched_at": "2026-10-07T09:04:17.342Z",
       "release": "2026-06-25"
     },
     "livebench-cost": {
@@ -35,14 +35,14 @@
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 66,
-        "parsed": 66,
-        "fresh": 0,
+        "fetched": 67,
+        "parsed": 67,
+        "fresh": 1,
         "changed": 0,
         "unchanged": 66,
-        "written": 0
+        "written": 1
       },
-      "fetched_at": "2026-10-06T09:13:32.895Z",
+      "fetched_at": "2026-10-07T09:04:17.428Z",
       "release": "2026-06-25"
     },
     "terminal-bench": {
@@ -50,14 +50,14 @@
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 32,
-        "parsed": 32,
-        "fresh": 5,
+        "fetched": 35,
+        "parsed": 35,
+        "fresh": 3,
         "changed": 0,
-        "unchanged": 27,
-        "written": 5
+        "unchanged": 32,
+        "written": 3
       },
-      "fetched_at": "2026-10-06T09:13:33.286Z"
+      "fetched_at": "2026-10-07T09:04:17.681Z"
     }
   }
 }

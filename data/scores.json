@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-06T09:13:33.595Z",
+  "generated_at": "2026-10-07T09:04:17.939Z",
   "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -101,7 +101,7 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0395,
+      "input_per_million": 0.05,
       "output_per_million": 1.2,
       "supported_efforts": [
         "max",
@@ -115,8 +115,8 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2694,
-      "output_per_million": 4.2,
+      "input_per_million": 0.4,
+      "output_per_million": 4.3,
       "supported_efforts": [
         "max",
         "high",
@@ -129,7 +129,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.009,
+      "input_per_million": 0.018,
       "output_per_million": 1.28,
       "supported_efforts": [
         "max",
@@ -171,7 +171,7 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.82,
+      "input_per_million": 0.61,
       "output_per_million": 13,
       "supported_efforts": [
         "max",
@@ -296,8 +296,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.03,
-      "output_per_million": 12,
+      "input_per_million": 0.063,
+      "output_per_million": 6.3,
       "supported_efforts": [
         "max",
         "high",
@@ -1118,7 +1118,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0011,
+      "input_per_million": 0.03,
       "output_per_million": 1.28,
       "supported_efforts": [
         "xhigh",
@@ -1131,7 +1131,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0731",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.009,
+      "input_per_million": 0.018,
       "output_per_million": 1.28,
       "supported_efforts": [
         "max",
@@ -1186,8 +1186,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0495,
-      "output_per_million": 1.32,
+      "input_per_million": 0.05,
+      "output_per_million": 1.2,
       "supported_efforts": [
         "max",
         "high",
@@ -1636,6 +1636,19 @@
       "default_effort": "medium"
     },
     {
+      "id": "google/gemini-nano-banana-2.1",
+      "title": "Google: Nano Banana 2.1",
+      "vendor": "google",
+      "context_length": 65536,
+      "input_per_million": 1.5,
+      "output_per_million": 7.5,
+      "supported_efforts": [
+        "high",
+        "minimal"
+      ],
+      "default_effort": "minimal"
+    },
+    {
       "id": "google/gemma-2-27b-it",
       "title": "Google: Gemma 2 27B",
       "vendor": "google",
@@ -2004,8 +2017,8 @@
       "title": "Meta: Muse Glimmer 30B",
       "vendor": "meta",
       "context_length": 131072,
-      "input_per_million": 0.35,
-      "output_per_million": 1.5,
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
       "supported_efforts": [
         "xhigh",
         "high",
@@ -2307,6 +2320,19 @@
       "default_effort": null
     },
     {
+      "id": "mistralai/mistral-large-4-0",
+      "title": "Mistral: Mistral Large 4",
+      "vendor": "mistral",
+      "context_length": 524288,
+      "input_per_million": 0.68,
+      "output_per_million": 2.09,
+      "supported_efforts": [
+        "high",
+        "none"
+      ],
+      "default_effort": "high"
+    },
+    {
       "id": "mistralai/mistral-medium-3",
       "title": "Mistral: Mistral Medium 3",
       "vendor": "mistral",
@@ -2503,8 +2529,8 @@
       "title": "MoonshotAI: Kimi K2.6",
       "vendor": "moonshot",
       "context_length": 262144,
-      "input_per_million": 0.95,
-      "output_per_million": 4,
+      "input_per_million": 0.465,
+      "output_per_million": 2.45,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2523,8 +2549,8 @@
       "title": "MoonshotAI: Kimi K3",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.83,
-      "output_per_million": 14,
+      "input_per_million": 0.62,
+      "output_per_million": 15,
       "supported_efforts": [
         "max",
         "high",
@@ -4456,8 +4482,8 @@
       "title": "Qwen: Qwen3 30B A3B Instruct 2507",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.1,
-      "output_per_million": 0.3,
+      "input_per_million": 0.0481,
+      "output_per_million": 0.193,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4676,8 +4702,8 @@
       "title": "Qwen: Qwen3.5-35B-A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.08,
-      "output_per_million": 0.75,
+      "input_per_million": 0.15,
+      "output_per_million": 1,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4736,8 +4762,8 @@
       "title": "Qwen: Qwen3.6 27B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.32,
-      "output_per_million": 3.25,
+      "input_per_million": 0.3,
+      "output_per_million": 2,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5187,7 +5213,7 @@
       "title": "Thinking Machines: Inkling",
       "vendor": "other",
       "context_length": 524288,
-      "input_per_million": 0.95,
+      "input_per_million": 1,
       "output_per_million": 4.05,
       "supported_efforts": [
         "max",
@@ -5606,8 +5632,8 @@
       "title": "Z.ai: GLM 5.1",
       "vendor": "other",
       "context_length": 204800,
-      "input_per_million": 1.4,
-      "output_per_million": 4.4,
+      "input_per_million": 0.966,
+      "output_per_million": 3.036,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5616,8 +5642,8 @@
       "title": "Z.ai: GLM 5.2",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.152,
-      "output_per_million": 12,
+      "input_per_million": 0.171,
+      "output_per_million": 7.2,
       "supported_efforts": [
         "xhigh",
         "high"
@@ -6622,7 +6648,7 @@
         "avg_output_tokens": 34434
       },
       "pricing": {
-        "input_per_million": 0.0011,
+        "input_per_million": 0.03,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -6685,7 +6711,7 @@
         "avg_output_tokens": 21079
       },
       "pricing": {
-        "input_per_million": 0.009,
+        "input_per_million": 0.018,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -6940,8 +6966,8 @@
         "avg_output_tokens": 36355
       },
       "pricing": {
-        "input_per_million": 0.0495,
-        "output_per_million": 1.32,
+        "input_per_million": 0.05,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7391,8 +7417,8 @@
         "avg_output_tokens": 23463
       },
       "pricing": {
-        "input_per_million": 0.152,
-        "output_per_million": 12,
+        "input_per_million": 0.171,
+        "output_per_million": 7.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -8888,8 +8914,8 @@
         "avg_output_tokens": 27001
       },
       "pricing": {
-        "input_per_million": 0.95,
-        "output_per_million": 4,
+        "input_per_million": 0.465,
+        "output_per_million": 2.45,
         "source": "openrouter"
       },
       "context_length": 262144,
@@ -9008,8 +9034,8 @@
         "avg_output_tokens": 13647
       },
       "pricing": {
-        "input_per_million": 0.83,
-        "output_per_million": 14,
+        "input_per_million": 0.62,
+        "output_per_million": 15,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9079,6 +9105,69 @@
       "context_length": 1048576,
       "supported_efforts": null,
       "default_effort": null
+    },
+    {
+      "benchmark_name": "mistral-large-4-high",
+      "canonical_id": "mistralai/mistral-large-4-0",
+      "alias_method": "suffix-stripped",
+      "vendor": "mistral",
+      "display_vendor": "mistral",
+      "family_id": "mistralai/mistral-large-4-0",
+      "effort": "high",
+      "thinking": false,
+      "overall": 70.54,
+      "tasks": {
+        "AMPS_Hard": 98,
+        "code_completion": 76.087,
+        "code_generation": 74.648,
+        "connections": 40,
+        "consecutive_events": 75.635,
+        "integrals_with_game": 90,
+        "javascript": 68.182,
+        "logic_with_navigation": 58,
+        "math_comp": 97.059,
+        "olympiad": 89.28,
+        "paraphrase": 63.967,
+        "plot_unscrambling": 40.927,
+        "python": 60,
+        "simplify": 66.183,
+        "spatial": 94,
+        "story_generation": 67.5,
+        "summarize": 61.633,
+        "tablejoin": 49.096,
+        "tablereformat": 100,
+        "theory_of_mind": 80.769,
+        "typescript": 43.333,
+        "typos": 60,
+        "zebra_puzzle": 91
+      },
+      "categories": {
+        "Reasoning": 80.94,
+        "Coding": 75.37,
+        "Agentic Coding": 57.17,
+        "Mathematics": 93.58,
+        "Data Analysis": 74.91,
+        "Language": 46.98,
+        "Instruction Following": 64.82
+      },
+      "cost": {
+        "input_price_per_million": 0.68,
+        "output_price_per_million": 2.09,
+        "cost_per_question": 0.1038,
+        "avg_input_tokens": 301302,
+        "avg_output_tokens": 27748
+      },
+      "pricing": {
+        "input_per_million": 0.68,
+        "output_per_million": 2.09,
+        "source": "openrouter"
+      },
+      "context_length": 524288,
+      "supported_efforts": [
+        "high",
+        "none"
+      ],
+      "default_effort": "high"
     },
     {
       "benchmark_name": "muse-spark-1.1-xhigh",
@@ -9453,8 +9542,8 @@
         "avg_output_tokens": 24329
       },
       "pricing": {
-        "input_per_million": 0.32,
-        "output_per_million": 3.25,
+        "input_per_million": 0.3,
+        "output_per_million": 2,
         "source": "openrouter"
       },
       "context_length": 262144,
@@ -10332,6 +10421,21 @@
       "leaderboard_title": "Terminal-Bench 4.0"
     },
     {
+      "run_id": "ac7be218-79b6-464e-8861-9b5a7f760cb8",
+      "canonical_id": "z-ai/glm-5.3-flash",
+      "alias_method": "exact",
+      "model_label": "GLM-5.3-Flash",
+      "model_org": "Z.ai",
+      "agent_label": "Claude Code",
+      "reasoning_effort": "none",
+      "accuracy": 35.76,
+      "ci95_half_width": 3.54,
+      "n_trials": 330,
+      "total_cost_usd": 2883.11,
+      "run_date": "2026-08-26",
+      "leaderboard_title": "Terminal-Bench 4.0"
+    },
+    {
       "run_id": "03fe4f10-b683-427b-a820-61e38145d28b",
       "canonical_id": "anthropic/claude-opus-5",
       "alias_method": "manual",
@@ -10344,6 +10448,21 @@
       "n_trials": 330,
       "total_cost_usd": 2393.88,
       "run_date": "2026-07-24",
+      "leaderboard_title": "Terminal-Bench 4.0"
+    },
+    {
+      "run_id": "1f7ed2b4-3a4e-41d9-a1e1-0d9dcdc3667a",
+      "canonical_id": "qwen/qwen3.8-max-0902",
+      "alias_method": "exact",
+      "model_label": "Qwen3.8-Max-0902",
+      "model_org": "Alibaba",
+      "agent_label": "Claude Code",
+      "reasoning_effort": "max",
+      "accuracy": 26.97,
+      "ci95_half_width": 3.78,
+      "n_trials": 330,
+      "total_cost_usd": 4635.67,
+      "run_date": "2026-09-02",
       "leaderboard_title": "Terminal-Bench 4.0"
     },
     {
@@ -10437,6 +10556,21 @@
       "leaderboard_title": "Terminal-Bench 4.0"
     },
     {
+      "run_id": "c76c9ec8-b770-41ad-b0d2-e64db28bd478",
+      "canonical_id": "meta/muse-spark-1.3",
+      "alias_method": "exact",
+      "model_label": "Muse Spark 1.3",
+      "model_org": "Meta",
+      "agent_label": "Muse Code",
+      "reasoning_effort": "xhigh",
+      "accuracy": 14.55,
+      "ci95_half_width": 2.94,
+      "n_trials": 330,
+      "total_cost_usd": 0,
+      "run_date": "2026-09-02",
+      "leaderboard_title": "Terminal-Bench 4.0"
+    },
+    {
       "run_id": "0eed5a0d-96b6-491b-aeb7-cd5e4700c2d7",
       "canonical_id": "x-ai/grok-4.5",
       "alias_method": "exact",
@@ -10485,11 +10619,11 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 470,
-      "livebench_models": 67,
-      "livebench_matched": 59,
-      "terminal_bench_runs": 32,
-      "terminal_bench_matched": 30
+      "catalog_models": 472,
+      "livebench_models": 68,
+      "livebench_matched": 60,
+      "terminal_bench_runs": 35,
+      "terminal_bench_matched": 33
     },
     "unmatched": {
       "livebench": [
