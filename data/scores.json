@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07T09:04:17.939Z",
+  "generated_at": "2026-10-08T09:19:30.395Z",
   "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -58,11 +58,17 @@
       "id": "~anthropic/claude-haiku-latest",
       "title": "Anthropic: Claude Haiku Latest",
       "vendor": "anthropic",
-      "context_length": 200000,
-      "input_per_million": 1,
-      "output_per_million": 5,
-      "supported_efforts": null,
-      "default_effort": null
+      "context_length": 1000000,
+      "input_per_million": 0.1,
+      "output_per_million": 0.5,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
     },
     {
       "id": "~anthropic/claude-opus-latest",
@@ -101,8 +107,8 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.05,
-      "output_per_million": 1.2,
+      "input_per_million": 0.035,
+      "output_per_million": 0.6,
       "supported_efforts": [
         "max",
         "high",
@@ -115,8 +121,8 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.4,
-      "output_per_million": 4.3,
+      "input_per_million": 0.108,
+      "output_per_million": 8,
       "supported_efforts": [
         "max",
         "high",
@@ -129,8 +135,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.018,
-      "output_per_million": 1.28,
+      "input_per_million": 0.0144,
+      "output_per_million": 0.482,
       "supported_efforts": [
         "max",
         "high",
@@ -171,7 +177,7 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.61,
+      "input_per_million": 0.54,
       "output_per_million": 13,
       "supported_efforts": [
         "max",
@@ -282,8 +288,8 @@
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0235,
-      "output_per_million": 0.6875,
+      "input_per_million": 0.032,
+      "output_per_million": 1.8831,
       "supported_efforts": [
         "max",
         "high",
@@ -296,8 +302,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.063,
-      "output_per_million": 6.3,
+      "input_per_million": 0.036,
+      "output_per_million": 12,
       "supported_efforts": [
         "max",
         "high",
@@ -516,6 +522,38 @@
       "output_per_million": 2.5,
       "supported_efforts": null,
       "default_effort": null
+    },
+    {
+      "id": "anthropic/claude-haiku-5.5",
+      "title": "Anthropic: Claude Haiku 5.5",
+      "vendor": "anthropic",
+      "context_length": 1000000,
+      "input_per_million": 0.1,
+      "output_per_million": 0.5,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    },
+    {
+      "id": "anthropic/claude-haiku-5.5:batch",
+      "title": "Anthropic: Claude Haiku 5.5 (batch)",
+      "vendor": "anthropic",
+      "context_length": 1000000,
+      "input_per_million": 0.05,
+      "output_per_million": 0.25,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
     },
     {
       "id": "anthropic/claude-opus-4.1",
@@ -1098,7 +1136,7 @@
       "title": "DeepSeek: DeepSeek V3.2",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.28,
+      "input_per_million": 0.259,
       "output_per_million": 0.42,
       "supported_efforts": null,
       "default_effort": null
@@ -1118,7 +1156,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.03,
+      "input_per_million": 0.0228,
       "output_per_million": 1.28,
       "supported_efforts": [
         "xhigh",
@@ -1159,8 +1197,8 @@
       "title": "DeepSeek: DeepSeek V4 Pro 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2088,
-      "output_per_million": 0.4176,
+      "input_per_million": 0.9553,
+      "output_per_million": 1.9105,
       "supported_efforts": [
         "xhigh",
         "high"
@@ -1186,7 +1224,7 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.05,
+      "input_per_million": 0.3,
       "output_per_million": 1.2,
       "supported_efforts": [
         "max",
@@ -1977,8 +2015,8 @@
       "title": "Meta: Llama 3.3 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "input_per_million": 0.22,
-      "output_per_million": 0.5,
+      "input_per_million": 0.1,
+      "output_per_million": 0.32,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2550,7 +2588,7 @@
       "vendor": "moonshot",
       "context_length": 1048576,
       "input_per_million": 0.62,
-      "output_per_million": 15,
+      "output_per_million": 12.3,
       "supported_efforts": [
         "max",
         "high",
@@ -2655,8 +2693,8 @@
       "title": "NVIDIA: Nemotron 3 Nano 30B A3B",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.05,
-      "output_per_million": 0.2,
+      "input_per_million": 0.06,
+      "output_per_million": 0.24,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2675,8 +2713,8 @@
       "title": "NVIDIA: Nemotron 3 Super",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.08,
-      "output_per_million": 0.45,
+      "input_per_million": 0.085,
+      "output_per_million": 0.4,
       "supported_efforts": [
         "medium",
         "low"
@@ -2747,8 +2785,8 @@
       "title": "NVIDIA: Nemotron 3.5 Lightning",
       "vendor": "other",
       "context_length": 262144,
-      "input_per_million": 0.06,
-      "output_per_million": 0.16,
+      "input_per_million": 0.049,
+      "output_per_million": 0.14,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4592,8 +4630,8 @@
       "title": "Qwen: Qwen3 Next 80B A3B Instruct",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.1,
-      "output_per_million": 1.1,
+      "input_per_million": 0.15,
+      "output_per_million": 1.5,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4692,8 +4730,8 @@
       "title": "Qwen: Qwen3.5-27B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.195,
-      "output_per_million": 1.56,
+      "input_per_million": 0.26,
+      "output_per_million": 2.6,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5642,8 +5680,8 @@
       "title": "Z.ai: GLM 5.2",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.171,
-      "output_per_million": 7.2,
+      "input_per_million": 0.03,
+      "output_per_million": 10,
       "supported_efforts": [
         "xhigh",
         "high"
@@ -5655,8 +5693,8 @@
       "title": "Z.ai: GLM 5.3",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.07,
-      "output_per_million": 7,
+      "input_per_million": 0.049,
+      "output_per_million": 3.39,
       "supported_efforts": [
         "max",
         "high",
@@ -5877,6 +5915,138 @@
         "low"
       ],
       "default_effort": "high"
+    },
+    {
+      "benchmark_name": "claude-haiku-5-5-max-effort",
+      "canonical_id": "anthropic/claude-haiku-5.5",
+      "alias_method": "suffix-stripped",
+      "vendor": "anthropic",
+      "display_vendor": "anthropic",
+      "family_id": "anthropic/claude-haiku-5.5",
+      "effort": "max",
+      "thinking": false,
+      "overall": 67.88,
+      "tasks": {
+        "AMPS_Hard": 97,
+        "code_completion": 78.261,
+        "code_generation": 77.465,
+        "connections": 96,
+        "consecutive_events": 10.638,
+        "integrals_with_game": 67,
+        "javascript": 68.182,
+        "logic_with_navigation": 66,
+        "math_comp": 98.039,
+        "olympiad": 83.701,
+        "paraphrase": 50.217,
+        "plot_unscrambling": 27.884,
+        "python": 60,
+        "simplify": 50.25,
+        "spatial": 92,
+        "story_generation": 64.533,
+        "summarize": 53.633,
+        "tablejoin": 46.673,
+        "tablereformat": 98.039,
+        "theory_of_mind": 86.538,
+        "typescript": 43.333,
+        "typos": 64,
+        "zebra_puzzle": 94
+      },
+      "categories": {
+        "Reasoning": 84.63,
+        "Coding": 77.86,
+        "Agentic Coding": 57.17,
+        "Mathematics": 86.44,
+        "Data Analysis": 51.78,
+        "Language": 62.63,
+        "Instruction Following": 54.66
+      },
+      "cost": {
+        "input_price_per_million": 0.1,
+        "output_price_per_million": 0.5,
+        "cost_per_question": 0.0347,
+        "avg_input_tokens": 1268,
+        "avg_output_tokens": 53659
+      },
+      "pricing": {
+        "input_per_million": 0.1,
+        "output_per_million": 0.5,
+        "source": "openrouter"
+      },
+      "context_length": 1000000,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
+    },
+    {
+      "benchmark_name": "claude-haiku-5-5-xhigh-effort",
+      "canonical_id": "anthropic/claude-haiku-5.5",
+      "alias_method": "suffix-stripped",
+      "vendor": "anthropic",
+      "display_vendor": "anthropic",
+      "family_id": "anthropic/claude-haiku-5.5",
+      "effort": "xhigh",
+      "thinking": false,
+      "overall": 72.07,
+      "tasks": {
+        "AMPS_Hard": 98,
+        "code_completion": 73.913,
+        "code_generation": 78.873,
+        "connections": 93.833,
+        "consecutive_events": 71.047,
+        "integrals_with_game": 89,
+        "javascript": 59.091,
+        "logic_with_navigation": 56,
+        "math_comp": 97.059,
+        "olympiad": 86.951,
+        "paraphrase": 62.5,
+        "plot_unscrambling": 42.715,
+        "python": 55,
+        "simplify": 62.783,
+        "spatial": 94,
+        "story_generation": 73.6,
+        "summarize": 66.983,
+        "tablejoin": 49.173,
+        "tablereformat": 98.039,
+        "theory_of_mind": 76.923,
+        "typescript": 40,
+        "typos": 54,
+        "zebra_puzzle": 98
+      },
+      "categories": {
+        "Reasoning": 81.23,
+        "Coding": 76.39,
+        "Agentic Coding": 51.36,
+        "Mathematics": 92.75,
+        "Data Analysis": 72.75,
+        "Language": 63.52,
+        "Instruction Following": 66.47
+      },
+      "cost": {
+        "input_price_per_million": 0.1,
+        "output_price_per_million": 0.5,
+        "cost_per_question": 0.0135,
+        "avg_input_tokens": 1263,
+        "avg_output_tokens": 22307
+      },
+      "pricing": {
+        "input_per_million": 0.1,
+        "output_per_million": 0.5,
+        "source": "openrouter"
+      },
+      "context_length": 1000000,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "medium"
     },
     {
       "benchmark_name": "claude-opus-4-5-20251101-thinking-64k-high-effort",
@@ -6648,7 +6818,7 @@
         "avg_output_tokens": 34434
       },
       "pricing": {
-        "input_per_million": 0.03,
+        "input_per_million": 0.0228,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -6839,8 +7009,8 @@
         "avg_output_tokens": 35014
       },
       "pricing": {
-        "input_per_million": 0.2088,
-        "output_per_million": 0.4176,
+        "input_per_million": 0.9553,
+        "output_per_million": 1.9105,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -6966,7 +7136,7 @@
         "avg_output_tokens": 36355
       },
       "pricing": {
-        "input_per_million": 0.05,
+        "input_per_million": 0.3,
         "output_per_million": 1.2,
         "source": "openrouter"
       },
@@ -7417,8 +7587,8 @@
         "avg_output_tokens": 23463
       },
       "pricing": {
-        "input_per_million": 0.171,
-        "output_per_million": 7.2,
+        "input_per_million": 0.03,
+        "output_per_million": 10,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7480,8 +7650,8 @@
         "avg_output_tokens": 62090
       },
       "pricing": {
-        "input_per_million": 0.07,
-        "output_per_million": 7,
+        "input_per_million": 0.049,
+        "output_per_million": 3.39,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9035,7 +9205,7 @@
       },
       "pricing": {
         "input_per_million": 0.62,
-        "output_per_million": 15,
+        "output_per_million": 12.3,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9115,16 +9285,16 @@
       "family_id": "mistralai/mistral-large-4-0",
       "effort": "high",
       "thinking": false,
-      "overall": 70.54,
+      "overall": 71.84,
       "tasks": {
         "AMPS_Hard": 98,
-        "code_completion": 76.087,
-        "code_generation": 74.648,
-        "connections": 40,
-        "consecutive_events": 75.635,
+        "code_completion": 78.261,
+        "code_generation": 76.056,
+        "connections": 48,
+        "consecutive_events": 80.529,
         "integrals_with_game": 90,
         "javascript": 68.182,
-        "logic_with_navigation": 58,
+        "logic_with_navigation": 68,
         "math_comp": 97.059,
         "olympiad": 89.28,
         "paraphrase": 63.967,
@@ -9139,23 +9309,23 @@
         "theory_of_mind": 80.769,
         "typescript": 43.333,
         "typos": 60,
-        "zebra_puzzle": 91
+        "zebra_puzzle": 93
       },
       "categories": {
-        "Reasoning": 80.94,
-        "Coding": 75.37,
+        "Reasoning": 83.94,
+        "Coding": 77.16,
         "Agentic Coding": 57.17,
         "Mathematics": 93.58,
-        "Data Analysis": 74.91,
-        "Language": 46.98,
+        "Data Analysis": 76.54,
+        "Language": 49.64,
         "Instruction Following": 64.82
       },
       "cost": {
         "input_price_per_million": 0.68,
         "output_price_per_million": 2.09,
-        "cost_per_question": 0.1038,
-        "avg_input_tokens": 301302,
-        "avg_output_tokens": 27748
+        "cost_per_question": 0.0995,
+        "avg_input_tokens": 301307,
+        "avg_output_tokens": 25699
       },
       "pricing": {
         "input_per_million": 0.68,
@@ -10619,9 +10789,9 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 472,
-      "livebench_models": 68,
-      "livebench_matched": 60,
+      "catalog_models": 474,
+      "livebench_models": 70,
+      "livebench_matched": 62,
       "terminal_bench_runs": 35,
       "terminal_bench_matched": 33
     },

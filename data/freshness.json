@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-10-07T09:04:16.860Z",
+  "generated_at": "2026-10-08T09:19:28.991Z",
   "sources": {
     "openrouter": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 465,
-        "parsed": 465,
+        "fetched": 467,
+        "parsed": 467,
         "fresh": 2,
-        "changed": 17,
-        "unchanged": 446,
-        "written": 19
+        "changed": 26,
+        "unchanged": 439,
+        "written": 28
       },
-      "fetched_at": "2026-10-07T09:04:17.199Z"
+      "fetched_at": "2026-10-08T09:19:29.297Z"
     },
     "livebench-scores": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 1541,
-        "parsed": 1541,
-        "fresh": 23,
-        "changed": 0,
-        "unchanged": 1518,
-        "written": 23
+        "fetched": 1587,
+        "parsed": 1587,
+        "fresh": 46,
+        "changed": 6,
+        "unchanged": 1535,
+        "written": 52
       },
-      "fetched_at": "2026-10-07T09:04:17.342Z",
+      "fetched_at": "2026-10-08T09:19:29.457Z",
       "release": "2026-06-25"
     },
     "livebench-cost": {
@@ -35,14 +35,14 @@
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 67,
-        "parsed": 67,
-        "fresh": 1,
-        "changed": 0,
+        "fetched": 69,
+        "parsed": 69,
+        "fresh": 2,
+        "changed": 1,
         "unchanged": 66,
-        "written": 1
+        "written": 3
       },
-      "fetched_at": "2026-10-07T09:04:17.428Z",
+      "fetched_at": "2026-10-08T09:19:29.596Z",
       "release": "2026-06-25"
     },
     "terminal-bench": {
@@ -52,12 +52,12 @@
       "stages": {
         "fetched": 35,
         "parsed": 35,
-        "fresh": 3,
+        "fresh": 0,
         "changed": 0,
-        "unchanged": 32,
-        "written": 3
+        "unchanged": 35,
+        "written": 0
       },
-      "fetched_at": "2026-10-07T09:04:17.681Z"
+      "fetched_at": "2026-10-08T09:19:30.074Z"
     }
   }
 }
