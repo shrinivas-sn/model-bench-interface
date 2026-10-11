@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T08:48:27.257Z",
+  "generated_at": "2026-10-11T09:10:08.274Z",
   "sources": {
     "openrouter": {
       "outcome": "ok",
@@ -9,11 +9,11 @@
         "fetched": 458,
         "parsed": 458,
         "fresh": 0,
-        "changed": 25,
-        "unchanged": 433,
-        "written": 25
+        "changed": 13,
+        "unchanged": 445,
+        "written": 13
       },
-      "fetched_at": "2026-10-10T08:48:27.597Z"
+      "fetched_at": "2026-10-11T09:10:08.518Z"
     },
     "livebench-scores": {
       "outcome": "ok",
@@ -27,7 +27,7 @@
         "unchanged": 1587,
         "written": 0
       },
-      "fetched_at": "2026-10-10T08:48:27.733Z",
+      "fetched_at": "2026-10-11T09:10:08.751Z",
       "release": "2026-06-25"
     },
     "livebench-cost": {
@@ -42,7 +42,7 @@
         "unchanged": 69,
         "written": 0
       },
-      "fetched_at": "2026-10-10T08:48:27.916Z",
+      "fetched_at": "2026-10-11T09:10:08.879Z",
       "release": "2026-06-25"
     },
     "terminal-bench": {
@@ -57,7 +57,7 @@
         "unchanged": 35,
         "written": 0
       },
-      "fetched_at": "2026-10-10T08:48:28.322Z"
+      "fetched_at": "2026-10-11T09:10:09.106Z"
     }
   }
 }
