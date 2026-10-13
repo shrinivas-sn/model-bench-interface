@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-12T09:35:21.216Z",
+  "generated_at": "2026-10-13T09:39:13.218Z",
   "release": "LiveBench 2026-06-25 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -107,8 +107,8 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0336,
-      "output_per_million": 1.188,
+      "input_per_million": 0.0441,
+      "output_per_million": 0.63,
       "supported_efforts": [
         "max",
         "high",
@@ -135,8 +135,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0128,
-      "output_per_million": 0.768,
+      "input_per_million": 0.0144,
+      "output_per_million": 0.576,
       "supported_efforts": [
         "max",
         "high",
@@ -177,8 +177,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.72,
-      "output_per_million": 24,
+      "input_per_million": 0.73,
+      "output_per_million": 13.5,
       "supported_efforts": [
         "max",
         "high",
@@ -288,8 +288,8 @@
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0232,
-      "output_per_million": 1.2,
+      "input_per_million": 0.0261,
+      "output_per_million": 0.9,
       "supported_efforts": [
         "max",
         "high",
@@ -1156,7 +1156,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.03,
+      "input_per_million": 0.0452,
       "output_per_million": 1.28,
       "supported_efforts": [
         "xhigh",
@@ -1224,8 +1224,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.3,
-      "output_per_million": 1.2,
+      "input_per_million": 0.0441,
+      "output_per_million": 0.63,
       "supported_efforts": [
         "max",
         "high",
@@ -2025,8 +2025,8 @@
       "title": "Meta: Llama 3.3 70B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "input_per_million": 0.22,
-      "output_per_million": 0.5,
+      "input_per_million": 0.59,
+      "output_per_million": 0.79,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2045,8 +2045,8 @@
       "title": "Meta: Llama 4 Scout",
       "vendor": "meta",
       "context_length": 1310720,
-      "input_per_million": 0.1,
-      "output_per_million": 0.3,
+      "input_per_million": 0.18,
+      "output_per_million": 0.59,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2158,6 +2158,23 @@
       "default_effort": "medium"
     },
     {
+      "id": "meta/muse-wonder",
+      "title": "Meta: Muse Wonder",
+      "vendor": "meta",
+      "context_length": 1048576,
+      "input_per_million": 4,
+      "output_per_million": 20,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low",
+        "minimal"
+      ],
+      "default_effort": "medium"
+    },
+    {
       "id": "microsoft/phi-4",
       "title": "Microsoft: Phi 4",
       "vendor": "other",
@@ -2242,8 +2259,8 @@
       "title": "MiniMax: MiniMax M2.7",
       "vendor": "minimax",
       "context_length": 204800,
-      "input_per_million": 0.21,
-      "output_per_million": 0.84,
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2598,7 +2615,7 @@
       "vendor": "moonshot",
       "context_length": 1048576,
       "input_per_million": 0.73,
-      "output_per_million": 10,
+      "output_per_million": 13.5,
       "supported_efforts": [
         "max",
         "high",
@@ -4051,8 +4068,8 @@
       "title": "OpenAI: gpt-oss-120b",
       "vendor": "openai",
       "context_length": 131072,
-      "input_per_million": 0.037,
-      "output_per_million": 0.17,
+      "input_per_million": 0.15,
+      "output_per_million": 0.6,
       "supported_efforts": [
         "high",
         "medium",
@@ -5731,8 +5748,8 @@
       "title": "Z.ai: GLM 5.3 Flash",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0232,
-      "output_per_million": 1.2,
+      "input_per_million": 0.0261,
+      "output_per_million": 0.9,
       "supported_efforts": [
         "max",
         "high",
@@ -6842,7 +6859,7 @@
         "avg_output_tokens": 34434
       },
       "pricing": {
-        "input_per_million": 0.03,
+        "input_per_million": 0.0452,
         "output_per_million": 1.28,
         "source": "openrouter"
       },
@@ -7160,8 +7177,8 @@
         "avg_output_tokens": 36355
       },
       "pricing": {
-        "input_per_million": 0.3,
-        "output_per_million": 1.2,
+        "input_per_million": 0.0441,
+        "output_per_million": 0.63,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7738,8 +7755,8 @@
         "avg_output_tokens": 34707
       },
       "pricing": {
-        "input_per_million": 0.0232,
-        "output_per_million": 1.2,
+        "input_per_million": 0.0261,
+        "output_per_million": 0.9,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9229,7 +9246,7 @@
       },
       "pricing": {
         "input_per_million": 0.73,
-        "output_per_million": 10,
+        "output_per_million": 13.5,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -9561,6 +9578,65 @@
         "minimal"
       ],
       "default_effort": "medium"
+    },
+    {
+      "benchmark_name": "muse-wonder-1.0-max",
+      "canonical_id": null,
+      "alias_method": null,
+      "vendor": "unmatched",
+      "display_vendor": "other",
+      "family_id": "muse-wonder-1-0-max",
+      "effort": null,
+      "thinking": false,
+      "overall": 81.16,
+      "tasks": {
+        "AMPS_Hard": 99,
+        "code_completion": 78.261,
+        "code_generation": 83.099,
+        "connections": 96,
+        "consecutive_events": 98.525,
+        "integrals_with_game": 98,
+        "javascript": 68.182,
+        "logic_with_navigation": 80,
+        "math_comp": 97.059,
+        "olympiad": 91.823,
+        "paraphrase": 74.067,
+        "plot_unscrambling": 74.797,
+        "python": 60,
+        "simplify": 67.05,
+        "spatial": 96,
+        "story_generation": 74.167,
+        "summarize": 76.833,
+        "tablejoin": 46.327,
+        "tablereformat": 100,
+        "theory_of_mind": 86.538,
+        "typescript": 60,
+        "typos": 78,
+        "zebra_puzzle": 100
+      },
+      "categories": {
+        "Reasoning": 90.63,
+        "Coding": 80.68,
+        "Agentic Coding": 62.73,
+        "Mathematics": 96.47,
+        "Data Analysis": 81.62,
+        "Language": 82.93,
+        "Instruction Following": 73.03
+      },
+      "cost": {
+        "input_price_per_million": 4,
+        "output_price_per_million": 20,
+        "cost_per_question": 0.4993,
+        "avg_input_tokens": 314074,
+        "avg_output_tokens": 14282
+      },
+      "pricing": {
+        "input_per_million": 4,
+        "output_per_million": 20,
+        "source": "livebench"
+      },
+      "supported_efforts": null,
+      "default_effort": null
     },
     {
       "benchmark_name": "nemotron-3-ultra-550b-a55b",
@@ -10813,8 +10889,8 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 476,
-      "livebench_models": 70,
+      "catalog_models": 477,
+      "livebench_models": 71,
       "livebench_matched": 62,
       "terminal_bench_runs": 35,
       "terminal_bench_matched": 33
@@ -10828,7 +10904,8 @@
         "ox-alpha-max",
         "qwen3.8-flash-next",
         "smaug-flash",
-        "union-alpha"
+        "union-alpha",
+        "muse-wonder-1.0-max"
       ],
       "terminal_bench": [
         "Opus 5.5",
