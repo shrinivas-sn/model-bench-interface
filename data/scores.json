@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T07:30:54.825Z",
+  "generated_at": "2026-10-17T08:59:51.216Z",
   "release": "LiveBench 2026-09-02 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -8341,8 +8341,8 @@
   "terminal_bench": [
     {
       "run_id": "7b805dbb-e77a-4d0a-892e-165f922f786c",
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-opus-5.5",
+      "alias_method": "manual",
       "model_label": "Opus 5.5",
       "model_org": "Anthropic",
       "agent_label": "Claude Code",
@@ -8356,8 +8356,8 @@
     },
     {
       "run_id": "723c6609-fe18-46d9-a1a3-dd4b6b0e0d00",
-      "canonical_id": null,
-      "alias_method": null,
+      "canonical_id": "anthropic/claude-sonnet-5.5",
+      "alias_method": "manual",
       "model_label": "Sonnet 5.5",
       "model_org": "Anthropic",
       "agent_label": "Claude Code",
@@ -8872,7 +8872,7 @@
       "livebench_models": 48,
       "livebench_matched": 39,
       "terminal_bench_runs": 35,
-      "terminal_bench_matched": 33
+      "terminal_bench_matched": 35
     },
     "unmatched": {
       "livebench": [
@@ -8886,10 +8886,7 @@
         "nemotron-super-vl-3.5",
         "beam-1.0"
       ],
-      "terminal_bench": [
-        "Opus 5.5",
-        "Sonnet 5.5"
-      ]
+      "terminal_bench": []
     }
   }
 }

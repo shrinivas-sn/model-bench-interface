@@ -6,8 +6,10 @@ import {
   effortOptions,
   formatPerMillion,
   formatPricePair,
+  getAvailableEfforts,
   groupModels,
   readRecents,
+  resolveModelAndEffort,
   searchFamilies,
   writeRecents,
 } from "../../lib/picker.mjs";
@@ -291,3 +293,43 @@ test("defaultPair copes with a single-model dataset without looping", () => {
   assert.equal(a, "solo/model");
   assert.equal(b, "solo/model");
 });
+
+test("resolveModelAndEffort resolves direct, stripped suffix, and canonical names", () => {
+  const models = [
+    mk("claude-fable-5.1", { vendor: "anthropic", canonical: "anthropic/claude-fable-5.1" }),
+    mk("gpt-6-astra", { vendor: "openai", canonical: "openai/gpt-6-astra" }),
+  ];
+
+  const direct = resolveModelAndEffort("claude-fable-5.1", models);
+  assert.equal(direct.model?.benchmark_name, "claude-fable-5.1");
+  assert.equal(direct.effort, null);
+
+  const suffixed = resolveModelAndEffort("claude-fable-5-1-max-effort", models);
+  assert.equal(suffixed.model?.benchmark_name, "claude-fable-5.1");
+  assert.equal(suffixed.effort, "max");
+
+  const astraMax = resolveModelAndEffort("gpt-6-astra-max", models);
+  assert.equal(astraMax.model?.benchmark_name, "gpt-6-astra");
+  assert.equal(astraMax.effort, "max");
+
+  const unknown = resolveModelAndEffort("totally-unknown-model", models);
+  assert.equal(unknown.model, null);
+  assert.equal(unknown.effort, null);
+});
+
+test("getAvailableEfforts sorts supported efforts and terminal bench runs in canonical order without guessing", () => {
+  const modelWithSupported = {
+    ...mk("claude-fable-5.1", { canonical: "anthropic/claude-fable-5.1" }),
+    supported_efforts: ["max", "low", "high", "medium"],
+  };
+  const tbRuns = [
+    { canonical_id: "anthropic/claude-fable-5.1", reasoning_effort: "xhigh", accuracy: 57.88 },
+  ];
+
+  const efforts = getAvailableEfforts(modelWithSupported, tbRuns);
+  assert.deepEqual(efforts, ["low", "medium", "high", "xhigh", "max"]);
+
+  const emptyModel = mk("llama-3-70b", { canonical: "meta/llama-3-70b" });
+  assert.deepEqual(getAvailableEfforts(emptyModel, []), []);
+});
+
