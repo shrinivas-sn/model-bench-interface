@@ -317,7 +317,11 @@ test("resolveModelAndEffort resolves direct, stripped suffix, and canonical name
   assert.equal(unknown.effort, null);
 });
 
-test("getAvailableEfforts sorts supported efforts and terminal bench runs in canonical order without guessing", () => {
+test("getAvailableEfforts returns only measured runs, never supported_efforts flags", () => {
+  // supported_efforts is an API configurability flag, not a benchmark score.
+  // 2026-09-02 LiveBench has one row per model (effort null), so with no
+  // allModels list the model's own row contributes nothing here; only the
+  // Terminal-Bench measured run counts.
   const modelWithSupported = {
     ...mk("claude-fable-5.1", { canonical: "anthropic/claude-fable-5.1" }),
     supported_efforts: ["max", "low", "high", "medium"],
@@ -327,7 +331,20 @@ test("getAvailableEfforts sorts supported efforts and terminal bench runs in can
   ];
 
   const efforts = getAvailableEfforts(modelWithSupported, tbRuns);
-  assert.deepEqual(efforts, ["low", "medium", "high", "xhigh", "max"]);
+  assert.deepEqual(efforts, ["xhigh"]);
+
+  // LiveBench sibling variants with real measured rows DO count.
+  const siblings = [
+    { benchmark_name: "m-max", family_id: "fam", canonical_id: "canon", effort: "max" },
+    { benchmark_name: "m-low", family_id: "fam", canonical_id: "canon", effort: "low" },
+  ];
+  const fromSiblings = getAvailableEfforts(
+    { ...modelWithSupported, family_id: "fam", canonical_id: "canon", effort: null },
+    [],
+    [],
+    siblings
+  );
+  assert.deepEqual(fromSiblings, ["low", "max"]);
 
   const emptyModel = mk("llama-3-70b", { canonical: "meta/llama-3-70b" });
   assert.deepEqual(getAvailableEfforts(emptyModel, []), []);

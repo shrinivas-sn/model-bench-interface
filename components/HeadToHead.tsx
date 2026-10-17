@@ -96,12 +96,12 @@ export function HeadToHead({
   );
 
   const availableEffortsA = useMemo(
-    () => getAvailableEfforts(a, terminalBench),
-    [a, terminalBench]
+    () => getAvailableEfforts(a, terminalBench, artificialAnalysis, livebench),
+    [a, terminalBench, artificialAnalysis, livebench]
   );
   const availableEffortsB = useMemo(
-    () => getAvailableEfforts(b, terminalBench),
-    [b, terminalBench]
+    () => getAvailableEfforts(b, terminalBench, artificialAnalysis, livebench),
+    [b, terminalBench, artificialAnalysis, livebench]
   );
 
   const pickEffort = (
@@ -124,13 +124,13 @@ export function HeadToHead({
 
   const [effortA, setEffortA] = useState<string | null>(() => {
     const model = resolvedA.model ?? livebench.find((m) => m.benchmark_name === defaultA) ?? null;
-    const av = getAvailableEfforts(model, terminalBench);
+    const av = getAvailableEfforts(model, terminalBench, artificialAnalysis, livebench);
     return pickEffort(paramEffortA, resolvedA.effort, model, av);
   });
 
   const [effortB, setEffortB] = useState<string | null>(() => {
     const model = resolvedB.model ?? livebench.find((m) => m.benchmark_name === defaultB) ?? null;
-    const av = getAvailableEfforts(model, terminalBench);
+    const av = getAvailableEfforts(model, terminalBench, artificialAnalysis, livebench);
     return pickEffort(paramEffortB, resolvedB.effort, model, av);
   });
 
@@ -144,12 +144,12 @@ export function HeadToHead({
 
     const modelAObj = livebench.find((m) => m.benchmark_name === mA) ?? null;
     const modelBObj = livebench.find((m) => m.benchmark_name === mB) ?? null;
-    const avA = getAvailableEfforts(modelAObj, terminalBench);
-    const avB = getAvailableEfforts(modelBObj, terminalBench);
+    const avA = getAvailableEfforts(modelAObj, terminalBench, artificialAnalysis, livebench);
+    const avB = getAvailableEfforts(modelBObj, terminalBench, artificialAnalysis, livebench);
 
     setEffortA(pickEffort(paramEffortA, resA.effort, modelAObj, avA));
     setEffortB(pickEffort(paramEffortB, resB.effort, modelBObj, avB));
-  }, [paramA, paramB, paramEffortA, paramEffortB, defaultA, defaultB, livebench, terminalBench]);
+  }, [paramA, paramB, paramEffortA, paramEffortB, defaultA, defaultB, livebench, terminalBench, artificialAnalysis]);
 
   // With no link to follow, lead with what this visitor picked last time.
   const appliedRecents = useRef(false);
@@ -164,12 +164,12 @@ export function HeadToHead({
       setSlots([defRecentA, defRecentB]);
       const mA = livebench.find((m) => m.benchmark_name === defRecentA) ?? null;
       const mB = livebench.find((m) => m.benchmark_name === defRecentB) ?? null;
-      const avA = getAvailableEfforts(mA, terminalBench);
-      const avB = getAvailableEfforts(mB, terminalBench);
+      const avA = getAvailableEfforts(mA, terminalBench, artificialAnalysis, livebench);
+      const avB = getAvailableEfforts(mB, terminalBench, artificialAnalysis, livebench);
       setEffortA(pickEffort(null, null, mA, avA));
       setEffortB(pickEffort(null, null, mB, avB));
     }
-  }, [livebench, paramA, paramB, terminalBench]);
+  }, [livebench, paramA, paramB, terminalBench, artificialAnalysis]);
 
   const updateUrl = (
     nextSlots: string[],
@@ -195,7 +195,7 @@ export function HeadToHead({
     writeRecents(storage(), name);
 
     const newModel = livebench.find((m) => m.benchmark_name === name) ?? null;
-    const newAvail = getAvailableEfforts(newModel, terminalBench);
+    const newAvail = getAvailableEfforts(newModel, terminalBench, artificialAnalysis, livebench);
     const newEffort = pickEffort(null, null, newModel, newAvail);
 
     if (index === 0) {
