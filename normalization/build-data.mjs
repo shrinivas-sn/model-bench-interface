@@ -13,7 +13,12 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { readLatestRecords } from "@shrinivas-sn/adapter-ingestion/store";
 import { buildAliasIndex, resolveAlias, vendorFor, VENDORS } from "./registry.mjs";
-import { LIVEBENCH_CATEGORIES, capabilityForLivebenchCategory } from "./categories.mjs";
+import {
+  LIVEBENCH_CATEGORIES,
+  LIVEBENCH_CATEGORIES_BY_RELEASE,
+  capabilityForLivebenchCategory,
+  categoriesForRelease,
+} from "./categories.mjs";
 import { parseEffort, stripEffort, supportedEffortsFrom } from "./effort.mjs";
 import {
   categoryAverages,
@@ -110,7 +115,23 @@ async function livebenchModels(aliasIndex) {
     if (!byModel.has(model)) byModel.set(model, new Map());
     byModel.get(model).set(task, score);
   }
-  assertTasksCategorised([...allTasksSeen], LIVEBENCH_CATEGORIES);
+  let categoriesMap = categoriesForRelease(latestRelease);
+  if (!LIVEBENCH_CATEGORIES_BY_RELEASE[latestRelease]) {
+    try {
+      const url = `https://livebench.ai/categories_${latestRelease.replaceAll("-", "_")}.json`;
+      const res = await fetch(url, { headers: { "User-Agent": "model-bench-ingest" } });
+      if (res.ok) {
+        const fetched = await res.json();
+        if (fetched && typeof fetched === "object" && Object.keys(fetched).length > 0) {
+          categoriesMap = fetched;
+        }
+      }
+    } catch {
+      // ignore network errors and keep fallback
+    }
+  }
+
+  assertTasksCategorised([...allTasksSeen], categoriesMap);
 
   const unmatched = [];
   const models = [];
@@ -122,12 +143,12 @@ async function livebenchModels(aliasIndex) {
     for (const [task, score] of tasks) {
       taskObj[task] = score;
     }
-    const avg = categoryAverages(taskObj, LIVEBENCH_CATEGORIES);
+    const avg = categoryAverages(taskObj, categoriesMap);
     const categories = {};
     for (const [cat, val] of Object.entries(avg)) {
       categories[capabilityForLivebenchCategory(cat) || cat] = round2(val);
     }
-    const overall = round2(overallScore(avg, Object.keys(LIVEBENCH_CATEGORIES)));
+    const overall = round2(overallScore(avg, Object.keys(categoriesMap)));
 
     const { effort, thinking } = parseEffort(benchModel);
     const family_id = hit?.canonical ?? stripEffort(benchModel);
@@ -148,7 +169,7 @@ async function livebenchModels(aliasIndex) {
       cost: costByModel.get(benchModel) || null,
     });
   }
-  return { models, unmatched, release: latestRelease };
+  return { models, unmatched, release: latestRelease, categories: categoriesMap };
 }
 
 // ---------- Terminal-Bench ----------
@@ -314,7 +335,13 @@ async function main() {
     generated_at: new Date().toISOString(),
     release: releaseText,
     vendor_display,
-    capabilities: [...new Set(Object.keys(LIVEBENCH_CATEGORIES).map(capabilityForLivebenchCategory))],
+    capabilities: [
+      ...new Set(
+        Object.keys(lb.categories || LIVEBENCH_CATEGORIES).map(
+          (c) => capabilityForLivebenchCategory(c) || c
+        )
+      ),
+    ],
     sources: {
       livebench: { release: lbRelease, url: "https://livebench.ai/" },
       terminal_bench: terminalBench.rows.length
