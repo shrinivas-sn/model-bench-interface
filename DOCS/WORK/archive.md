@@ -95,3 +95,14 @@ no longer resolves (curl returns 000 on `/`, `/matrix` and `/nope`). The account
 workers.dev subdomain is `shrinu`, confirmed by a `npm run deploy` that printed
 `https://model-bench.shrinu.workers.dev` and by curl returning 200/200/404 on the three
 checks. Any doc or bookmark pointing at `shrinusn2001` should be updated.
+
+## 17/10/2026 — from STATUS.md (superseded by reasoning effort switcher release)
+
+**As of 30/09/2026.**
+
+### Current state
+- **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers, deployed and verified).
+- **Sources**: LiveBench 2026-06-25, Terminal-Bench 4.0 (official), Artificial Analysis waiting on API key, OpenRouter prices. Old BenchLM 2.0 snapshot and stale SWE-bench Verified removed.
+- **UI**: Compare page shows LiveBench, Terminal-Bench 4.0 and Artificial Analysis (key-gated) with direct links to publishers.
+- **Published-numbers upgrade complete (30/09/2026)**: All 5 phases executed, committed, pushed to `main`, and deployed.
+- **Gates**: `npm test` 91/91 · `npm run build` static export clean · `npm run verify:fixtures` 5/5 PASS · `npx tsc --noEmit` 0 errors · `npm run verify:ui` 96/96 PASS.

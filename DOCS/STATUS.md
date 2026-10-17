@@ -1,19 +1,21 @@
 # Project status
 
-**As of 30/09/2026.**
+**As of 17/10/2026.**
 
 ## Current state
-- **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers, deployed and verified).
-- **Sources**: LiveBench 2026-06-25, Terminal-Bench 4.0 (official), Artificial Analysis waiting on API key, OpenRouter prices. Old BenchLM 2.0 snapshot and stale SWE-bench Verified removed.
-- **UI**: Compare page shows LiveBench, Terminal-Bench 4.0 and Artificial Analysis (key-gated) with direct links to publishers.
-- **Published-numbers upgrade complete (30/09/2026)**: All 5 phases executed, committed, pushed to `main`, and deployed.
-- **Gates**: `npm test` 91/91 · `npm run build` static export clean · `npm run verify:fixtures` 5/5 PASS · `npx tsc --noEmit` 0 errors · `npm run verify:ui` 96/96 PASS.
+- **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
+- **Reasoning Effort Switcher & Terminal-Bench 4.0 upgrade complete (17/10/2026)**:
+  - Shipped interactive inline reasoning effort switcher directly within model cards on the Head-to-Head Compare page (`components/HeadToHead.tsx`).
+  - Added discrete effort tier selection (`none`, `low`, `medium`, `high`, `max`) with variant resolution and fallback.
+  - Added Terminal-Bench 4.0 stat line alongside LiveBench reasoning/coding bars.
+  - Normalized LiveBench 2026-09-02 release category schema mappings.
+- **Gates**: `npm test` 97/97 PASS · `npm run build` static export clean (0 errors) · `npm run verify:fixtures` 5/5 PASS · `npx tsc --noEmit` 0 errors.
 
 ## Pending
 - **Owner inputs**:
-  - O1: Artificial Analysis API key (optional) in environment and GitHub Actions secrets (`ARTIFICIAL_ANALYSIS_API_KEY`).
-  - O3: Connect Cloudflare Workers Builds to GitHub repo (Cloudflare dashboard → Workers & Pages → `model-bench` → Settings → Builds; build command `npm run build`, deploy command `npx wrangler deploy`) so daily cron commits automatically redeploy.
+  - O1: Artificial Analysis API key in environment / GitHub Actions secrets (`ARTIFICIAL_ANALYSIS_API_KEY`).
+  - O3: Connect Cloudflare Workers Builds to GitHub repo so daily cron commits automatically redeploy.
 
 ## Next up (start here)
-1. Build interactive **effort progression curve / scaling chart** across models comparing all tested reasoning effort tiers (`none`, `low`, `medium`, `high`, `max`).
-2. Review unmatched model names on `/quality` if new frontier models appear on LiveBench or Terminal-Bench.
+1. Add effort-progression delta visualizer showing percentage jump between effort tiers for same base model.
+2. Review remaining unmatched model names on `/quality` if new frontier models appear on LiveBench or Terminal-Bench.
