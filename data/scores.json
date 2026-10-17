@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T07:29:19.949Z",
+  "generated_at": "2026-10-17T07:30:54.825Z",
   "release": "LiveBench 2026-09-02 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -304,7 +304,7 @@
       "vendor": "other",
       "context_length": 1048576,
       "input_per_million": 0.0419,
-      "output_per_million": 0.5578,
+      "output_per_million": 0.4182,
       "supported_efforts": [
         "max",
         "high",
@@ -5976,7 +5976,7 @@
       "vendor": "other",
       "context_length": 1048576,
       "input_per_million": 0.0419,
-      "output_per_million": 0.5578,
+      "output_per_million": 0.4182,
       "supported_efforts": [
         "max",
         "high",
@@ -6991,7 +6991,7 @@
       },
       "pricing": {
         "input_per_million": 0.0419,
-        "output_per_million": 0.5578,
+        "output_per_million": 0.4182,
         "source": "openrouter"
       },
       "context_length": 1048576,
