@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-17T08:59:51.216Z",
+  "generated_at": "2026-10-18T07:21:43.830Z",
   "release": "LiveBench 2026-09-02 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -108,8 +108,8 @@
       "title": "DeepSeek: DeepSeek Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.027,
-      "output_per_million": 0.4026,
+      "input_per_million": 0.05,
+      "output_per_million": 0.6,
       "supported_efforts": [
         "max",
         "high",
@@ -123,8 +123,8 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.1867,
-      "output_per_million": 0.7497,
+      "input_per_million": 0.12,
+      "output_per_million": 8,
       "supported_efforts": [
         "max",
         "high",
@@ -138,8 +138,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0146,
-      "output_per_million": 0.9653,
+      "input_per_million": 0.0039,
+      "output_per_million": 0.1436,
       "supported_efforts": [
         "max",
         "high",
@@ -181,8 +181,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.25,
-      "output_per_million": 8.5378,
+      "input_per_million": 0.27,
+      "output_per_million": 14,
       "supported_efforts": [
         "max",
         "high",
@@ -277,9 +277,9 @@
       "id": "~unbiased/pareto-latest",
       "title": "Pareto Latest",
       "vendor": "other",
-      "context_length": 262144,
-      "input_per_million": 2.5,
-      "output_per_million": 7.5,
+      "context_length": 1048576,
+      "input_per_million": 0.8,
+      "output_per_million": 3.2,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -303,8 +303,8 @@
       "title": "Z.ai: GLM Flash Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0419,
-      "output_per_million": 0.4182,
+      "input_per_million": 0.048,
+      "output_per_million": 0.2,
       "supported_efforts": [
         "max",
         "high",
@@ -317,8 +317,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.069,
-      "output_per_million": 2.2044,
+      "input_per_million": 0.0632,
+      "output_per_million": 4.4,
       "supported_efforts": [
         "max",
         "high",
@@ -1202,8 +1202,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0731",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0146,
-      "output_per_million": 0.9653,
+      "input_per_million": 0.0049,
+      "output_per_million": 0.45,
       "supported_efforts": [
         "max",
         "high",
@@ -1259,6 +1259,21 @@
     {
       "id": "deepseek/deepseek-v4.1-flash",
       "title": "DeepSeek: DeepSeek V4.1 Flash",
+      "vendor": "deepseek",
+      "context_length": 1048576,
+      "input_per_million": 0.0648,
+      "output_per_million": 0.144,
+      "supported_efforts": [
+        "max",
+        "high",
+        "low",
+        "none"
+      ],
+      "default_effort": "high"
+    },
+    {
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "title": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "vendor": "deepseek",
       "context_length": 1048576,
       "input_per_million": 0.15,
@@ -1799,7 +1814,7 @@
       "vendor": "google",
       "context_length": 131072,
       "input_per_million": 0.08,
-      "output_per_million": 0.45,
+      "output_per_million": 0.35,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4706,7 +4721,7 @@
       "title": "Qwen: Qwen3 30B A3B Instruct 2507",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.1,
+      "input_per_million": 0.09,
       "output_per_million": 0.3,
       "supported_efforts": null,
       "default_effort": null
@@ -5582,6 +5597,16 @@
       "default_effort": null
     },
     {
+      "id": "unbiased/pareto-26.10",
+      "title": "Pareto 26.10",
+      "vendor": "other",
+      "context_length": 1048576,
+      "input_per_million": 0.8,
+      "output_per_million": 3.2,
+      "supported_efforts": null,
+      "default_effort": null
+    },
+    {
       "id": "unbiased/pareto-26.10-preview",
       "title": "Pareto 26.10 Preview",
       "vendor": "other",
@@ -5975,8 +6000,8 @@
       "title": "Z.ai: GLM 5.3 Flash",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0419,
-      "output_per_million": 0.4182,
+      "input_per_million": 0.048,
+      "output_per_million": 0.2,
       "supported_efforts": [
         "max",
         "high",
@@ -6635,24 +6660,24 @@
       "family_id": "deepseek/deepseek-v4.1-flash",
       "effort": null,
       "thinking": false,
-      "overall": 76.79,
+      "overall": 78.04,
       "tasks": {
-        "design_layout": 77,
-        "research": 85.3,
-        "browser": 80,
-        "coding": 85.4,
-        "long_horizon": 43.8,
+        "design_layout": 79.2,
+        "research": 86.8,
+        "browser": 84,
+        "coding": 90.2,
+        "long_horizon": 40.1,
         "data_analysis": 79.3,
         "reasoning": 86.7
       },
       "categories": {
-        "Long-Horizon": 43.8,
+        "Long-Horizon": 40.1,
         "Reasoning": 86.7,
-        "Coding": 85.4,
-        "Browser": 80,
+        "Coding": 90.2,
+        "Browser": 84,
         "Data Analysis": 79.3,
-        "Research": 85.3,
-        "Design": 77
+        "Research": 86.8,
+        "Design": 79.2
       },
       "cost": {
         "input_price_per_million": 0.15,
@@ -6660,6 +6685,55 @@
         "cost_per_question": null,
         "avg_input_tokens": 6483184,
         "avg_output_tokens": 92028
+      },
+      "pricing": {
+        "input_per_million": 0.0648,
+        "output_per_million": 0.144,
+        "source": "openrouter"
+      },
+      "context_length": 1048576,
+      "supported_efforts": [
+        "max",
+        "high",
+        "low",
+        "none"
+      ],
+      "default_effort": "high"
+    },
+    {
+      "benchmark_name": "deepseek-v4.1-flash-1017",
+      "canonical_id": "deepseek/deepseek-v4.1-flash-1017",
+      "alias_method": "exact",
+      "vendor": "deepseek",
+      "display_vendor": "deepseek",
+      "family_id": "deepseek/deepseek-v4.1-flash-1017",
+      "effort": null,
+      "thinking": false,
+      "overall": 79.2,
+      "tasks": {
+        "design_layout": 83.4,
+        "research": 79.5,
+        "browser": 76,
+        "coding": 96,
+        "long_horizon": 50.9,
+        "data_analysis": 79.5,
+        "reasoning": 89.1
+      },
+      "categories": {
+        "Long-Horizon": 50.9,
+        "Reasoning": 89.1,
+        "Coding": 96,
+        "Browser": 76,
+        "Data Analysis": 79.5,
+        "Research": 79.5,
+        "Design": 83.4
+      },
+      "cost": {
+        "input_price_per_million": 0.15,
+        "output_price_per_million": 0.6,
+        "cost_per_question": null,
+        "avg_input_tokens": 7616825,
+        "avg_output_tokens": 80947
       },
       "pricing": {
         "input_per_million": 0.15,
@@ -6990,8 +7064,8 @@
         "avg_output_tokens": 35600
       },
       "pricing": {
-        "input_per_million": 0.0419,
-        "output_per_million": 0.4182,
+        "input_per_million": 0.048,
+        "output_per_million": 0.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7797,12 +7871,12 @@
       "family_id": "meta/muse-spark-1.2",
       "effort": null,
       "thinking": false,
-      "overall": 61.8,
+      "overall": 62.4,
       "tasks": {
         "design_layout": 67.1,
         "research": 67.7,
-        "browser": 29.4,
-        "coding": 80.6,
+        "browser": 36,
+        "coding": 78.2,
         "long_horizon": 21.3,
         "data_analysis": 76.5,
         "reasoning": 90
@@ -7810,8 +7884,8 @@
       "categories": {
         "Long-Horizon": 21.3,
         "Reasoning": 90,
-        "Coding": 80.6,
-        "Browser": 29.4,
+        "Coding": 78.2,
+        "Browser": 36,
         "Data Analysis": 76.5,
         "Research": 67.7,
         "Design": 67.1
@@ -7847,11 +7921,11 @@
       "family_id": "meta/muse-spark-1.3",
       "effort": null,
       "thinking": false,
-      "overall": 74.9,
+      "overall": 74.76,
       "tasks": {
         "design_layout": 74.8,
         "research": 68.6,
-        "browser": 81,
+        "browser": 80,
         "coding": 90.2,
         "long_horizon": 40.4,
         "data_analysis": 79.6,
@@ -7861,7 +7935,7 @@
         "Long-Horizon": 40.4,
         "Reasoning": 89.7,
         "Coding": 90.2,
-        "Browser": 81,
+        "Browser": 80,
         "Data Analysis": 79.6,
         "Research": 68.6,
         "Design": 74.8
@@ -8868,9 +8942,9 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 493,
-      "livebench_models": 48,
-      "livebench_matched": 39,
+      "catalog_models": 495,
+      "livebench_models": 49,
+      "livebench_matched": 40,
       "terminal_bench_runs": 35,
       "terminal_bench_matched": 35
     },

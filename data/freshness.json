@@ -1,33 +1,33 @@
 {
-  "generated_at": "2026-10-17T07:30:52.868Z",
+  "generated_at": "2026-10-18T07:21:42.740Z",
   "sources": {
     "openrouter": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 469,
-        "parsed": 469,
-        "fresh": 0,
-        "changed": 2,
-        "unchanged": 467,
-        "written": 2
+        "fetched": 471,
+        "parsed": 471,
+        "fresh": 2,
+        "changed": 12,
+        "unchanged": 457,
+        "written": 14
       },
-      "fetched_at": "2026-10-17T07:30:53.387Z"
+      "fetched_at": "2026-10-18T07:21:42.968Z"
     },
     "livebench-scores": {
       "outcome": "ok",
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 336,
-        "parsed": 336,
-        "fresh": 0,
-        "changed": 0,
-        "unchanged": 336,
-        "written": 0
+        "fetched": 343,
+        "parsed": 343,
+        "fresh": 7,
+        "changed": 8,
+        "unchanged": 328,
+        "written": 15
       },
-      "fetched_at": "2026-10-17T07:30:53.529Z",
+      "fetched_at": "2026-10-18T07:21:43.107Z",
       "release": "2026-09-02"
     },
     "livebench-cost": {
@@ -35,14 +35,14 @@
       "canary": "ok",
       "breaches": [],
       "stages": {
-        "fetched": 47,
-        "parsed": 47,
-        "fresh": 0,
+        "fetched": 48,
+        "parsed": 48,
+        "fresh": 1,
         "changed": 0,
         "unchanged": 47,
-        "written": 0
+        "written": 1
       },
-      "fetched_at": "2026-10-17T07:30:53.787Z",
+      "fetched_at": "2026-10-18T07:21:43.147Z",
       "release": "2026-09-02"
     },
     "terminal-bench": {
@@ -57,7 +57,7 @@
         "unchanged": 35,
         "written": 0
       },
-      "fetched_at": "2026-10-17T07:30:54.433Z"
+      "fetched_at": "2026-10-18T07:21:43.492Z"
     }
   }
 }
