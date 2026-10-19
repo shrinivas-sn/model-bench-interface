@@ -1,20 +1,31 @@
 # Project status
 
-**As of 17/10/2026.**
+**As of 19/10/2026.** Repo `E:/model-bench`, branch `main`.
 
 ## Current state
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
-- **Reasoning-effort bug fixed, measured-only (17/10/2026, uncommitted)**:
-  - Root cause: `getAvailableEfforts` unioned OpenRouter `supported_efforts` (API configurability flag) with measured runs — every model got low→max buttons, but LiveBench 2026-09-02 has one row per model (verified live CSV: 48 bare names, `effort: null`), so low→max left all numbers pinned; single-run Terminal-Bench models blanked to `—`.
-  - Fix (logic only, no UI change): efforts offered only when a benchmark row actually tested them — LiveBench sibling variants, Terminal-Bench `reasoning_effort`, or Artificial Analysis `effort`. Only 3 models have multi-effort TB runs (gpt-6-astra 58.18→50.61, claude-fable-5.1 57.88→43.33, claude-opus-5 5 levels); rest show their single published run.
-  - Touched: `lib/picker.mjs`, `components/HeadToHead.tsx` (7 call sites), `normalization/test/picker-stages.test.mjs`.
-- **Gates**: `npm test` 97/97 PASS · `npm run verify:fixtures` 5/5 PASS · `npx tsc --noEmit` 0 errors (`npm run build` not run — timed out at 30s).
+- 17/10: measured-only effort switch committed (`dbc44c8`; detail in `DOCS/WORK/archive.md`).
+- 19/10: adapter-ingestion moved `^0.2.0` → `^0.6.0` (`2446b1f`, pushed). No code change:
+  97/97 tests, fixtures 5/5, identical stage counts on 0.2.0 vs 0.6.0 (store copies).
+- **Daily ingest red since 19/10** (also 16/10, 17/10): both LiveBench jobs `E_HTTP_STATUS` 404.
+  Cause: LiveBench moved CSVs to `https://livebench.ai/v1/table_<YYYY_MM_DD>.csv`
+  (and `cost_…`); only 2026-06-25 exists there, not the 2026-09-02 the app shows.
+  `ingestion/sources/livebench.mjs` still builds the old root URLs. Not fixed yet.
+- **Effort levels are thin because data is missing**: LiveBench 0/49 rows with effort,
+  Terminal-Bench multi-effort for 3 models, Artificial Analysis not connected (no secret).
+
+## Plan
+- **`PLAN.md` (written 19/10/2026, not started)**: effort levels that really work.
+  Phase 1 LiveBench fix; Phase 2 effort coverage + parser + AA; Phase 3 every score
+  labelled with its effort / "Not measured at {level}"; Phase 4 ship. plan-check exit 0.
 
 ## Pending
 - **Owner inputs**:
-  - O1: Artificial Analysis API key in environment / GitHub Actions secrets (`ARTIFICIAL_ANALYSIS_API_KEY`).
-  - O3: Connect Cloudflare Workers Builds to GitHub repo so daily cron commits automatically redeploy.
+  - O1: Artificial Analysis API key as GitHub secret `ARTIFICIAL_ANALYSIS_API_KEY` (`gh secret list` empty on 19/10).
+  - O3: Connect Cloudflare Workers Builds to the repo so daily data commits redeploy.
+- Verification limit: `npm run build` / `verify:ui` not run this session.
 
 ## Next up (start here)
-1. Add effort-progression delta visualizer showing percentage jump between effort tiers for same base model.
-2. Review remaining unmatched model names on `/quality` if new frontier models appear on LiveBench or Terminal-Bench.
+1. Owner says go → execute `PLAN.md` from Task 0.1 (branch `feat/effort-levels`); first
+   re-run its Facts `curl` probes, LiveBench may have changed again.
+2. Later (option, not in plan): effort-progression delta visualizer.
