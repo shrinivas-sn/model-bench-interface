@@ -1,3 +1,7 @@
+# 20/10/2026 — Effort levels that really work (plan archived verbatim)
+
+Coverage report: [effort-coverage.md](effort-coverage.md).
+
 # PLAN — Effort levels that really work: data first, then the view
 
 **Written 19/10/2026.** Temporary file — deleted when this closes.
@@ -487,3 +491,18 @@ the last entry and knows exactly where to start.)*
   - Plan issues 6–7.
   - myreview on `origin/main...HEAD`: no correctness/security findings. Two low notes:
     AA multi-version notice wording; coverage CLI path guard on Windows.
+- **20/10/2026 — Phase 4 (owner: "merge to main and push and complete the plan").**
+  - Fast-forwarded `main` to `b5f6e8c` and pushed `main` + `feat/effort-levels`.
+  - Ran `gh workflow run ingest.yml`: run 39382018552 succeeded, release 2026-10-14.
+    Jobs: openrouter, livebench-scores (336), livebench-cost (48), terminal-bench → all `ok`.
+    `data/scores.json` livebench=48 (matched 40).
+  - Not done by Claude: `npm run deploy` and the follow-up `git pull`.
+    Both were blocked by the session's permission check (production deploy); the owner runs them.
+  - Done checks:
+    1. ✅ ingest green, both LiveBench jobs `ok`.
+    2. ✅ the 3 models with ≥ 2 levels show those buttons (opus-5 low/max journey).
+    3. ✅ every score has a chip (verify:ui 0 unlabelled).
+    4. ⚠ "Not measured at {level}": unit-tested, not reachable with today's data (issue 6).
+    5. ✅ verify:ui covers 1–3 and passes 101/101 (local-only file, issue 7).
+  - Open: O1 (AA key → Task 2.3), O3 (Workers Builds), deploy.
+  - Plan closed and archived to `DOCS/WORK/2026-10-20/WORK.md`.

@@ -4,38 +4,36 @@
 
 ## Current state
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
-- 17/10: measured-only effort switch committed (`dbc44c8`; detail in `DOCS/WORK/archive.md`).
-- 19/10: adapter-ingestion moved `^0.2.0` → `^0.6.0` (`2446b1f`, pushed). No code change:
-  97/97 tests, fixtures 5/5, identical stage counts on 0.2.0 vs 0.6.0 (store copies).
-- **Daily ingest red since 19/10** (also 16/10, 17/10): both LiveBench jobs `E_HTTP_STATUS` 404.
-  Cause: LiveBench moved CSVs to `https://livebench.ai/v1/table_<YYYY_MM_DD>.csv`
-  (and `cost_…`); only 2026-06-25 exists there, not the 2026-09-02 the app shows.
-  `ingestion/sources/livebench.mjs` still builds the old root URLs. Fixed and pushed to `main`
-  20/10 (`5c867ab`); the next daily run should be green.
-- 20/10: adapter-ingestion **0.8.0** released: `access.kind: "csv"` (header row, one record per
-  row) and `{ "template": "..." }` map rule (builds `url`/ids from columns). model-bench 97/97 +
-  fixtures 5/5 on 0.8.0 (`--no-save`, restored; still on `^0.6.0`). Could replace
-  `ingestion/sources/csv.mjs` + the cost `fetchImpl`; the scores unpivot still needs code.
-  `/v1/table_2026_06_25.csv` and `/v1/cost_2026_06_25.csv` answered 200 on 20/10.
-- **Effort levels are thin because data is missing**: LiveBench 0/49 rows with effort,
-  Terminal-Bench multi-effort for 3 models, Artificial Analysis not connected (no secret).
-
-## Plan
-- **Effort-levels plan in progress (`PLAN.md`); Phases 0–2 done** (20/10; Phase 1 merged to `main`
-  and pushed, `5c867ab`). Effort coverage: 3 models with ≥ 2 levels (all Terminal-Bench), 20 single, 26 none; LiveBench 0; AA waiting on O1. LiveBench fixed: new URL pattern `data/<YYYYMMDD>/{table,cost}.csv`, release
-  2026-10-14 found in Task 1.1 (newer than the app's 2026-09-02). The daily job can be green again after merge.
-  Categories map added for the renamed tasks (`ce9fd3d`, `d5c5030`). 101/101, fixtures 5/5, tsc 0.
-  LiveBench 2026-10-14 has 0 effort rows, so AA (O1) is the main effort source.
-  Plan issues 1–4 in `PLAN.md`; issue 4 needs an owner call on the "Long Agentic" label.
-  Phase 1 LiveBench fix; Phase 2 effort coverage + parser + AA; Phase 3 every score
-  labelled with its effort / "Not measured at {level}"; Phase 4 ship. plan-check exit 0.
+  The live site still runs the pre-20/10 build until `npm run deploy` is run (see Next up).
+- **Effort-levels plan done and closed 20/10** (archived in `DOCS/WORK/2026-10-20/WORK.md`).
+  All of it is on `main`, pushed (`b5f6e8c`):
+  - **LiveBench ingest fixed.** LiveBench 2 serves `https://livebench.ai/data/<YYYYMMDD>/{table,cost}.csv`;
+    the release ids are in its bundle. Manual ingest run 39382018552 was green on release 2026-10-14
+    (48 models). The new release renames `long_horizon`→`long_agentic` ("Long Agentic") and
+    `design_layout`→`design`; the categories map is added.
+  - **Effort coverage** (`normalization/effort-coverage.mjs`, report in `DOCS/WORK/2026-10-20/`):
+    3 models with ≥ 2 measured levels (claude-fable-5.1, claude-opus-5, gpt-6-astra, all Terminal-Bench);
+    LiveBench 2026-10-14 has 0 effort rows. `none` is now the lowest level.
+  - **Every head-to-head score shows its effort:** `scoreAtEffort` in `lib/compare.mjs`.
+    Each side shows the chip, "effort not stated" or "Not measured at {level}" with buttons for the measured levels.
+    The matrix uses the same wording.
+  - Gates: 111/111 tests, fixtures 5/5, tsc 0, build ok, verify:ui 101/101.
+- adapter-ingestion **0.8.0** csv kind available (still on `^0.6.0`). It could replace `csv.mjs` and the cost
+  `fetchImpl`, but the scores unpivot still needs code. Optional.
 
 ## Pending
-- **Owner inputs**:
-  - O1: Artificial Analysis API key as GitHub secret `ARTIFICIAL_ANALYSIS_API_KEY` (`gh secret list` empty on 19/10).
-  - O3: Connect Cloudflare Workers Builds to the repo so daily data commits redeploy.
-- Verification limit: `npm run build` / `verify:ui` not run this session.
+- **Owner actions**:
+  - Deploy: `git pull --ff-only` (the ingest bot's 20/10 data commit), then `npm run deploy`.
+    Both were blocked for Claude by the session's permission check.
+  - O1: Artificial Analysis API key as GitHub secret `ARTIFICIAL_ANALYSIS_API_KEY` (still empty 20/10).
+    It is the widest effort source; with it, run the AA job and re-run the coverage report (old Task 2.3).
+  - O3: Connect Cloudflare Workers Builds so daily data commits redeploy.
+  - `probe/` is gitignored, so `verify-ui.mjs` (with the new effort checks) exists only on this machine.
+    Decide whether to track it.
+- "Not measured at {level}" is unit-tested but not reachable with today's data.
+  It appears once AA or LiveBench adds effort levels.
 
 ## Next up (start here)
-1. Continue `PLAN.md` at Task 3.1 on `feat/effort-levels` (Phases 0–2 done 20/10; 2.3 waits on O1).
-2. Later (option, not in plan): effort-progression delta visualizer.
+1. Owner: `git pull --ff-only && npm run deploy`, then open the site and try claude-opus-5 at low vs max.
+2. When O1 lands: run the AA ingest and `node normalization/effort-coverage.mjs data/scores.json <out.md>`.
+3. Later (option): effort-progression delta visualizer.
