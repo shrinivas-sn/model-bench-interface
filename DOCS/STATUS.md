@@ -10,8 +10,8 @@
 - **Daily ingest red since 19/10** (also 16/10, 17/10): both LiveBench jobs `E_HTTP_STATUS` 404.
   Cause: LiveBench moved CSVs to `https://livebench.ai/v1/table_<YYYY_MM_DD>.csv`
   (and `cost_…`); only 2026-06-25 exists there, not the 2026-09-02 the app shows.
-  `ingestion/sources/livebench.mjs` still builds the old root URLs. Fixed on `feat/effort-levels`
-  (20/10, not merged; `main` stays red until then).
+  `ingestion/sources/livebench.mjs` still builds the old root URLs. Fixed and pushed to `main`
+  20/10 (`5c867ab`); the next daily run should be green.
 - 20/10: adapter-ingestion **0.8.0** released: `access.kind: "csv"` (header row, one record per
   row) and `{ "template": "..." }` map rule (builds `url`/ids from columns). model-bench 97/97 +
   fixtures 5/5 on 0.8.0 (`--no-save`, restored; still on `^0.6.0`). Could replace
@@ -21,8 +21,8 @@
   Terminal-Bench multi-effort for 3 models, Artificial Analysis not connected (no secret).
 
 ## Plan
-- **Effort-levels plan in progress (`PLAN.md`); Phases 0–1 done** (20/10, branch `feat/effort-levels`,
-  not pushed). LiveBench fixed: new URL pattern `data/<YYYYMMDD>/{table,cost}.csv`, release
+- **Effort-levels plan in progress (`PLAN.md`); Phases 0–2 done** (20/10; Phase 1 merged to `main`
+  and pushed, `5c867ab`). Effort coverage: 3 models with ≥ 2 levels (all Terminal-Bench), 20 single, 26 none; LiveBench 0; AA waiting on O1. LiveBench fixed: new URL pattern `data/<YYYYMMDD>/{table,cost}.csv`, release
   2026-10-14 found in Task 1.1 (newer than the app's 2026-09-02). The daily job can be green again after merge.
   Categories map added for the renamed tasks (`ce9fd3d`, `d5c5030`). 101/101, fixtures 5/5, tsc 0.
   LiveBench 2026-10-14 has 0 effort rows, so AA (O1) is the main effort source.
@@ -37,5 +37,5 @@
 - Verification limit: `npm run build` / `verify:ui` not run this session.
 
 ## Next up (start here)
-1. Continue `PLAN.md` at Task 2.1 on `feat/effort-levels` (Phases 0–1 done 20/10).
+1. Continue `PLAN.md` at Task 3.1 on `feat/effort-levels` (Phases 0–2 done 20/10; 2.3 waits on O1).
 2. Later (option, not in plan): effort-progression delta visualizer.

@@ -401,7 +401,8 @@ status file and in the session's final message.)*
 | 1 | 20/10/2026 | 0.1 | Branch from `origin/main` | Local `main` is 2 docs commits ahead (`e831a38` adds this `PLAN.md`, `17245bc` status); `origin/main` = `2446b1f` has no `PLAN.md` | Local, same intent | Branched `feat/effort-levels` from local `main` (`17245bc`); nothing pushed | — |
 | 2 | 20/10/2026 | 1 (re-check) | Facts: ingest fails since 19/10 "also 16/10, 17/10" | `gh run list`: 18/10 07:21Z run success with `LiveBench release: 2026-09-02`, both LB jobs `ok` (root URL still served then); 19/10 fails; 14–17/10 scheduled runs also failed, 17/10 manual run succeeded. Move happened between 18/10 07:21Z and 19/10 08:00Z | None on the fix | Noted; probes re-run 20/10 match Facts (`/v1/` 2026-06-25 only; root and `/v1/` 2026-09-02/09-10/07-22 → 404) | — |
 | 3 | 20/10/2026 | 1.1, 1.2 | Pattern is `/v1/` or `./data/<id>/` (unknown id); discovery scans dated strings | Bundle `main.c8f94910.js`: two generations. v1 archive = `./v1/table_<YYYY_MM_DD>.csv`, list ends 2026-06-25. LiveBench 2 = `_e=["20261014"]` → `./data/20261014/{table.csv,cost.csv,categories.json}` (all 200, body `model,`). 2026-09-02 is no longer in the bundle or served. 20261014 has the same 7-category shape as 2026-09-02: 48 models (`smaug-flash` dropped), 325 scores equal, 11 changed, 0 effort rows (`qwen3.8-max` = product tier) | Task 1.2 amended (see issue 3): URLs use `data/<YYYYMMDD>/`, release stored `YYYY-MM-DD`; discovery also reads quoted `YYYYMMDD` ids; `RELEASE` = 2026-10-14. App moves 2026-09-02 → 2026-10-14 (newer) | Done in `ce9fd3d` | — |
-| 4 | 20/10/2026 | 1.3 → new 1.4 | Phase 1 touches only `ingestion/sources/livebench.mjs` | 20261014 renames `design_layout`→`design`, `long_horizon`→`long_agentic`; `build:data` throws `LiveBench tasks without a category` (no map for 2026-10-14; its fallback fetches old root `categories_<date>.json` → 404). Daily job would stay red after merge | Public label: LiveBench's own category name "Long Agentic" replaces "Long-Horizon" on the site | Added Task 1.4 (below), committed `d5c5030` | Owner: confirm "Long Agentic" (LiveBench's name) is fine, or map it to the old "Long-Horizon" label |
+| 4 | 20/10/2026 | 1.3 → new 1.4 | Phase 1 touches only `ingestion/sources/livebench.mjs` | 20261014 renames `design_layout`→`design`, `long_horizon`→`long_agentic`; `build:data` throws `LiveBench tasks without a category` (no map for 2026-10-14; its fallback fetches old root `categories_<date>.json` → 404). Daily job would stay red after merge | Public label: LiveBench's own category name "Long Agentic" replaces "Long-Horizon" on the site | Added Task 1.4 (below), committed `d5c5030` | Owner: confirm "Long Agentic" (LiveBench's name) is fine, or map it to the old "Long-Horizon" label. 20/10: owner said "ok then merge" → kept |
+| 5 | 20/10/2026 | 4.1 | Push/merge once, after Phase 3 and review | Owner asked to merge and push right after Phase 1 | Ship order only | Fast-forward `main` → `5c867ab`, pushed; Phase 4 merges the rest | Owner: "merge to main and push" |
 
 ---
 
@@ -453,3 +454,18 @@ the last entry and knows exactly where to start.)*
   - Phase 2 re-check answer: LiveBench contributes no effort variants. Task 2.2 only guards the parser;
     AA (Task 2.3, O1) is the main effort source.
   - Next: Task 2.1.
+- **20/10/2026 — Owner said "merge to main and push"** after Phase 1. Fast-forwarded `main` to `5c867ab`
+  and pushed `main` + `feat/effort-levels` (Plan issue 5). The daily job should be green from the next run.
+- **20/10/2026 — Phase 2 done, except Task 2.3 (waiting on O1).**
+  - 2.1 `b85d3bf`: `normalization/effort-coverage.mjs`; report `DOCS/WORK/2026-10-20/effort-coverage.md`
+    (built from the Task 1.3 store copies, i.e. LiveBench 2026-10-14).
+    Totals: 49 models; 3 with ≥ 2 levels (claude-fable-5.1, claude-opus-5, gpt-6-astra, all TB);
+    20 single-level; 26 none stated; TB `none` 1 (glm-5.3-flash).
+    Matches a `node -e` count (LB effort rows 0, TB multi 3, TB none 1).
+  - 2.2 `ddecc4d`: all 47 effort-word names from `/v1/table_2026_06_25.csv` already parsed
+    (now vectors). `none` added to `EFFORT_LEVELS` after `low`. Report rerun: no unknown strings.
+    Bare `-max` names left null by rule (e.g. `gpt-6-astra-max`, `gpt-6-sol-max`, `deepseek-v4.1-flash-max`):
+    possibly effort max, but never guessed.
+  - 2.3: `ARTIFICIAL_ANALYSIS_API_KEY` unset locally; `gh secret list` empty → waiting on owner (O1).
+  - Checkpoint: `npm test` 105/105; fixtures 5/5; tsc 0.
+  - Next: Task 3.1.
