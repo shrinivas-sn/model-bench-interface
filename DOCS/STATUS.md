@@ -3,13 +3,18 @@
 **As of 20/10/2026.** Repo `E:/model-bench`, branch `main`.
 
 ## Current state
-- **Artificial Analysis connected 20/10** (secret set; free endpoint returns 706 models; cap raised to 2000, `2079f91`).
-  - Owner decision: an AA name like "Claude Opus 5.5 (Max, Default Fallback)" counts as max effort,
-    and the full name is shown (`8fff2ae`).
-  - Pickable models with ≥ 2 effort buttons went from 3 to 22 of 48; Opus 5.5 now has all 5.
-  - "Not measured at {level}" is now reachable and browser-checked; verify:ui 104/104.
-- **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
-  Deployed 20/10 (version d399fc2a; LiveBench 2026-10-14 live).
+- **Robust effort/model pipeline 20/10** (`575ca01`, `cfa788d`, `e6ffeea`):
+  - One effort list (`normalization/effort.mjs`: max…low, default, minimal, none).
+    AA "(Reasoning)" = default, "(Non-reasoning)" = none, "(Minimal)" = minimal,
+    "(X, Default Fallback)" = X (owner decisions).
+  - `model_key` joins sources on the OpenRouter id, else the model's own name (`normalization/model-key.mjs`).
+  - The picker adds important models LiveBench hasn't scored, by data rule:
+    on Terminal-Bench, or AA-scored + OpenRouter-priced + LiveBench-tracked lab + released ≤ 180 days.
+  - No model names in code (default pair = top LiveBench overall + best other company).
+  - Result: 66 picker models (18 new), 30 with ≥ 2 measured levels; Opus 5.5 has all 5.
+  - AA block: time to first token lower = better; a missing index reads "Not published by AA".
+  - Daily workflow deploys to Cloudflare once the `CLOUDFLARE_API_TOKEN` secret exists (skips until then).
+  - Gates: 121/121 tests, fixtures 5/5, tsc 0, build ok, verify:ui 107/107.
 - **Effort-levels plan done and closed 20/10** (archived in `DOCS/WORK/2026-10-20/WORK.md`).
   All of it is on `main`, pushed:
   - **LiveBench ingest fixed.** LiveBench 2 serves `https://livebench.ai/data/<YYYYMMDD>/{table,cost}.csv`;
@@ -31,12 +36,15 @@
   - O3: Connect Cloudflare Workers Builds so daily data commits redeploy.
   - `probe/` is gitignored, so `verify-ui.mjs` (with the new effort checks) exists only on this machine.
     Decide whether to track it.
-- Not yet deployed: the AA data and parser fix are on `main` but the live site predates them (owner runs `npm run deploy`).
-- Pre-existing AA block issues seen 20/10, not fixed:
-  - "Time to first token": a higher value is coloured as leading, but lower is better.
-  - A missing index reads "Not on this leaderboard".
+- Not deployed yet: the new code reaches the site via `npm run deploy`, or via the daily job once the token is set.
+- Known limits:
+  - A model with no stated effort on any source shows its numbers as "effort not stated", with no buttons
+    (e.g. MiniMax-M3, Step 5 Preview).
+  - Names that differ beyond punctuation are not joined: `muse-wonder-1.0` (LiveBench) vs "Muse Wonder" (AA)
+    shows twice; `gemini-3.1-pro` vs AA "Gemini 3.1 Pro Preview" stays separate.
+    These are never guessed; `normalization/manual-aliases.json` is the place for reviewed aliases.
 
 ## Next up (start here)
-1. Owner: `npm run deploy`, then check Opus 5.5 low vs max on the live site.
-2. Option: fix the AA block's "time to first token" colouring (lower is better) and its missing-index wording.
-3. Later (option): effort-progression delta visualizer.
+1. Owner: create a Cloudflare API token (Workers Scripts: Edit) and run `gh secret set CLOUDFLARE_API_TOKEN`
+   (and `gh secret set CLOUDFLARE_ACCOUNT_ID`). Then `gh workflow run ingest.yml` and confirm the deploy step ran.
+2. Option: reviewed aliases for the two duplicate/separate pairs above.
