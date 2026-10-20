@@ -21,9 +21,12 @@ import {
   resolveModelAndEffort,
   writeRecents,
 } from "@/lib/picker.mjs";
-import { runsForVariant, scoreAtEffort, scoreDelta } from "@/lib/compare.mjs";
+import { joinKey, runsForVariant, scoreAtEffort, scoreDelta } from "@/lib/compare.mjs";
 
 type Props = {
+  /** Models the picker offers (LiveBench plus important models it has not scored). */
+  models: LivebenchModel[];
+  /** LiveBench score rows. */
   livebench: LivebenchModel[];
   capabilities: string[];
   terminalBench?: TerminalBenchRun[];
@@ -43,14 +46,18 @@ function storage(): Storage | null {
 function Delta({
   a,
   b,
+  missing = "Not on this leaderboard",
+  lowerIsBetter = false,
 }: {
   a: number | null | undefined;
   b: number | null | undefined;
+  missing?: string;
+  lowerIsBetter?: boolean;
 }) {
   const d = scoreDelta(a ?? null, b ?? null);
-  if (d == null) return <span className="unknown">Not on this leaderboard</span>;
+  if (d == null) return <span className="unknown">{missing}</span>;
   if (Math.abs(d) < 0.05) return <span className="dim">≈</span>;
-  return d > 0 ? (
+  return d > 0 !== lowerIsBetter ? (
     <span className="delta-up">+{d.toFixed(1)}</span>
   ) : (
     <span className="delta-down">{d.toFixed(1)}</span>
@@ -58,6 +65,7 @@ function Delta({
 }
 
 export function HeadToHead({
+  models,
   livebench,
   capabilities,
   terminalBench = [],
@@ -74,12 +82,12 @@ export function HeadToHead({
   const paramEffortA = searchParams.get("effort_a") || searchParams.get("effortA");
   const paramEffortB = searchParams.get("effort_b") || searchParams.get("effortB");
 
-  const fallback = useMemo(() => defaultPair(livebench, []), [livebench]);
+  const fallback = useMemo(() => defaultPair(models, []), [models]);
   const defaultA = fallback[0];
   const defaultB = fallback[1];
 
-  const resolvedA = useMemo(() => resolveModelAndEffort(paramA, livebench), [paramA, livebench]);
-  const resolvedB = useMemo(() => resolveModelAndEffort(paramB, livebench), [paramB, livebench]);
+  const resolvedA = useMemo(() => resolveModelAndEffort(paramA, models), [paramA, models]);
+  const resolvedB = useMemo(() => resolveModelAndEffort(paramB, models), [paramB, models]);
 
   const [slots, setSlots] = useState<string[]>(() => [
     resolvedA.model?.benchmark_name ?? defaultA,
@@ -87,12 +95,12 @@ export function HeadToHead({
   ]);
 
   const a = useMemo(
-    () => livebench.find((m) => m.benchmark_name === slots[0]) ?? null,
-    [livebench, slots]
+    () => models.find((m) => m.benchmark_name === slots[0]) ?? null,
+    [models, slots]
   );
   const b = useMemo(
-    () => livebench.find((m) => m.benchmark_name === slots[1]) ?? null,
-    [livebench, slots]
+    () => models.find((m) => m.benchmark_name === slots[1]) ?? null,
+    [models, slots]
   );
 
   const availableEffortsA = useMemo(
@@ -123,33 +131,33 @@ export function HeadToHead({
   };
 
   const [effortA, setEffortA] = useState<string | null>(() => {
-    const model = resolvedA.model ?? livebench.find((m) => m.benchmark_name === defaultA) ?? null;
+    const model = resolvedA.model ?? models.find((m) => m.benchmark_name === defaultA) ?? null;
     const av = getAvailableEfforts(model, terminalBench, artificialAnalysis, livebench);
     return pickEffort(paramEffortA, resolvedA.effort, model, av);
   });
 
   const [effortB, setEffortB] = useState<string | null>(() => {
-    const model = resolvedB.model ?? livebench.find((m) => m.benchmark_name === defaultB) ?? null;
+    const model = resolvedB.model ?? models.find((m) => m.benchmark_name === defaultB) ?? null;
     const av = getAvailableEfforts(model, terminalBench, artificialAnalysis, livebench);
     return pickEffort(paramEffortB, resolvedB.effort, model, av);
   });
 
   // Keep URL and state in step when someone follows a shared link.
   useEffect(() => {
-    const resA = resolveModelAndEffort(paramA, livebench);
-    const resB = resolveModelAndEffort(paramB, livebench);
+    const resA = resolveModelAndEffort(paramA, models);
+    const resB = resolveModelAndEffort(paramB, models);
     const mA = resA.model?.benchmark_name ?? defaultA;
     const mB = resB.model?.benchmark_name ?? defaultB;
     setSlots([mA, mB]);
 
-    const modelAObj = livebench.find((m) => m.benchmark_name === mA) ?? null;
-    const modelBObj = livebench.find((m) => m.benchmark_name === mB) ?? null;
+    const modelAObj = models.find((m) => m.benchmark_name === mA) ?? null;
+    const modelBObj = models.find((m) => m.benchmark_name === mB) ?? null;
     const avA = getAvailableEfforts(modelAObj, terminalBench, artificialAnalysis, livebench);
     const avB = getAvailableEfforts(modelBObj, terminalBench, artificialAnalysis, livebench);
 
     setEffortA(pickEffort(paramEffortA, resA.effort, modelAObj, avA));
     setEffortB(pickEffort(paramEffortB, resB.effort, modelBObj, avB));
-  }, [paramA, paramB, paramEffortA, paramEffortB, defaultA, defaultB, livebench, terminalBench, artificialAnalysis]);
+  }, [paramA, paramB, paramEffortA, paramEffortB, defaultA, defaultB, models, livebench, terminalBench, artificialAnalysis]);
 
   // With no link to follow, lead with what this visitor picked last time.
   const appliedRecents = useRef(false);
@@ -159,17 +167,17 @@ export function HeadToHead({
     if (paramA || paramB) return;
     const recents = readRecents(storage());
     if (!recents.length) return;
-    const [defRecentA, defRecentB] = defaultPair(livebench, recents);
+    const [defRecentA, defRecentB] = defaultPair(models, recents);
     if (defRecentA && defRecentB) {
       setSlots([defRecentA, defRecentB]);
-      const mA = livebench.find((m) => m.benchmark_name === defRecentA) ?? null;
-      const mB = livebench.find((m) => m.benchmark_name === defRecentB) ?? null;
+      const mA = models.find((m) => m.benchmark_name === defRecentA) ?? null;
+      const mB = models.find((m) => m.benchmark_name === defRecentB) ?? null;
       const avA = getAvailableEfforts(mA, terminalBench, artificialAnalysis, livebench);
       const avB = getAvailableEfforts(mB, terminalBench, artificialAnalysis, livebench);
       setEffortA(pickEffort(null, null, mA, avA));
       setEffortB(pickEffort(null, null, mB, avB));
     }
-  }, [livebench, paramA, paramB, terminalBench, artificialAnalysis]);
+  }, [models, livebench, paramA, paramB, terminalBench, artificialAnalysis]);
 
   const updateUrl = (
     nextSlots: string[],
@@ -194,7 +202,7 @@ export function HeadToHead({
     setSlots(nextSlots);
     writeRecents(storage(), name);
 
-    const newModel = livebench.find((m) => m.benchmark_name === name) ?? null;
+    const newModel = models.find((m) => m.benchmark_name === name) ?? null;
     const newAvail = getAvailableEfforts(newModel, terminalBench, artificialAnalysis, livebench);
     const newEffort = pickEffort(null, null, newModel, newAvail);
 
@@ -211,9 +219,11 @@ export function HeadToHead({
     const currentModel = index === 0 ? a : b;
     let nextSlots = slots;
     if (currentModel) {
-      const variant = livebench.find(
+      // A LiveBench variant row at that effort becomes the slot (only picker entries can be slots).
+      const variant = models.find(
         (x) =>
-          (x.family_id === currentModel.family_id || x.canonical_id === currentModel.canonical_id) &&
+          (x.family_id === currentModel.family_id ||
+            (joinKey(x) != null && joinKey(x) === joinKey(currentModel))) &&
           x.effort === eff
       );
       if (variant && variant.benchmark_name !== currentModel.benchmark_name) {
@@ -257,20 +267,21 @@ export function HeadToHead({
     );
   }
 
-  const labelOf = (m: LivebenchModel) => formatFamilyLabel(m.family_id || m.benchmark_name);
+  const labelOf = (m: LivebenchModel) =>
+    m.display_name || formatFamilyLabel(m.family_id || m.benchmark_name);
 
   // Terminal-Bench runs
   const newestTbDate =
     terminalBench.map((r) => r.run_date).filter(Boolean).sort().pop() || "—";
   const tbA = runsForVariant(
     terminalBench,
-    a.canonical_id,
+    joinKey(a),
     effortA,
     "reasoning_effort"
   ) as { exact: TerminalBenchRun | null; all: TerminalBenchRun[] };
   const tbB = runsForVariant(
     terminalBench,
-    b.canonical_id,
+    joinKey(b),
     effortB,
     "reasoning_effort"
   ) as { exact: TerminalBenchRun | null; all: TerminalBenchRun[] };
@@ -297,19 +308,7 @@ export function HeadToHead({
   const tbALeads = tbHasBoth && tbScoreA >= tbScoreB;
   const tbBLeads = tbHasBoth && tbScoreB >= tbScoreA;
 
-  // Artificial Analysis entries
-  const aaA = runsForVariant(
-    artificialAnalysis,
-    a.canonical_id,
-    effortA,
-    "effort"
-  ) as { exact: ArtificialAnalysisModel | null; all: ArtificialAnalysisModel[] };
-  const aaB = runsForVariant(
-    artificialAnalysis,
-    b.canonical_id,
-    effortB,
-    "effort"
-  ) as { exact: ArtificialAnalysisModel | null; all: ArtificialAnalysisModel[] };
+  // Artificial Analysis entry at the picked effort (or its stated status).
   const entryA = aaAtA.row;
   const entryB = aaAtB.row;
   const asOfAA = sources.artificial_analysis?.fetched_at
@@ -330,7 +329,7 @@ export function HeadToHead({
     return (
       <div className="h2h-model-card" data-slot={slot}>
         <ModelPicker
-          models={livebench}
+          models={models}
           value={slots[index]}
           onChange={(name) => handleSlotChange(index, name)}
           slotLabel={slot}
@@ -776,19 +775,6 @@ export function HeadToHead({
           asOf={asOfAA}
         >
           {statusRow(aaAtA, aaAtB)}
-          {aaA.all.length > 1 && !aaA.exact ? (
-            <div className="card-notice">
-              A: Artificial Analysis lists several versions of this model — pick the matching effort to compare (
-              {aaA.all.map((r) => r.name).join(", ")})
-            </div>
-          ) : null}
-          {aaB.all.length > 1 && !aaB.exact ? (
-            <div className="card-notice">
-              B: Artificial Analysis lists several versions of this model — pick the matching effort to compare (
-              {aaB.all.map((r) => r.name).join(", ")})
-            </div>
-          ) : null}
-
           {[
             {
               label: "Intelligence Index",
@@ -824,18 +810,22 @@ export function HeadToHead({
               valB: entryB?.ttft_s ?? null,
               format: (v: number | null) => (v != null ? `${v.toFixed(2)}s` : "—"),
               max: 5,
+              lowerIsBetter: true,
             },
           ].map((row) => {
+            const lower = "lowerIsBetter" in row && row.lowerIsBetter === true;
             const hasBoth = row.valA != null && row.valB != null;
-            const aLeads = hasBoth && row.valA! >= row.valB!;
-            const bLeads = hasBoth && row.valB! >= row.valA!;
+            const aLeads = hasBoth && (lower ? row.valA! <= row.valB! : row.valA! >= row.valB!);
+            const bLeads = hasBoth && (lower ? row.valB! <= row.valA! : row.valB! >= row.valA!);
+            // Both models are on AA but one value is absent: AA has not published it.
+            const missing = entryA && entryB ? "Not published by AA" : "Not on this leaderboard";
 
             return (
               <div key={row.label} className="cap-row">
                 <div className="cap-header">
                   <span className="cap-name">{row.label}</span>
                   <span className="cap-delta">
-                    <Delta a={row.valA} b={row.valB} />
+                    <Delta a={row.valA} b={row.valB} missing={missing} lowerIsBetter={lower} />
                   </span>
                 </div>
                 <div className="cap-bars">

@@ -276,15 +276,14 @@ test("defaultPair falls back to two distinct models with no recents at all", () 
   assert.ok(a.length > 0 && b.length > 0);
 });
 
-test("defaultPair prefers claude-fable-5-1-max-effort and gpt-6-astra-max when present", () => {
-  const modelsWithNewDefaults = [
-    ...MODELS,
-    mk("claude-fable-5-1-max-effort", { vendor: "anthropic", family: "claude-fable-5.1", effort: "max" }),
-    mk("gpt-6-astra-max", { vendor: "openai", family: "gpt-6-astra", effort: "max" }),
+test("defaultPair with no recents takes the top LiveBench overall, then the best from another company", () => {
+  const scored = [
+    { ...mk("a-top", { vendor: "anthropic", family: "a-top" }), overall: 90 },
+    { ...mk("a-second", { vendor: "anthropic", family: "a-second" }), overall: 88 },
+    { ...mk("o-best", { vendor: "openai", family: "o-best" }), overall: 85 },
+    { ...mk("not-on-lb", { vendor: "google", family: "not-on-lb" }), overall: null },
   ];
-  const [a, b] = defaultPair(modelsWithNewDefaults, []);
-  assert.equal(a, "claude-fable-5-1-max-effort");
-  assert.equal(b, "gpt-6-astra-max");
+  assert.deepEqual(defaultPair(scored, []), ["a-top", "o-best"]);
 });
 
 test("defaultPair copes with a single-model dataset without looping", () => {
@@ -350,3 +349,18 @@ test("getAvailableEfforts returns only measured runs, never supported_efforts fl
   assert.deepEqual(getAvailableEfforts(emptyModel, []), []);
 });
 
+
+test("getAvailableEfforts joins Terminal-Bench and AA rows on model_key when there is no canonical id", () => {
+  const model = { ...mk("qwen3.8-max"), model_key: "name:qwen38max" };
+  const aa = [
+    { model_key: "name:qwen38max", canonical_id: null, effort: "high" },
+    { model_key: "name:qwen38max", canonical_id: null, effort: "none" },
+    { model_key: "name:other", canonical_id: null, effort: "max" },
+  ];
+  assert.deepEqual(getAvailableEfforts(model, [], aa), ["none", "high"]);
+});
+
+test("resolveModelAndEffort reads every effort level from a legacy suffix", () => {
+  const models = [mk("gpt-5", { vendor: "openai", family: "gpt-5" })];
+  assert.deepEqual(resolveModelAndEffort("gpt-5-minimal", models), { model: models[0], effort: "minimal" });
+});

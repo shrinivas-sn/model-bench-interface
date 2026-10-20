@@ -107,3 +107,17 @@ test("scoreAtEffort: no effort picked returns the top row labelled with its own 
   assert.equal(r.measuredEffort, "max");
   assert.equal(r.value, 61.2);
 });
+
+test("scoreAtEffort joins on model_key when a source has no canonical id", () => {
+  const model = { benchmark_name: "qwen3.8-max", canonical_id: null, family_id: "qwen3-8-max", model_key: "name:qwen38max" };
+  const data = {
+    livebench: [model],
+    terminal_bench: [],
+    artificial_analysis: [
+      { model_key: "name:qwen38max", canonical_id: null, effort: "high", intelligence_index: 50 },
+    ],
+  };
+  const r = scoreAtEffort(model, "artificial_analysis", "high", data);
+  assert.equal(r.status, "measured");
+  assert.equal(r.value, 50);
+});

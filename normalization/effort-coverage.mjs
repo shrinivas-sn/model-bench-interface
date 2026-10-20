@@ -24,7 +24,7 @@ const rank = (e) => {
 const sortLevels = (levels) =>
   [...new Set(levels)].sort((a, b) => rank(a) - rank(b) || a.localeCompare(b));
 
-const modelKey = (r) => r.canonical_id ?? r.family_id ?? r.benchmark_name ?? r.model_label ?? null;
+const modelKey = (r) => r.model_key ?? r.canonical_id ?? r.family_id ?? r.benchmark_name ?? r.model_label ?? null;
 
 export function effortCoverage(data) {
   const models = {};

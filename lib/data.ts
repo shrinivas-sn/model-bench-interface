@@ -17,7 +17,13 @@ export type LivebenchModel = {
   vendor: string;
   display_vendor: string;
   family_id: string;
-  effort: "max" | "xhigh" | "high" | "medium" | "low" | null;
+  /** Join key across sources: canonical id, or `name:<key>` (normalization/model-key.mjs). */
+  model_key?: string | null;
+  /** Set on picker entries; a model no LiveBench release has scored has `false`. */
+  on_livebench?: boolean;
+  /** Source's own name for picker entries that are not on LiveBench. */
+  display_name?: string;
+  effort: string | null;
   supported_efforts?: string[] | null;
   default_effort?: string | null;
   thinking: boolean;
@@ -47,6 +53,7 @@ export type TerminalBenchRun = {
   model_org: string | null;
   agent_label: string | null;
   reasoning_effort: string | null;
+  model_key?: string | null;
   accuracy: number;
   ci95_half_width: number | null;
   n_trials: number | null;
@@ -61,6 +68,7 @@ export type ArtificialAnalysisModel = {
   alias_method: string | null;
   name: string;
   effort: string | null;
+  model_key?: string | null;
   creator: string | null;
   intelligence_index: number | null;
   coding_index: number | null;
@@ -81,6 +89,8 @@ export type ScoresData = {
     artificial_analysis: { connected: boolean; url: string; fetched_at?: string | null };
   };
   catalog: CatalogModel[];
+  /** Models the picker offers: every LiveBench model plus important ones it has not scored. */
+  models?: LivebenchModel[];
   livebench: LivebenchModel[];
   terminal_bench: TerminalBenchRun[];
   artificial_analysis: ArtificialAnalysisModel[];

@@ -29,6 +29,7 @@ import {
 import { resolveSourceModel } from "./manual-aliases.mjs";
 import { splitEffort } from "../ingestion/sources/artificial-analysis.mjs";
 import { categoriesUrl } from "../ingestion/sources/livebench.mjs";
+import { linkModelKeys, pickerModels } from "./model-key.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const manualAliases = JSON.parse(
@@ -318,6 +319,23 @@ async function main() {
     m.default_effort = c?.default_effort ?? null;
   }
 
+  // One join key per model across sources, then the models the picker offers.
+  linkModelKeys({
+    livebench: lb.models,
+    terminal_bench: terminalBench.rows,
+    artificial_analysis: aa.rows,
+  });
+  const generated_at = new Date().toISOString();
+  const models = pickerModels(
+    {
+      livebench: lb.models,
+      terminal_bench: terminalBench.rows,
+      artificial_analysis: aa.rows,
+      catalog: [...catalog.values()],
+    },
+    { now: generated_at }
+  );
+
   const matchedLb = lb.models.filter((m) => m.canonical_id).length;
   const matchedTb = terminalBench.rows.filter((r) => r.canonical_id).length;
 
@@ -334,7 +352,7 @@ async function main() {
   }
 
   const data = {
-    generated_at: new Date().toISOString(),
+    generated_at,
     release: releaseText,
     vendor_display,
     capabilities: [
@@ -356,6 +374,7 @@ async function main() {
       },
     },
     catalog: [...catalog.values()].sort((a, b) => a.id.localeCompare(b.id)),
+    models,
     livebench: lb.models.sort((a, b) => a.benchmark_name.localeCompare(b.benchmark_name)),
     terminal_bench: terminalBench.rows,
     artificial_analysis: aa.rows,
@@ -387,7 +406,9 @@ async function main() {
   console.log(
     `data/scores.json: catalog=${data.data_quality.counts.catalog_models} ` +
       `livebench=${lb.models.length} (matched ${matchedLb}) ` +
-      `terminal_bench=${terminalBench.rows.length} (matched ${matchedTb})`
+      `terminal_bench=${terminalBench.rows.length} (matched ${matchedTb}) ` +
+      `artificial_analysis=${aa.rows.length} (matched ${aa.rows.filter((r) => r.canonical_id).length}) ` +
+      `picker=${models.length} (${models.filter((m) => !m.on_livebench).length} not on LiveBench)`
   );
   if (lb.unmatched.length) console.log("unmatched livebench:", lb.unmatched.join(", "));
 }
