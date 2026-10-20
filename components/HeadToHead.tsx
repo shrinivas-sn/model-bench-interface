@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { ModelPicker } from "@/components/ModelPicker";
-import { EffortChip } from "@/components/EffortChip";
+import { EffortStatus, EffortStatusRow, type AtEffort } from "@/components/EffortChip";
 import { SwapIcon } from "@/components/icons";
 import { BenchBlock } from "@/components/BenchBlock";
 import type {
@@ -21,7 +21,7 @@ import {
   resolveModelAndEffort,
   writeRecents,
 } from "@/lib/picker.mjs";
-import { runsForVariant, scoreDelta } from "@/lib/compare.mjs";
+import { runsForVariant, scoreAtEffort, scoreDelta } from "@/lib/compare.mjs";
 
 type Props = {
   livebench: LivebenchModel[];
@@ -276,10 +276,23 @@ export function HeadToHead({
   ) as { exact: TerminalBenchRun | null; all: TerminalBenchRun[] };
   const hasExactTbBoth = Boolean(tbA.exact && tbB.exact);
 
-  const tbScoreA =
-    tbA.exact?.accuracy ?? (!effortA && tbA.all.length > 0 ? tbA.all[0].accuracy : null);
-  const tbScoreB =
-    tbB.exact?.accuracy ?? (!effortB && tbB.all.length > 0 ? tbB.all[0].accuracy : null);
+  // One rule for every block: the score at the picked effort, or say why there is none.
+  const atData = {
+    livebench,
+    terminal_bench: terminalBench,
+    artificial_analysis: artificialAnalysis,
+  };
+  const lbAtA = scoreAtEffort(a, "livebench", effortA, atData) as AtEffort<LivebenchModel>;
+  const lbAtB = scoreAtEffort(b, "livebench", effortB, atData) as AtEffort<LivebenchModel>;
+  const tbAtA = scoreAtEffort(a, "terminal_bench", effortA, atData) as AtEffort<TerminalBenchRun>;
+  const tbAtB = scoreAtEffort(b, "terminal_bench", effortB, atData) as AtEffort<TerminalBenchRun>;
+  const aaAtA = scoreAtEffort(a, "artificial_analysis", effortA, atData) as AtEffort<ArtificialAnalysisModel>;
+  const aaAtB = scoreAtEffort(b, "artificial_analysis", effortB, atData) as AtEffort<ArtificialAnalysisModel>;
+  const lbRowA = lbAtA.row;
+  const lbRowB = lbAtB.row;
+
+  const tbScoreA = tbAtA.value;
+  const tbScoreB = tbAtB.value;
   const tbHasBoth = tbScoreA != null && tbScoreB != null;
   const tbALeads = tbHasBoth && tbScoreA >= tbScoreB;
   const tbBLeads = tbHasBoth && tbScoreB >= tbScoreA;
@@ -297,13 +310,18 @@ export function HeadToHead({
     effortB,
     "effort"
   ) as { exact: ArtificialAnalysisModel | null; all: ArtificialAnalysisModel[] };
-  const entryA: ArtificialAnalysisModel | null =
-    aaA.exact ?? (aaA.all.length === 1 ? aaA.all[0] : null);
-  const entryB: ArtificialAnalysisModel | null =
-    aaB.exact ?? (aaB.all.length === 1 ? aaB.all[0] : null);
+  const entryA = aaAtA.row;
+  const entryB = aaAtB.row;
   const asOfAA = sources.artificial_analysis?.fetched_at
     ? `Fetched ${sources.artificial_analysis.fetched_at.slice(0, 10)}`
     : "Fetched";
+
+  const statusRow = (atA: AtEffort, atB: AtEffort) => (
+    <EffortStatusRow>
+      <EffortStatus slot="A" at={atA} picked={effortA} onPick={(l) => handleEffortChange(0, l)} />
+      <EffortStatus slot="B" at={atB} picked={effortB} onPick={(l) => handleEffortChange(1, l)} />
+    </EffortStatusRow>
+  );
 
   const renderModelCard = (m: LivebenchModel, slot: "A" | "B", index: number) => {
     const available = slot === "A" ? availableEffortsA : availableEffortsB;
@@ -412,6 +430,7 @@ export function HeadToHead({
         sourceUrl={sources.livebench.url}
         asOf={`Release ${sources.livebench.release}`}
       >
+        {statusRow(lbAtA, lbAtB)}
         <div className="row-between mb-2">
           <span className="h2h-card-heading">Capabilities & Overall</span>
           <div className="h2h-legend">
@@ -431,49 +450,49 @@ export function HeadToHead({
           <div className="cap-header">
             <span className="cap-name">Overall</span>
             <span className="cap-delta">
-              <Delta a={a.overall} b={b.overall} />
+              <Delta a={lbRowA?.overall} b={lbRowB?.overall} />
             </span>
           </div>
           <div className="cap-bars">
             <div
               className="cap-bar-item"
               data-slot="A"
-              data-lead={Boolean(a.overall != null && b.overall != null && a.overall >= b.overall)}
+              data-lead={Boolean(lbRowA?.overall != null && lbRowB?.overall != null && lbRowA.overall >= lbRowB.overall)}
             >
               <span className="cap-bar-label">A</span>
               <div className="cap-bar-track">
                 <div
                   className="cap-bar-fill"
                   data-slot="A"
-                  style={{ width: `${a.overall != null ? Math.min(100, Math.max(0, a.overall)) : 0}%` }}
+                  style={{ width: `${lbRowA?.overall != null ? Math.min(100, Math.max(0, lbRowA.overall)) : 0}%` }}
                 />
               </div>
               <span
                 className="cap-bar-val mono"
-                data-lead={Boolean(a.overall != null && b.overall != null && a.overall >= b.overall)}
+                data-lead={Boolean(lbRowA?.overall != null && lbRowB?.overall != null && lbRowA.overall >= lbRowB.overall)}
               >
-                {a.overall?.toFixed(1) ?? "—"}
+                {lbRowA?.overall?.toFixed(1) ?? "—"}
               </span>
             </div>
 
             <div
               className="cap-bar-item"
               data-slot="B"
-              data-lead={Boolean(a.overall != null && b.overall != null && b.overall >= a.overall)}
+              data-lead={Boolean(lbRowA?.overall != null && lbRowB?.overall != null && lbRowB.overall >= lbRowA.overall)}
             >
               <span className="cap-bar-label">B</span>
               <div className="cap-bar-track">
                 <div
                   className="cap-bar-fill"
                   data-slot="B"
-                  style={{ width: `${b.overall != null ? Math.min(100, Math.max(0, b.overall)) : 0}%` }}
+                  style={{ width: `${lbRowB?.overall != null ? Math.min(100, Math.max(0, lbRowB.overall)) : 0}%` }}
                 />
               </div>
               <span
                 className="cap-bar-val mono"
-                data-lead={Boolean(a.overall != null && b.overall != null && b.overall >= a.overall)}
+                data-lead={Boolean(lbRowA?.overall != null && lbRowB?.overall != null && lbRowB.overall >= lbRowA.overall)}
               >
-                {b.overall?.toFixed(1) ?? "—"}
+                {lbRowB?.overall?.toFixed(1) ?? "—"}
               </span>
             </div>
           </div>
@@ -489,6 +508,7 @@ export function HeadToHead({
               <Delta a={tbScoreA} b={tbScoreB} />
             </span>
           </div>
+          {statusRow(tbAtA, tbAtB)}
           <div className="cap-bars">
             <div className="cap-bar-item" data-slot="A" data-lead={tbALeads}>
               <span className="cap-bar-label">A</span>
@@ -534,8 +554,8 @@ export function HeadToHead({
 
         {/* Capability rows */}
         {capabilities.map((cap) => {
-          const va = a.categories[cap];
-          const vb = b.categories[cap];
+          const va = lbRowA?.categories[cap];
+          const vb = lbRowB?.categories[cap];
           const hasBoth = va != null && vb != null;
           const aLeads = hasBoth && va >= vb;
           const bLeads = hasBoth && vb >= va;
@@ -598,8 +618,8 @@ export function HeadToHead({
               </thead>
               <tbody>
                 {taskKeys.map((t) => {
-                  const va = a.tasks[t];
-                  const vb = b.tasks[t];
+                  const va = lbRowA?.tasks[t];
+                  const vb = lbRowB?.tasks[t];
                   return (
                     <tr key={t}>
                       <td className="mono">{t}</td>
@@ -627,6 +647,7 @@ export function HeadToHead({
           sourceUrl={sources.terminal_bench?.url || "https://www.tbench.ai/"}
           asOf={`Runs dated up to ${newestTbDate}`}
         >
+          {statusRow(tbAtA, tbAtB)}
           {hasExactTbBoth && tbA.exact && tbB.exact ? (
             <div className="cap-row">
               <div className="cap-header">
@@ -754,6 +775,7 @@ export function HeadToHead({
           sourceUrl={sources.artificial_analysis.url || "https://artificialanalysis.ai/"}
           asOf={asOfAA}
         >
+          {statusRow(aaAtA, aaAtB)}
           {aaA.all.length > 1 && !aaA.exact ? (
             <div className="card-notice">
               A: Artificial Analysis lists several versions of this model — pick the matching effort to compare (

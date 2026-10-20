@@ -950,6 +950,28 @@ tbody tr:hover td {
   gap: 16px;
 }
 
+/* Which effort each shown score was measured at, one entry per side. */
+.bench-effort-status {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+  font-size: 12px;
+}
+
+.effort-status {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+
+.effort-status-slot {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
 .bench-block-footer {
   font-size: 12px;
   color: var(--text-muted);
