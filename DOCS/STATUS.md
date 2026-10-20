@@ -3,6 +3,11 @@
 **As of 20/10/2026.** Repo `E:/model-bench`, branch `main`.
 
 ## Current state
+- **Artificial Analysis connected 20/10** (secret set; free endpoint returns 706 models; cap raised to 2000, `2079f91`).
+  - Owner decision: an AA name like "Claude Opus 5.5 (Max, Default Fallback)" counts as max effort,
+    and the full name is shown (`8fff2ae`).
+  - Pickable models with ≥ 2 effort buttons went from 3 to 22 of 48; Opus 5.5 now has all 5.
+  - "Not measured at {level}" is now reachable and browser-checked; verify:ui 104/104.
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
   Deployed 20/10 (version d399fc2a; LiveBench 2026-10-14 live).
 - **Effort-levels plan done and closed 20/10** (archived in `DOCS/WORK/2026-10-20/WORK.md`).
@@ -23,22 +28,15 @@
 
 ## Pending
 - **Owner actions**:
-  - O1: Artificial Analysis API key as GitHub secret `ARTIFICIAL_ANALYSIS_API_KEY` (still empty 20/10).
-    It is the widest effort source; with it, run the AA job and re-run the coverage report (old Task 2.3).
   - O3: Connect Cloudflare Workers Builds so daily data commits redeploy.
   - `probe/` is gitignored, so `verify-ui.mjs` (with the new effort checks) exists only on this machine.
     Decide whether to track it.
-- Why most models show one effort button (asked 20/10, e.g. Opus 5.5 → only MAX):
-  - Terminal-Bench has one Opus 5.5 run, at max (64.85).
-  - LiveBench 2026-10-14 has one row with no stated effort.
-  - AA is off.
-  - OpenRouter's 5 `supported_efforts` are config, not scores.
-  - Fix = O1 (AA key). Using the older LiveBench 2026-06-25 rows (`-max-effort`/`-xhigh-effort`) would break
-    the DECISIONS 30/09 "newest release only" rule; it needs an owner decision first.
-- "Not measured at {level}" is unit-tested but not reachable with today's data.
-  It appears once AA or LiveBench adds effort levels.
+- Not yet deployed: the AA data and parser fix are on `main` but the live site predates them (owner runs `npm run deploy`).
+- Pre-existing AA block issues seen 20/10, not fixed:
+  - "Time to first token": a higher value is coloured as leading, but lower is better.
+  - A missing index reads "Not on this leaderboard".
 
 ## Next up (start here)
-1. When O1 lands: set the `ARTIFICIAL_ANALYSIS_API_KEY` secret, run `gh workflow run ingest.yml`, then
-   `node normalization/effort-coverage.mjs data/scores.json <out.md>` and check that Opus 5.5 gains levels.
-2. Later (option): effort-progression delta visualizer.
+1. Owner: `npm run deploy`, then check Opus 5.5 low vs max on the live site.
+2. Option: fix the AA block's "time to first token" colouring (lower is better) and its missing-index wording.
+3. Later (option): effort-progression delta visualizer.
