@@ -1,6 +1,6 @@
 # Project status
 
-**As of 19/10/2026.** Repo `E:/model-bench`, branch `main`.
+**As of 20/10/2026.** Repo `E:/model-bench`, branch `main`.
 
 ## Current state
 - **Live at https://model-bench.shrinu.workers.dev** (Next.js 15 static export on Cloudflare Workers).
@@ -11,6 +11,11 @@
   Cause: LiveBench moved CSVs to `https://livebench.ai/v1/table_<YYYY_MM_DD>.csv`
   (and `cost_…`); only 2026-06-25 exists there, not the 2026-09-02 the app shows.
   `ingestion/sources/livebench.mjs` still builds the old root URLs. Not fixed yet.
+- 20/10: adapter-ingestion **0.8.0** released: `access.kind: "csv"` (header row, one record per
+  row) and `{ "template": "..." }` map rule (builds `url`/ids from columns). model-bench 97/97 +
+  fixtures 5/5 on 0.8.0 (`--no-save`, restored; still on `^0.6.0`). Could replace
+  `ingestion/sources/csv.mjs` + the cost `fetchImpl`; the scores unpivot still needs code.
+  `/v1/table_2026_06_25.csv` and `/v1/cost_2026_06_25.csv` answered 200 on 20/10.
 - **Effort levels are thin because data is missing**: LiveBench 0/49 rows with effort,
   Terminal-Bench multi-effort for 3 models, Artificial Analysis not connected (no secret).
 
