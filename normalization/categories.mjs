@@ -23,10 +23,19 @@ export const LIVEBENCH_CATEGORIES_BY_RELEASE = {
     Research: ["research"],
     Design: ["design_layout"],
   },
+  "2026-10-14": {
+    "Long Agentic": ["long_agentic"],
+    Reasoning: ["reasoning"],
+    Coding: ["coding"],
+    Browser: ["browser"],
+    "Data Analysis": ["data_analysis"],
+    Research: ["research"],
+    Design: ["design"],
+  },
 };
 
 /** Default / latest category mapping. */
-export const LIVEBENCH_CATEGORIES = LIVEBENCH_CATEGORIES_BY_RELEASE["2026-09-02"];
+export const LIVEBENCH_CATEGORIES = LIVEBENCH_CATEGORIES_BY_RELEASE["2026-10-14"];
 
 /** Get the category map for a specific release, with fallback to latest. */
 export function categoriesForRelease(release) {
@@ -43,6 +52,7 @@ export const CAPABILITY_AXES = [
   "Language",
   "Instruction Following",
   "Long-Horizon",
+  "Long Agentic",
   "Browser",
   "Research",
   "Design",

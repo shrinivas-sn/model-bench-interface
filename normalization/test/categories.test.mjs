@@ -89,3 +89,16 @@ test("livebenchCategoryFor finds category for tasks from both releases", () => {
   assert.equal(livebenchCategoryFor("design_layout", "2026-09-02"), "Design");
   assert.equal(livebenchCategoryFor("theory_of_mind", "2026-06-25"), "Reasoning");
 });
+
+test("categoriesForRelease returns category map for 2026-10-14 (LiveBench renamed two tasks)", () => {
+  const map = categoriesForRelease("2026-10-14");
+  assert.deepEqual(map["Long Agentic"], ["long_agentic"]);
+  assert.deepEqual(map.Design, ["design"]);
+  assertTasksCategorised(
+    ["long_agentic", "reasoning", "coding", "browser", "data_analysis", "research", "design"],
+    map
+  );
+  assert.equal(LIVEBENCH_CATEGORIES, LIVEBENCH_CATEGORIES_BY_RELEASE["2026-10-14"]);
+  assert.equal(livebenchCategoryFor("long_agentic", "2026-10-14"), "Long Agentic");
+  assert.ok(CAPABILITY_AXES.includes("Long Agentic"));
+});

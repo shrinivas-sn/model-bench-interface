@@ -28,6 +28,7 @@ import {
 } from "./livebench-scores.mjs";
 import { resolveSourceModel } from "./manual-aliases.mjs";
 import { splitEffort } from "../ingestion/sources/artificial-analysis.mjs";
+import { categoriesUrl } from "../ingestion/sources/livebench.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const manualAliases = JSON.parse(
@@ -118,8 +119,9 @@ async function livebenchModels(aliasIndex) {
   let categoriesMap = categoriesForRelease(latestRelease);
   if (!LIVEBENCH_CATEGORIES_BY_RELEASE[latestRelease]) {
     try {
-      const url = `https://livebench.ai/categories_${latestRelease.replaceAll("-", "_")}.json`;
-      const res = await fetch(url, { headers: { "User-Agent": "model-bench-ingest" } });
+      const res = await fetch(categoriesUrl(latestRelease), {
+        headers: { "User-Agent": "model-bench-ingest" },
+      });
       if (res.ok) {
         const fetched = await res.json();
         if (fetched && typeof fetched === "object" && Object.keys(fetched).length > 0) {
