@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-20T07:30:56.675Z",
+  "generated_at": "2026-10-20T07:37:41.160Z",
   "release": "LiveBench 2026-10-14 + Terminal-Bench 4.0 + OpenRouter prices + Artificial Analysis",
   "vendor_display": {
     "anthropic": "Anthropic",
@@ -35,7 +35,7 @@
     "artificial_analysis": {
       "connected": true,
       "url": "https://artificialanalysis.ai/",
-      "fetched_at": "2026-10-20T07:30:56.260Z"
+      "fetched_at": "2026-10-20T07:37:40.507Z"
     }
   },
   "catalog": [
@@ -139,7 +139,7 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0121,
+      "input_per_million": 0.0091,
       "output_per_million": 0.12,
       "supported_efforts": [
         "max",
