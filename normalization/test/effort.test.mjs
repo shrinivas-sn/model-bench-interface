@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { EFFORT_LEVELS, parseEffort, stripEffort, supportedEffortsFrom } from "../effort.mjs";
 
 test("EFFORT_LEVELS exports levels in display order (strongest first)", () => {
-  assert.deepEqual(EFFORT_LEVELS, ["max", "xhigh", "high", "medium", "low", "none"]);
+  assert.deepEqual(EFFORT_LEVELS, ["max", "xhigh", "high", "medium", "low", "default", "minimal", "none"]);
 });
 
 test("claude-opus-5-5-max-effort -> max", () => {

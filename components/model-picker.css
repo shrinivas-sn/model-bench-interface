@@ -173,6 +173,15 @@
   border-color: color-mix(in srgb, var(--text-main) 12%, transparent);
 }
 
+/* "default" (reasoning on, provider's default effort) and "minimal" sit between
+   low and none on the same ramp. */
+.effort-chip-default,
+.effort-chip-minimal {
+  background: color-mix(in srgb, var(--text-main) 4%, var(--bg-inset));
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-main) 12%, transparent);
+}
+
 /* Terminal-Bench "none" (reasoning off): one step below low on the same ramp. */
 .effort-chip-none {
   background: transparent;

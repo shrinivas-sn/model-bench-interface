@@ -4,17 +4,24 @@
  * Official API documentation: https://artificialanalysis.ai/data-api/docs
  */
 
+import { EFFORT_LEVELS } from "../../normalization/effort.mjs";
+
 export const ADAPTER_URL = "https://artificialanalysis.ai/api/v2/language/models/free";
 export const PAGE_URL = "https://artificialanalysis.ai/";
 export const KEY_ENV = "ARTIFICIAL_ANALYSIS_API_KEY";
 
-const VALID_EFFORTS = new Set(["max", "xhigh", "high", "medium", "low"]);
+// Named levels AA writes as a suffix word ("(Max, …)", "(Minimal)").
+const NAMED_EFFORTS = new Set(EFFORT_LEVELS.filter((e) => e !== "default" && e !== "none"));
 
 /**
- * Split an Artificial Analysis model name into base name and explicit reasoning effort.
- * e.g. "Claude Opus 5.5 (max)" -> { base: "Claude Opus 5.5", effort: "max" }
- * A qualified suffix counts when its first word is the effort (owner, 20/10/2026):
- * "Claude Opus 5.5 (Max, Default Fallback)" -> max. The full name stays on the row.
+ * Split an Artificial Analysis model name into base name and reasoning effort.
+ *   "Claude Opus 5.5 (max)"                    -> max
+ *   "Claude Opus 5.5 (Max, Default Fallback)"  -> max   (first word is the level)
+ *   "DeepSeek V4.1 Flash (Non-reasoning)"      -> none
+ *   "Claude Sonnet 4.6 (Non-reasoning, Low)"   -> low
+ *   "Gemma 4 31B (Reasoning)"                  -> default
+ * Anything else in brackets (a date, a version) is part of the name: effort null.
+ * Owner decisions 20/10/2026; the full AA name stays on the row and in the UI.
  *
  * @param {string} name
  * @returns {{ base: string, effort: string | null }}
@@ -23,17 +30,17 @@ export function splitEffort(name) {
   if (!name || typeof name !== "string") return { base: "", effort: null };
 
   const match = name.match(/\s+\(([^)]+)\)$/);
-  if (match) {
-    const rawEffort = match[1].split(",")[0].trim().toLowerCase();
-    if (VALID_EFFORTS.has(rawEffort)) {
-      return {
-        base: name.slice(0, match.index).trim(),
-        effort: rawEffort,
-      };
-    }
-  }
+  if (!match) return { base: name, effort: null };
 
-  return { base: name, effort: null };
+  const words = match[1].split(",").map((w) => w.trim().toLowerCase());
+  const named = words.find((w) => NAMED_EFFORTS.has(w)) ?? null;
+  let effort = null;
+  if (words.includes("non-reasoning")) effort = named ?? "none";
+  else if (words.includes("reasoning")) effort = named ?? "default";
+  else if (NAMED_EFFORTS.has(words[0])) effort = words[0];
+
+  if (!effort) return { base: name, effort: null };
+  return { base: name.slice(0, match.index).trim(), effort };
 }
 
 /**

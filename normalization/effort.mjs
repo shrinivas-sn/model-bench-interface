@@ -1,7 +1,20 @@
 import { normKey } from "./registry.mjs";
 
-// `none` is a real Terminal-Bench level (reasoning off); it ranks below low.
-export const EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low", "none"];
+/**
+ * Every reasoning-effort level the app knows, strongest first. The one list every
+ * parser, sorter and UI reads (owner, 20/10/2026):
+ *  - `default`: reasoning on at the provider's default effort (AA "(Reasoning)");
+ *    ranked above minimal/none, below the named levels it does not claim to be.
+ *  - `minimal`: OpenAI-style minimal reasoning (AA "(Minimal)").
+ *  - `none`: reasoning off (Terminal-Bench `none`, AA "(Non-reasoning)").
+ */
+export const EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low", "default", "minimal", "none"];
+
+/** Rank for sorting strongest first; unknown strings sort last. */
+export function effortRank(effort) {
+  const i = EFFORT_LEVELS.indexOf(effort);
+  return i === -1 ? EFFORT_LEVELS.length : i;
+}
 
 const EFFORT_SUFFIX_RE = /-(max|xhigh|high|medium|low)-effort$/;
 const XHIGH_RE = /-xhigh$/;

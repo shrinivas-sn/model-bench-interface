@@ -60,8 +60,8 @@ test("splitEffort extracts valid reasoning efforts from model names", () => {
     effort: null,
   });
   assert.deepEqual(splitEffort("Model (Reasoning)"), {
-    base: "Model (Reasoning)",
-    effort: null,
+    base: "Model",
+    effort: "default",
   });
 });
 
@@ -130,13 +130,23 @@ test("splitEffort reads the effort from the first word of a qualified suffix (ow
     base: "Model X",
     effort: "high",
   });
-  // The first word must itself be an effort level.
   assert.deepEqual(splitEffort("Model Y (Non-reasoning, High)"), {
-    base: "Model Y (Non-reasoning, High)",
-    effort: null,
+    base: "Model Y",
+    effort: "high",
   });
   assert.deepEqual(splitEffort("Model Z (Daybreak Blue, max)"), {
     base: "Model Z (Daybreak Blue, max)",
     effort: null,
   });
+});
+
+test("splitEffort counts AA reasoning modes as effort levels (owner, 20/10/2026)", () => {
+  assert.deepEqual(splitEffort("DeepSeek V4.1 Flash (Non-reasoning)"), { base: "DeepSeek V4.1 Flash", effort: "none" });
+  assert.deepEqual(splitEffort("Gemma 4 31B (Reasoning)"), { base: "Gemma 4 31B", effort: "default" });
+  assert.deepEqual(splitEffort("GPT-5 (Minimal)"), { base: "GPT-5", effort: "minimal" });
+  assert.deepEqual(splitEffort("Claude Sonnet 4.6 (Non-reasoning, Low)"), { base: "Claude Sonnet 4.6", effort: "low" });
+  assert.deepEqual(splitEffort("Foo (Reasoning, Based on Mistral Small 3.1)"), { base: "Foo", effort: "default" });
+  // Dates and versions are part of the name, never an effort.
+  assert.deepEqual(splitEffort("Claude 3.5 Sonnet (Oct '24)"), { base: "Claude 3.5 Sonnet (Oct '24)", effort: null });
+  assert.deepEqual(splitEffort("Qwen3.8 Max (0902)"), { base: "Qwen3.8 Max (0902)", effort: null });
 });
