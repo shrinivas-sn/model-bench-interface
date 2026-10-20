@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-10-18T07:21:43.830Z",
-  "release": "LiveBench 2026-09-02 + Terminal-Bench 4.0 + OpenRouter prices",
+  "generated_at": "2026-10-20T06:43:28.135Z",
+  "release": "LiveBench 2026-10-14 + Terminal-Bench 4.0 + OpenRouter prices",
   "vendor_display": {
     "anthropic": "Anthropic",
     "openai": "OpenAI",
@@ -15,7 +15,7 @@
     "other": "Other"
   },
   "capabilities": [
-    "Long-Horizon",
+    "Long Agentic",
     "Reasoning",
     "Coding",
     "Browser",
@@ -25,7 +25,7 @@
   ],
   "sources": {
     "livebench": {
-      "release": "2026-09-02",
+      "release": "2026-10-14",
       "url": "https://livebench.ai/"
     },
     "terminal_bench": {
@@ -109,7 +109,7 @@
       "vendor": "deepseek",
       "context_length": 1048576,
       "input_per_million": 0.05,
-      "output_per_million": 0.6,
+      "output_per_million": 0.024,
       "supported_efforts": [
         "max",
         "high",
@@ -123,7 +123,7 @@
       "title": "DeepSeek: DeepSeek Pro Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.12,
+      "input_per_million": 0.225,
       "output_per_million": 8,
       "supported_efforts": [
         "max",
@@ -138,8 +138,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash Latest",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0039,
-      "output_per_million": 0.1436,
+      "input_per_million": 0.0052,
+      "output_per_million": 0.12,
       "supported_efforts": [
         "max",
         "high",
@@ -181,8 +181,8 @@
       "title": "MoonshotAI: Kimi Latest",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.27,
-      "output_per_million": 14,
+      "input_per_million": 0.238,
+      "output_per_million": 16,
       "supported_efforts": [
         "max",
         "high",
@@ -304,7 +304,7 @@
       "vendor": "other",
       "context_length": 1048576,
       "input_per_million": 0.048,
-      "output_per_million": 0.2,
+      "output_per_million": 0.16,
       "supported_efforts": [
         "max",
         "high",
@@ -317,8 +317,8 @@
       "title": "Z.ai: GLM Latest",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.0632,
-      "output_per_million": 4.4,
+      "input_per_million": 0.079,
+      "output_per_million": 1.4,
       "supported_efforts": [
         "max",
         "high",
@@ -1098,8 +1098,8 @@
       "title": "DeepSeek: DeepSeek V3",
       "vendor": "deepseek",
       "context_length": 163840,
-      "input_per_million": 0.32,
-      "output_per_million": 0.89,
+      "input_per_million": 0.2574,
+      "output_per_million": 1.0287,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -1202,8 +1202,8 @@
       "title": "DeepSeek: DeepSeek V4 Flash 0731",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0049,
-      "output_per_million": 0.45,
+      "input_per_million": 0.44,
+      "output_per_million": 1.32,
       "supported_efforts": [
         "max",
         "high",
@@ -1232,8 +1232,8 @@
       "title": "DeepSeek: DeepSeek V4 Pro 0423",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.2088,
-      "output_per_million": 0.4176,
+      "input_per_million": 0.9553,
+      "output_per_million": 1.9105,
       "supported_efforts": [
         "xhigh",
         "high",
@@ -1261,8 +1261,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.0648,
-      "output_per_million": 0.144,
+      "input_per_million": 0.0352,
+      "output_per_million": 0.0112,
       "supported_efforts": [
         "max",
         "high",
@@ -1276,8 +1276,8 @@
       "title": "DeepSeek: DeepSeek V4.1 Flash 1017",
       "vendor": "deepseek",
       "context_length": 1048576,
-      "input_per_million": 0.15,
-      "output_per_million": 0.6,
+      "input_per_million": 0.3,
+      "output_per_million": 1.2,
       "supported_efforts": [
         "max",
         "high",
@@ -1823,8 +1823,8 @@
       "title": "Google: Gemma 3 4B",
       "vendor": "google",
       "context_length": 131072,
-      "input_per_million": 0.05,
-      "output_per_million": 0.1,
+      "input_per_million": 0.04,
+      "output_per_million": 0.05,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -1833,8 +1833,8 @@
       "title": "Google: Gemma 4 26B A4B",
       "vendor": "google",
       "context_length": 262144,
-      "input_per_million": 0.0675,
-      "output_per_million": 0.225,
+      "input_per_million": 0.09,
+      "output_per_million": 0.3,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -1944,6 +1944,21 @@
       "context_length": 260000,
       "input_per_million": 0.04,
       "output_per_million": 0.15,
+      "supported_efforts": [
+        "high",
+        "medium",
+        "low",
+        "none"
+      ],
+      "default_effort": "medium"
+    },
+    {
+      "id": "inception/mercury-3",
+      "title": "Inception: Mercury 3",
+      "vendor": "other",
+      "context_length": 1000000,
+      "input_per_million": 0.1,
+      "output_per_million": 0.35,
       "supported_efforts": [
         "high",
         "medium",
@@ -2127,8 +2142,8 @@
       "title": "Meta: Llama 3.2 3B Instruct",
       "vendor": "meta",
       "context_length": 131072,
-      "input_per_million": 0.05,
-      "output_per_million": 0.33,
+      "input_per_million": 0.0509,
+      "output_per_million": 0.335,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -2146,7 +2161,7 @@
       "id": "meta-llama/llama-4-maverick",
       "title": "Meta: Llama 4 Maverick",
       "vendor": "meta",
-      "context_length": 1048576,
+      "context_length": 524288,
       "input_per_million": 0.1875,
       "output_per_million": 0.6525,
       "supported_efforts": null,
@@ -2400,6 +2415,22 @@
       "output_per_million": 1.2,
       "supported_efforts": null,
       "default_effort": null
+    },
+    {
+      "id": "minimax/minimax-m3.1-flash:free",
+      "title": "MiniMax: MiniMax M3.1 Flash (free)",
+      "vendor": "minimax",
+      "context_length": 1000000,
+      "input_per_million": 0,
+      "output_per_million": 0,
+      "supported_efforts": [
+        "max",
+        "xhigh",
+        "high",
+        "medium",
+        "low"
+      ],
+      "default_effort": "max"
     },
     {
       "id": "mistralai/codestral-2508",
@@ -2761,7 +2792,7 @@
       "title": "MoonshotAI: Kimi K3",
       "vendor": "moonshot",
       "context_length": 1048576,
-      "input_per_million": 0.304,
+      "input_per_million": 0.239,
       "output_per_million": 11.936,
       "supported_efforts": [
         "max",
@@ -2790,7 +2821,7 @@
       "id": "morph/morph-v3-fast",
       "title": "Morph: Morph V3 Fast",
       "vendor": "other",
-      "context_length": 81920,
+      "context_length": 262144,
       "input_per_million": 0.8,
       "output_per_million": 1.2,
       "supported_efforts": null,
@@ -2985,8 +3016,8 @@
       "title": "NVIDIA: Nemotron 3.5 Super VL",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 0.1,
-      "output_per_million": 0.4,
+      "input_per_million": 0.15,
+      "output_per_million": 0.5,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4931,8 +4962,8 @@
       "title": "Qwen: Qwen3.5-27B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.26,
-      "output_per_million": 2.6,
+      "input_per_million": 0.27,
+      "output_per_million": 2.16,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -4951,8 +4982,8 @@
       "title": "Qwen: Qwen3.5 397B A17B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.5,
-      "output_per_million": 3.6,
+      "input_per_million": 0.39,
+      "output_per_million": 2.34,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5011,8 +5042,8 @@
       "title": "Qwen: Qwen3.6 35B A3B",
       "vendor": "qwen",
       "context_length": 262144,
-      "input_per_million": 0.15,
-      "output_per_million": 1,
+      "input_per_million": 0.1,
+      "output_per_million": 0.95,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5105,8 +5136,8 @@
       "title": "Qwen: Qwen3.8 27B",
       "vendor": "qwen",
       "context_length": 1000000,
-      "input_per_million": 0.24,
-      "output_per_million": 2.2,
+      "input_per_million": 0.04,
+      "output_per_million": 1.35,
       "supported_efforts": [
         "xhigh",
         "medium",
@@ -5186,8 +5217,8 @@
       "title": "Reflection: Beam 1.0 501B A23B",
       "vendor": "other",
       "context_length": 1048576,
-      "input_per_million": 1,
-      "output_per_million": 3,
+      "input_per_million": 0.3,
+      "output_per_million": 1,
       "supported_efforts": [
         "max",
         "xhigh",
@@ -5675,8 +5706,8 @@
       "title": "Upstage: Solar Pro 4",
       "vendor": "openai",
       "context_length": 524288,
-      "input_per_million": 0.09,
-      "output_per_million": 0.36,
+      "input_per_million": 0.15,
+      "output_per_million": 0.6,
       "supported_efforts": [
         "max",
         "xhigh",
@@ -5902,8 +5933,8 @@
       "title": "Z.ai: GLM 4.6",
       "vendor": "other",
       "context_length": 204800,
-      "input_per_million": 0.5,
-      "output_per_million": 2,
+      "input_per_million": 0.55,
+      "output_per_million": 2.2,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5942,8 +5973,8 @@
       "title": "Z.ai: GLM 5",
       "vendor": "other",
       "context_length": 204800,
-      "input_per_million": 1,
-      "output_per_million": 3.2,
+      "input_per_million": 0.6,
+      "output_per_million": 1.92,
       "supported_efforts": null,
       "default_effort": null
     },
@@ -5987,7 +6018,7 @@
       "vendor": "other",
       "context_length": 1048576,
       "input_per_million": 0.079,
-      "output_per_million": 4.8,
+      "output_per_million": 1.4,
       "supported_efforts": [
         "max",
         "high",
@@ -6001,7 +6032,7 @@
       "vendor": "other",
       "context_length": 1048576,
       "input_per_million": 0.048,
-      "output_per_million": 0.2,
+      "output_per_million": 0.16,
       "supported_efforts": [
         "max",
         "high",
@@ -6088,16 +6119,16 @@
       "thinking": false,
       "overall": 55.5,
       "tasks": {
-        "design_layout": 67.9,
         "research": 72.8,
         "browser": 0,
         "coding": 83.9,
-        "long_horizon": 17.3,
         "data_analysis": 66.4,
-        "reasoning": 80.2
+        "reasoning": 80.2,
+        "long_agentic": 17.3,
+        "design": 67.9
       },
       "categories": {
-        "Long-Horizon": 17.3,
+        "Long Agentic": 17.3,
         "Reasoning": 80.2,
         "Coding": 83.9,
         "Browser": 0,
@@ -6105,8 +6136,18 @@
         "Research": 72.8,
         "Design": 67.9
       },
-      "cost": null,
-      "pricing": null,
+      "cost": {
+        "input_price_per_million": 0.7,
+        "output_price_per_million": 2.1,
+        "cost_per_question": null,
+        "avg_input_tokens": 2111671,
+        "avg_output_tokens": 20037
+      },
+      "pricing": {
+        "input_per_million": 0.7,
+        "output_per_million": 2.1,
+        "source": "livebench"
+      },
       "supported_efforts": null,
       "default_effort": null
     },
@@ -6121,16 +6162,16 @@
       "thinking": false,
       "overall": 83.61,
       "tasks": {
-        "design_layout": 84.7,
         "research": 86.9,
         "browser": 92,
         "coding": 98.3,
-        "long_horizon": 53.2,
         "data_analysis": 80.5,
-        "reasoning": 89.7
+        "reasoning": 89.7,
+        "long_agentic": 53.2,
+        "design": 84.7
       },
       "categories": {
-        "Long-Horizon": 53.2,
+        "Long Agentic": 53.2,
         "Reasoning": 89.7,
         "Coding": 98.3,
         "Browser": 92,
@@ -6171,16 +6212,16 @@
       "thinking": false,
       "overall": 87.99,
       "tasks": {
-        "design_layout": 83.4,
         "research": 82,
         "browser": 100,
         "coding": 97.7,
-        "long_horizon": 80.8,
         "data_analysis": 80.3,
-        "reasoning": 91.7
+        "reasoning": 91.7,
+        "long_agentic": 80.8,
+        "design": 83.4
       },
       "categories": {
-        "Long-Horizon": 80.8,
+        "Long Agentic": 80.8,
         "Reasoning": 91.7,
         "Coding": 97.7,
         "Browser": 100,
@@ -6221,16 +6262,16 @@
       "thinking": false,
       "overall": 46.04,
       "tasks": {
-        "design_layout": 59.9,
         "research": 42.2,
         "browser": 40,
         "coding": 48.1,
-        "long_horizon": 11.1,
         "data_analysis": 59.3,
-        "reasoning": 61.7
+        "reasoning": 61.7,
+        "long_agentic": 11.1,
+        "design": 59.9
       },
       "categories": {
-        "Long-Horizon": 11.1,
+        "Long Agentic": 11.1,
         "Reasoning": 61.7,
         "Coding": 48.1,
         "Browser": 40,
@@ -6263,31 +6304,31 @@
       "family_id": "anthropic/claude-haiku-5.5",
       "effort": null,
       "thinking": false,
-      "overall": 74.49,
+      "overall": 75.64,
       "tasks": {
-        "design_layout": 82.2,
-        "research": 73.7,
-        "browser": 88,
-        "coding": 84.5,
-        "long_horizon": 56.6,
-        "data_analysis": 51.8,
-        "reasoning": 84.6
+        "research": 81.9,
+        "browser": 80,
+        "coding": 91.4,
+        "data_analysis": 53.1,
+        "reasoning": 82.4,
+        "long_agentic": 57.6,
+        "design": 83.1
       },
       "categories": {
-        "Long-Horizon": 56.6,
-        "Reasoning": 84.6,
-        "Coding": 84.5,
-        "Browser": 88,
-        "Data Analysis": 51.8,
-        "Research": 73.7,
-        "Design": 82.2
+        "Long Agentic": 57.6,
+        "Reasoning": 82.4,
+        "Coding": 91.4,
+        "Browser": 80,
+        "Data Analysis": 53.1,
+        "Research": 81.9,
+        "Design": 83.1
       },
       "cost": {
         "input_price_per_million": 0.1,
         "output_price_per_million": 0.5,
         "cost_per_question": null,
-        "avg_input_tokens": 7344004,
-        "avg_output_tokens": 143473
+        "avg_input_tokens": 7730379,
+        "avg_output_tokens": 143958
       },
       "pricing": {
         "input_per_million": 0.1,
@@ -6316,16 +6357,16 @@
       "thinking": false,
       "overall": 76.77,
       "tasks": {
-        "design_layout": 78.8,
         "research": 81.8,
         "browser": 96,
         "coding": 77.3,
-        "long_horizon": 48.3,
         "data_analysis": 66,
-        "reasoning": 89.2
+        "reasoning": 89.2,
+        "long_agentic": 48.3,
+        "design": 78.8
       },
       "categories": {
-        "Long-Horizon": 48.3,
+        "Long Agentic": 48.3,
         "Reasoning": 89.2,
         "Coding": 77.3,
         "Browser": 96,
@@ -6367,16 +6408,16 @@
       "thinking": false,
       "overall": 82.09,
       "tasks": {
-        "design_layout": 83,
         "research": 88.9,
         "browser": 84,
         "coding": 90.8,
-        "long_horizon": 62.1,
         "data_analysis": 74.6,
-        "reasoning": 91.2
+        "reasoning": 91.2,
+        "long_agentic": 62.1,
+        "design": 83
       },
       "categories": {
-        "Long-Horizon": 62.1,
+        "Long Agentic": 62.1,
         "Reasoning": 91.2,
         "Coding": 90.8,
         "Browser": 84,
@@ -6418,16 +6459,16 @@
       "thinking": false,
       "overall": 86.53,
       "tasks": {
-        "design_layout": 86.9,
         "research": 85,
         "browser": 80,
         "coding": 96.3,
-        "long_horizon": 85,
         "data_analysis": 80.3,
-        "reasoning": 92.2
+        "reasoning": 92.2,
+        "long_agentic": 85,
+        "design": 86.9
       },
       "categories": {
-        "Long-Horizon": 85,
+        "Long Agentic": 85,
         "Reasoning": 92.2,
         "Coding": 96.3,
         "Browser": 80,
@@ -6439,8 +6480,8 @@
         "input_price_per_million": 4,
         "output_price_per_million": 20,
         "cost_per_question": null,
-        "avg_input_tokens": 9459285,
-        "avg_output_tokens": 111065
+        "avg_input_tokens": 7489712,
+        "avg_output_tokens": 98109
       },
       "pricing": {
         "input_per_million": 4,
@@ -6468,16 +6509,16 @@
       "thinking": false,
       "overall": 65.09,
       "tasks": {
-        "design_layout": 71.8,
         "research": 63.6,
         "browser": 68,
         "coding": 66.6,
-        "long_horizon": 23.1,
         "data_analysis": 76.1,
-        "reasoning": 86.4
+        "reasoning": 86.4,
+        "long_agentic": 23.1,
+        "design": 71.8
       },
       "categories": {
-        "Long-Horizon": 23.1,
+        "Long Agentic": 23.1,
         "Reasoning": 86.4,
         "Coding": 66.6,
         "Browser": 68,
@@ -6516,31 +6557,31 @@
       "family_id": "anthropic/claude-sonnet-5",
       "effort": null,
       "thinking": false,
-      "overall": 74.63,
+      "overall": 72.99,
       "tasks": {
-        "design_layout": 82,
         "research": 82.8,
-        "browser": 76,
-        "coding": 82.2,
-        "long_horizon": 39,
+        "browser": 72,
+        "coding": 74.7,
         "data_analysis": 71.7,
-        "reasoning": 88.7
+        "reasoning": 88.7,
+        "long_agentic": 39,
+        "design": 82
       },
       "categories": {
-        "Long-Horizon": 39,
+        "Long Agentic": 39,
         "Reasoning": 88.7,
-        "Coding": 82.2,
-        "Browser": 76,
+        "Coding": 74.7,
+        "Browser": 72,
         "Data Analysis": 71.7,
         "Research": 82.8,
         "Design": 82
       },
       "cost": {
-        "input_price_per_million": 3,
-        "output_price_per_million": 15,
+        "input_price_per_million": 2,
+        "output_price_per_million": 10,
         "cost_per_question": null,
-        "avg_input_tokens": 7695072,
-        "avg_output_tokens": 81978
+        "avg_input_tokens": 6867122,
+        "avg_output_tokens": 74150
       },
       "pricing": {
         "input_per_million": 2,
@@ -6569,16 +6610,16 @@
       "thinking": false,
       "overall": 82.46,
       "tasks": {
-        "design_layout": 85,
         "research": 83.6,
         "browser": 84,
         "coding": 94.7,
-        "long_horizon": 78.8,
         "data_analysis": 59.5,
-        "reasoning": 91.6
+        "reasoning": 91.6,
+        "long_agentic": 78.8,
+        "design": 85
       },
       "categories": {
-        "Long-Horizon": 78.8,
+        "Long Agentic": 78.8,
         "Reasoning": 91.6,
         "Coding": 94.7,
         "Browser": 84,
@@ -6590,8 +6631,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 10,
         "cost_per_question": null,
-        "avg_input_tokens": 12399299,
-        "avg_output_tokens": 163968
+        "avg_input_tokens": 11134238,
+        "avg_output_tokens": 150188
       },
       "pricing": {
         "input_per_million": 2,
@@ -6619,16 +6660,16 @@
       "thinking": false,
       "overall": 63.63,
       "tasks": {
-        "design_layout": 70.7,
         "research": 69.2,
         "browser": 64,
         "coding": 37.6,
-        "long_horizon": 39,
         "data_analysis": 79.5,
-        "reasoning": 85.4
+        "reasoning": 85.4,
+        "long_agentic": 39,
+        "design": 70.7
       },
       "categories": {
-        "Long-Horizon": 39,
+        "Long Agentic": 39,
         "Reasoning": 85.4,
         "Coding": 37.6,
         "Browser": 64,
@@ -6637,15 +6678,15 @@
         "Design": 70.7
       },
       "cost": {
-        "input_price_per_million": 0.22,
-        "output_price_per_million": 0.66,
+        "input_price_per_million": 0.44,
+        "output_price_per_million": 1.32,
         "cost_per_question": null,
         "avg_input_tokens": 4161931,
         "avg_output_tokens": 29801
       },
       "pricing": {
-        "input_per_million": 0.22,
-        "output_per_million": 0.66,
+        "input_per_million": 0.44,
+        "output_per_million": 1.32,
         "source": "livebench"
       },
       "supported_efforts": null,
@@ -6662,16 +6703,16 @@
       "thinking": false,
       "overall": 78.04,
       "tasks": {
-        "design_layout": 79.2,
         "research": 86.8,
         "browser": 84,
         "coding": 90.2,
-        "long_horizon": 40.1,
         "data_analysis": 79.3,
-        "reasoning": 86.7
+        "reasoning": 86.7,
+        "long_agentic": 40.1,
+        "design": 79.2
       },
       "categories": {
-        "Long-Horizon": 40.1,
+        "Long Agentic": 40.1,
         "Reasoning": 86.7,
         "Coding": 90.2,
         "Browser": 84,
@@ -6680,15 +6721,15 @@
         "Design": 79.2
       },
       "cost": {
-        "input_price_per_million": 0.15,
-        "output_price_per_million": 0.6,
+        "input_price_per_million": 0.3,
+        "output_price_per_million": 1.2,
         "cost_per_question": null,
-        "avg_input_tokens": 6483184,
-        "avg_output_tokens": 92028
+        "avg_input_tokens": 6205137,
+        "avg_output_tokens": 85089
       },
       "pricing": {
-        "input_per_million": 0.0648,
-        "output_per_million": 0.144,
+        "input_per_million": 0.0352,
+        "output_per_million": 0.0112,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -6711,16 +6752,16 @@
       "thinking": false,
       "overall": 79.2,
       "tasks": {
-        "design_layout": 83.4,
         "research": 79.5,
         "browser": 76,
         "coding": 96,
-        "long_horizon": 50.9,
         "data_analysis": 79.5,
-        "reasoning": 89.1
+        "reasoning": 89.1,
+        "long_agentic": 50.9,
+        "design": 83.4
       },
       "categories": {
-        "Long-Horizon": 50.9,
+        "Long Agentic": 50.9,
         "Reasoning": 89.1,
         "Coding": 96,
         "Browser": 76,
@@ -6729,15 +6770,15 @@
         "Design": 83.4
       },
       "cost": {
-        "input_price_per_million": 0.15,
-        "output_price_per_million": 0.6,
+        "input_price_per_million": 0.3,
+        "output_price_per_million": 1.2,
         "cost_per_question": null,
-        "avg_input_tokens": 7616825,
-        "avg_output_tokens": 80947
+        "avg_input_tokens": 7603085,
+        "avg_output_tokens": 79730
       },
       "pricing": {
-        "input_per_million": 0.15,
-        "output_per_million": 0.6,
+        "input_per_million": 0.3,
+        "output_per_million": 1.2,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -6760,16 +6801,16 @@
       "thinking": false,
       "overall": 54.91,
       "tasks": {
-        "design_layout": 61.6,
         "research": 65.7,
         "browser": 4,
         "coding": 66.7,
-        "long_horizon": 23.9,
         "data_analysis": 78.5,
-        "reasoning": 84
+        "reasoning": 84,
+        "long_agentic": 23.9,
+        "design": 61.6
       },
       "categories": {
-        "Long-Horizon": 23.9,
+        "Long Agentic": 23.9,
         "Reasoning": 84,
         "Coding": 66.7,
         "Browser": 4,
@@ -6803,16 +6844,16 @@
       "thinking": false,
       "overall": 67.19,
       "tasks": {
-        "design_layout": 73.2,
         "research": 76.5,
         "browser": 56,
         "coding": 80.5,
-        "long_horizon": 28.3,
         "data_analysis": 68,
-        "reasoning": 87.8
+        "reasoning": 87.8,
+        "long_agentic": 28.3,
+        "design": 73.2
       },
       "categories": {
-        "Long-Horizon": 28.3,
+        "Long Agentic": 28.3,
         "Reasoning": 87.8,
         "Coding": 80.5,
         "Browser": 56,
@@ -6851,16 +6892,16 @@
       "thinking": false,
       "overall": 67.34,
       "tasks": {
-        "design_layout": 72.7,
         "research": 79.1,
         "browser": 64,
         "coding": 82.2,
-        "long_horizon": 30.1,
         "data_analysis": 54,
-        "reasoning": 89.3
+        "reasoning": 89.3,
+        "long_agentic": 30.1,
+        "design": 72.7
       },
       "categories": {
-        "Long-Horizon": 30.1,
+        "Long Agentic": 30.1,
         "Reasoning": 89.3,
         "Coding": 82.2,
         "Browser": 64,
@@ -6899,16 +6940,16 @@
       "thinking": false,
       "overall": 84.1,
       "tasks": {
-        "design_layout": 73.7,
         "research": 83.1,
         "browser": 92,
         "coding": 89.7,
-        "long_horizon": 69.9,
         "data_analysis": 85.2,
-        "reasoning": 95.1
+        "reasoning": 95.1,
+        "long_agentic": 69.9,
+        "design": 73.7
       },
       "categories": {
-        "Long-Horizon": 69.9,
+        "Long Agentic": 69.9,
         "Reasoning": 95.1,
         "Coding": 89.7,
         "Browser": 92,
@@ -6947,16 +6988,16 @@
       "thinking": false,
       "overall": 41.53,
       "tasks": {
-        "design_layout": 58.4,
         "research": 44.4,
         "browser": 4,
         "coding": 49,
-        "long_horizon": 13.3,
         "data_analysis": 53.3,
-        "reasoning": 68.3
+        "reasoning": 68.3,
+        "long_agentic": 13.3,
+        "design": 58.4
       },
       "categories": {
-        "Long-Horizon": 13.3,
+        "Long Agentic": 13.3,
         "Reasoning": 68.3,
         "Coding": 49,
         "Browser": 4,
@@ -6968,8 +7009,8 @@
         "input_price_per_million": 0.14,
         "output_price_per_million": 0.4,
         "cost_per_question": null,
-        "avg_input_tokens": 903191,
-        "avg_output_tokens": 32258
+        "avg_input_tokens": 918377,
+        "avg_output_tokens": 32875
       },
       "pricing": {
         "input_per_million": 0.2,
@@ -6991,16 +7032,16 @@
       "thinking": false,
       "overall": 60.74,
       "tasks": {
-        "design_layout": 77.3,
         "research": 73.2,
         "browser": 0,
         "coding": 82.8,
-        "long_horizon": 35.9,
         "data_analysis": 70.2,
-        "reasoning": 85.8
+        "reasoning": 85.8,
+        "long_agentic": 35.9,
+        "design": 77.3
       },
       "categories": {
-        "Long-Horizon": 35.9,
+        "Long Agentic": 35.9,
         "Reasoning": 85.8,
         "Coding": 82.8,
         "Browser": 0,
@@ -7017,7 +7058,7 @@
       },
       "pricing": {
         "input_per_million": 0.079,
-        "output_per_million": 4.8,
+        "output_per_million": 1.4,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7039,16 +7080,16 @@
       "thinking": false,
       "overall": 70.61,
       "tasks": {
-        "design_layout": 77.2,
         "research": 70.1,
         "browser": 84,
         "coding": 80.6,
-        "long_horizon": 28.4,
         "data_analysis": 76.4,
-        "reasoning": 77.6
+        "reasoning": 77.6,
+        "long_agentic": 28.4,
+        "design": 77.2
       },
       "categories": {
-        "Long-Horizon": 28.4,
+        "Long Agentic": 28.4,
         "Reasoning": 77.6,
         "Coding": 80.6,
         "Browser": 84,
@@ -7065,7 +7106,7 @@
       },
       "pricing": {
         "input_per_million": 0.048,
-        "output_per_million": 0.2,
+        "output_per_million": 0.16,
         "source": "openrouter"
       },
       "context_length": 1048576,
@@ -7087,16 +7128,16 @@
       "thinking": false,
       "overall": 68.7,
       "tasks": {
-        "design_layout": 70.3,
         "research": 61.6,
         "browser": 48,
         "coding": 85.1,
-        "long_horizon": 44.6,
         "data_analysis": 81.6,
-        "reasoning": 89.7
+        "reasoning": 89.7,
+        "long_agentic": 44.6,
+        "design": 70.3
       },
       "categories": {
-        "Long-Horizon": 44.6,
+        "Long Agentic": 44.6,
         "Reasoning": 89.7,
         "Coding": 85.1,
         "Browser": 48,
@@ -7137,16 +7178,16 @@
       "thinking": false,
       "overall": 66.09,
       "tasks": {
-        "design_layout": 76,
         "research": 51,
         "browser": 68,
         "coding": 73.6,
-        "long_horizon": 30.4,
         "data_analysis": 78,
-        "reasoning": 85.6
+        "reasoning": 85.6,
+        "long_agentic": 30.4,
+        "design": 76
       },
       "categories": {
-        "Long-Horizon": 30.4,
+        "Long Agentic": 30.4,
         "Reasoning": 85.6,
         "Coding": 73.6,
         "Browser": 68,
@@ -7155,8 +7196,8 @@
         "Design": 76
       },
       "cost": {
-        "input_price_per_million": 1,
-        "output_price_per_million": 6,
+        "input_price_per_million": 0.2,
+        "output_price_per_million": 1.2,
         "cost_per_question": null,
         "avg_input_tokens": 5625840,
         "avg_output_tokens": 43595
@@ -7188,16 +7229,16 @@
       "thinking": false,
       "overall": 76.26,
       "tasks": {
-        "design_layout": 81.6,
         "research": 54.5,
         "browser": 88,
         "coding": 89.7,
-        "long_horizon": 48.5,
         "data_analysis": 79.8,
-        "reasoning": 91.7
+        "reasoning": 91.7,
+        "long_agentic": 48.5,
+        "design": 81.6
       },
       "categories": {
-        "Long-Horizon": 48.5,
+        "Long Agentic": 48.5,
         "Reasoning": 91.7,
         "Coding": 89.7,
         "Browser": 88,
@@ -7206,8 +7247,8 @@
         "Design": 81.6
       },
       "cost": {
-        "input_price_per_million": 5,
-        "output_price_per_million": 30,
+        "input_price_per_million": 4,
+        "output_price_per_million": 20,
         "cost_per_question": null,
         "avg_input_tokens": 4281058,
         "avg_output_tokens": 32484
@@ -7239,16 +7280,16 @@
       "thinking": false,
       "overall": 74.99,
       "tasks": {
-        "design_layout": 76,
         "research": 60.4,
         "browser": 84,
         "coding": 86.2,
-        "long_horizon": 48.4,
         "data_analysis": 79.3,
-        "reasoning": 90.6
+        "reasoning": 90.6,
+        "long_agentic": 48.4,
+        "design": 76
       },
       "categories": {
-        "Long-Horizon": 48.4,
+        "Long Agentic": 48.4,
         "Reasoning": 90.6,
         "Coding": 86.2,
         "Browser": 84,
@@ -7257,8 +7298,8 @@
         "Design": 76
       },
       "cost": {
-        "input_price_per_million": 2.5,
-        "output_price_per_million": 15,
+        "input_price_per_million": 2,
+        "output_price_per_million": 12,
         "cost_per_question": null,
         "avg_input_tokens": 4461950,
         "avg_output_tokens": 44309
@@ -7290,16 +7331,16 @@
       "thinking": false,
       "overall": 86.14,
       "tasks": {
-        "design_layout": 82,
         "research": 85.2,
         "browser": 84,
         "coding": 93.7,
-        "long_horizon": 82.4,
         "data_analysis": 83,
-        "reasoning": 92.7
+        "reasoning": 92.7,
+        "long_agentic": 82.4,
+        "design": 82
       },
       "categories": {
-        "Long-Horizon": 82.4,
+        "Long Agentic": 82.4,
         "Reasoning": 92.7,
         "Coding": 93.7,
         "Browser": 84,
@@ -7340,16 +7381,16 @@
       "thinking": false,
       "overall": 69.4,
       "tasks": {
-        "design_layout": 82.5,
         "research": 43.5,
         "browser": 72,
         "coding": 84.5,
-        "long_horizon": 48.1,
         "data_analysis": 73.4,
-        "reasoning": 81.8
+        "reasoning": 81.8,
+        "long_agentic": 48.1,
+        "design": 82.5
       },
       "categories": {
-        "Long-Horizon": 48.1,
+        "Long Agentic": 48.1,
         "Reasoning": 81.8,
         "Coding": 84.5,
         "Browser": 72,
@@ -7361,8 +7402,8 @@
         "input_price_per_million": 0.1,
         "output_price_per_million": 0.5,
         "cost_per_question": null,
-        "avg_input_tokens": 4863823,
-        "avg_output_tokens": 110415
+        "avg_input_tokens": 4690958,
+        "avg_output_tokens": 92351
       },
       "pricing": {
         "input_per_million": 0.1,
@@ -7391,16 +7432,16 @@
       "thinking": false,
       "overall": 81.91,
       "tasks": {
-        "design_layout": 82.2,
         "research": 69.3,
         "browser": 92,
         "coding": 93.1,
-        "long_horizon": 66.9,
         "data_analysis": 81.2,
-        "reasoning": 88.7
+        "reasoning": 88.7,
+        "long_agentic": 66.9,
+        "design": 82.2
       },
       "categories": {
-        "Long-Horizon": 66.9,
+        "Long Agentic": 66.9,
         "Reasoning": 88.7,
         "Coding": 93.1,
         "Browser": 92,
@@ -7412,8 +7453,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 10,
         "cost_per_question": null,
-        "avg_input_tokens": 3420542,
-        "avg_output_tokens": 34922
+        "avg_input_tokens": 3183086,
+        "avg_output_tokens": 26251
       },
       "pricing": {
         "input_per_million": 2,
@@ -7442,16 +7483,16 @@
       "thinking": false,
       "overall": 85.41,
       "tasks": {
-        "design_layout": 82.1,
         "research": 83.5,
         "browser": 88,
         "coding": 96,
-        "long_horizon": 73,
         "data_analysis": 82.7,
-        "reasoning": 92.6
+        "reasoning": 92.6,
+        "long_agentic": 73,
+        "design": 82.1
       },
       "categories": {
-        "Long-Horizon": 73,
+        "Long Agentic": 73,
         "Reasoning": 92.6,
         "Coding": 96,
         "Browser": 88,
@@ -7463,8 +7504,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 10,
         "cost_per_question": null,
-        "avg_input_tokens": 2870212,
-        "avg_output_tokens": 30243
+        "avg_input_tokens": 2581183,
+        "avg_output_tokens": 21099
       },
       "pricing": {
         "input_per_million": 2,
@@ -7492,16 +7533,16 @@
       "thinking": false,
       "overall": 70.06,
       "tasks": {
-        "design_layout": 78.1,
         "research": 85.9,
         "browser": 44,
         "coding": 94.3,
-        "long_horizon": 27.9,
         "data_analysis": 73,
-        "reasoning": 87.2
+        "reasoning": 87.2,
+        "long_agentic": 27.9,
+        "design": 78.1
       },
       "categories": {
-        "Long-Horizon": 27.9,
+        "Long Agentic": 27.9,
         "Reasoning": 87.2,
         "Coding": 94.3,
         "Browser": 44,
@@ -7513,8 +7554,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 6,
         "cost_per_question": null,
-        "avg_input_tokens": 1675994,
-        "avg_output_tokens": 16722
+        "avg_input_tokens": 1707334,
+        "avg_output_tokens": 16890
       },
       "pricing": {
         "input_per_million": 2,
@@ -7538,22 +7579,22 @@
       "family_id": "x-ai/grok-4.6",
       "effort": null,
       "thinking": false,
-      "overall": 74.64,
+      "overall": 74.94,
       "tasks": {
-        "design_layout": 79.8,
         "research": 84.5,
         "browser": 64,
         "coding": 89.1,
-        "long_horizon": 40.7,
-        "data_analysis": 73.9,
-        "reasoning": 90.5
+        "data_analysis": 75.3,
+        "reasoning": 91.2,
+        "long_agentic": 40.7,
+        "design": 79.8
       },
       "categories": {
-        "Long-Horizon": 40.7,
-        "Reasoning": 90.5,
+        "Long Agentic": 40.7,
+        "Reasoning": 91.2,
         "Coding": 89.1,
         "Browser": 64,
-        "Data Analysis": 73.9,
+        "Data Analysis": 75.3,
         "Research": 84.5,
         "Design": 79.8
       },
@@ -7561,8 +7602,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 6,
         "cost_per_question": null,
-        "avg_input_tokens": 2373900,
-        "avg_output_tokens": 28877
+        "avg_input_tokens": 2390864,
+        "avg_output_tokens": 29053
       },
       "pricing": {
         "input_per_million": 2,
@@ -7589,16 +7630,16 @@
       "thinking": false,
       "overall": 74.09,
       "tasks": {
-        "design_layout": 78,
         "research": 86.4,
         "browser": 60,
         "coding": 84.5,
-        "long_horizon": 50.1,
         "data_analysis": 76.9,
-        "reasoning": 82.7
+        "reasoning": 82.7,
+        "long_agentic": 50.1,
+        "design": 78
       },
       "categories": {
-        "Long-Horizon": 50.1,
+        "Long Agentic": 50.1,
         "Reasoning": 82.7,
         "Coding": 84.5,
         "Browser": 60,
@@ -7610,8 +7651,8 @@
         "input_price_per_million": 2,
         "output_price_per_million": 6,
         "cost_per_question": null,
-        "avg_input_tokens": 5593037,
-        "avg_output_tokens": 71802
+        "avg_input_tokens": 5603594,
+        "avg_output_tokens": 71934
       },
       "pricing": {
         "input_per_million": 2,
@@ -7638,16 +7679,16 @@
       "thinking": false,
       "overall": 51.91,
       "tasks": {
-        "design_layout": 58.3,
         "research": 59.9,
         "browser": 16,
         "coding": 64,
-        "long_horizon": 14.1,
         "data_analysis": 72.8,
-        "reasoning": 78.3
+        "reasoning": 78.3,
+        "long_agentic": 14.1,
+        "design": 58.3
       },
       "categories": {
-        "Long-Horizon": 14.1,
+        "Long Agentic": 14.1,
         "Reasoning": 78.3,
         "Coding": 64,
         "Browser": 16,
@@ -7659,8 +7700,8 @@
         "input_price_per_million": 1,
         "output_price_per_million": 4.05,
         "cost_per_question": null,
-        "avg_input_tokens": 4030980,
-        "avg_output_tokens": 29771
+        "avg_input_tokens": 4051118,
+        "avg_output_tokens": 29850
       },
       "pricing": {
         "input_per_million": 1,
@@ -7689,16 +7730,16 @@
       "thinking": false,
       "overall": 63.39,
       "tasks": {
-        "design_layout": 77.2,
         "research": 79,
         "browser": 16,
         "coding": 59.3,
-        "long_horizon": 42.8,
         "data_analysis": 78.7,
-        "reasoning": 90.7
+        "reasoning": 90.7,
+        "long_agentic": 42.8,
+        "design": 77.2
       },
       "categories": {
-        "Long-Horizon": 42.8,
+        "Long Agentic": 42.8,
         "Reasoning": 90.7,
         "Coding": 59.3,
         "Browser": 16,
@@ -7714,7 +7755,7 @@
         "avg_output_tokens": 22491
       },
       "pricing": {
-        "input_per_million": 0.304,
+        "input_per_million": 0.239,
         "output_per_million": 11.936,
         "source": "openrouter"
       },
@@ -7738,16 +7779,16 @@
       "thinking": false,
       "overall": 74.87,
       "tasks": {
-        "design_layout": 78.5,
         "research": 76.7,
         "browser": 88,
         "coding": 81.5,
-        "long_horizon": 47.5,
         "data_analysis": 72.3,
-        "reasoning": 79.6
+        "reasoning": 79.6,
+        "long_agentic": 47.5,
+        "design": 78.5
       },
       "categories": {
-        "Long-Horizon": 47.5,
+        "Long Agentic": 47.5,
         "Reasoning": 79.6,
         "Coding": 81.5,
         "Browser": 88,
@@ -7759,8 +7800,8 @@
         "input_price_per_million": 0.435,
         "output_price_per_million": 0.87,
         "cost_per_question": null,
-        "avg_input_tokens": 3276650,
-        "avg_output_tokens": 58493
+        "avg_input_tokens": 3316027,
+        "avg_output_tokens": 58814
       },
       "pricing": {
         "input_per_million": 0.435,
@@ -7782,16 +7823,16 @@
       "thinking": false,
       "overall": 53.74,
       "tasks": {
-        "design_layout": 66.2,
         "research": 68,
         "browser": 8,
         "coding": 70.9,
-        "long_horizon": 12.4,
         "data_analysis": 76.2,
-        "reasoning": 74.5
+        "reasoning": 74.5,
+        "long_agentic": 12.4,
+        "design": 66.2
       },
       "categories": {
-        "Long-Horizon": 12.4,
+        "Long Agentic": 12.4,
         "Reasoning": 74.5,
         "Coding": 70.9,
         "Browser": 8,
@@ -7803,8 +7844,8 @@
         "input_price_per_million": 0.3,
         "output_price_per_million": 1.2,
         "cost_per_question": null,
-        "avg_input_tokens": 3592137,
-        "avg_output_tokens": 36931
+        "avg_input_tokens": 3642462,
+        "avg_output_tokens": 37205
       },
       "pricing": {
         "input_per_million": 0.3,
@@ -7826,16 +7867,16 @@
       "thinking": false,
       "overall": 47.7,
       "tasks": {
-        "design_layout": 65.6,
         "research": 28.1,
         "browser": 8,
         "coding": 60,
-        "long_horizon": 11.8,
         "data_analysis": 76.5,
-        "reasoning": 83.9
+        "reasoning": 83.9,
+        "long_agentic": 11.8,
+        "design": 65.6
       },
       "categories": {
-        "Long-Horizon": 11.8,
+        "Long Agentic": 11.8,
         "Reasoning": 83.9,
         "Coding": 60,
         "Browser": 8,
@@ -7847,8 +7888,8 @@
         "input_price_per_million": 0.68,
         "output_price_per_million": 2.09,
         "cost_per_question": null,
-        "avg_input_tokens": 5789015,
-        "avg_output_tokens": 97245
+        "avg_input_tokens": 5678278,
+        "avg_output_tokens": 95306
       },
       "pricing": {
         "input_per_million": 0.68,
@@ -7873,16 +7914,16 @@
       "thinking": false,
       "overall": 62.4,
       "tasks": {
-        "design_layout": 67.1,
         "research": 67.7,
         "browser": 36,
         "coding": 78.2,
-        "long_horizon": 21.3,
         "data_analysis": 76.5,
-        "reasoning": 90
+        "reasoning": 90,
+        "long_agentic": 21.3,
+        "design": 67.1
       },
       "categories": {
-        "Long-Horizon": 21.3,
+        "Long Agentic": 21.3,
         "Reasoning": 90,
         "Coding": 78.2,
         "Browser": 36,
@@ -7894,8 +7935,8 @@
         "input_price_per_million": 1.25,
         "output_price_per_million": 4.25,
         "cost_per_question": null,
-        "avg_input_tokens": 4059075,
-        "avg_output_tokens": 36835
+        "avg_input_tokens": 4131645,
+        "avg_output_tokens": 36435
       },
       "pricing": {
         "input_per_million": 1.25,
@@ -7923,16 +7964,16 @@
       "thinking": false,
       "overall": 74.76,
       "tasks": {
-        "design_layout": 74.8,
         "research": 68.6,
         "browser": 80,
         "coding": 90.2,
-        "long_horizon": 40.4,
         "data_analysis": 79.6,
-        "reasoning": 89.7
+        "reasoning": 89.7,
+        "long_agentic": 40.4,
+        "design": 74.8
       },
       "categories": {
-        "Long-Horizon": 40.4,
+        "Long Agentic": 40.4,
         "Reasoning": 89.7,
         "Coding": 90.2,
         "Browser": 80,
@@ -7944,8 +7985,8 @@
         "input_price_per_million": 1.25,
         "output_price_per_million": 4.25,
         "cost_per_question": null,
-        "avg_input_tokens": 3793267,
-        "avg_output_tokens": 36126
+        "avg_input_tokens": 3808652,
+        "avg_output_tokens": 35755
       },
       "pricing": {
         "input_per_million": 1.25,
@@ -7974,16 +8015,16 @@
       "thinking": false,
       "overall": 57.57,
       "tasks": {
-        "design_layout": 60.3,
         "research": 80.3,
         "browser": 36,
         "coding": 73.6,
-        "long_horizon": 18.9,
         "data_analysis": 60.2,
-        "reasoning": 73.7
+        "reasoning": 73.7,
+        "long_agentic": 18.9,
+        "design": 60.3
       },
       "categories": {
-        "Long-Horizon": 18.9,
+        "Long Agentic": 18.9,
         "Reasoning": 73.7,
         "Coding": 73.6,
         "Browser": 36,
@@ -7995,8 +8036,8 @@
         "input_price_per_million": 1.25,
         "output_price_per_million": 4.25,
         "cost_per_question": null,
-        "avg_input_tokens": 2837659,
-        "avg_output_tokens": 26199
+        "avg_input_tokens": 2859263,
+        "avg_output_tokens": 26337
       },
       "pricing": {
         "input_per_million": 1.25,
@@ -8023,16 +8064,16 @@
       "thinking": false,
       "overall": 78.1,
       "tasks": {
-        "design_layout": 75.1,
         "research": 88,
         "browser": 72,
         "coding": 86.2,
-        "long_horizon": 53.2,
         "data_analysis": 81.6,
-        "reasoning": 90.6
+        "reasoning": 90.6,
+        "long_agentic": 53.2,
+        "design": 75.1
       },
       "categories": {
-        "Long-Horizon": 53.2,
+        "Long Agentic": 53.2,
         "Reasoning": 90.6,
         "Coding": 86.2,
         "Browser": 72,
@@ -8044,8 +8085,8 @@
         "input_price_per_million": 4,
         "output_price_per_million": 20,
         "cost_per_question": null,
-        "avg_input_tokens": 2111683,
-        "avg_output_tokens": 17846
+        "avg_input_tokens": 2111959,
+        "avg_output_tokens": 17790
       },
       "pricing": {
         "input_per_million": 4,
@@ -8066,16 +8107,16 @@
       "thinking": false,
       "overall": 28.69,
       "tasks": {
-        "design_layout": 43.9,
         "research": 40,
         "browser": 0,
         "coding": 22.6,
-        "long_horizon": 8.3,
         "data_analysis": 43.1,
-        "reasoning": 42.9
+        "reasoning": 42.9,
+        "long_agentic": 8.3,
+        "design": 43.9
       },
       "categories": {
-        "Long-Horizon": 8.3,
+        "Long Agentic": 8.3,
         "Reasoning": 42.9,
         "Coding": 22.6,
         "Browser": 0,
@@ -8084,14 +8125,14 @@
         "Design": 43.9
       },
       "cost": {
-        "input_price_per_million": 0.05,
+        "input_price_per_million": 0.06,
         "output_price_per_million": 0.2,
         "cost_per_question": null,
-        "avg_input_tokens": 1684236,
-        "avg_output_tokens": 51428
+        "avg_input_tokens": 1662041,
+        "avg_output_tokens": 50107
       },
       "pricing": {
-        "input_per_million": 0.05,
+        "input_per_million": 0.06,
         "output_per_million": 0.2,
         "source": "livebench"
       },
@@ -8109,16 +8150,16 @@
       "thinking": false,
       "overall": 51.47,
       "tasks": {
-        "design_layout": 60.7,
         "research": 70.9,
         "browser": 4,
         "coding": 65.5,
-        "long_horizon": 15.8,
         "data_analysis": 64.6,
-        "reasoning": 78.8
+        "reasoning": 78.8,
+        "long_agentic": 15.8,
+        "design": 60.7
       },
       "categories": {
-        "Long-Horizon": 15.8,
+        "Long Agentic": 15.8,
         "Reasoning": 78.8,
         "Coding": 65.5,
         "Browser": 4,
@@ -8127,15 +8168,15 @@
         "Design": 60.7
       },
       "cost": {
-        "input_price_per_million": 0.15,
-        "output_price_per_million": 0.5,
+        "input_price_per_million": 0.225,
+        "output_price_per_million": 0.575,
         "cost_per_question": null,
-        "avg_input_tokens": 2484453,
-        "avg_output_tokens": 39503
+        "avg_input_tokens": 2511215,
+        "avg_output_tokens": 39080
       },
       "pricing": {
-        "input_per_million": 0.15,
-        "output_per_million": 0.5,
+        "input_per_million": 0.225,
+        "output_per_million": 0.575,
         "source": "livebench"
       },
       "supported_efforts": null,
@@ -8152,16 +8193,16 @@
       "thinking": false,
       "overall": 40.83,
       "tasks": {
-        "design_layout": 58.6,
         "research": 43.2,
         "browser": 0,
         "coding": 43.6,
-        "long_horizon": 11.2,
         "data_analysis": 54.5,
-        "reasoning": 74.7
+        "reasoning": 74.7,
+        "long_agentic": 11.2,
+        "design": 58.6
       },
       "categories": {
-        "Long-Horizon": 11.2,
+        "Long Agentic": 11.2,
         "Reasoning": 74.7,
         "Coding": 43.6,
         "Browser": 0,
@@ -8171,14 +8212,14 @@
       },
       "cost": {
         "input_price_per_million": 0.6,
-        "output_price_per_million": 2.4,
+        "output_price_per_million": 2.7,
         "cost_per_question": null,
-        "avg_input_tokens": 2812768,
-        "avg_output_tokens": 24497
+        "avg_input_tokens": 2835940,
+        "avg_output_tokens": 24452
       },
       "pricing": {
         "input_per_million": 0.6,
-        "output_per_million": 2.4,
+        "output_per_million": 2.7,
         "source": "livebench"
       },
       "supported_efforts": null,
@@ -8195,16 +8236,16 @@
       "thinking": false,
       "overall": 62.66,
       "tasks": {
-        "design_layout": 75.9,
         "research": 59.4,
         "browser": 32,
         "coding": 86.8,
-        "long_horizon": 27.9,
         "data_analysis": 76.6,
-        "reasoning": 80
+        "reasoning": 80,
+        "long_agentic": 27.9,
+        "design": 75.9
       },
       "categories": {
-        "Long-Horizon": 27.9,
+        "Long Agentic": 27.9,
         "Reasoning": 80,
         "Coding": 86.8,
         "Browser": 32,
@@ -8213,15 +8254,15 @@
         "Design": 75.9
       },
       "cost": {
-        "input_price_per_million": 0.42,
+        "input_price_per_million": 0.5,
         "output_price_per_million": 3,
         "cost_per_question": null,
-        "avg_input_tokens": 4106173,
-        "avg_output_tokens": 59242
+        "avg_input_tokens": 4079576,
+        "avg_output_tokens": 58746
       },
       "pricing": {
-        "input_per_million": 0.24,
-        "output_per_million": 2.2,
+        "input_per_million": 0.04,
+        "output_per_million": 1.35,
         "source": "openrouter"
       },
       "context_length": 1000000,
@@ -8244,16 +8285,16 @@
       "thinking": false,
       "overall": 68.79,
       "tasks": {
-        "design_layout": 72.8,
         "research": 74.6,
         "browser": 48,
         "coding": 87.4,
-        "long_horizon": 37.1,
         "data_analysis": 74.2,
-        "reasoning": 87.4
+        "reasoning": 87.4,
+        "long_agentic": 37.1,
+        "design": 72.8
       },
       "categories": {
-        "Long-Horizon": 37.1,
+        "Long Agentic": 37.1,
         "Reasoning": 87.4,
         "Coding": 87.4,
         "Browser": 48,
@@ -8265,8 +8306,8 @@
         "input_price_per_million": 0.15,
         "output_price_per_million": 0.47,
         "cost_per_question": null,
-        "avg_input_tokens": 5756561,
-        "avg_output_tokens": 65785
+        "avg_input_tokens": 5690733,
+        "avg_output_tokens": 65156
       },
       "pricing": {
         "input_per_million": 0.15,
@@ -8288,16 +8329,16 @@
       "thinking": false,
       "overall": 64.24,
       "tasks": {
-        "design_layout": 78.6,
         "research": 69.9,
         "browser": 32,
         "coding": 60.3,
-        "long_horizon": 42.3,
         "data_analysis": 78.4,
-        "reasoning": 88.2
+        "reasoning": 88.2,
+        "long_agentic": 42.3,
+        "design": 78.6
       },
       "categories": {
-        "Long-Horizon": 42.3,
+        "Long Agentic": 42.3,
         "Reasoning": 88.2,
         "Coding": 60.3,
         "Browser": 32,
@@ -8321,49 +8362,6 @@
       "default_effort": null
     },
     {
-      "benchmark_name": "smaug-flash",
-      "canonical_id": null,
-      "alias_method": null,
-      "vendor": "unmatched",
-      "display_vendor": "other",
-      "family_id": "smaug-flash",
-      "effort": null,
-      "thinking": false,
-      "overall": 57.54,
-      "tasks": {
-        "design_layout": 76.2,
-        "research": 74.1,
-        "browser": 0,
-        "coding": 60.1,
-        "long_horizon": 27.1,
-        "data_analysis": 79.1,
-        "reasoning": 86.2
-      },
-      "categories": {
-        "Long-Horizon": 27.1,
-        "Reasoning": 86.2,
-        "Coding": 60.1,
-        "Browser": 0,
-        "Data Analysis": 79.1,
-        "Research": 74.1,
-        "Design": 76.2
-      },
-      "cost": {
-        "input_price_per_million": 0.14,
-        "output_price_per_million": 0.28,
-        "cost_per_question": null,
-        "avg_input_tokens": 6329856,
-        "avg_output_tokens": 52419
-      },
-      "pricing": {
-        "input_per_million": 0.14,
-        "output_per_million": 0.28,
-        "source": "livebench"
-      },
-      "supported_efforts": null,
-      "default_effort": null
-    },
-    {
       "benchmark_name": "step-5-preview",
       "canonical_id": "stepfun/step-5-preview",
       "alias_method": "exact",
@@ -8374,16 +8372,16 @@
       "thinking": false,
       "overall": 62.01,
       "tasks": {
-        "design_layout": 76.9,
         "research": 72.8,
         "browser": 24,
         "coding": 85.6,
-        "long_horizon": 27.5,
         "data_analysis": 63.5,
-        "reasoning": 83.8
+        "reasoning": 83.8,
+        "long_agentic": 27.5,
+        "design": 76.9
       },
       "categories": {
-        "Long-Horizon": 27.5,
+        "Long Agentic": 27.5,
         "Reasoning": 83.8,
         "Coding": 85.6,
         "Browser": 24,
@@ -8395,8 +8393,8 @@
         "input_price_per_million": 1,
         "output_price_per_million": 2.7,
         "cost_per_question": null,
-        "avg_input_tokens": 5259846,
-        "avg_output_tokens": 72144
+        "avg_input_tokens": 5273949,
+        "avg_output_tokens": 72663
       },
       "pricing": {
         "input_per_million": 1,
@@ -8942,8 +8940,8 @@
   "artificial_analysis": [],
   "data_quality": {
     "counts": {
-      "catalog_models": 495,
-      "livebench_models": 49,
+      "catalog_models": 497,
+      "livebench_models": 48,
       "livebench_matched": 40,
       "terminal_bench_runs": 35,
       "terminal_bench_matched": 35
@@ -8953,7 +8951,6 @@
         "gemini-3.1-pro",
         "qwen3.8-max",
         "deepseek-v4-flash-vision",
-        "smaug-flash",
         "muse-wonder-1.0",
         "nemotron-ultra-3",
         "nemotron-lightning-3.5",
