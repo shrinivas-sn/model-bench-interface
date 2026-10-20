@@ -1,6 +1,7 @@
 import { normKey } from "./registry.mjs";
 
-export const EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low"];
+// `none` is a real Terminal-Bench level (reasoning off); it ranks below low.
+export const EFFORT_LEVELS = ["max", "xhigh", "high", "medium", "low", "none"];
 
 const EFFORT_SUFFIX_RE = /-(max|xhigh|high|medium|low)-effort$/;
 const XHIGH_RE = /-xhigh$/;

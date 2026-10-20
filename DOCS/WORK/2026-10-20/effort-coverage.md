@@ -9,7 +9,7 @@ Generated 2026-10-20T06:27:30.969Z from `data/scores.json` (built 20/10 from the
 | Exactly 1 level | 20 |
 | No stated level | 26 |
 | Terminal-Bench `none` runs | 1 |
-| Effort strings not in EFFORT_LEVELS | `none` |
+| Effort strings not in EFFORT_LEVELS | — |
 
 ## Models with a measured level
 
