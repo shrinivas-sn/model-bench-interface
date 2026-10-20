@@ -402,6 +402,8 @@ status file and in the session's final message.)*
 | 2 | 20/10/2026 | 1 (re-check) | Facts: ingest fails since 19/10 "also 16/10, 17/10" | `gh run list`: 18/10 07:21Z run success with `LiveBench release: 2026-09-02`, both LB jobs `ok` (root URL still served then); 19/10 fails; 14–17/10 scheduled runs also failed, 17/10 manual run succeeded. Move happened between 18/10 07:21Z and 19/10 08:00Z | None on the fix | Noted; probes re-run 20/10 match Facts (`/v1/` 2026-06-25 only; root and `/v1/` 2026-09-02/09-10/07-22 → 404) | — |
 | 3 | 20/10/2026 | 1.1, 1.2 | Pattern is `/v1/` or `./data/<id>/` (unknown id); discovery scans dated strings | Bundle `main.c8f94910.js`: two generations. v1 archive = `./v1/table_<YYYY_MM_DD>.csv`, list ends 2026-06-25. LiveBench 2 = `_e=["20261014"]` → `./data/20261014/{table.csv,cost.csv,categories.json}` (all 200, body `model,`). 2026-09-02 is no longer in the bundle or served. 20261014 has the same 7-category shape as 2026-09-02: 48 models (`smaug-flash` dropped), 325 scores equal, 11 changed, 0 effort rows (`qwen3.8-max` = product tier) | Task 1.2 amended (see issue 3): URLs use `data/<YYYYMMDD>/`, release stored `YYYY-MM-DD`; discovery also reads quoted `YYYYMMDD` ids; `RELEASE` = 2026-10-14. App moves 2026-09-02 → 2026-10-14 (newer) | Done in `ce9fd3d` | — |
 | 4 | 20/10/2026 | 1.3 → new 1.4 | Phase 1 touches only `ingestion/sources/livebench.mjs` | 20261014 renames `design_layout`→`design`, `long_horizon`→`long_agentic`; `build:data` throws `LiveBench tasks without a category` (no map for 2026-10-14; its fallback fetches old root `categories_<date>.json` → 404). Daily job would stay red after merge | Public label: LiveBench's own category name "Long Agentic" replaces "Long-Horizon" on the site | Added Task 1.4 (below), committed `d5c5030` | Owner: confirm "Long Agentic" (LiveBench's name) is fine, or map it to the old "Long-Horizon" label. 20/10: owner said "ok then merge" → kept |
+| 6 | 20/10/2026 | 3.2 | verify:ui check: "a single-run model at low shows Not measured at low" | Effort buttons list only measured levels (17/10 rule, kept); today every level comes from Terminal-Bench alone (LiveBench 0, AA off), so no model can pick a level its TB data lacks. A `low` URL param on a single-run model falls back to its measured level | That browser check cannot be reached with real data; "Not measured" is covered by unit tests (`scoreAtEffort`) and will show once AA or LiveBench adds levels | Check not added; logged | — |
+| 7 | 20/10/2026 | 3.2, 3.3 | Extend `probe/verify-ui.mjs` (in git) | `probe/` is in `.gitignore` (`.gitignore:9`), so `verify-ui.mjs` is local only; the 5 new checks live on this machine, not in git | The checks are not shared through the repo | Not changed (`.gitignore` out of scope) | Owner: track `probe/verify-ui.mjs`? |
 | 5 | 20/10/2026 | 4.1 | Push/merge once, after Phase 3 and review | Owner asked to merge and push right after Phase 1 | Ship order only | Fast-forward `main` → `5c867ab`, pushed; Phase 4 merges the rest | Owner: "merge to main and push" |
 
 ---
@@ -469,3 +471,19 @@ the last entry and knows exactly where to start.)*
   - 2.3: `ARTIFICIAL_ANALYSIS_API_KEY` unset locally; `gh secret list` empty → waiting on owner (O1).
   - Checkpoint: `npm test` 105/105; fixtures 5/5; tsc 0.
   - Next: Task 3.1.
+- **20/10/2026 — Phase 3 done.**
+  - 3.1 `69fc227`: `scoreAtEffort(model, source, effort, data)` in `lib/compare.mjs`.
+    Returns `{status, value, row, measuredEffort, measuredLevels}`. Duplicate rows at one level → best value first,
+    the order `runsForVariant` already used. 6 new tests.
+  - 3.2 `3b8d0da`: LiveBench, Terminal-Bench (block + line stat) and AA blocks show a "Measured at" row per side
+    (chip / "effort not stated" / "Not measured at {level} · measured at: [buttons]").
+    The LiveBench numbers come from the at-effort row. The AA single-row fallback is removed:
+    it showed another effort's numbers.
+    verify:ui 100/100 (4 new checks): opus-5 TB low 34.85 → max 51.82, each chipped;
+    LiveBench bare "effort not stated"; 0 unlabelled entries. Screenshots checked at 1280 and 320.
+  - 3.3 `5f68ed3`: matrix null effort → "effort not stated" (shared chip wording); `.effort-chip-none` style.
+    verify:ui 101/101 (matrix check 49/49 chipped).
+  - Checkpoint: `npm test` 111/111; fixtures 5/5; tsc 0; build ok; verify:ui 101/101; data/store restored.
+  - Plan issues 6–7.
+  - myreview on `origin/main...HEAD`: no correctness/security findings. Two low notes:
+    AA multi-version notice wording; coverage CLI path guard on Windows.
