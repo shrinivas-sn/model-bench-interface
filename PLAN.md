@@ -184,6 +184,19 @@ A new session may start here.
 **If it fails:** an `E_RECORD_INVALID` or `stale` canary means the CSV columns changed: compare with `ingestion/fixtures/livebench-scores/`. Log it and fix the transform under a new Task 1.4 card added via Plan issues.
 **Commit:** none — verification only.
 
+### Task 1.4 — Categories for the new release (added 20/10/2026, see Plan issue 4)
+
+**Goal:** `build:data` builds from a 2026-10-14 store, and fetches an unmapped release's categories from the new path.
+**Why:** the new release renamed two tasks; without a map `assertTasksCategorised` throws and the daily job stays red.
+**Where:** `normalization/categories.mjs` (search text: `LIVEBENCH_CATEGORIES_BY_RELEASE`); `normalization/build-data.mjs` (search text: `categoriesMap = categoriesForRelease`)
+**Do:**
+- [x] Add the `2026-10-14` map from live `data/20261014/categories.json`; make it the default; add "Long Agentic" to `CAPABILITY_AXES`.
+- [x] The fallback fetch uses `categoriesUrl(release)` from `ingestion/sources/livebench.mjs`.
+**Test first:** `normalization/test/categories.test.mjs` (append): the 2026-10-14 map categorises all 7 tasks and is the default.
+**Verify:** `npm test` pass; `build:data` on the Task 1.3 store copies writes 48 LiveBench rows, then `git restore data/ store/`.
+**Don't touch:** the 2026-06-25 and 2026-09-02 maps.
+**Commit:** `fix(categories): map LiveBench 2026-10-14 tasks; fetch categories from new path`
+
 ### Checkpoint — Phase 1
 
 - [ ] Full verification: `npm test`; `npm run verify:fixtures`; `npx tsc --noEmit`; the Task 1.3 run.
@@ -387,6 +400,8 @@ status file and in the session's final message.)*
 |---|---|---|---|---|---|---|---|
 | 1 | 20/10/2026 | 0.1 | Branch from `origin/main` | Local `main` is 2 docs commits ahead (`e831a38` adds this `PLAN.md`, `17245bc` status); `origin/main` = `2446b1f` has no `PLAN.md` | Local, same intent | Branched `feat/effort-levels` from local `main` (`17245bc`); nothing pushed | — |
 | 2 | 20/10/2026 | 1 (re-check) | Facts: ingest fails since 19/10 "also 16/10, 17/10" | `gh run list`: 18/10 07:21Z run success with `LiveBench release: 2026-09-02`, both LB jobs `ok` (root URL still served then); 19/10 fails; 14–17/10 scheduled runs also failed, 17/10 manual run succeeded. Move happened between 18/10 07:21Z and 19/10 08:00Z | None on the fix | Noted; probes re-run 20/10 match Facts (`/v1/` 2026-06-25 only; root and `/v1/` 2026-09-02/09-10/07-22 → 404) | — |
+| 3 | 20/10/2026 | 1.1, 1.2 | Pattern is `/v1/` or `./data/<id>/` (unknown id); discovery scans dated strings | Bundle `main.c8f94910.js`: two generations. v1 archive = `./v1/table_<YYYY_MM_DD>.csv`, list ends 2026-06-25. LiveBench 2 = `_e=["20261014"]` → `./data/20261014/{table.csv,cost.csv,categories.json}` (all 200, body `model,`). 2026-09-02 is no longer in the bundle or served. 20261014 has the same 7-category shape as 2026-09-02: 48 models (`smaug-flash` dropped), 325 scores equal, 11 changed, 0 effort rows (`qwen3.8-max` = product tier) | Task 1.2 amended (see issue 3): URLs use `data/<YYYYMMDD>/`, release stored `YYYY-MM-DD`; discovery also reads quoted `YYYYMMDD` ids; `RELEASE` = 2026-10-14. App moves 2026-09-02 → 2026-10-14 (newer) | Done in `ce9fd3d` | — |
+| 4 | 20/10/2026 | 1.3 → new 1.4 | Phase 1 touches only `ingestion/sources/livebench.mjs` | 20261014 renames `design_layout`→`design`, `long_horizon`→`long_agentic`; `build:data` throws `LiveBench tasks without a category` (no map for 2026-10-14; its fallback fetches old root `categories_<date>.json` → 404). Daily job would stay red after merge | Public label: LiveBench's own category name "Long Agentic" replaces "Long-Horizon" on the site | Added Task 1.4 (below), committed `d5c5030` | Owner: confirm "Long Agentic" (LiveBench's name) is fine, or map it to the old "Long-Horizon" label |
 
 ---
 
@@ -423,3 +438,18 @@ the last entry and knows exactly where to start.)*
   (Plan issue 1). `npm ci` ok; engine 0.6.0; Node v22.23.2. `npm test` 97/97 pass;
   `verify:fixtures` 5/5 PASS; `npx tsc --noEmit` exit 0. Phase 1 re-check: `/v1/table_2026_06_25.csv`
   → 200 (Plan issue 2 for run history). Next: Task 1.1.
+- **20/10/2026 — Phase 1 done.**
+  - 1.1: newest release is LiveBench 2 `20261014` at `https://livebench.ai/data/20261014/{table.csv,cost.csv,categories.json}`.
+    Release ids in the bundle are `_e=["YYYYMMDD",…]`; the v1 archive ends 2026-06-25.
+    Effort-suffixed rows: 0 (Plan issue 3).
+  - 1.2 `ce9fd3d`: `npm test` 100/100; live `discoverLatestRelease()` → `2026-10-14`.
+  - 1.3, on store copies in scratch: openrouter ok (470 parsed); livebench-scores ok
+    (fetched/parsed 336, written 336); livebench-cost ok (48/48); terminal-bench ok (35, unchanged 35).
+    Canaries ok; no tracked change.
+  - 1.4 `d5c5030` (Plan issue 4): `build:data` on that store → livebench 48 rows (matched 40),
+    release 2026-10-14; data/store restored.
+  - Checkpoint: `npm test` 101/101, fixtures 5/5, tsc 0.
+  - Not run: `npm run build` / `verify:ui`; the category label change is visible on the site.
+  - Phase 2 re-check answer: LiveBench contributes no effort variants. Task 2.2 only guards the parser;
+    AA (Task 2.3, O1) is the main effort source.
+  - Next: Task 2.1.
