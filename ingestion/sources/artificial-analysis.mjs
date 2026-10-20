@@ -13,6 +13,8 @@ const VALID_EFFORTS = new Set(["max", "xhigh", "high", "medium", "low"]);
 /**
  * Split an Artificial Analysis model name into base name and explicit reasoning effort.
  * e.g. "Claude Opus 5.5 (max)" -> { base: "Claude Opus 5.5", effort: "max" }
+ * A qualified suffix counts when its first word is the effort (owner, 20/10/2026):
+ * "Claude Opus 5.5 (Max, Default Fallback)" -> max. The full name stays on the row.
  *
  * @param {string} name
  * @returns {{ base: string, effort: string | null }}
@@ -22,7 +24,7 @@ export function splitEffort(name) {
 
   const match = name.match(/\s+\(([^)]+)\)$/);
   if (match) {
-    const rawEffort = match[1].toLowerCase();
+    const rawEffort = match[1].split(",")[0].trim().toLowerCase();
     if (VALID_EFFORTS.has(rawEffort)) {
       return {
         base: name.slice(0, match.index).trim(),

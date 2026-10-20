@@ -116,3 +116,27 @@ test("makeFetchImpl paginates and passes API key header", async () => {
     globalThis.fetch = originalFetch;
   }
 });
+
+test("splitEffort reads the effort from the first word of a qualified suffix (owner, 20/10/2026)", () => {
+  assert.deepEqual(splitEffort("Claude Opus 5.5 (Max, Default Fallback)"), {
+    base: "Claude Opus 5.5",
+    effort: "max",
+  });
+  assert.deepEqual(splitEffort("Claude Opus 5.5 (Xhigh, Default Fallback)"), {
+    base: "Claude Opus 5.5",
+    effort: "xhigh",
+  });
+  assert.deepEqual(splitEffort("Model X (High, Based on gpt-oss-120b)"), {
+    base: "Model X",
+    effort: "high",
+  });
+  // The first word must itself be an effort level.
+  assert.deepEqual(splitEffort("Model Y (Non-reasoning, High)"), {
+    base: "Model Y (Non-reasoning, High)",
+    effort: null,
+  });
+  assert.deepEqual(splitEffort("Model Z (Daybreak Blue, max)"), {
+    base: "Model Z (Daybreak Blue, max)",
+    effort: null,
+  });
+});
