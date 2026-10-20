@@ -173,6 +173,13 @@
   border-color: color-mix(in srgb, var(--text-main) 12%, transparent);
 }
 
+/* Terminal-Bench "none" (reasoning off): one step below low on the same ramp. */
+.effort-chip-none {
+  background: transparent;
+  color: var(--text-muted);
+  border-color: color-mix(in srgb, var(--text-main) 12%, transparent);
+}
+
 .effort-chip-null {
   background: transparent;
   color: var(--text-faint);
