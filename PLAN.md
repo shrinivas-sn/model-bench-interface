@@ -385,6 +385,8 @@ status file and in the session's final message.)*
 
 | # | When | Task | Plan said | Reality (evidence) | Impact | Action taken | Owner decision |
 |---|---|---|---|---|---|---|---|
+| 1 | 20/10/2026 | 0.1 | Branch from `origin/main` | Local `main` is 2 docs commits ahead (`e831a38` adds this `PLAN.md`, `17245bc` status); `origin/main` = `2446b1f` has no `PLAN.md` | Local, same intent | Branched `feat/effort-levels` from local `main` (`17245bc`); nothing pushed | — |
+| 2 | 20/10/2026 | 1 (re-check) | Facts: ingest fails since 19/10 "also 16/10, 17/10" | `gh run list`: 18/10 07:21Z run success with `LiveBench release: 2026-09-02`, both LB jobs `ok` (root URL still served then); 19/10 fails; 14–17/10 scheduled runs also failed, 17/10 manual run succeeded. Move happened between 18/10 07:21Z and 19/10 08:00Z | None on the fix | Noted; probes re-run 20/10 match Facts (`/v1/` 2026-06-25 only; root and `/v1/` 2026-09-02/09-10/07-22 → 404) | — |
 
 ---
 
@@ -416,3 +418,8 @@ status file and in the session's final message.)*
 *(Append only. Newest at the bottom. Never rewrite an entry — if it turned out wrong,
 add a new one saying so. This log is what makes resuming cheap: a cold session reads
 the last entry and knows exactly where to start.)*
+
+- **20/10/2026 — Phase 0 done.** Branch `feat/effort-levels` from local `main` `17245bc`
+  (Plan issue 1). `npm ci` ok; engine 0.6.0; Node v22.23.2. `npm test` 97/97 pass;
+  `verify:fixtures` 5/5 PASS; `npx tsc --noEmit` exit 0. Phase 1 re-check: `/v1/table_2026_06_25.csv`
+  → 200 (Plan issue 2 for run history). Next: Task 1.1.

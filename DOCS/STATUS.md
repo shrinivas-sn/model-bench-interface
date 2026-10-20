@@ -20,7 +20,8 @@
   Terminal-Bench multi-effort for 3 models, Artificial Analysis not connected (no secret).
 
 ## Plan
-- **`PLAN.md` (written 19/10/2026, not started)**: effort levels that really work.
+- **Effort-levels plan in progress (`PLAN.md`); Phase 0 done** (20/10, branch `feat/effort-levels`,
+  baseline 97/97, fixtures 5/5, tsc 0). Effort levels that really work.
   Phase 1 LiveBench fix; Phase 2 effort coverage + parser + AA; Phase 3 every score
   labelled with its effort / "Not measured at {level}"; Phase 4 ship. plan-check exit 0.
 
