@@ -1,11 +1,13 @@
 /**
  * LiveBench source (scores + cost).
  *
- * livebench.ai is a CRA site that loads, per release:
- *   table_<YYYY_MM_DD>.csv     one row per model, one column per task  (scores)
- *   categories_<YYYY_MM_DD>.json  task -> category mapping
- *   cost_<YYYY_MM_DD>.csv      one row per model with price/token columns
- * (Verified live 26/09/2026; release list read from the site bundle.)
+ * livebench.ai is a CRA site that loads, per release (id YYYYMMDD):
+ *   data/<id>/table.csv        one row per model, one column per task  (scores)
+ *   data/<id>/categories.json  task -> category mapping
+ *   data/<id>/cost.csv         one row per model with price/token columns
+ * Releases are stored as YYYY-MM-DD. The 1.0 archive (newest 2026-06-25) lives
+ * at v1/table_<YYYY_MM_DD>.csv and is not used.
+ * (Verified live 20/10/2026; release ids read from the site bundle.)
  *
  * adapter-ingestion is JSON-only by design, so the fetchImpl transforms are
  * deterministic CSV -> JSON:
@@ -16,14 +18,20 @@
  */
 import { parseCsv } from "./csv.mjs";
 
-export const RELEASE = "2026-06-25";
+export const RELEASE = "2026-10-14";
+
+const releaseDir = (release) => `https://livebench.ai/data/${release.replaceAll("-", "")}`;
 
 export function scoresUrl(release) {
-  return `https://livebench.ai/table_${release.replaceAll("-", "_")}.csv`;
+  return `${releaseDir(release)}/table.csv`;
 }
 
 export function costUrl(release) {
-  return `https://livebench.ai/cost_${release.replaceAll("-", "_")}.csv`;
+  return `${releaseDir(release)}/cost.csv`;
+}
+
+export function categoriesUrl(release) {
+  return `${releaseDir(release)}/categories.json`;
 }
 
 export const SCORES_URL = scoresUrl(RELEASE);
@@ -108,8 +116,12 @@ export async function discoverLatestRelease(fetchImpl = fetch) {
     });
     if (!jsRes.ok) return null;
     const jsText = await jsRes.text();
-    const dateMatches = jsText.match(/20\d\d[-_]\d\d[-_]\d\d/g) || [];
-    const dates = Array.from(new Set(dateMatches.map((d) => d.replaceAll("_", "-"))));
+    // Release ids are quoted YYYYMMDD strings; dated forms are kept as candidates too.
+    const compact = [...jsText.matchAll(/["'`](20\d\d)(\d\d)(\d\d)["'`]/g)].map(
+      ([, y, m, d]) => `${y}-${m}-${d}`
+    );
+    const dated = (jsText.match(/20\d\d[-_]\d\d[-_]\d\d/g) || []).map((d) => d.replaceAll("_", "-"));
+    const dates = Array.from(new Set([...compact, ...dated]));
     dates.sort((a, b) => b.localeCompare(a));
     for (const d of dates.slice(0, 10)) {
       try {
